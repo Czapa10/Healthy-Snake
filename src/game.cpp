@@ -7,6 +7,7 @@ namespace Game
 Game::Game()
 :window(sf::VideoMode(800, 900), "Healthy Snake")
 {
+    loadTextures();
 }
 
 void Game::run()
@@ -48,6 +49,11 @@ void Game::render()
     window.clear();
 
     window.display();
+}
+
+void Game::loadTextures()
+{
+    textures.load(Textures::companyLogo, "resources/textures/maineCoonLogo.jpg");
 }
 
 

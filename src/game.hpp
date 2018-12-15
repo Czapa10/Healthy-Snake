@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "resourceManager.hpp"
+
 namespace Game
 {
 
@@ -17,8 +19,11 @@ private:
     void update(sf::Time deltaTime);
     void render();
 
+    void loadTextures();
+
 private:
     sf::RenderWindow window;
+    Resources::ResourceManager <sf::Texture, Textures::ID> textures;
 };
 
 
