@@ -3,10 +3,12 @@
 #include <SFML/Graphics.hpp>
 
 #include "resourceManager.hpp"
+#include "stateIdentifiers.hpp"
 
 namespace States
 {
 
+class StateStack;
 
 class State
 {
@@ -20,18 +22,21 @@ public:
     };
 
 public:
-    State(GameData & _gameData);
+    State(GameData & _gameData, StateStack & _stateStack);
 
     virtual void input() = 0;
     virtual void update(sf::Time deltaTime) = 0;
     virtual void draw() = 0;
 
 protected:
-    void statePush();
+    void statePush(ID id);
     void statePop();
     void clearStateStack();
 
     GameData & gameData;
+
+private:
+    StateStack & stateStack;
 };
 
 
