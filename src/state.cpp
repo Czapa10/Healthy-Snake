@@ -13,12 +13,12 @@ State::State(GameData & _gameData, StateStack & _stateStack)
 
 void State::statePush(ID id)
 {
-    //stateStack.pushState(stateID);
+    stateStack.pushState(id);
 }
 
 void State::statePop()
 {
-    //stateStack.popState();
+    stateStack.popState();
 }
 
 State::GameData::GameData(sf::RenderWindow & _window, Resources::TextureStorage & _textures)

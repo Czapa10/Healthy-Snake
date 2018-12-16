@@ -2,6 +2,7 @@
 
 #include <stack>
 #include <memory>
+#include <map>
 
 #include "state.hpp"
 
@@ -15,13 +16,14 @@ class StateStack
 public:
     explicit StateStack(State::GameData _gameData);
 
-    void pushState(StateRef newState);
+    void pushState(ID id);
     void popState();
     StateRef &getActiveState();
 
 private:
     std::stack<StateRef> states;
     State::GameData gameData;
+    std::map<ID, StateRef> stateMap;
 };
 
 
