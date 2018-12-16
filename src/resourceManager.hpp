@@ -20,6 +20,7 @@ public:
     std::map <Identifier, std::unique_ptr<Resource>> ResourceMap;
 };
 
+using TextureStorage = ResourceManager<sf::Texture, Textures::ID>;
 
 }
 

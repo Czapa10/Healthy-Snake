@@ -46,7 +46,9 @@ void Game::update(sf::Time deltaTime)
 
 void Game::render()
 {
-    window.clear();
+    window.clear(sf::Color::White);
+
+    window.draw(sprite);
 
     window.display();
 }
@@ -54,6 +56,9 @@ void Game::render()
 void Game::loadTextures()
 {
     textures.load(Textures::companyLogo, "resources/textures/maineCoonLogo.jpg");
+
+    sprite.setTexture(textures.get(Textures::companyLogo));
+    sprite.setPosition(0.f, 50.f);
 }
 
 

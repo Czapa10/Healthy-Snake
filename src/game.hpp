@@ -23,7 +23,9 @@ private:
 
 private:
     sf::RenderWindow window;
-    Resources::ResourceManager <sf::Texture, Textures::ID> textures;
+    Resources::TextureStorage textures;
+
+    sf::Sprite sprite;
 };
 
 
