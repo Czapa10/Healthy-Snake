@@ -6,6 +6,7 @@ namespace Game
 
 Game::Game()
 {
+    data->window.create(sf::VideoMode(800, 800), "Healthy Snake");
     //add splash state
     loadTextures();
 }
@@ -16,7 +17,7 @@ void Game::run()
     const sf::Time timePerFrame = sf::seconds(1.f / 60.f);
     sf::Time timeSinceLastUpdate = sf::Time::Zero;
 
-    while(window.isOpen()){
+    while(data->window.isOpen()){
         input();
         timeSinceLastUpdate += clock.restart();
 
@@ -33,9 +34,9 @@ void Game::input()
 {
     sf::Event event;
 
-    while(window.pollEvent(event)){
+    while(data->window.pollEvent(event)){
         if(event.type == sf::Event::Closed)
-            window.close();
+            data->window.close();
     }
 }
 
@@ -46,18 +47,18 @@ void Game::update(sf::Time deltaTime)
 
 void Game::render()
 {
-    window.clear(sf::Color::White);
+    data->window.clear(sf::Color::White);
 
-    window.draw(sprite);
+    data->window.draw(sprite);
 
-    window.display();
+    data->window.display();
 }
 
 void Game::loadTextures()
 {
-    textures.load(Textures::companyLogo, "resources/textures/maineCoonLogo.jpg");
+    data->textures.load(Textures::companyLogo, "resources/textures/maineCoonLogo.jpg");
 
-    sprite.setTexture(textures.get(Textures::companyLogo));
+    sprite.setTexture(data->textures.get(Textures::companyLogo));
     sprite.setPosition(0.f, 50.f);
 }
 
