@@ -7,6 +7,7 @@ namespace Game
 Game::Game()
 :window(sf::VideoMode(800, 900), "Healthy Snake")
 {
+    //add splash state
     loadTextures();
 }
 

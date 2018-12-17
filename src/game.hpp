@@ -8,6 +8,13 @@ namespace Game
 {
 
 
+struct GameData
+{
+    //StateStack stateStack;
+    sf::RenderWindow window;
+    Resources::TextureStorage textures;
+};
+
 class Game
 {
 public:
@@ -22,8 +29,6 @@ private:
     void loadTextures();
 
 private:
-    sf::RenderWindow window;
-    Resources::TextureStorage textures;
 
     sf::Sprite sprite;
 };
