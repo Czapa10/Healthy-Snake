@@ -33,7 +33,6 @@ private:
 
 private:
 
-    sf::Sprite sprite;
     GameDataRef data = std::make_shared<GameData>();
 };
 

@@ -1,4 +1,5 @@
 #include "game.hpp"
+#include "splashState.hpp"
 
 namespace Game
 {
@@ -7,7 +8,8 @@ namespace Game
 Game::Game()
 {
     data->window.create(sf::VideoMode(800, 800), "Healthy Snake");
-    //add splash state
+    data->stateStack.pushState(StateRef(new SplashState(this->data)));
+
     loadTextures();
 }
 
@@ -25,6 +27,7 @@ void Game::run()
             timeSinceLastUpdate -= timePerFrame;
             input();
             update(timePerFrame);
+            data->stateStack.processStateChanges();
         }
         render();
     }
@@ -38,28 +41,23 @@ void Game::input()
         if(event.type == sf::Event::Closed)
             data->window.close();
     }
+
+    data->stateStack.getActiveState()->input();
 }
 
 void Game::update(sf::Time deltaTime)
 {
-
+    data->stateStack.getActiveState()->update(timePerFrame);
 }
 
 void Game::render()
 {
-    data->window.clear(sf::Color::White);
-
-    data->window.draw(sprite);
-
-    data->window.display();
+    data->stateStack.getActiveState()->draw();
 }
 
 void Game::loadTextures()
 {
     data->textures.load(Textures::companyLogo, "resources/textures/maineCoonLogo.jpg");
-
-    sprite.setTexture(data->textures.get(Textures::companyLogo));
-    sprite.setPosition(0.f, 50.f);
 }
 
 
