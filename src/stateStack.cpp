@@ -4,19 +4,42 @@ namespace States
 {
 
 
-StateStack::StateStack(State::GameData _gameData)
-:gameData(_gameData)
+void StateStack::pushState(StateRef _newState, bool _isReplacing)
 {
-}
+    isAdding = true;
+    isReplacing = _isReplacing;
 
-void StateStack::pushState(StateRef newState)
-{
-    states.push(std::move(newState));
+    newState = std::move(_newState);
 }
 
 void StateStack::popState()
 {
-    states.pop();
+    isRemoving = true;
+}
+
+void StateStack::processStateChanges()
+{
+    if(isRemoving && !states.empty()){
+        states.pop();
+
+        if(!states.empty()){
+            states.top()->resume();
+        }
+
+        isRemoving = false;
+    }
+
+    if(isAdding){
+        if(isReplacing){
+            states.pop();
+        }else{
+            states.top()->pause();
+        }
+
+        states.push(std::move(newState));
+        states.top()->init();
+        isAdding = false;
+    }
 }
 
 StateRef &StateStack::getActiveState()

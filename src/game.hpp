@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "resourceManager.hpp"
+#include "stateStack.hpp"
 
 namespace Game
 {
@@ -10,10 +11,12 @@ namespace Game
 
 struct GameData
 {
-    //StateStack stateStack;
+    States::StateStack stateStack;
     sf::RenderWindow window;
     Resources::TextureStorage textures;
 };
+
+typedef std::shared_ptr<GameData> GameDataRef;
 
 class Game
 {
@@ -31,6 +34,7 @@ private:
 private:
 
     sf::Sprite sprite;
+    GameDataRef data = std::make_shared<GameData>();
 };
 
 

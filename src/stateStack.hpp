@@ -2,7 +2,6 @@
 
 #include <stack>
 #include <memory>
-#include <map>
 
 #include "state.hpp"
 
@@ -14,15 +13,20 @@ namespace States
 class StateStack
 {
 public:
-    explicit StateStack(State::GameData _gameData);
+    StateStack(){}
+    ~StateStack(){}
 
-    void pushState(StateRef newState);
+    void pushState(StateRef _newState, bool _isReplacing);
     void popState();
+    void processStateChanges();//run in each frame in
+
     StateRef &getActiveState();
 
 private:
     std::stack<StateRef> states;
-    State::GameData gameData;
+    StateRef newState;
+
+    bool isAdding, isReplacing, isRemoving;
 };
 
 
