@@ -1,5 +1,4 @@
 #include "State.hpp"
-#include "stateStack.hpp"
 
 namespace States
 {
@@ -11,9 +10,9 @@ State::State(GameData & _gameData, StateStack & _stateStack)
 {
 }
 
-void State::statePush(ID id)
+void State::statePush(std::unique_ptr<State> newState)
 {
-    stateStack.pushState(id);
+    stateStack.pushState(newState);
 }
 
 void State::statePop()

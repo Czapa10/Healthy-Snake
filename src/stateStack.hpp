@@ -16,14 +16,13 @@ class StateStack
 public:
     explicit StateStack(State::GameData _gameData);
 
-    void pushState(ID id);
+    void pushState(StateRef newState);
     void popState();
     StateRef &getActiveState();
 
 private:
     std::stack<StateRef> states;
     State::GameData gameData;
-    std::map<ID, StateRef> stateMap;
 };
 
 

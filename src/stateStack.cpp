@@ -9,11 +9,9 @@ StateStack::StateStack(State::GameData _gameData)
 {
 }
 
-void StateStack::pushState(ID id)
+void StateStack::pushState(StateRef newState)
 {
-    auto found = stateMap.find(id);
-
-    states.push(*found->second);
+    states.push(std::move(newState));
 }
 
 void StateStack::popState()

@@ -29,7 +29,7 @@ public:
     virtual void draw() = 0;
 
 protected:
-    void statePush(ID id);
+    void statePush(std::unique_ptr<State> newState);
     void statePop();
     void clearStateStack();
 
