@@ -8,7 +8,9 @@ namespace Game
 Game::Game()
 {
     data->window.create(sf::VideoMode(800, 800), "Healthy Snake");
-    data->stateStack.pushState(States::StateRef(new SplashState(this->data)));
+
+    std::unique_ptr<States::SplashState> temp(new States::SplashState(data));
+    data->stateStack.pushState(std::move(temp));
 
     loadTextures();
 }

@@ -9,7 +9,7 @@ namespace States
 {
 
 
-SplashState::SplashState(GameDataRef _data) : data(_data)
+SplashState::SplashState(Game::GameDataRef _data) : data(_data)
 {
 }
 
