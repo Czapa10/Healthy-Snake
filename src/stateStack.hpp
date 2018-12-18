@@ -16,7 +16,7 @@ public:
     StateStack(){}
     ~StateStack(){}
 
-    void pushState(StateRef _newState, bool _isReplacing);
+    void pushState(StateRef _newState, bool _isReplacing = true);
     void popState();
     void processStateChanges();//run in each frame in
 

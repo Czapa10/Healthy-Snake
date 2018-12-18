@@ -30,10 +30,12 @@ void StateStack::processStateChanges()
     }
 
     if(isAdding){
-        if(isReplacing){
-            states.pop();
-        }else{
-            states.top()->pause();
+        if(!states.empty()){
+            if(isReplacing){
+                states.pop();
+            }else{
+                states.top()->pause();
+            }
         }
 
         states.push(std::move(newState));

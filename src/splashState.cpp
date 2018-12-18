@@ -1,5 +1,9 @@
-#include "splashState.hpp"
+#pragma once
+
 #include "iostream"
+#include <sstream>
+
+#include "splashState.hpp"
 
 namespace States
 {

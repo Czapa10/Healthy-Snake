@@ -8,7 +8,7 @@ namespace Game
 Game::Game()
 {
     data->window.create(sf::VideoMode(800, 800), "Healthy Snake");
-    data->stateStack.pushState(StateRef(new SplashState(this->data)));
+    data->stateStack.pushState(StateRef(new SplashState(data)));
 
     loadTextures();
 }
@@ -20,6 +20,7 @@ void Game::run()
     sf::Time timeSinceLastUpdate = sf::Time::Zero;
 
     while(data->window.isOpen()){
+        data->stateStack.processStateChanges();
         input();
         timeSinceLastUpdate += clock.restart();
 
@@ -27,7 +28,6 @@ void Game::run()
             timeSinceLastUpdate -= timePerFrame;
             input();
             update(timePerFrame);
-            data->stateStack.processStateChanges();
         }
         render();
     }
