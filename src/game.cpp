@@ -8,7 +8,7 @@ namespace Game
 Game::Game()
 {
     data->window.create(sf::VideoMode(800, 800), "Healthy Snake");
-    data->stateStack.pushState(StateRef(new SplashState(data)));
+    data->stateStack.pushState(States::StateRef(new SplashState(this->data)));
 
     loadTextures();
 }
@@ -47,7 +47,7 @@ void Game::input()
 
 void Game::update(sf::Time deltaTime)
 {
-    data->stateStack.getActiveState()->update(timePerFrame);
+    data->stateStack.getActiveState()->update(deltaTime);
 }
 
 void Game::render()

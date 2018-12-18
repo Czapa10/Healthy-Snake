@@ -11,7 +11,7 @@ namespace States
 class SplashState : public State
 {
 public:
-    SplashState(GameDataRef _data);
+    SplashState(Game::GameDataRef _data);
 
     void init();
 
@@ -20,7 +20,7 @@ public:
     void draw();
 
 private:
-    GameDataRef data;
+    Game::GameDataRef data;
 
     sf::Clock clock;
     sf::Sprite background;

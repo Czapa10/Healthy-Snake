@@ -5,7 +5,6 @@
 namespace States
 {
 
-//class StateStack;
 
 class State
 {
