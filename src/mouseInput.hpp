@@ -17,7 +17,7 @@ public:
     bool isUnderMouse(sf::Sprite, sf::RenderWindow&);
     bool isUnderMouse(sf::IntRect, sf::RenderWindow&);
 
-    sf::Vector2i getMousePos(sf::RenderWindow window);
+    sf::Vector2i getMousePos(sf::RenderWindow&);
 };
 
 

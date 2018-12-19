@@ -70,12 +70,25 @@ void MenuState::input()
             clock.restart();
         }
     }else{
-        sf::Vector2i currentMousePos = data->inputManager.getMousePos();
+        sf::Vector2i currentMousePos = data->mouseInput.getMousePos(data->window);
+
+        sf::IntRect buttons[5];
+        int top = 300;
+        for(auto button : buttons){
+            button.left = 0;
+            button.top = top; top += 100;
+            button.width = 600;
+            button.height = 100;
+        }
 
         if(mouseLastPos != currentMousePos){
-            if(data->inputManager.isSpriteUnderMouse(sf::Sprite, sf::RenderWindow))
+            for(int i = 0; i < 5; ++i){
+                if(data->mouseInput.isUnderMouse(buttons[5], data->window))
+                    isOnButtonNr = i;
+            }
         }
-        mouseLastPos =  currentMousePos;
+
+        mouseLastPos = currentMousePos;
     }
 
 
