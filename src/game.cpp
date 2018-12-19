@@ -60,6 +60,8 @@ void Game::render()
 void Game::loadTextures()
 {
     data->textures.load(Textures::companyLogo, "resources/textures/maineCoonLogo.jpg");
+    data->textures.load(Textures::name, "resources/textures/name.png");
+    data->textures.load(Textures::madeBy, "resources/textures/madeBy.png");
 }
 
 

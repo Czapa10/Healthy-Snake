@@ -2,7 +2,10 @@
 
 namespace Textures
 {
-    enum ID{
-        companyLogo
+    enum ID
+    {
+        companyLogo,
+        name,
+        madeBy
     };
 }

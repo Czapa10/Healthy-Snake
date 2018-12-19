@@ -18,7 +18,7 @@ public:
 
     void pushState(StateRef _newState, bool _isReplacing = true);
     void popState();
-    void processStateChanges();//run in each frame in
+    void processStateChanges();//run in each frame
 
     StateRef &getActiveState();
 

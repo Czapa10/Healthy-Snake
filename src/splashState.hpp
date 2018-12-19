@@ -24,6 +24,9 @@ private:
 
     sf::Clock clock;
     sf::Sprite background;
+
+    int whichLogo{1};
+    bool change{false};
 };
 
 

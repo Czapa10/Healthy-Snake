@@ -25,9 +25,42 @@ void SplashState::input()
 
 void SplashState::update(sf::Time deltaTime)
 {
-    if(clock.getElapsedTime().asSeconds() > 2){
-        std::cout<<"Go to menu"<<std::endl;
+    if(change){
+        clock.restart();
+        ++whichLogo;
     }
+
+    switch(whichLogo){
+        case 1:
+            if(clock.getElapsedTime().asSeconds() > 2){
+                change = true;
+            }
+            break;
+
+        case 2:
+            if(change){
+                background.setTexture(data->textures.get(Textures::name));
+                change = false;
+            }
+
+            if(clock.getElapsedTime().asSeconds() > 2.5){
+                change = true;
+            }
+
+            break;
+
+        case 3:
+            if(change){
+                background.setTexture(data->textures.get(Textures::madeBy));
+                change = false;
+            }
+
+            if(clock.getElapsedTime().asSeconds() > 2){
+                std::cout<<"Go to menu"<<std::endl;
+            }
+    }
+
+
 }
 
 void SplashState::draw()
