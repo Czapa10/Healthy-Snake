@@ -22,12 +22,19 @@ public:
 private:
     Game::GameDataRef data;
 
+    int isOnButtonNr{1};
+    bool isButtonPressed;
+    bool canBeClicked;
+    sf::Clock clock;
+
     sf::Sprite background;
     sf::Text play;
     sf::Text settings;
     sf::Text credits;
     sf::Text bestScore;
     sf::Text exit;
+
+    sf::Vector2i mouseLastPos;
 };
 
 

@@ -1,5 +1,7 @@
 #include "menuState.hpp"
 
+#include <iostream>
+
 namespace States
 {
 
@@ -47,11 +49,62 @@ void MenuState::init()
 
 void MenuState::input()
 {
+    sf::Event event;
+
+    std::cout<<clock.getElapsedTime().asSeconds()<<std::endl;
+
+    if((sf::Event::KeyPressed)&&(clock.getElapsedTime().asSeconds() > 0.17f)){
+        if((sf::Keyboard::isKeyPressed(sf::Keyboard::Up))||(sf::Keyboard::isKeyPressed(sf::Keyboard::W))){
+            --isOnButtonNr;
+            if(isOnButtonNr == 0)
+                isOnButtonNr = 5;
+
+            clock.restart();
+        }
+
+        else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Down))||(sf::Keyboard::isKeyPressed(sf::Keyboard::S))&&(clock.getElapsedTime().asSeconds() > 0.3)){
+            ++isOnButtonNr;
+            if(isOnButtonNr == 6)
+                isOnButtonNr = 1;
+
+            clock.restart();
+        }
+    }else{
+        sf::Vector2i currentMousePos = data->inputManager.getMousePos();
+
+        if(mouseLastPos != currentMousePos){
+            if(data->inputManager.isSpriteUnderMouse(sf::Sprite, sf::RenderWindow))
+        }
+        mouseLastPos =  currentMousePos;
+    }
+
 
 }
 
 void MenuState::update(sf::Time deltaTime)
 {
+
+    switch(isOnButtonNr){
+        case 1:
+            background.setTexture(data->textures.get(Textures::menuBackground1));
+            break;
+
+        case 2:
+            background.setTexture(data->textures.get(Textures::menuBackground2));
+            break;
+
+        case 3:
+            background.setTexture(data->textures.get(Textures::menuBackground3));
+            break;
+
+        case 4:
+            background.setTexture(data->textures.get(Textures::menuBackground4));
+            break;
+
+        case 5:
+            background.setTexture(data->textures.get(Textures::menuBackground5));
+            break;
+    }
 
 }
 
