@@ -49,47 +49,52 @@ void MenuState::init()
 
 void MenuState::input()
 {
+    ///menu keyboard control
     sf::Event event;
 
-    std::cout<<clock.getElapsedTime().asSeconds()<<std::endl;
+    if(sf::Event::KeyPressed){
+        if(clock.getElapsedTime().asSeconds() > 0.17f){
+            if((sf::Keyboard::isKeyPressed(sf::Keyboard::Up))||(sf::Keyboard::isKeyPressed(sf::Keyboard::W))){
+                --isOnButtonNr;
+                if(isOnButtonNr == 0)
+                    isOnButtonNr = 5;
 
-    if((sf::Event::KeyPressed)&&(clock.getElapsedTime().asSeconds() > 0.17f)){
-        if((sf::Keyboard::isKeyPressed(sf::Keyboard::Up))||(sf::Keyboard::isKeyPressed(sf::Keyboard::W))){
-            --isOnButtonNr;
-            if(isOnButtonNr == 0)
-                isOnButtonNr = 5;
+                clock.restart();
+            }
 
-            clock.restart();
-        }
+            else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Down))||(sf::Keyboard::isKeyPressed(sf::Keyboard::S))){
+                ++isOnButtonNr;
+                if(isOnButtonNr == 6)
+                    isOnButtonNr = 1;
 
-        else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Down))||(sf::Keyboard::isKeyPressed(sf::Keyboard::S))&&(clock.getElapsedTime().asSeconds() > 0.3)){
-            ++isOnButtonNr;
-            if(isOnButtonNr == 6)
-                isOnButtonNr = 1;
-
-            clock.restart();
-        }
-    }else{
-        sf::Vector2i currentMousePos = data->mouseInput.getMousePos(data->window);
-
-        sf::IntRect buttons[5];
-        int top = 300;
-        for(auto button : buttons){
-            button.left = 0;
-            button.top = top; top += 100;
-            button.width = 600;
-            button.height = 100;
-        }
-
-        if(mouseLastPos != currentMousePos){
-            for(int i = 0; i < 5; ++i){
-                if(data->mouseInput.isUnderMouse(buttons[5], data->window))
-                    isOnButtonNr = i;
+                clock.restart();
             }
         }
-
-        mouseLastPos = currentMousePos;
     }
+
+    ///menu mouse control
+    mouseCurrentPos = sf::Mouse::getPosition(data->window);
+
+    sf::IntRect buttons[5];
+    int top = 300;
+    for(auto button : buttons){
+        button.left = 0;
+        button.top = top; top += 100;
+        button.width = 600;
+        button.height = 100;
+    }
+
+    if(mouseLastPos != mouseCurrentPos){
+        for(int i = 0; i < 5; ++i){
+            if(data->mouseInput.isUnderMouse(buttons[5], data->window))
+                isOnButtonNr = i;
+        }
+    }
+
+    mouseLastPos = mouseCurrentPos;
+
+    std::cout<<mouseCurrentPos.x<<"  "<<mouseCurrentPos.y<<std::endl;
+
 
 
 }

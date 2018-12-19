@@ -23,8 +23,6 @@ private:
     Game::GameDataRef data;
 
     int isOnButtonNr{1};
-    bool isButtonPressed;
-    bool canBeClicked;
     sf::Clock clock;
 
     sf::Sprite background;
@@ -34,6 +32,7 @@ private:
     sf::Text bestScore;
     sf::Text exit;
 
+    sf::Vector2i mouseCurrentPos;
     sf::Vector2i mouseLastPos;
 };
 
