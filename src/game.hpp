@@ -5,7 +5,7 @@
 
 #include "resourceManager.hpp"
 #include "stateStack.hpp"
-#include "inputManager.hpp"
+#include "mouseInput.hpp"
 
 namespace Game
 {
@@ -17,7 +17,7 @@ struct GameData
     sf::RenderWindow window;
     Resources::TextureStorage textures;
     Resources::FontStorage fonts;
-    Input::InputManager inputManager;
+    Input::MouseInput mouseInput;
 };
 
 typedef std::shared_ptr<GameData> GameDataRef;
