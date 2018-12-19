@@ -44,10 +44,5 @@ bool MouseInput::isUnderMouse(sf::IntRect button, sf::RenderWindow &window)
     return false;
 }
 
-sf::Vector2i getMousePos(sf::RenderWindow &window)
-{
-    return sf::Mouse::getPosition(window);
-}
-
 
 }
