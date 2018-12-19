@@ -1,9 +1,9 @@
 #pragma once
 
 #include "iostream"
-#include <sstream>
 
 #include "splashState.hpp"
+#include "menuState.hpp"
 
 namespace States
 {
@@ -56,7 +56,8 @@ void SplashState::update(sf::Time deltaTime)
             }
 
             if(clock.getElapsedTime().asSeconds() > 2){
-                std::cout<<"Go to menu"<<std::endl;
+                std::unique_ptr<States::MenuState> temp(new States::MenuState(data));
+                data->stateStack.pushState(std::move(temp));
             }
     }
 

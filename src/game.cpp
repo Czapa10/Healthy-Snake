@@ -59,9 +59,17 @@ void Game::render()
 
 void Game::loadTextures()
 {
+    ///splash state
     data->textures.load(Textures::companyLogo, "resources/textures/maineCoonLogo.jpg");
     data->textures.load(Textures::name, "resources/textures/name.png");
     data->textures.load(Textures::madeBy, "resources/textures/madeBy.png");
+
+    ///menu state
+    data->textures.load(Textures::menuBackground1, "resources/textures/menuBackground1.png");
+    data->textures.load(Textures::menuBackground2, "resources/textures/menuBackground2.png");
+    data->textures.load(Textures::menuBackground3, "resources/textures/menuBackground3.png");
+    data->textures.load(Textures::menuBackground4, "resources/textures/menuBackground4.png");
+    data->textures.load(Textures::menuBackground5, "resources/textures/menuBackground5.png");
 }
 
 
