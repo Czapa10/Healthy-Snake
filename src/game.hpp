@@ -5,6 +5,7 @@
 
 #include "resourceManager.hpp"
 #include "stateStack.hpp"
+#include "inputManager.hpp"
 
 namespace Game
 {
@@ -15,6 +16,7 @@ struct GameData
     States::StateStack stateStack;
     sf::RenderWindow window;
     Resources::TextureStorage textures;
+    Input::InputManager inputManager;
 };
 
 typedef std::shared_ptr<GameData> GameDataRef;
