@@ -21,6 +21,7 @@ public:
 };
 
 using TextureStorage = ResourceManager<sf::Texture, Textures::ID>;
+using FontStorage = ResourceManager<sf::Font, Fonts::ID>;
 
 }
 

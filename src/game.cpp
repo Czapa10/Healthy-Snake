@@ -13,6 +13,7 @@ Game::Game()
     data->stateStack.pushState(std::move(temp));
 
     loadTextures();
+    loadFonts();
 }
 
 void Game::run()
@@ -70,6 +71,11 @@ void Game::loadTextures()
     data->textures.load(Textures::menuBackground3, "resources/textures/menuBackground3.png");
     data->textures.load(Textures::menuBackground4, "resources/textures/menuBackground4.png");
     data->textures.load(Textures::menuBackground5, "resources/textures/menuBackground5.png");
+}
+
+void Game::loadFonts()
+{
+    data->fonts.load(Fonts::pooh, "resources/fonts/Pooh.ttf");
 }
 
 

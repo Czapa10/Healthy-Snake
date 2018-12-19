@@ -16,4 +16,13 @@ namespace Textures
         menuBackground4,
         menuBackground5,
     };
+
+}
+
+namespace Fonts
+{
+    enum ID
+    {
+        pooh
+    };
 }

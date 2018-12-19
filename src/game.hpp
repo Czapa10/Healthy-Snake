@@ -16,6 +16,7 @@ struct GameData
     States::StateStack stateStack;
     sf::RenderWindow window;
     Resources::TextureStorage textures;
+    Resources::FontStorage fonts;
     Input::InputManager inputManager;
 };
 
@@ -33,6 +34,7 @@ private:
     void render();
 
     void loadTextures();
+    void loadFonts();
 
 private:
 
