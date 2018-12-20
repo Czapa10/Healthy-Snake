@@ -2,6 +2,7 @@
 
 #include "State.hpp"
 #include "game.hpp"
+#include "board.hpp"
 
 namespace States
 {
@@ -20,6 +21,8 @@ public:
 
 private:
     Game::GameDataRef data;
+
+    GameElements::Board board;
 };
 
 

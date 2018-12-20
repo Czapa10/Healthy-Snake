@@ -8,22 +8,22 @@ GameState::GameState(Game::GameDataRef _data) : data(_data)
 {
 }
 
-GameState::init()
+void GameState::init()
 {
 
 }
 
-GameState::input()
+void GameState::input()
 {
 
 }
 
-GameState::update(sf::Time deltaTime)
+void GameState::update(sf::Time deltaTime)
 {
 
 }
 
-GameState::draw()
+void GameState::draw()
 {
     data->window.clear();
 

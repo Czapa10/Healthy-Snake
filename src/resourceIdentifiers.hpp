@@ -15,6 +15,13 @@ namespace Textures
         menuBackground3,
         menuBackground4,
         menuBackground5,
+
+        ///game sprites
+        gameBackground,
+        snakeHead,
+        snakeStraightBody,
+        snakeTurnBody,
+        snakeTail
     };
 
 }
