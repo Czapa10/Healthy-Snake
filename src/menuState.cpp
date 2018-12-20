@@ -45,6 +45,15 @@ void MenuState::init()
     exit.setCharacterSize(characterSize);
     exit.setPosition(100.f, 705.f);
     exit.setString("EXIT");
+
+    int top = 300;
+    for(auto & button : buttons){
+        button.left = 0;
+        button.top = top; top += 100;
+        button.width = 570;
+        button.height = 100;
+    }
+
 }
 
 void MenuState::input()
@@ -75,27 +84,16 @@ void MenuState::input()
     ///menu mouse control
     mouseCurrentPos = sf::Mouse::getPosition(data->window);
 
-    sf::IntRect buttons[5];
-    int top = 300;
-    for(auto button : buttons){
-        button.left = 0;
-        button.top = top; top += 100;
-        button.width = 600;
-        button.height = 100;
-    }
-
     if(mouseLastPos != mouseCurrentPos){
         for(int i = 0; i < 5; ++i){
-            if(data->mouseInput.isUnderMouse(buttons[5], data->window))
-                isOnButtonNr = i;
+            if(data->mouseInput.isUnderMouse(buttons[i], data->window)){
+                isOnButtonNr = ++i;
+                break;
+            }
         }
     }
 
     mouseLastPos = mouseCurrentPos;
-
-    std::cout<<mouseCurrentPos.x<<"  "<<mouseCurrentPos.y<<std::endl;
-
-
 
 }
 

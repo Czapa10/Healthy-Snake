@@ -34,6 +34,7 @@ private:
 
     sf::Vector2i mouseCurrentPos;
     sf::Vector2i mouseLastPos;
+    sf::IntRect buttons[5];
 };
 
 
