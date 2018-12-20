@@ -19,39 +19,39 @@ void MenuState::init()
     play.setFont(data->fonts.get(Fonts::pooh));
     play.setColor(sf::Color(9,102,20));
     play.setCharacterSize(characterSize);
-    play.setPosition(100.f, 305.f);
+    play.setPosition(100.f, 295.f);
     play.setString("PLAY");
 
     settings.setFont(data->fonts.get(Fonts::pooh));
     settings.setColor(sf::Color(17, 194, 225));
     settings.setCharacterSize(characterSize);
-    settings.setPosition(100.f, 405.f);
+    settings.setPosition(100.f, 391.f);
     settings.setString("SETTINGS");
 
     credits.setFont(data->fonts.get(Fonts::pooh));
     credits.setColor(sf::Color::Yellow);
     credits.setCharacterSize(characterSize);
-    credits.setPosition(100.f, 505.f);
+    credits.setPosition(100.f, 487.f);
     credits.setString("CREDITS");
 
     bestScore.setFont(data->fonts.get(Fonts::pooh));
     bestScore.setColor(sf::Color(239,104,14));
     bestScore.setCharacterSize(characterSize);
-    bestScore.setPosition(100.f, 605.f);
+    bestScore.setPosition(100.f, 583.f);
     bestScore.setString("BEST SCORES");
 
     exit.setFont(data->fonts.get(Fonts::pooh));
     exit.setColor(sf::Color::Red);
     exit.setCharacterSize(characterSize);
-    exit.setPosition(100.f, 705.f);
+    exit.setPosition(100.f, 679.f);
     exit.setString("EXIT");
 
-    int top = 300;
+    int top = 292;
     for(auto & button : buttons){
         button.left = 0;
-        button.top = top; top += 100;
-        button.width = 570;
-        button.height = 100;
+        button.top = top; top += 96;
+        button.width = 700;
+        button.height = 96;
     }
 
 }
