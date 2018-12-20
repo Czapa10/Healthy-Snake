@@ -60,6 +60,7 @@ void MenuState::input()
 {
     ///menu keyboard control
     sf::Event event;
+    int whichButtonWasClicked{}; //0 - means any button was not clicked
 
     if(sf::Event::KeyPressed){
         if(clock.getElapsedTime().asSeconds() > 0.17f){
@@ -80,27 +81,7 @@ void MenuState::input()
             }
 
             else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
-                switch(isOnButtonNr){
-                    case 1:
-                        std::cout<<"to game state"<<std::endl;
-                        break;
-
-                    case 2:
-                        std::cout<<"to settings state"<<std::endl;
-                        break;
-
-                    case 3:
-                        std::cout<<"to credits state"<<std::endl;
-                        break;
-
-                    case 4:
-                        std::cout<<"to best score state"<<std::endl;
-                        break;
-
-                    case 5:
-                        data->window.close();
-                        break;
-                }
+                whichButtonWasClicked = isOnButtonNr;
             }
         }
     }
@@ -117,7 +98,38 @@ void MenuState::input()
         }
     }
 
+    for(int i = 0; i < 5; ++i){
+        if(data->mouseInput.isClicked(buttons[i], data->window)){
+            whichButtonWasClicked = ++i;
+            break;
+        }
+    }
+
     mouseLastPos = mouseCurrentPos;
+
+
+    ///menu enter
+    switch(whichButtonWasClicked){
+        case 1:
+            std::cout<<"to game state"<<std::endl;
+            break;
+
+        case 2:
+            std::cout<<"to settings state"<<std::endl;
+            break;
+
+        case 3:
+            std::cout<<"to credits state"<<std::endl;
+            break;
+
+        case 4:
+            std::cout<<"to best score state"<<std::endl;
+            break;
+
+        case 5:
+            data->window.close();
+            break;
+    }
 
 }
 
