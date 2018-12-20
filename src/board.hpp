@@ -14,7 +14,7 @@ public:
     Board();
 
     std::vector<Square> tiles;
-    //Snake snake;
+    Snake snake;
     //Food food;
 
 };
