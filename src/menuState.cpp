@@ -78,6 +78,30 @@ void MenuState::input()
 
                 clock.restart();
             }
+
+            else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
+                switch(isOnButtonNr){
+                    case 1:
+                        std::cout<<"to game state"<<std::endl;
+                        break;
+
+                    case 2:
+                        std::cout<<"to settings state"<<std::endl;
+                        break;
+
+                    case 3:
+                        std::cout<<"to credits state"<<std::endl;
+                        break;
+
+                    case 4:
+                        std::cout<<"to best score state"<<std::endl;
+                        break;
+
+                    case 5:
+                        data->window.close();
+                        break;
+                }
+            }
         }
     }
 
