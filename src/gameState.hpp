@@ -22,7 +22,7 @@ public:
 private:
     Game::GameDataRef data;
 
-    Textures::ID tiles[64][48];
+    Textures::ID tiles[32][24];
     GameElements::Snake snake;
     //Food food;
 };

@@ -1,4 +1,5 @@
 #include "menuState.hpp"
+#include "gameState.hpp"
 
 #include <iostream>
 
@@ -111,8 +112,11 @@ void MenuState::input()
     ///menu enter
     switch(whichButtonWasClicked){
         case 1:
-            std::cout<<"to game state"<<std::endl;
+        {
+            std::unique_ptr<States::GameState> temp(new States::GameState(data));
+            data->stateStack.pushState(std::move(temp));
             break;
+        }
 
         case 2:
             std::cout<<"to settings state"<<std::endl;
