@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "square.hpp"
+#include "snake.hpp"
 
 namespace GameElements
 {

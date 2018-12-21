@@ -9,8 +9,6 @@ namespace GameElements
 
 struct BodyPart
 {
-    BodyPart(sf::Vector2i _pos, Direction _direction, Sprite _sprite);
-
     sf::Vector2i pos;
 
     enum Direction
@@ -32,11 +30,15 @@ struct BodyPart
     };
 
     Sprite sprite;
+
+    BodyPart(sf::Vector2i _pos, Direction _direction, Sprite _sprite);
 };
 
 class Snake
 {
 public:
+    Snake();
+    void move();
     void eat();
     void grow();
 
