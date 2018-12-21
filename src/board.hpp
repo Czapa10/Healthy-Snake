@@ -1,7 +1,5 @@
 #pragma once
 
-#include <vector>
-
 #include "square.hpp"
 #include "snake.hpp"
 
@@ -14,7 +12,7 @@ class Board
 public:
     Board();
 
-    std::vector<Square> tiles;
+    Square tiles[64][48];
     Snake snake;
     //Food food;
 
