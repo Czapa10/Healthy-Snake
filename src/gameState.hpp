@@ -2,7 +2,7 @@
 
 #include "State.hpp"
 #include "game.hpp"
-#include "board.hpp"
+#include "snake.hpp"
 
 namespace States
 {
@@ -22,7 +22,9 @@ public:
 private:
     Game::GameDataRef data;
 
-    GameElements::Board board();
+    Textures::ID tiles[64][48];
+    GameElements::Snake snake;
+    //Food food;
 };
 
 
