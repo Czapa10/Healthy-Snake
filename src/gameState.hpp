@@ -22,7 +22,7 @@ public:
 private:
     Game::GameDataRef data;
 
-    GameElements::Board board;
+    GameElements::Board board();
 };
 
 

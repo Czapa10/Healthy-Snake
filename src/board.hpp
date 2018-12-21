@@ -1,7 +1,7 @@
 #pragma once
 
-#include "square.hpp"
 #include "snake.hpp"
+#include "game.hpp"
 
 namespace GameElements
 {
@@ -12,7 +12,9 @@ class Board
 public:
     Board();
 
-    Square tiles[64][48];
+    void draw(Game::GameDataRef _data);
+
+    Textures::ID tiles[64][48];
     Snake snake;
     //Food food;
 
