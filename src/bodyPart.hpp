@@ -1,3 +1,4 @@
+/*
 namespace GameElements
 {
 
@@ -38,6 +39,6 @@ struct BodyPart
     }
 
 };
-
+*/
 
 }

@@ -1,5 +1,7 @@
 #include "gameState.hpp"
 
+#include <iostream>
+
 namespace States
 {
 
@@ -26,7 +28,36 @@ void GameState::input()
 
 void GameState::update(sf::Time deltaTime)
 {
+    ///test
+    /*for(auto bodyPart : snake.bodyParts){
+        std::cout<<bodyPart.pos.x<<" "<<bodyPart.pos.y<<"     ";
+    }
+    std::cout<<std::endl;*/
+    ///test
 
+
+    for(auto & bodyPart : snake.bodyParts){
+        int x = bodyPart.pos.x;
+        int y = bodyPart.pos.y;
+
+        ///test
+        std::cout<<x<<"  "<<y<<"        ";
+        ///test
+
+        tiles[x][y] = Textures::snakeStraightBody;
+    }
+
+    ///test
+    for(int i = 0; i < 32; i++){
+        for(int j = 0; j < 24; j++){
+            if(tiles[i][j] == Textures::nothing)
+                std::cout<<"not  ";
+            else if(tiles[i][j] == Textures::snakeStraightBody)
+                std::cout<<"sss  ";
+        }
+        std::cout<<std::endl;
+    }
+    std::cout<<"\n\n\n";
 }
 
 void GameState::draw()
