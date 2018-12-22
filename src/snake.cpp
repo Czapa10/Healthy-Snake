@@ -19,10 +19,16 @@ Snake::Snake()
     BodyPart head(sf::Vector2i(12,10), BodyPart::head);
     bodyParts.push_back(head);
 
-    BodyPart middle(sf::Vector2i(13,10), BodyPart::straightBody);
-    bodyParts.push_back(middle);
+    {BodyPart middle(sf::Vector2i(13,10), BodyPart::straightBody);
+    bodyParts.push_back(middle);}
 
-    BodyPart tail(sf::Vector2i(14,10), BodyPart::tail);
+    {BodyPart middle(sf::Vector2i(14,10), BodyPart::straightBody);
+    bodyParts.push_back(middle);}
+
+    {BodyPart middle(sf::Vector2i(15,10), BodyPart::straightBody);
+    bodyParts.push_back(middle);}
+
+    BodyPart tail(sf::Vector2i(16,10), BodyPart::tail);
     bodyParts.push_back(tail);
 }
 
@@ -58,8 +64,8 @@ void Snake::move()
 
     //tailPos = bodyParts[snakeLength].pos;
 
-    for(int i = 1; i < snakeLength; ++i){
-        bodyParts[i].pos = bodyParts[i - 1].pos;
+    for(int i = snakeLength; i > 0; --i){
+        bodyParts[i] = bodyParts[i - 1];
     }
 
     if(direction == Direction::left){
