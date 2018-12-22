@@ -29,9 +29,11 @@ struct BodyPart
         tail
     };
 
+    Direction direction;
+
     Sprite sprite;
 
-    BodyPart(sf::Vector2i _pos, Sprite _sprite);
+    BodyPart(sf::Vector2i _pos, Sprite _sprite, Direction _direction);
 };
 
 class Snake

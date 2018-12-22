@@ -6,9 +6,10 @@ namespace GameElements
 {
 
 
-BodyPart::BodyPart(sf::Vector2i _pos, Sprite _sprite)
+BodyPart::BodyPart(sf::Vector2i _pos, Sprite _sprite, Direction _direction)
 :pos(_pos)
 ,sprite(_sprite)
+,direction(_direction)
 {
 }
 
@@ -16,19 +17,19 @@ Snake::Snake()
 {
     direction = Direction::left;
 
-    BodyPart head(sf::Vector2i(12,10), BodyPart::head);
+    BodyPart head(sf::Vector2i(12,10), BodyPart::head, Direction::left);
     bodyParts.push_back(head);
 
-    {BodyPart middle(sf::Vector2i(13,10), BodyPart::straightBody);
+    {BodyPart middle(sf::Vector2i(13,10), BodyPart::straightBody, Direction::left);
     bodyParts.push_back(middle);}
 
-    {BodyPart middle(sf::Vector2i(14,10), BodyPart::straightBody);
+    {BodyPart middle(sf::Vector2i(14,10), BodyPart::straightBody, Direction::left);
     bodyParts.push_back(middle);}
 
-    {BodyPart middle(sf::Vector2i(15,10), BodyPart::straightBody);
+    {BodyPart middle(sf::Vector2i(15,10), BodyPart::straightBody, Direction::left);
     bodyParts.push_back(middle);}
 
-    BodyPart tail(sf::Vector2i(16,10), BodyPart::tail);
+    BodyPart tail(sf::Vector2i(16,10), BodyPart::tail, Direction::left);
     bodyParts.push_back(tail);
 }
 
@@ -80,6 +81,8 @@ void Snake::move()
     else if(direction == Direction::down){
         bodyParts[0].pos.y += 1;
     }
+
+    bodyParts[0].direction = direction;
 
     for(int i = 0; i < snakeLength; ++i){
         std::cout<<bodyParts[i].pos.x<<" "<<bodyParts[i].pos.y<<"      ";
