@@ -28,6 +28,8 @@ Snake::Snake()
 
 void Snake::control()
 {
+    //std::cout<<"snake.CONTROL()"<<std::endl;
+
     if((sf::Keyboard::isKeyPressed(sf::Keyboard::Up))&&(direction != Direction::down)){
         direction = Direction::up;
     }
@@ -42,9 +44,19 @@ void Snake::control()
     }
 }
 
-void Snake::move(Textures::ID tiles[32][24])
+void Snake::move()
 {
-    tiles[bodyParts[snakeLength].pos.x][bodyParts[snakeLength].pos.y] = Textures::nothing;
+    //std::cout<<"snake.MOVE()"<<std::endl;
+
+    //int tailX = bodyParts[snakeLength].pos.x;
+    //int tailY = bodyParts[snakeLength].pos.y;
+
+    //tiles[tailX][tailY] = Textures::nothing;
+
+    //tailPos.x = bodyParts[snakeLength].pos.x;
+    //tailPos.y = bodyParts[snakeLength].pos.y;
+
+    //tailPos = bodyParts[snakeLength].pos;
 
     for(int i = 1; i < snakeLength; ++i){
         bodyParts[i].pos = bodyParts[i - 1].pos;
@@ -64,7 +76,7 @@ void Snake::move(Textures::ID tiles[32][24])
     }
 
     for(int i = 0; i < snakeLength; ++i){
-        std::cout<<bodyParts[i].pos.x<<" "<<bodyParts[i].pos.x<<"      ";
+        std::cout<<bodyParts[i].pos.x<<" "<<bodyParts[i].pos.y<<"      ";
     }
     std::cout<<std::endl;
 }

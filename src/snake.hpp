@@ -39,16 +39,19 @@ class Snake
 public:
     Snake();
     void control();
-    void move(Textures::ID tiles[32][24]);
+    void move();
     void eat();
     void grow();
 
+    int getLength(){return snakeLength;}
+
 public:
     std::vector<BodyPart> bodyParts;
+    //sf::Vector2i tailPos;
 
 private:
     std::vector<int> addToTail;
-    int snakeLength = 3;
+    int snakeLength = 5;
     Direction direction;
 };
 

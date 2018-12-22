@@ -28,15 +28,20 @@ void GameState::input()
 
 void GameState::update(sf::Time deltaTime)
 {
+    for(int i = 0; i < 32; i++){
+        for(int j = 0; j < 24; j++){
+            tiles[i][j] = Textures::nothing;
+        }
+    }
+
     for(auto & bodyPart : snake.bodyParts){
         int x = bodyPart.pos.x;
         int y = bodyPart.pos.y;
-
         tiles[x][y] = Textures::snakeStraightBody;
     }
 
     if(clock.getElapsedTime().asSeconds() > 0.16){
-        snake.move(tiles);
+        snake.move();
         clock.restart();
     }
 
