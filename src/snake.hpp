@@ -49,7 +49,6 @@ public:
 
 public:
     std::vector<BodyPart> bodyParts;
-    //sf::Vector2i tailPos;
 
 private:
     std::vector<int> addToTail;

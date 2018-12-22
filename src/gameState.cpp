@@ -36,12 +36,24 @@ void GameState::update(sf::Time deltaTime)
         }
     }
 
+    int it{};//iterator
     for(auto & bodyPart : snake.bodyParts){
         int x = bodyPart.pos.x;
         int y = bodyPart.pos.y;
 
-        tiles[x][y] = Textures::snakeStraightBody;
+        if(it == 0){
+            tiles[x][y] = Textures::snakeHead;
+        }
+        else if(it == snake.getLength() - 1){
+            tiles[x][y] = Textures::snakeTail;
+        }
+        else{
+            tiles[x][y] = Textures::snakeStraightBody;
+        }
+
         spriteRotation[x][y] = bodyPart.direction;
+
+        ++it;
     }
 
     ///snake move
