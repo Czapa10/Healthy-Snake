@@ -3,23 +3,23 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
+#include "resourceIdentifiers.hpp"
+
 namespace GameElements
 {
 
 
+enum class Direction
+{
+    up,
+    down,
+    right,
+    left
+};
+
 struct BodyPart
 {
     sf::Vector2i pos;
-
-    enum Direction
-    {
-        up,
-        down,
-        right,
-        left
-    };
-
-    Direction direction;
 
     enum Sprite
     {
@@ -31,14 +31,15 @@ struct BodyPart
 
     Sprite sprite;
 
-    BodyPart(sf::Vector2i _pos, Direction _direction, Sprite _sprite);
+    BodyPart(sf::Vector2i _pos, Sprite _sprite);
 };
 
 class Snake
 {
 public:
     Snake();
-    void move();
+    void control();
+    void move(Textures::ID tiles[32][24]);
     void eat();
     void grow();
 
@@ -48,6 +49,7 @@ public:
 private:
     std::vector<int> addToTail;
     int snakeLength = 3;
+    Direction direction;
 };
 
 

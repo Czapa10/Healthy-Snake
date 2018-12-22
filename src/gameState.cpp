@@ -23,32 +23,25 @@ void GameState::init()
 
 void GameState::input()
 {
-
+    snake.control();
 }
 
 void GameState::update(sf::Time deltaTime)
 {
-    ///test
-    /*for(auto bodyPart : snake.bodyParts){
-        std::cout<<bodyPart.pos.x<<" "<<bodyPart.pos.y<<"     ";
-    }
-    std::cout<<std::endl;*/
-    ///test
-
-
     for(auto & bodyPart : snake.bodyParts){
         int x = bodyPart.pos.x;
         int y = bodyPart.pos.y;
 
-        ///test
-        std::cout<<x<<"  "<<y<<"        ";
-        ///test
-
         tiles[x][y] = Textures::snakeStraightBody;
     }
 
+    if(clock.getElapsedTime().asSeconds() > 0.16){
+        snake.move(tiles);
+        clock.restart();
+    }
+
     ///test
-    for(int i = 0; i < 32; i++){
+    /*for(int i = 0; i < 32; i++){
         for(int j = 0; j < 24; j++){
             if(tiles[i][j] == Textures::nothing)
                 std::cout<<"not  ";
@@ -57,7 +50,8 @@ void GameState::update(sf::Time deltaTime)
         }
         std::cout<<std::endl;
     }
-    std::cout<<"\n\n\n";
+    std::cout<<"\n\n\n";*/
+    ///test
 }
 
 void GameState::draw()

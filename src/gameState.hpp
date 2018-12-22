@@ -22,6 +22,8 @@ public:
 private:
     Game::GameDataRef data;
 
+    sf::Clock clock;
+
     sf::Sprite background;
     Textures::ID tiles[32][24];
     GameElements::Snake snake;
