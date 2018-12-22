@@ -71,15 +71,31 @@ void Snake::move()
 
     if(direction == Direction::left){
         bodyParts[0].pos.x -= 1;
+
+        if(bodyParts[0].pos.x == -1){
+            bodyParts[0].pos.x = 32;
+        }
     }
     else if(direction == Direction::right){
         bodyParts[0].pos.x += 1;
+
+        if(bodyParts[0].pos.x == 33){
+            bodyParts[0].pos.x = 0;
+        }
     }
     else if(direction == Direction::up){
         bodyParts[0].pos.y -= 1;
+
+        if(bodyParts[0].pos.y == -1){
+            bodyParts[0].pos.y = 24;
+        }
     }
     else if(direction == Direction::down){
         bodyParts[0].pos.y += 1;
+
+        if(bodyParts[0].pos.y == 25){
+            bodyParts[0].pos.y = 0;
+        }
     }
 
     bodyParts[0].direction = direction;
