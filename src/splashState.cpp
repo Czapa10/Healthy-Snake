@@ -1,7 +1,5 @@
 #pragma once
 
-#include "iostream"
-
 #include "splashState.hpp"
 #include "menuState.hpp"
 
@@ -20,7 +18,12 @@ void SplashState::init()
 
 void SplashState::input()
 {
-
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::F1)){
+            std::unique_ptr<States::MenuState> temp(new States::MenuState(data));
+            data->stateStack.pushState(std::move(temp));
+        }
+    }
 }
 
 void SplashState::update(sf::Time deltaTime)
@@ -39,19 +42,8 @@ void SplashState::update(sf::Time deltaTime)
 
         case 2:
             if(change){
-                background.setTexture(data->textures.get(Textures::name));
-                change = false;
-            }
-
-            if(clock.getElapsedTime().asSeconds() > 2.5){
-                change = true;
-            }
-
-            break;
-
-        case 3:
-            if(change){
                 background.setTexture(data->textures.get(Textures::madeBy));
+                background.setPosition(112.f, 0.f);
                 change = false;
             }
 

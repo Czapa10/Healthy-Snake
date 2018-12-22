@@ -6,7 +6,6 @@ namespace Textures
     {
         ///splash state
         companyLogo,
-        name,
         madeBy,
 
         ///menu state
