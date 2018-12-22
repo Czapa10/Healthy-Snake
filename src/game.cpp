@@ -77,6 +77,7 @@ void Game::loadTextures()
     data->textures.load(Textures::snakeStraightBody, "resources/textures/snakeStraightBody.png");
     data->textures.load(Textures::snakeHead, "resources/textures/snakeHead.png");
     data->textures.load(Textures::snakeTail, "resources/textures/snakeTail.png");
+    data->textures.load(Textures::snakeTurnBody, "resources/textures/snakeTurnBody.png");
 }
 
 void Game::loadFonts()

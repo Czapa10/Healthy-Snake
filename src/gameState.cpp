@@ -53,6 +53,21 @@ void GameState::update(sf::Time deltaTime)
 
         spriteRotation[x][y] = bodyPart.direction;
 
+
+        sf::Vector2i pervious = snake.bodyParts[it - 1].pos;
+        sf::Vector2i next = snake.bodyParts[it + 1].pos;
+
+        if((pervious.y > bodyPart.pos.y)&&(next.y == bodyPart.pos.y)){
+            tiles[x][y] = Textures::snakeTurnBody;
+
+            if(next.x < bodyPart.pos.x){
+                spriteRotation[x][y] = GameElements::Direction::down;
+            }
+            else{
+                spriteRotation[x][y] = GameElements::Direction::right;
+            }
+        }
+
         ++it;
     }
 
