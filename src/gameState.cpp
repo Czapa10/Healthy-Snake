@@ -134,7 +134,7 @@ void GameState::draw()
             if(tiles[i][j] != Textures::nothing){
                 sf::Sprite sprite;
                 sprite.setTexture(data->textures.get(tiles[i][j]));
-                sprite.setPosition(sf::Vector2f(i * 32, 32 + j * 32));
+                sprite.setPosition(sf::Vector2f(i * 32 + 16, 48 + j * 32));
 
                 sprite.setOrigin(16.f, 16.f);
                 if(spriteRotation[i][j] == GameElements::Direction::left){
