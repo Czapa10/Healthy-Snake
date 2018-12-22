@@ -21,7 +21,9 @@ namespace Textures
         snakeHead,
         snakeStraightBody,
         snakeTurnBody,
-        snakeTail
+        snakeTail,
+        grass,
+        nothing
     };
 
 }
