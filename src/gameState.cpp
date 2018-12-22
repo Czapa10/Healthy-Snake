@@ -33,6 +33,7 @@ void GameState::update(sf::Time deltaTime)
     for(int i = 0; i < 32; i++){
         for(int j = 0; j < 24; j++){
             tiles[i][j] = Textures::nothing;
+            //spriteRotation[i][j] = GameElements::Direction::up;
         }
     }
 
@@ -40,6 +41,11 @@ void GameState::update(sf::Time deltaTime)
     for(auto & bodyPart : snake.bodyParts){
         int x = bodyPart.pos.x;
         int y = bodyPart.pos.y;
+
+        sf::Vector2i pervious = snake.bodyParts[it - 1].pos;
+        sf::Vector2i next = snake.bodyParts[it + 1].pos;
+
+        spriteRotation[x][y] = bodyPart.direction;
 
         if(it == 0){
             tiles[x][y] = Textures::snakeHead;
@@ -51,13 +57,7 @@ void GameState::update(sf::Time deltaTime)
             tiles[x][y] = Textures::snakeStraightBody;
         }
 
-        spriteRotation[x][y] = bodyPart.direction;
-
-
-        sf::Vector2i pervious = snake.bodyParts[it - 1].pos;
-        sf::Vector2i next = snake.bodyParts[it + 1].pos;
-
-        if((pervious.y > bodyPart.pos.y)&&(next.y == bodyPart.pos.y)){
+        if((pervious.y > bodyPart.pos.y)&&(next.y == bodyPart.pos.y)&&(it != 0)&&(it != snake.getLength() - 1)){
             tiles[x][y] = Textures::snakeTurnBody;
 
             if(next.x < bodyPart.pos.x){
@@ -65,6 +65,16 @@ void GameState::update(sf::Time deltaTime)
             }
             else{
                 spriteRotation[x][y] = GameElements::Direction::right;
+            }
+        }
+        else if((pervious.y < bodyPart.pos.y)&&(next.y == bodyPart.pos.y)){
+            tiles[x][y] = Textures::snakeTurnBody;
+
+            if(next.x > bodyPart.pos.x){
+                spriteRotation[x][y] = GameElements::Direction::up;
+            }
+            else{
+                spriteRotation[x][y] = GameElements::Direction::left;
             }
         }
 
