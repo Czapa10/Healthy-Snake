@@ -29,6 +29,10 @@ void GameState::input()
 
 void GameState::update(sf::Time deltaTime)
 {
+
+    ///snake grow
+    snake.grow();
+
     ///set sprites
     for(int i = 0; i < 32; i++){
         for(int j = 0; j < 24; j++){
@@ -108,9 +112,6 @@ void GameState::update(sf::Time deltaTime)
         snake.move();
         clock.restart();
     }
-
-    ///snake grow
-    snake.grow();
 
 
     ///test

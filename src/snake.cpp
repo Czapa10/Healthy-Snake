@@ -16,8 +16,8 @@ Snake::Snake()
 {
     direction = Direction::left;
 
-    for(int i = 12; i < 12 + snakeLength; i++){
-        BodyPart part(sf::Vector2i(i, 10), Direction::left);
+    for(int i = 0; i < snakeLength; i++){
+        BodyPart part(sf::Vector2i(i + 10, 10), Direction::left);
         bodyParts.push_back(part);
     }
 }
@@ -85,10 +85,10 @@ void Snake::move()
         }
     }
 
-    for(int i = 0; i < snakeLength; ++i){
+    /*for(int i = 0; i < snakeLength; ++i){
         std::cout<<bodyParts[i].pos.x<<" "<<bodyParts[i].pos.y<<"      ";
     }
-    std::cout<<std::endl;
+    std::cout<<std::endl;*/
 }
 
 void Snake::eat()
@@ -101,32 +101,49 @@ void Snake::grow()
     static sf::Clock clock;
 
     if((sf::Keyboard::isKeyPressed(sf::Keyboard::G))&&(clock.getElapsedTime().asSeconds() > 1)){
+    try
+    {
         int x{}, y{};
 
-        //std::cout<<"                        HERE 1 !"<<std::endl;
+        std::cout<<"                        HERE 1 !"<<std::endl;
 
         if(bodyParts.back().direction == Direction::up){
+            x = bodyParts.back().pos.x;
             y = bodyParts.back().pos.y + 1;
         }
         else if(bodyParts.back().direction == Direction::down){
+            x = bodyParts.back().pos.x;
             y = bodyParts.back().pos.y - 1;
         }
         else if(bodyParts.back().direction == Direction::left){
             x = bodyParts.back().pos.x + 1;
+            y = bodyParts.back().pos.y;
         }
         else if(bodyParts.back().direction == Direction::right){
             x = bodyParts.back().pos.x - 1;
+            y = bodyParts.back().pos.y;
         }
 
-        //std::cout<<"                        HERE 2 !"<<std::endl;
+        std::cout<<"                        HERE 2 !"<<std::endl;
+
+        std::cout<<"x: "<<x<<"   y: "<<y<<std::endl;
+        std::cout<<"length: "<<snakeLength<<std::endl;
 
         BodyPart tail(sf::Vector2i(x,y), bodyParts.back().direction);
         bodyParts.push_back(tail);
-        ++snakeLength;
+        snakeLength++;
 
-        //std::cout<<"                        HERE 3 !"<<std::endl;
+        std::cout<<"                        HERE 3 !"<<std::endl;
 
         clock.restart();
+
+    }
+    catch(const std::exception & except)
+    {
+        std::cout<<"Exception, what(): "<<except.what();
+        std::cin.get();
+    }
+
     }
 }
 

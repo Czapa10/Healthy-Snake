@@ -1,9 +1,19 @@
+#include <iostream>
+
 #include "game.hpp"
 
 int main()
 {
-    Game::Game game;
-    game.run();
+    try
+    {
+        Game::Game game;
+        game.run();
+    }
+    catch(const std::exception & except)
+    {
+        std::cout<<"Exception, what(): "<<except.what();
+        std::cin.get();
+    }
 
     return 0;
 }

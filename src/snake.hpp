@@ -44,7 +44,7 @@ public:
 
 private:
     std::vector<int> addToTail;
-    int snakeLength = 5;
+    int snakeLength = 3;
     Direction direction;
     bool wasClicked{false};//in this position
 };
