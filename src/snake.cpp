@@ -35,35 +35,27 @@ Snake::Snake()
 
 void Snake::control()
 {
-    //std::cout<<"snake.CONTROL()"<<std::endl;
+    if(!wasClicked){
+        if((sf::Keyboard::isKeyPressed(sf::Keyboard::Up))&&(direction != Direction::down)){
+            direction = Direction::up;
+        }
+        else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Down))&&(direction != Direction::up)){
+            direction = Direction::down;
+        }
+        else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Left))&&(direction != Direction::right)){
+            direction = Direction::left;
+        }
+        else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Right))&&(direction != Direction::left)){
+            direction = Direction::right;
+        }
 
-    if((sf::Keyboard::isKeyPressed(sf::Keyboard::Up))&&(direction != Direction::down)){
-        direction = Direction::up;
-    }
-    else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Down))&&(direction != Direction::up)){
-        direction = Direction::down;
-    }
-    else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Left))&&(direction != Direction::right)){
-        direction = Direction::left;
-    }
-    else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Right))&&(direction != Direction::left)){
-        direction = Direction::right;
+        wasClicked = true;
     }
 }
 
 void Snake::move()
 {
-    //std::cout<<"snake.MOVE()"<<std::endl;
-
-    //int tailX = bodyParts[snakeLength].pos.x;
-    //int tailY = bodyParts[snakeLength].pos.y;
-
-    //tiles[tailX][tailY] = Textures::nothing;
-
-    //tailPos.x = bodyParts[snakeLength].pos.x;
-    //tailPos.y = bodyParts[snakeLength].pos.y;
-
-    //tailPos = bodyParts[snakeLength].pos;
+    wasClicked = false;
 
     for(int i = snakeLength; i > 0; --i){
         bodyParts[i] = bodyParts[i - 1];

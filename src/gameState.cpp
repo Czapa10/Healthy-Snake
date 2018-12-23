@@ -104,7 +104,7 @@ void GameState::update(sf::Time deltaTime)
     }
 
     ///snake move
-    if(clock.getElapsedTime().asSeconds() > 0.16){
+    if(clock.getElapsedTime().asSeconds() > 0.11){
         snake.move();
         clock.restart();
     }

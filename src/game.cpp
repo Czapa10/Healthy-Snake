@@ -31,8 +31,9 @@ void Game::run()
             timeSinceLastUpdate -= timePerFrame;
             input();
             update(timePerFrame);
+            render();
         }
-        render();
+        input();
     }
 }
 
