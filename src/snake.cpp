@@ -110,7 +110,7 @@ void Snake::eat()
 void Snake::grow()
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::G)){
-        int x, y;
+        int x{}, y{};
 
         std::cout<<"                        HERE 1 !"<<std::endl;
 
