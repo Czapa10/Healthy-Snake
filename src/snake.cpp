@@ -109,7 +109,31 @@ void Snake::eat()
 
 void Snake::grow()
 {
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::G)){
+        int x, y;
 
+        std::cout<<"                        HERE 1 !"<<std::endl;
+
+        if(bodyParts.back().direction == Direction::up){
+            y = bodyParts.back().pos.y + 1;
+        }
+        else if(bodyParts.back().direction == Direction::down){
+            y = bodyParts.back().pos.y - 1;
+        }
+        else if(bodyParts.back().direction == Direction::left){
+            x = bodyParts.back().pos.x + 1;
+        }
+        else if(bodyParts.back().direction == Direction::right){
+            x = bodyParts.back().pos.x - 1;
+        }
+
+        std::cout<<"                        HERE 2 !"<<std::endl;
+
+        BodyPart tail(sf::Vector2i(x,y), BodyPart::tail, bodyParts.back().direction);
+        bodyParts.push_back(tail);
+
+        std::cout<<"                        HERE 3 !"<<std::endl;
+    }
 }
 
 
