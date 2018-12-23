@@ -122,6 +122,7 @@ void Snake::grow()
 
         BodyPart tail(sf::Vector2i(x,y), bodyParts.back().direction);
         bodyParts.push_back(tail);
+        ++snakeLength;
 
         //std::cout<<"                        HERE 3 !"<<std::endl;
 
