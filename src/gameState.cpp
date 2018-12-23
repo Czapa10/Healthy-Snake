@@ -33,7 +33,7 @@ void GameState::update(sf::Time deltaTime)
     for(int i = 0; i < 32; i++){
         for(int j = 0; j < 24; j++){
             tiles[i][j] = Textures::nothing;
-            //spriteRotation[i][j] = GameElements::Direction::up;
+            spriteRotation[i][j] = GameElements::Direction::up;
         }
     }
 

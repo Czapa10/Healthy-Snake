@@ -17,24 +17,16 @@ enum class Direction
     left
 };
 
+
 struct BodyPart
 {
     sf::Vector2i pos;
 
-    enum Sprite
-    {
-        head,
-        straightBody,
-        turnBody,
-        tail
-    };
-
     Direction direction;
 
-    Sprite sprite;
-
-    BodyPart(sf::Vector2i _pos, Sprite _sprite, Direction _direction);
+    BodyPart(sf::Vector2i _pos, Direction _direction);
 };
+
 
 class Snake
 {

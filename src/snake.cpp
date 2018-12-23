@@ -6,9 +6,8 @@ namespace GameElements
 {
 
 
-BodyPart::BodyPart(sf::Vector2i _pos, Sprite _sprite, Direction _direction)
+BodyPart::BodyPart(sf::Vector2i _pos, Direction _direction)
 :pos(_pos)
-,sprite(_sprite)
 ,direction(_direction)
 {
 }
@@ -17,20 +16,10 @@ Snake::Snake()
 {
     direction = Direction::left;
 
-    BodyPart head(sf::Vector2i(12,10), BodyPart::head, Direction::left);
-    bodyParts.push_back(head);
-
-    {BodyPart middle(sf::Vector2i(13,10), BodyPart::straightBody, Direction::left);
-    bodyParts.push_back(middle);}
-
-    {BodyPart middle(sf::Vector2i(14,10), BodyPart::straightBody, Direction::left);
-    bodyParts.push_back(middle);}
-
-    {BodyPart middle(sf::Vector2i(15,10), BodyPart::straightBody, Direction::left);
-    bodyParts.push_back(middle);}
-
-    BodyPart tail(sf::Vector2i(16,10), BodyPart::tail, Direction::left);
-    bodyParts.push_back(tail);
+    for(int i = 12; i < 12 + snakeLength; i++){
+        BodyPart part(sf::Vector2i(i, 10), Direction::left);
+        bodyParts.push_back(part);
+    }
 }
 
 void Snake::control()
@@ -109,10 +98,12 @@ void Snake::eat()
 
 void Snake::grow()
 {
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::G)){
+    static sf::Clock clock;
+
+    if((sf::Keyboard::isKeyPressed(sf::Keyboard::G))&&(clock.getElapsedTime().asSeconds() > 1)){
         int x{}, y{};
 
-        std::cout<<"                        HERE 1 !"<<std::endl;
+        //std::cout<<"                        HERE 1 !"<<std::endl;
 
         if(bodyParts.back().direction == Direction::up){
             y = bodyParts.back().pos.y + 1;
@@ -127,12 +118,14 @@ void Snake::grow()
             x = bodyParts.back().pos.x - 1;
         }
 
-        std::cout<<"                        HERE 2 !"<<std::endl;
+        //std::cout<<"                        HERE 2 !"<<std::endl;
 
-        BodyPart tail(sf::Vector2i(x,y), BodyPart::tail, bodyParts.back().direction);
+        BodyPart tail(sf::Vector2i(x,y), bodyParts.back().direction);
         bodyParts.push_back(tail);
 
-        std::cout<<"                        HERE 3 !"<<std::endl;
+        //std::cout<<"                        HERE 3 !"<<std::endl;
+
+        clock.restart();
     }
 }
 
