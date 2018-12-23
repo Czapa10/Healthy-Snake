@@ -13,7 +13,7 @@ GameState::GameState(Game::GameDataRef _data) : data(_data)
 
 void GameState::init()
 {
-    background.setTexture(data->textures.get(Textures::grass));
+    background.setTexture(data->textures.get(Textures::gameBackground));
 
     for(int i = 0; i < 32; i++){
         for(int j = 0; j < 24; j++){
