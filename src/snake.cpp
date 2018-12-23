@@ -61,36 +61,40 @@ void Snake::move()
         bodyParts[i] = bodyParts[i - 1];
     }
 
-    if(direction == Direction::left){
-        bodyParts[0].pos.x -= 1;
+    bodyParts[0].direction = direction;
 
-        if(bodyParts[0].pos.x == -1){
+    if(direction == Direction::left){
+        if(bodyParts[0].pos.x == 0){
             bodyParts[0].pos.x = 32;
+            return;
         }
+
+        bodyParts[0].pos.x -= 1;
     }
     else if(direction == Direction::right){
-        bodyParts[0].pos.x += 1;
-
-        if(bodyParts[0].pos.x == 33){
+        if(bodyParts[0].pos.x == 32){
             bodyParts[0].pos.x = 0;
+            return;
         }
+
+        bodyParts[0].pos.x += 1;
     }
     else if(direction == Direction::up){
-        bodyParts[0].pos.y -= 1;
-
-        if(bodyParts[0].pos.y == -1){
+        if(bodyParts[0].pos.y == 0){
             bodyParts[0].pos.y = 24;
+            return;
         }
+
+        bodyParts[0].pos.y -= 1;
     }
     else if(direction == Direction::down){
         bodyParts[0].pos.y += 1;
 
-        if(bodyParts[0].pos.y == 25){
+        if(bodyParts[0].pos.y == 24){
             bodyParts[0].pos.y = 0;
+            return;
         }
     }
-
-    bodyParts[0].direction = direction;
 
     for(int i = 0; i < snakeLength; ++i){
         std::cout<<bodyParts[i].pos.x<<" "<<bodyParts[i].pos.y<<"      ";
