@@ -109,6 +109,24 @@ void GameState::update(sf::Time deltaTime)
 
     tiles[food.getPosition().x][food.getPosition().y] = Textures::appleRed;
 
+    ///eating food and food changes its position
+    if((snake.getDirection() == GameElements::Direction::left)&&
+        (snake.bodyParts[0].pos.x + 1 == food.getPosition().x)){
+            food.setRandomPos();
+    }
+    else if((snake.getDirection() == GameElements::Direction::right)&&
+        (snake.bodyParts[0].pos.x - 1 == food.getPosition().x)){
+            food.setRandomPos();
+    }
+    else if((snake.getDirection() == GameElements::Direction::up)&&
+        (snake.bodyParts[0].pos.y + 1 == food.getPosition().y)){
+            food.setRandomPos();
+    }
+    else if((snake.getDirection() == GameElements::Direction::down)&&
+        (snake.bodyParts[0].pos.y - 1 == food.getPosition().y)){
+            food.setRandomPos();
+    }
+
     ///snake move
     if(clock.getElapsedTime().asSeconds() > 0.11){
         snake.move();

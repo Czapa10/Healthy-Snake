@@ -38,6 +38,7 @@ public:
     void grow();
 
     int getLength(){return snakeLength;}
+    Direction getDirection(){return direction;}
 
 public:
     std::vector<BodyPart> bodyParts;
