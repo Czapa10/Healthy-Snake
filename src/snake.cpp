@@ -93,19 +93,16 @@ void Snake::move()
 
 void Snake::eat()
 {
-
+    grow();
 }
 
 void Snake::grow()
 {
     static sf::Clock clock;
 
-    if((sf::Keyboard::isKeyPressed(sf::Keyboard::G))&&(clock.getElapsedTime().asSeconds() > 1)){
-    try
-    {
+    //try
+    //{
         int x{}, y{};
-
-        std::cout<<"                        HERE 1 !"<<std::endl;
 
         if(bodyParts.back().direction == Direction::up){
             x = bodyParts.back().pos.x;
@@ -124,12 +121,15 @@ void Snake::grow()
             y = bodyParts.back().pos.y;
         }
 
-        std::cout<<"                        HERE 2 !"<<std::endl;
-
         std::cout<<"x: "<<x<<"   y: "<<y<<std::endl;
         std::cout<<"length: "<<snakeLength<<std::endl;
 
+        std::cout<<"                        HERE 1 !"<<std::endl;
+
         BodyPart tail(sf::Vector2i(x,y), bodyParts.back().direction);
+
+        std::cout<<"                        HERE 2 !"<<std::endl;
+
         bodyParts.push_back(tail);
         snakeLength++;
 
@@ -137,14 +137,12 @@ void Snake::grow()
 
         clock.restart();
 
-    }
-    catch(const std::exception & except)
-    {
-        std::cout<<"Exception, what(): "<<except.what();
-        std::cin.get();
-    }
-
-    }
+    //}
+    //catch(const std::exception & except)
+    //{
+    //    std::cout<<"Exception, what(): "<<except.what();
+    //    std::cin.get();
+    //}
 }
 
 

@@ -29,9 +29,9 @@ void GameState::input()
 
 void GameState::update(sf::Time deltaTime)
 {
-
-    ///snake grow
-    snake.grow();
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::G)){
+        snake.grow();
+    }
 
     ///set sprites
     for(int i = 0; i < 32; i++){
@@ -123,19 +123,23 @@ void GameState::update(sf::Time deltaTime)
             changePos = true;
     }
     else if((snake.getDirection() == GameElements::Direction::up)&&
-        (snake.bodyParts[0].pos.y == food.getPosition().y)&&
+        (snake.bodyParts[0].pos.x == food.getPosition().x)&&
         (snake.bodyParts[0].pos.y == food.getPosition().y)){
             changePos = true;
     }
     else if((snake.getDirection() == GameElements::Direction::down)&&
-        (snake.bodyParts[0].pos.y == food.getPosition().y)&&
+        (snake.bodyParts[0].pos.x == food.getPosition().x)&&
         (snake.bodyParts[0].pos.y == food.getPosition().y)){
             changePos = true;
     }
 
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::C))///only for testing
+        changePos = true;
+
     if(changePos){
         for(;;){
             food.setRandomPos();
+            snake.grow();
 
             bool getOut{true};
 
@@ -183,7 +187,7 @@ void GameState::draw()
             if(tiles[i][j] != Textures::nothing){
                 sf::Sprite sprite;
                 sprite.setTexture(data->textures.get(tiles[i][j]));
-                sprite.setPosition(sf::Vector2f(i * 32 + 16, 48 + j * 32));
+                sprite.setPosition(sf::Vector2f(i * 32, /*48 +*/ j * 32));
 
                 sprite.setOrigin(16.f, 16.f);
                 if(spriteRotation[i][j] == GameElements::Direction::left){
