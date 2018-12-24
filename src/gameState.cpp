@@ -110,21 +110,45 @@ void GameState::update(sf::Time deltaTime)
     tiles[food.getPosition().x][food.getPosition().y] = Textures::appleRed;
 
     ///eating food and food changes its position
+    bool changePos{false};
+
     if((snake.getDirection() == GameElements::Direction::left)&&
-        (snake.bodyParts[0].pos.x + 1 == food.getPosition().x)){
-            food.setRandomPos();
+        (snake.bodyParts[0].pos.x == food.getPosition().x)&&
+        (snake.bodyParts[0].pos.y == food.getPosition().y)){
+            changePos = true;
     }
     else if((snake.getDirection() == GameElements::Direction::right)&&
-        (snake.bodyParts[0].pos.x - 1 == food.getPosition().x)){
-            food.setRandomPos();
+        (snake.bodyParts[0].pos.x == food.getPosition().x)&&
+        (snake.bodyParts[0].pos.y == food.getPosition().y)){
+            changePos = true;
     }
     else if((snake.getDirection() == GameElements::Direction::up)&&
-        (snake.bodyParts[0].pos.y + 1 == food.getPosition().y)){
-            food.setRandomPos();
+        (snake.bodyParts[0].pos.y == food.getPosition().y)&&
+        (snake.bodyParts[0].pos.y == food.getPosition().y)){
+            changePos = true;
     }
     else if((snake.getDirection() == GameElements::Direction::down)&&
-        (snake.bodyParts[0].pos.y - 1 == food.getPosition().y)){
+        (snake.bodyParts[0].pos.y == food.getPosition().y)&&
+        (snake.bodyParts[0].pos.y == food.getPosition().y)){
+            changePos = true;
+    }
+
+    if(changePos){
+        for(;;){
             food.setRandomPos();
+
+            bool getOut{true};
+
+            for(auto part : snake.bodyParts){
+                if(food.getPosition() == part.pos){
+                    getOut = false;
+                    break;
+                }
+            }
+
+            if(getOut)
+                break;
+        }
     }
 
     ///snake move
