@@ -17,11 +17,18 @@ namespace Textures
 
         ///game sprites
         gameBackground,
+
         snakeHead,
         snakeStraightBody,
         snakeTurnBody,
         snakeTail,
-        grass,
+
+        appleRed,
+        appleYellow,
+        cherry,
+        hamburger,
+        meat,
+
         nothing
     };
 

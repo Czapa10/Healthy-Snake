@@ -107,6 +107,8 @@ void GameState::update(sf::Time deltaTime)
         ++it;
     }
 
+    tiles[food.getPosition().x][food.getPosition().y] = Textures::appleRed;
+
     ///snake move
     if(clock.getElapsedTime().asSeconds() > 0.11){
         snake.move();

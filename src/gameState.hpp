@@ -3,6 +3,7 @@
 #include "State.hpp"
 #include "game.hpp"
 #include "snake.hpp"
+#include "food.hpp"
 
 namespace States
 {
@@ -28,6 +29,7 @@ private:
     Textures::ID tiles[32][24];
     GameElements::Direction spriteRotation[32][24];
     GameElements::Snake snake;
+    GameElements::Food food;
     //Food food;
 };
 

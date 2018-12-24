@@ -74,10 +74,17 @@ void Game::loadTextures()
 
     ///game state
     data->textures.load(Textures::gameBackground, "resources/textures/gameBackground.jpg");
+
     data->textures.load(Textures::snakeStraightBody, "resources/textures/snakeStraightBody.png");
     data->textures.load(Textures::snakeHead, "resources/textures/snakeHead.png");
     data->textures.load(Textures::snakeTail, "resources/textures/snakeTail.png");
     data->textures.load(Textures::snakeTurnBody, "resources/textures/snakeTurnBody.png");
+
+    data->textures.load(Textures::appleRed, "resources/textures/appleRed.png");
+    data->textures.load(Textures::appleYellow, "resources/textures/appleYellow.png");
+    data->textures.load(Textures::hamburger, "resources/textures/hamburger.png");
+    data->textures.load(Textures::cherry, "resources/textures/cherry.png");
+    data->textures.load(Textures::meat, "resources/textures/meat.png");
 }
 
 void Game::loadFonts()
