@@ -145,5 +145,38 @@ void Snake::grow()
     //}
 }
 
+bool Snake::checkColision(Textures::ID tiles[32][24])
+{
+    int headX = bodyParts[0].pos.x;
+    int headY = bodyParts[0].pos.y;
+
+    Textures::ID colisionObject;
+
+    if(direction == Direction::left){
+        colisionObject = tiles[headX - 1][headY];
+    }
+    else if(direction == Direction::right){
+        colisionObject = tiles[headX + 1][headY];
+    }
+    else if(direction == Direction::up){
+        colisionObject = tiles[headX][headY - 1];
+    }
+    else if(direction == Direction::down){
+        colisionObject = tiles[headX][headY + 1];
+    }
+
+    switch(colisionObject){
+        case Textures::snakeHead:
+        case Textures::snakeStraightBody:
+        case Textures::snakeTail:
+        case Textures::snakeTurnBody:
+            std::cout<<"return true"<<std::endl;
+            return true;
+        default:
+            std::cout<<"return false"<<std::endl;
+            return false;
+    }
+}
+
 
 }

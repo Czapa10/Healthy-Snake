@@ -159,7 +159,11 @@ void GameState::update(sf::Time deltaTime)
     if(clock.getElapsedTime().asSeconds() > 0.11){
         snake.move();
         clock.restart();
+
+        ///check collision
+        snake.checkColision(tiles);
     }
+
 
 
     ///test

@@ -36,6 +36,7 @@ public:
     void move();
     void eat();
     void grow();
+    bool checkColision(Textures::ID tiles[32][24]);
 
     int getLength(){return snakeLength;}
     Direction getDirection(){return direction;}
