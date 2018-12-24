@@ -145,7 +145,7 @@ void Snake::grow()
     //}
 }
 
-bool Snake::checkColision(Textures::ID tiles[32][24])
+bool Snake::isCollideWithItself(Textures::ID tiles[32][24])
 {
     int headX = bodyParts[0].pos.x;
     int headY = bodyParts[0].pos.y;

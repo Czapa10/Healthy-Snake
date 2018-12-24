@@ -161,7 +161,9 @@ void GameState::update(sf::Time deltaTime)
         clock.restart();
 
         ///check collision
-        snake.checkColision(tiles);
+        if(snake.isCollideWithItself(tiles)){
+
+        }
     }
 
 
