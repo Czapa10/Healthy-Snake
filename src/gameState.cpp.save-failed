@@ -30,17 +30,6 @@ void GameState::input()
 
 void GameState::update(sf::Time deltaTime)
 {
-    if(freeze){
-        std::cout<<"to game over screen: "<<2 - timeToShowGameOverScreen.getElapsedTime().asSeconds()<<std::endl;
-
-        if(timeToShowGameOverScreen.getElapsedTime().asSeconds() > 2){
-            std::unique_ptr<States::GameOverState> toStack(new States::GameOverState(data));
-            data->stateStack.pushState(std::move(toStack));
-        }
-
-        return;
-    }
-
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::G)){
         snake.grow();
     }
@@ -168,14 +157,24 @@ void GameState::update(sf::Time deltaTime)
     }
 
     ///snake move
-    if(clock.getElapsedTime().asSeconds() > snake.getSpeed()){
+    if(clock.getElapsedTime().asSeconds() > 0.11){
         snake.move();
         clock.restart();
 
         ///check collision
         if(snake.isCollideWithItself(tiles)){
-            freeze = true;
-            timeToShowGameOverScreen.restart();
+            snake.setSpeed(0.f);
+
+            static bool justDied{true};
+            if(justDied){
+                timeToShowGameOverScreen.restart();
+                justDied = false;
+            }
+
+            if(timeToShowGameOverScreen.getElapsedTime().asSeconds() > 2){
+                std::unique_ptr<States::GameOverState> toStack(new States::GameOverState(data));
+                data->stateStack.pushState(std::move(toStack));
+            }
         }
     }
 

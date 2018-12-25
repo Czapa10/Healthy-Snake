@@ -131,9 +131,12 @@ void Snake::grow()
         std::cout<<"                        HERE 2 !"<<std::endl;
 
         bodyParts.push_back(tail);
-        snakeLength++;
 
         std::cout<<"                        HERE 3 !"<<std::endl;
+
+        snakeLength++;
+
+        std::cout<<"                        HERE 4 !"<<std::endl;
 
         clock.restart();
 
@@ -153,16 +156,16 @@ bool Snake::isCollideWithItself(Textures::ID tiles[32][24])
     Textures::ID colisionObject;
 
     if(direction == Direction::left){
-        colisionObject = tiles[headX - 1][headY];
+        colisionObject = tiles[headX][headY];
     }
     else if(direction == Direction::right){
-        colisionObject = tiles[headX + 1][headY];
+        colisionObject = tiles[headX][headY];
     }
     else if(direction == Direction::up){
-        colisionObject = tiles[headX][headY - 1];
+        colisionObject = tiles[headX][headY];
     }
     else if(direction == Direction::down){
-        colisionObject = tiles[headX][headY + 1];
+        colisionObject = tiles[headX][headY];
     }
 
     switch(colisionObject){

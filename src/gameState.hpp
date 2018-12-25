@@ -30,7 +30,9 @@ private:
     GameElements::Direction spriteRotation[32][24];
     GameElements::Snake snake;
     GameElements::Food food;
-    //Food food;
+
+    sf::Clock timeToShowGameOverScreen;
+    bool freeze{false};
 };
 
 

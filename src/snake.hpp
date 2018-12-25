@@ -39,6 +39,8 @@ public:
     bool isCollideWithItself(Textures::ID tiles[32][24]);
 
     int getLength(){return snakeLength;}
+    float getSpeed(){return speed;}
+    void setSpeed(float newSpeed){speed = newSpeed;}
     Direction getDirection(){return direction;}
 
 public:
@@ -49,6 +51,7 @@ private:
     int snakeLength = 9;
     Direction direction;
     bool wasClicked{false};//in this position
+    float speed{0.11};// 1s / speed = one move on frame
 };
 
 
