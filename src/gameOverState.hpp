@@ -1,5 +1,8 @@
 #pragma once
 
+#include "State.hpp"
+#include "game.hpp"
+
 namespace States
 {
 
@@ -17,6 +20,11 @@ public:
 
 private:
     Game::GameDataRef data;
+
+    sf::Sprite background;
+
+    bool enterWasClicked{false};
+    bool escWasClicked{false};
 };
 
 

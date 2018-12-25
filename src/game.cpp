@@ -9,8 +9,8 @@ Game::Game()
 {
     data->window.create(sf::VideoMode(1024, 768), "Healthy Snake");
 
-    std::unique_ptr<States::SplashState> temp(new States::SplashState(data));
-    data->stateStack.pushState(std::move(temp));
+    std::unique_ptr<States::SplashState> toStack(new States::SplashState(data));
+    data->stateStack.pushState(std::move(toStack));
 
     loadTextures();
     loadFonts();
@@ -30,10 +30,9 @@ void Game::run()
         while(timeSinceLastUpdate > timePerFrame){
             timeSinceLastUpdate -= timePerFrame;
             input();
-            update(timePerFrame);
             render();
         }
-        input();
+        update(timePerFrame);
     }
 }
 
@@ -85,6 +84,8 @@ void Game::loadTextures()
     data->textures.load(Textures::hamburger, "resources/textures/hamburger.png");
     data->textures.load(Textures::cherry, "resources/textures/cherry.png");
     data->textures.load(Textures::meat, "resources/textures/meat.png");
+
+    data->textures.load(Textures::gameover, "resources/textures/gameover.png");
 }
 
 void Game::loadFonts()

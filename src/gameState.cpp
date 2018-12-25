@@ -1,5 +1,6 @@
 #include "gameState.hpp"
 #include "snake.hpp"
+#include "gameOverState.hpp"
 
 #include <iostream>
 
@@ -162,7 +163,8 @@ void GameState::update(sf::Time deltaTime)
 
         ///check collision
         if(snake.isCollideWithItself(tiles)){
-
+            std::unique_ptr<States::GameOverState> toStack(new States::GameOverState(data));
+            data->stateStack.pushState(std::move(toStack));
         }
     }
 

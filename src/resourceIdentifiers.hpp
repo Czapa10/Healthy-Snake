@@ -29,6 +29,8 @@ namespace Textures
         hamburger,
         meat,
 
+        gameover,
+
         nothing
     };
 
