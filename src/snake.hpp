@@ -20,11 +20,11 @@ enum class Direction
 
 struct BodyPart
 {
+    BodyPart(sf::Vector2i _pos, Direction _direction);
+
     sf::Vector2i pos;
 
     Direction direction;
-
-    BodyPart(sf::Vector2i _pos, Direction _direction);
 };
 
 

@@ -74,11 +74,20 @@ void GameState::update(sf::Time deltaTime)
             tiles[x][y] = Textures::snakeStraightBody;
         }
 
+        ///checking is snake teleporting
+        bool isTeleporting{false};
+        if((bodyPart.pos.x + 1 != snake.bodyParts[it - 1].pos.x)&&(bodyPart.pos.x - 1 != snake.bodyParts[it - 1].pos.x)
+        &&(bodyPart.pos.x != snake.bodyParts[it - 1].pos.x)&&(bodyPart.pos.x != snake.bodyParts[it - 1].pos.x)
+        ||(bodyPart.pos.y + 1 != snake.bodyParts[it - 1].pos.y)&&(bodyPart.pos.y - 1 != snake.bodyParts[it - 1].pos.y)
+        &&(bodyPart.pos.y != snake.bodyParts[it - 1].pos.y)&&(bodyPart.pos.y != snake.bodyParts[it - 1].pos.y)){
+            isTeleporting = true;
+        }
 
+        ///making snake turn body sprite
         if((pervious.y > bodyPart.pos.y)&&(next.y == bodyPart.pos.y)&&(it != 0)&&(it != snake.getLength() - 1)){
             tiles[x][y] = Textures::snakeTurnBody;
 
-            if(next.x < bodyPart.pos.x){
+            if((next.x < bodyPart.pos.x)&&(!isTeleporting)){
                 spriteRotation[x][y] = GameElements::Direction::down;
             }
             else{
@@ -88,7 +97,7 @@ void GameState::update(sf::Time deltaTime)
         else if((pervious.y < bodyPart.pos.y)&&(next.y == bodyPart.pos.y)&&(it != 0)&&(it != snake.getLength() - 1)){
             tiles[x][y] = Textures::snakeTurnBody;
 
-            if(next.x > bodyPart.pos.x){
+            if((next.x > bodyPart.pos.x)&&(!isTeleporting)){
                 spriteRotation[x][y] = GameElements::Direction::up;
             }
             else{
@@ -98,7 +107,7 @@ void GameState::update(sf::Time deltaTime)
         else if((pervious.x > bodyPart.pos.x)&&(next.x == bodyPart.pos.x)&&(it != 0)&&(it != snake.getLength() - 1)){
             tiles[x][y] = Textures::snakeTurnBody;
 
-            if(next.y < bodyPart.pos.y){
+            if((next.y < bodyPart.pos.y)&&(!isTeleporting)){
                 spriteRotation[x][y] = GameElements::Direction::up;
             }
             else{
@@ -108,7 +117,7 @@ void GameState::update(sf::Time deltaTime)
         else if((pervious.x < bodyPart.pos.x)&&(next.x == bodyPart.pos.x)&&(it != 0)&&(it != snake.getLength() - 1)){
             tiles[x][y] = Textures::snakeTurnBody;
 
-            if(next.y > bodyPart.pos.y){
+            if((next.y > bodyPart.pos.y)&&(!isTeleporting)){
                 spriteRotation[x][y] = GameElements::Direction::down;
             }
             else{
