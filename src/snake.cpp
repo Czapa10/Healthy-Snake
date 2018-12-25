@@ -53,35 +53,31 @@ void Snake::move()
     bodyParts[0].direction = direction;
 
     if(direction == Direction::left){
-        if(bodyParts[0].pos.x == 0){
-            bodyParts[0].pos.x = 32;
-            return;
-        }
-
         bodyParts[0].pos.x -= 1;
+
+        if(bodyParts[0].pos.x == -1){
+            bodyParts[0].pos.x = 31;
+        }
     }
     else if(direction == Direction::right){
+        bodyParts[0].pos.x += 1;
+
         if(bodyParts[0].pos.x == 32){
             bodyParts[0].pos.x = 0;
-            return;
         }
-
-        bodyParts[0].pos.x += 1;
     }
     else if(direction == Direction::up){
-        if(bodyParts[0].pos.y == 0){
-            bodyParts[0].pos.y = 24;
-            return;
-        }
-
         bodyParts[0].pos.y -= 1;
+
+        if(bodyParts[0].pos.y == -1){
+            bodyParts[0].pos.y = 23;
+        }
     }
     else if(direction == Direction::down){
         bodyParts[0].pos.y += 1;
 
         if(bodyParts[0].pos.y == 24){
             bodyParts[0].pos.y = 0;
-            return;
         }
     }
 
