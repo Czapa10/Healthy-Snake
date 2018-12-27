@@ -89,84 +89,87 @@ void GameState::update(sf::Time deltaTime)
         std::cout<<isTeleporting<<" ";
 
         ///making snake turn body sprite
-        if((pervious.y > bodyPart.pos.y)&&(next.y == bodyPart.pos.y)&&(it != 0)&&(it != snake.getLength() - 1)){
-            tiles[x][y] = Textures::snakeTurnBody;
+        if((it != 0)&&(it != snake.getLength() - 1)){ //if this body part is not head and tail
 
-            if(isTeleporting){
-                if(next.x < bodyPart.pos.x){
+            if((pervious.y > bodyPart.pos.y)&&(next.y == bodyPart.pos.y)){
+                tiles[x][y] = Textures::snakeTurnBody;
+
+                if(isTeleporting){
+                    if(next.x < bodyPart.pos.x){
+                        spriteRotation[x][y] = GameElements::Direction::left;
+                    }
+                    else{
+                        spriteRotation[x][y] = GameElements::Direction::up;
+                    }
+                }
+                else{
+                    if(next.x < bodyPart.pos.x){
+                        spriteRotation[x][y] = GameElements::Direction::down;
+                    }
+                    else{
+                        spriteRotation[x][y] = GameElements::Direction::right;
+                    }
+                }
+
+            }
+            else if((pervious.y < bodyPart.pos.y)&&(next.y == bodyPart.pos.y)){
+                tiles[x][y] = Textures::snakeTurnBody;
+
+                if(isTeleporting){
+                    if(next.x > bodyPart.pos.x){
+                        spriteRotation[x][y] = GameElements::Direction::right;
+                    }
+                    else{
+                        spriteRotation[x][y] = GameElements::Direction::down;
+                    }
+                }
+                else{
+                    if(next.x > bodyPart.pos.x){
+                        spriteRotation[x][y] = GameElements::Direction::up;
+                    }
+                    else{
+                        spriteRotation[x][y] = GameElements::Direction::left;
+                    }
+                }
+            }
+            else if((pervious.x > bodyPart.pos.x)&&(next.x == bodyPart.pos.x)){
+                tiles[x][y] = Textures::snakeTurnBody;
+
+                if(isTeleporting){
+                    if(next.y < bodyPart.pos.y){
                     spriteRotation[x][y] = GameElements::Direction::left;
+                    }
+                    else{
+                        spriteRotation[x][y] = GameElements::Direction::down;
+                    }
                 }
                 else{
+                    if(next.y < bodyPart.pos.y){
                     spriteRotation[x][y] = GameElements::Direction::up;
+                    }
+                    else{
+                        spriteRotation[x][y] = GameElements::Direction::right;
+                    }
                 }
             }
-            else{
-                if(next.x < bodyPart.pos.x){
-                    spriteRotation[x][y] = GameElements::Direction::down;
-                }
-                else{
+            else if((pervious.x < bodyPart.pos.x)&&(next.x == bodyPart.pos.x)){
+                tiles[x][y] = Textures::snakeTurnBody;
+
+                if(isTeleporting){
+                    if(next.y > bodyPart.pos.y){
                     spriteRotation[x][y] = GameElements::Direction::right;
-                }
-            }
-
-        }
-        else if((pervious.y < bodyPart.pos.y)&&(next.y == bodyPart.pos.y)&&(it != 0)&&(it != snake.getLength() - 1)){
-            tiles[x][y] = Textures::snakeTurnBody;
-
-            if(isTeleporting){
-                if(next.x > bodyPart.pos.x){
-                    spriteRotation[x][y] = GameElements::Direction::right;
+                    }
+                    else{
+                        spriteRotation[x][y] = GameElements::Direction::up;
+                    }
                 }
                 else{
+                    if(next.y > bodyPart.pos.y){
                     spriteRotation[x][y] = GameElements::Direction::down;
-                }
-            }
-            else{
-                if(next.x > bodyPart.pos.x){
-                    spriteRotation[x][y] = GameElements::Direction::up;
-                }
-                else{
-                    spriteRotation[x][y] = GameElements::Direction::left;
-                }
-            }
-        }
-        else if((pervious.x > bodyPart.pos.x)&&(next.x == bodyPart.pos.x)&&(it != 0)&&(it != snake.getLength() - 1)){
-            tiles[x][y] = Textures::snakeTurnBody;
-
-            if(isTeleporting){
-                if(next.y < bodyPart.pos.y){
-                spriteRotation[x][y] = GameElements::Direction::left;
-                }
-                else{
-                    spriteRotation[x][y] = GameElements::Direction::down;
-                }
-            }
-            else{
-                if(next.y < bodyPart.pos.y){
-                spriteRotation[x][y] = GameElements::Direction::up;
-                }
-                else{
-                    spriteRotation[x][y] = GameElements::Direction::right;
-                }
-            }
-        }
-        else if((pervious.x < bodyPart.pos.x)&&(next.x == bodyPart.pos.x)&&(it != 0)&&(it != snake.getLength() - 1)){
-            tiles[x][y] = Textures::snakeTurnBody;
-
-            if(isTeleporting){
-                if(next.y > bodyPart.pos.y){
-                spriteRotation[x][y] = GameElements::Direction::right;
-                }
-                else{
-                    spriteRotation[x][y] = GameElements::Direction::up;
-                }
-            }
-            else{
-                if(next.y > bodyPart.pos.y){
-                spriteRotation[x][y] = GameElements::Direction::down;
-                }
-                else{
-                    spriteRotation[x][y] = GameElements::Direction::left;
+                    }
+                    else{
+                        spriteRotation[x][y] = GameElements::Direction::left;
+                    }
                 }
             }
         }
