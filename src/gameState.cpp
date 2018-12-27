@@ -53,7 +53,7 @@ void GameState::update(sf::Time deltaTime)
         }
     }
 
-    //std::cout<<"is teleporting: ";
+    std::cout<<"is teleporting: ";
 
     int it{};//iterator
     for(auto & bodyPart : snake.bodyParts){
@@ -81,8 +81,7 @@ void GameState::update(sf::Time deltaTime)
         if((bodyPart.pos.x + 1 != pervious.x)&&(bodyPart.pos.x - 1 != pervious.x)
         &&(bodyPart.pos.x != pervious.x)&&(bodyPart.pos.x != pervious.x)
         ||(bodyPart.pos.y + 1 != pervious.y)&&(bodyPart.pos.y - 1 != pervious.y)
-        &&(bodyPart.pos.y != pervious.y)&&(bodyPart.pos.y != pervious.y)
-        &&(it != 0)){
+        &&(bodyPart.pos.y != pervious.y)&&(bodyPart.pos.y != pervious.y)){
             isTeleporting = true;
         }
 
@@ -90,18 +89,19 @@ void GameState::update(sf::Time deltaTime)
         if((next.x + 1 != bodyPart.pos.x)&&(next.x - 1 != bodyPart.pos.x)
         &&(next.x != bodyPart.pos.x)&&(next.x != bodyPart.pos.x)
         ||(next.y + 1 != bodyPart.pos.y)&&(next.y - 1 != bodyPart.pos.y)
-        &&(next.y != bodyPart.pos.y)&&(next.y != bodyPart.pos.y)
-        &&(it != 0)){
+        &&(next.y != bodyPart.pos.y)&&(next.y != bodyPart.pos.y)){
             isNextTeleporting = true;
         }
 
-        //std::cout<<isNextTeleporting<<" ";
+        std::cout<<isNextTeleporting<<" ";
 
         ///making snake turn body sprite
         if((it != 0)&&(it != snake.getLength() - 1)){ //if this body part is not head and tail
             if(isNextTeleporting){
+                //std::cout<<isNextTeleporting<<"IS NEXT TELEPORING = TRUE"<<std::endl;
                 if((pervious.y < bodyPart.pos.y)&&(next.y == bodyPart.pos.y)){
-                    std::cout<<isNextTeleporting<<"this ONE"<<std::endl;
+                    tiles[x][y] = Textures::snakeTurnBody;
+
                     if(next.x < bodyPart.pos.x){
                         spriteRotation[x][y] = GameElements::Direction::right;
                     }
@@ -109,8 +109,36 @@ void GameState::update(sf::Time deltaTime)
                         spriteRotation[x][y] = GameElements::Direction::down;
                     }
                 }
+                else if((pervious.y < bodyPart.pos.y)&&(next.y == bodyPart.pos.y)){
+                    tiles[x][y] = Textures::snakeTurnBody;
+
+                    if(next.x > bodyPart.pos.x){
+                            spriteRotation[x][y] = GameElements::Direction::up;
+                    }
+                    else{
+                        spriteRotation[x][y] = GameElements::Direction::left;
+                    }
+                }
+                else if((pervious.x > bodyPart.pos.x)&&(next.x == bodyPart.pos.x)){
+                    if(next.y < bodyPart.pos.y){
+                        spriteRotation[x][y] = GameElements::Direction::left;
+                    }
+                    else{
+                        spriteRotation[x][y] = GameElements::Direction::down;
+                    }
+                }
+                else if((pervious.x < bodyPart.pos.x)&&(next.x == bodyPart.pos.x)){
+                    if(next.y > bodyPart.pos.y){
+                        spriteRotation[x][y] = GameElements::Direction::right;
+                    }
+                    else{
+                        spriteRotation[x][y] = GameElements::Direction::up;
+                    }
+                }
             }//*****************************************************************
             else{
+                //std::cout<<isNextTeleporting<<"is next teleporting = false"<<std::endl;
+
                 if((pervious.y > bodyPart.pos.y)&&(next.y == bodyPart.pos.y)){
                     tiles[x][y] = Textures::snakeTurnBody;
 
@@ -198,7 +226,7 @@ void GameState::update(sf::Time deltaTime)
         ++it;
     }
 
-    //std::cout<<std::endl;
+    std::cout<<std::endl;
 
     tiles[food.getPosition().x][food.getPosition().y] = Textures::appleRed;
 
