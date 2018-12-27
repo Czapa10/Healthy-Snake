@@ -53,7 +53,7 @@ void GameState::update(sf::Time deltaTime)
         }
     }
 
-    std::cout<<"is teleporting: ";
+    //std::cout<<"is teleporting: ";
 
     int it{};//iterator
     for(auto & bodyPart : snake.bodyParts){
@@ -85,14 +85,17 @@ void GameState::update(sf::Time deltaTime)
             isTeleporting = true;
         }
 
+        ///after teleport
         if((next.y + 1 != y)&&(next.y - 1 != y)&&(next.y != y)){
-            previous.y = -previous.y;
+            next.y = -next.y;
+            std::cout<<"Y: "<<next.y<<std::endl;
         }
         else if((next.x + 1 != x)&&(next.x - 1 != x)&&(next.x != x)){
-            previous.x = -previous.x;
+            next.x = -next.x;
+            std::cout<<"X: "<<next.x<<std::endl;
         }
 
-        std::cout<<isTeleporting<<" ";
+        //std::cout<<isTeleporting<<" ";
 
         ///making snake turn body sprite
         if((it != 0)&&(it != snake.getLength() - 1)){ //if this body part is not head and tail
@@ -182,7 +185,7 @@ void GameState::update(sf::Time deltaTime)
         ++it;
     }
 
-    std::cout<<std::endl;
+    //std::cout<<std::endl;
 
     tiles[food.getPosition().x][food.getPosition().y] = Textures::appleRed;
 
