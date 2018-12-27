@@ -85,22 +85,14 @@ void GameState::update(sf::Time deltaTime)
             isTeleporting = true;
         }
 
-        bool isNextTeleporting{false};
-        if((next.x + 1 != x)&&(next.x - 1 != x)
-        &&(next.x != x)&&(next.x != x)
-        ||(next.y + 1 != y)&&(next.y - 1 != y)
-        &&(next.y != y)&&(next.y != y)){
-            isNextTeleporting = true;
-        }
-
-        if(){
+        if((next.y + 1 != y)&&(next.y - 1 != y)&&(next.y != y)){
             previous.y = -previous.y;
         }
-        else if(){
+        else if((next.x + 1 != x)&&(next.x - 1 != x)&&(next.x != x)){
             previous.x = -previous.x;
         }
 
-        std::cout<<isNextTeleporting<<" ";
+        std::cout<<isTeleporting<<" ";
 
         ///making snake turn body sprite
         if((it != 0)&&(it != snake.getLength() - 1)){ //if this body part is not head and tail
