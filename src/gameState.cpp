@@ -78,15 +78,24 @@ void GameState::update(sf::Time deltaTime)
 
         ///checking is snake teleporting
         bool isTeleporting{false};
-        if((bodyPart.pos.x + 1 != snake.bodyParts[it - 1].pos.x)&&(bodyPart.pos.x - 1 != snake.bodyParts[it - 1].pos.x)
-        &&(bodyPart.pos.x != snake.bodyParts[it - 1].pos.x)&&(bodyPart.pos.x != snake.bodyParts[it - 1].pos.x)
-        ||(bodyPart.pos.y + 1 != snake.bodyParts[it - 1].pos.y)&&(bodyPart.pos.y - 1 != snake.bodyParts[it - 1].pos.y)
-        &&(bodyPart.pos.y != snake.bodyParts[it - 1].pos.y)&&(bodyPart.pos.y != snake.bodyParts[it - 1].pos.y)
+        if((bodyPart.pos.x + 1 != pervious.x)&&(bodyPart.pos.x - 1 != pervious.x)
+        &&(bodyPart.pos.x != pervious.x)&&(bodyPart.pos.x != pervious.x)
+        ||(bodyPart.pos.y + 1 != pervious.y)&&(bodyPart.pos.y - 1 != pervious.y)
+        &&(bodyPart.pos.y != pervious.y)&&(bodyPart.pos.y != pervious.y)
         &&(it != 0)){
             isTeleporting = true;
         }
 
-        std::cout<<isTeleporting<<" ";
+        bool isNextTeleporting{false};
+        if((next.x + 1 != bodyPart.pos.x)&&(next.x - 1 != bodyPart.pos.x)
+        &&(next.x != bodyPart.pos.x)&&(next.x != bodyPart.pos.x)
+        ||(next.y + 1 != bodyPart.pos.y)&&(next.y - 1 != bodyPart.pos.y)
+        &&(next.y != bodyPart.pos.y)&&(next.y != bodyPart.pos.y)
+        &&(it != 0)){
+            isNextTeleporting = true;
+        }
+
+        std::cout<<isNextTeleporting<<" ";
 
         ///making snake turn body sprite
         if((it != 0)&&(it != snake.getLength() - 1)){ //if this body part is not head and tail
