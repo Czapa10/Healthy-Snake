@@ -120,19 +120,21 @@ void GameState::update(sf::Time deltaTime)
                     }
                 }
                 else if((pervious.x > bodyPart.pos.x)&&(next.x == bodyPart.pos.x)){
+                        std::cout<<"                            --___***___--"<<std::endl;
                     if(next.y < bodyPart.pos.y){
-                        spriteRotation[x][y] = GameElements::Direction::left;
-                    }
-                    else{
-                        spriteRotation[x][y] = GameElements::Direction::down;
-                    }
-                }
-                else if((pervious.x < bodyPart.pos.x)&&(next.x == bodyPart.pos.x)){
-                    if(next.y > bodyPart.pos.y){
                         spriteRotation[x][y] = GameElements::Direction::right;
                     }
                     else{
                         spriteRotation[x][y] = GameElements::Direction::up;
+                    }
+                }
+                else if((pervious.x < bodyPart.pos.x)&&(next.x == bodyPart.pos.x)){
+                        std::cout<<"                            --___***___--"<<std::endl;
+                    if(next.y > bodyPart.pos.y){
+                        spriteRotation[x][y] = GameElements::Direction::down;
+                    }
+                    else{
+                        spriteRotation[x][y] = GameElements::Direction::left;
                     }
                 }
             }//*****************************************************************
