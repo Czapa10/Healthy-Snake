@@ -40,7 +40,7 @@ void GameOverState::update(sf::Time deltaTime)
 
 void GameOverState::draw()
 {
-    data->window.clear();
+    data->window.clear(sf::Color::Red);
 
     data->window.draw(background);
 
