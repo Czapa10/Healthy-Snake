@@ -31,9 +31,7 @@ void GameState::input()
 void GameState::update(sf::Time deltaTime)
 {
     if(freeze){
-        std::cout<<"to game over screen: "<<2 - timeToShowGameOverScreen.getElapsedTime().asSeconds()<<std::endl;
-
-        if(timeToShowGameOverScreen.getElapsedTime().asSeconds() > 2){
+        if(timeToShowGameOverScreen.getElapsedTime().asSeconds() > 1.1){
             std::unique_ptr<States::GameOverState> toStack(new States::GameOverState(data));
             data->stateStack.pushState(std::move(toStack));
         }

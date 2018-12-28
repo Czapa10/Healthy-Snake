@@ -169,10 +169,8 @@ bool Snake::isCollideWithItself(Textures::ID tiles[32][24])
         case Textures::snakeStraightBody:
         case Textures::snakeTail:
         case Textures::snakeTurnBody:
-            std::cout<<"return true"<<std::endl;
             return true;
         default:
-            std::cout<<"return false"<<std::endl;
             return false;
     }
 }
