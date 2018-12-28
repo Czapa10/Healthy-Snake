@@ -87,13 +87,13 @@ void GameState::update(sf::Time deltaTime)
             next.y = -next.y;
             if(next.y == 0)
                 next.y = 35;
-            std::cout<<"Y: "<<next.y<<std::endl;
+            //std::cout<<"Y: "<<next.y<<std::endl;
         }
         else if((next.x + 1 != x)&&(next.x - 1 != x)&&(next.x != x)){
             next.x = -next.x;
             if(next.x == 0)
                 next.x = 35;
-            std::cout<<"X: "<<next.x<<std::endl;
+            //std::cout<<"X: "<<next.x<<std::endl;
         }
 
         ///making snake turn body sprite
@@ -216,7 +216,7 @@ void GameState::update(sf::Time deltaTime)
     if(changePos){
         for(;;){
             food.setRandomPos();
-            snake.grow();
+            snake.eat();
 
             bool getOut{true};
 

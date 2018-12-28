@@ -47,8 +47,7 @@ public:
     std::vector<BodyPart> bodyParts;
 
 private:
-    std::vector<int> addToTail;
-    int snakeLength = 9;
+    int snakeLength = 3;
     Direction direction;
     bool wasClicked{false};//in this position
     float speed{0.11};// 1s / speed = one move on frame

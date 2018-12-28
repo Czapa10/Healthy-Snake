@@ -117,22 +117,18 @@ void Snake::grow()
             y = bodyParts.back().pos.y;
         }
 
-        std::cout<<"x: "<<x<<"   y: "<<y<<std::endl;
-        std::cout<<"length: "<<snakeLength<<std::endl;
-
-        std::cout<<"                        HERE 1 !"<<std::endl;
+        std::cout<<"length before: "<<snakeLength<<std::endl;
 
         BodyPart tail(sf::Vector2i(x,y), bodyParts.back().direction);
 
-        std::cout<<"                        HERE 2 !"<<std::endl;
+        std::cout<<"                        HERE 1 !"<<std::endl;
 
         bodyParts.push_back(tail);
 
-        std::cout<<"                        HERE 3 !"<<std::endl;
+        std::cout<<"                        HERE 2 !"<<std::endl;
 
         snakeLength++;
-
-        std::cout<<"                        HERE 4 !"<<std::endl;
+        std::cout<<"length after: "<<snakeLength<<std::endl;
 
         clock.restart();
 
