@@ -1,24 +1,24 @@
-#include <time.h>
-
 #include "food.hpp"
+
+#include <random>
 
 namespace GameElements
 {
 
 
+std::mt19937 randomEngine{std::random_device{}()};
+
 Food::Food()
 {
-    srand(time(NULL));
-
     setType();
     setRandomPos();
 }
 
 void Food::setType()
 {
-    int lot = rand() % 5;
+    std::uniform_int_distribution<int> distr(0, 4);
 
-    switch(lot){
+    switch(distr(randomEngine)){
         case 0:
             type = appleRed;
             break;
@@ -43,11 +43,11 @@ void Food::setType()
 
 void Food::setRandomPos()
 {
-    int x = rand() % 32;
-    int y = rand() % 24;
+    std::uniform_int_distribution<int> x(0, 31);
+    std::uniform_int_distribution<int> y(0, 23);
 
-    pos.x = x;
-    pos.y = y;
+    pos.x = x(randomEngine);
+    pos.y = y(randomEngine);
 }
 
 
