@@ -16,6 +16,8 @@ Snake::Snake()
 {
     direction = Direction::left;
 
+    bodyParts.reserve(256);
+
     for(int i = 0; i < snakeLength; i++){
         BodyPart part(sf::Vector2i(i + 10, 10), Direction::left);
         bodyParts.push_back(part);
