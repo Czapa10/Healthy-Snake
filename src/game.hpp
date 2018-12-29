@@ -20,7 +20,8 @@ struct GameData
     Input::MouseInput mouseInput;
 };
 
-typedef std::shared_ptr<GameData> GameDataRef;
+using GameDataRef = std::shared_ptr<GameData>;
+
 
 class Game
 {
@@ -37,7 +38,6 @@ private:
     void loadFonts();
 
 private:
-
     GameDataRef data = std::make_shared<GameData>();
 };
 
