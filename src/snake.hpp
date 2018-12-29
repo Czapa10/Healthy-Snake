@@ -40,8 +40,8 @@ public:
 
     int getLength(){return snakeLength;}
     float getSpeed(){return speed;}
-    void setSpeed(float newSpeed){speed = newSpeed;}
     Direction getDirection(){return direction;}
+    void setSpeed(float newSpeed){speed = newSpeed;}
 
 public:
     std::vector<BodyPart> bodyParts;
