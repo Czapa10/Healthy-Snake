@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "resourceIdentifiers.hpp"
+#include "snakeHead.hpp"
 
 namespace GameElements
 {
@@ -47,6 +48,7 @@ public:
     std::vector<BodyPart> bodyParts;
 
 private:
+    SnakeHead head;
     int snakeLength = 3;
     Direction direction;
     bool wasClicked{false};//in this position
