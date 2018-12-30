@@ -69,20 +69,19 @@ void GameState::update(sf::Time deltaTime)
 
         bool isTeleporting = checkIsTeleporting(previous, x, y);
 
-
-        //afterTeleportChanges(next, x, y); <-- this method doesn't work (dunno why)
-
+        ///after teleport turn transformations
         if((next.y + 1 != y)&&(next.y - 1 != y)&&(next.y != y)){
         next.y = -next.y;
         if(next.y == 0)
             next.y = 35;
+            std::cout<<"Y: "<<y<<std::endl;
         }
         else if((next.x + 1 != x)&&(next.x - 1 != x)&&(next.x != x)){
             next.x = -next.x;
             if(next.x == 0)
                 next.x = 35;
+            std::cout<<"X: "<<x<<std::endl;
         }
-
 
         ///making snake turn body sprite
         if((it != 0)&&(it != snake.getLength() - 1)){ //if this body part is not head and tail
@@ -287,20 +286,6 @@ void GameState::clearTiles()
             tiles[i][j] = Textures::nothing;
             spriteRotation[i][j] = GameElements::Direction::up;
         }
-    }
-}
-
-void GameState::afterTeleportChanges(sf::Vector2i& next, int y, int x)
-{
-    if((next.y + 1 != y)&&(next.y - 1 != y)&&(next.y != y)){
-        next.y = -next.y;
-        if(next.y == 0)
-            next.y = 35;
-    }
-    else if((next.x + 1 != x)&&(next.x - 1 != x)&&(next.x != x)){
-        next.x = -next.x;
-        if(next.x == 0)
-            next.x = 35;
     }
 }
 

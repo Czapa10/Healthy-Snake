@@ -22,7 +22,6 @@ public:
 
 private:
     void clearTiles();
-    void afterTeleportChanges(sf::Vector2i& next, int y, int x);
 //    void makingTurnBody()
     bool checkIsTeleporting(sf::Vector2i previous, int x, int y);
 
