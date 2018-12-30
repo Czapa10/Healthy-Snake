@@ -44,13 +44,7 @@ void GameState::update(sf::Time deltaTime)
     }
 
     ///set sprites
-    for(int i = 0; i < 32; i++){
-        for(int j = 0; j < 24; j++){
-            tiles[i][j] = Textures::nothing;
-            spriteRotation[i][j] = GameElements::Direction::up;
-        }
-    }
-
+    clearTiles();
 
     int it{};//iterator
     for(auto & bodyPart : snake.bodyParts){
@@ -73,28 +67,22 @@ void GameState::update(sf::Time deltaTime)
             tiles[x][y] = Textures::snakeStraightBody;
         }
 
-        ///checking is snake teleporting
-        bool isTeleporting{false};
-        if((x + 1 != previous.x)&&(x - 1 != previous.x)
-        &&(x != previous.x)&&(x != previous.x)
-        ||(y + 1 != previous.y)&&(y - 1 != previous.y)
-        &&(y != previous.y)&&(y != previous.y)){
-            isTeleporting = true;
-        }
+        bool isTeleporting = checkIsTeleporting(previous, x, y);
 
-        ///after teleport
+
+        //afterTeleportChanges(next, x, y); <-- this method doesn't work (dunno why)
+
         if((next.y + 1 != y)&&(next.y - 1 != y)&&(next.y != y)){
-            next.y = -next.y;
-            if(next.y == 0)
-                next.y = 35;
-            //std::cout<<"Y: "<<next.y<<std::endl;
+        next.y = -next.y;
+        if(next.y == 0)
+            next.y = 35;
         }
         else if((next.x + 1 != x)&&(next.x - 1 != x)&&(next.x != x)){
             next.x = -next.x;
             if(next.x == 0)
                 next.x = 35;
-            //std::cout<<"X: "<<next.x<<std::endl;
         }
+
 
         ///making snake turn body sprite
         if((it != 0)&&(it != snake.getLength() - 1)){ //if this body part is not head and tail
@@ -290,6 +278,41 @@ void GameState::draw()
     }
 
     data->window.display();
+}
+
+void GameState::clearTiles()
+{
+    for(int i = 0; i < 32; i++){
+        for(int j = 0; j < 24; j++){
+            tiles[i][j] = Textures::nothing;
+            spriteRotation[i][j] = GameElements::Direction::up;
+        }
+    }
+}
+
+void GameState::afterTeleportChanges(sf::Vector2i& next, int y, int x)
+{
+    if((next.y + 1 != y)&&(next.y - 1 != y)&&(next.y != y)){
+        next.y = -next.y;
+        if(next.y == 0)
+            next.y = 35;
+    }
+    else if((next.x + 1 != x)&&(next.x - 1 != x)&&(next.x != x)){
+        next.x = -next.x;
+        if(next.x == 0)
+            next.x = 35;
+    }
+}
+
+bool GameState::checkIsTeleporting(sf::Vector2i previous, int x, int y)
+{
+    if((x + 1 != previous.x)&&(x - 1 != previous.x)
+    &&(x != previous.x)&&(x != previous.x)
+    ||(y + 1 != previous.y)&&(y - 1 != previous.y)
+    &&(y != previous.y)&&(y != previous.y)){
+        return true;
+    }
+    return false;
 }
 
 
