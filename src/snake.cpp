@@ -1,5 +1,6 @@
 #include "snake.hpp"
 
+#include <algorithm>
 #include <iostream>
 
 namespace GameElements
@@ -48,9 +49,7 @@ void Snake::move()
 {
     wasClicked = false;
 
-    for(int i = snakeLength; i > 0; --i){
-        bodyParts[i] = bodyParts[i - 1];
-    }
+    std::copy_backward(bodyParts.begin(), bodyParts.end() - 1, bodyParts.end());
 
     bodyParts[0].direction = direction;
 
@@ -82,11 +81,6 @@ void Snake::move()
             bodyParts[0].pos.y = 0;
         }
     }
-
-    /*for(int i = 0; i < snakeLength; ++i){
-        std::cout<<bodyParts[i].pos.x<<" "<<bodyParts[i].pos.y<<"      ";
-    }
-    std::cout<<std::endl;*/
 }
 
 void Snake::eat()
@@ -98,48 +92,33 @@ void Snake::grow()
 {
     static sf::Clock clock;
 
-    //try
-    //{
-        int x{}, y{};
+    int x{}, y{};
 
-        if(bodyParts.back().direction == Direction::up){
-            x = bodyParts.back().pos.x;
-            y = bodyParts.back().pos.y + 1;
-        }
-        else if(bodyParts.back().direction == Direction::down){
-            x = bodyParts.back().pos.x;
-            y = bodyParts.back().pos.y - 1;
-        }
-        else if(bodyParts.back().direction == Direction::left){
-            x = bodyParts.back().pos.x + 1;
-            y = bodyParts.back().pos.y;
-        }
-        else if(bodyParts.back().direction == Direction::right){
-            x = bodyParts.back().pos.x - 1;
-            y = bodyParts.back().pos.y;
-        }
+    if(bodyParts.back().direction == Direction::up){
+        x = bodyParts.back().pos.x;
+        y = bodyParts.back().pos.y + 1;
+    }
+    else if(bodyParts.back().direction == Direction::down){
+        x = bodyParts.back().pos.x;
+        y = bodyParts.back().pos.y - 1;
+    }
+    else if(bodyParts.back().direction == Direction::left){
+        x = bodyParts.back().pos.x + 1;
+        y = bodyParts.back().pos.y;
+    }
+    else if(bodyParts.back().direction == Direction::right){
+        x = bodyParts.back().pos.x - 1;
+        y = bodyParts.back().pos.y;
+    }
 
-        std::cout<<"length before: "<<snakeLength<<std::endl;
+    BodyPart tail(sf::Vector2i(x,y), bodyParts.back().direction);
 
-        BodyPart tail(sf::Vector2i(x,y), bodyParts.back().direction);
+    bodyParts.push_back(tail);
 
-        std::cout<<"                        HERE 1 !"<<std::endl;
+    snakeLength++;
+    std::cout<<"length: "<<snakeLength<<std::endl;
 
-        bodyParts.push_back(tail);
-
-        std::cout<<"                        HERE 2 !"<<std::endl;
-
-        snakeLength++;
-        std::cout<<"length after: "<<snakeLength<<std::endl;
-
-        clock.restart();
-
-    //}
-    //catch(const std::exception & except)
-    //{
-    //    std::cout<<"Exception, what(): "<<except.what();
-    //    std::cin.get();
-    //}
+    clock.restart();
 }
 
 bool Snake::isCollideWithItself(Textures::ID tiles[32][24])
