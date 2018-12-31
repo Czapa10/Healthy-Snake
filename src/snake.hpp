@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <queue>
 
 #include "resourceIdentifiers.hpp"
 #include "snakeHead.hpp"
@@ -15,7 +16,8 @@ enum class Direction
     up,
     down,
     right,
-    left
+    left,
+    none
 };
 
 
@@ -41,8 +43,8 @@ public:
 
     int getLength(){return snakeLength;}
     float getSpeed(){return speed;}
-    Direction getDirection(){return direction;}
     void setSpeed(float newSpeed){speed = newSpeed;}
+    Direction getDirection();
 
 public:
     std::vector<BodyPart> bodyParts;
@@ -50,9 +52,8 @@ public:
 private:
     SnakeHead head;
     int snakeLength = 3;
-    Direction direction;
-    bool wasClicked{false};//in this position
     float speed{0.11};// 1s / speed = one move on frame
+    std::queue<Direction> inputQueue;
 };
 
 

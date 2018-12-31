@@ -15,7 +15,7 @@ BodyPart::BodyPart(sf::Vector2i _pos, Direction _direction)
 
 Snake::Snake()
 {
-    direction = Direction::left;
+    inputQueue.push(Direction::left);
 
     bodyParts.reserve(256);
 
@@ -27,7 +27,9 @@ Snake::Snake()
 
 void Snake::control()
 {
-    if(!wasClicked){
+    if(inputQueue.size() < 3){
+        Direction direction{Direction::none};
+
         if((sf::Keyboard::isKeyPressed(sf::Keyboard::Up))&&(direction != Direction::down)){
             direction = Direction::up;
         }
@@ -41,40 +43,45 @@ void Snake::control()
             direction = Direction::right;
         }
 
-        wasClicked = true;
+        if((direction != Direction::none)&&(inputQueue.back() != direction)){
+            inputQueue.push(direction);
+        }
     }
 }
 
 void Snake::move()
 {
-    wasClicked = false;
-
     std::copy_backward(bodyParts.begin(), bodyParts.end() - 1, bodyParts.end());
 
-    bodyParts[0].direction = direction;
+    Direction currentDirection {inputQueue.front()};
 
-    if(direction == Direction::left){
+    bodyParts[0].direction = currentDirection;
+    if(inputQueue.size() > 1){
+        inputQueue.pop();
+    }
+
+    if(currentDirection == Direction::left){
         bodyParts[0].pos.x -= 1;
 
         if(bodyParts[0].pos.x == -1){
             bodyParts[0].pos.x = 31;
         }
     }
-    else if(direction == Direction::right){
+    else if(currentDirection == Direction::right){
         bodyParts[0].pos.x += 1;
 
         if(bodyParts[0].pos.x == 32){
             bodyParts[0].pos.x = 0;
         }
     }
-    else if(direction == Direction::up){
+    else if(currentDirection == Direction::up){
         bodyParts[0].pos.y -= 1;
 
         if(bodyParts[0].pos.y == -1){
             bodyParts[0].pos.y = 23;
         }
     }
-    else if(direction == Direction::down){
+    else if(currentDirection == Direction::down){
         bodyParts[0].pos.y += 1;
 
         if(bodyParts[0].pos.y == 24){
@@ -128,16 +135,18 @@ bool Snake::isCollideWithItself(Textures::ID tiles[32][24])
 
     Textures::ID colisionObject;
 
-    if(direction == Direction::left){
+    Direction currentDirection {inputQueue.front()};
+
+    if(currentDirection == Direction::left){
         colisionObject = tiles[headX][headY];
     }
-    else if(direction == Direction::right){
+    else if(currentDirection == Direction::right){
         colisionObject = tiles[headX][headY];
     }
-    else if(direction == Direction::up){
+    else if(currentDirection == Direction::up){
         colisionObject = tiles[headX][headY];
     }
-    else if(direction == Direction::down){
+    else if(currentDirection == Direction::down){
         colisionObject = tiles[headX][headY];
     }
 
@@ -150,6 +159,11 @@ bool Snake::isCollideWithItself(Textures::ID tiles[32][24])
         default:
             return false;
     }
+}
+
+Direction Snake::getDirection()
+{
+    return (inputQueue.front());
 }
 
 
