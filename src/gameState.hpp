@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 #include "State.hpp"
 #include "game.hpp"
 #include "snake.hpp"
@@ -22,7 +24,7 @@ public:
 
 private:
     void clearTiles();
-//    void makingTurnBody()
+    void settingFood();
     bool checkIsTeleporting(sf::Vector2i previous, int x, int y);
 
 private:
@@ -34,7 +36,7 @@ private:
     Textures::ID tiles[32][24];
     GameElements::Direction spriteRotation[32][24];
     GameElements::Snake snake;
-    GameElements::Food food;
+    std::vector<GameElements::Food> food;
 
     sf::Clock timeToShowGameOverScreen;
     bool freeze{false};

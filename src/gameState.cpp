@@ -16,11 +16,7 @@ void GameState::init()
 {
     background.setTexture(data->textures.get(Textures::gameBackground));
 
-    for(int i = 0; i < 32; i++){
-        for(int j = 0; j < 24; j++){
-            tiles[i][j] = Textures::nothing;
-        }
-    }
+    clearTiles();
 }
 
 void GameState::input()
@@ -169,53 +165,63 @@ void GameState::update(sf::Time deltaTime)
         ++it;
     }
 
-    tiles[food.getPosition().x][food.getPosition().y] = Textures::appleRed;
+    //tiles[food.getPosition().x][food.getPosition().y] = Textures::appleRed;
 
-    ///eating food and food changes its position
-    bool changePos{false};
+    for(auto meal : food){
+        tiles[meal.getPosition().x][meal.getPosition().y] = Textures::appleRed;
 
-    if((snake.getDirection() == GameElements::Direction::left)&&
-        (snake.bodyParts[0].pos.x == food.getPosition().x)&&
-        (snake.bodyParts[0].pos.y == food.getPosition().y)){
-            changePos = true;
-    }
-    else if((snake.getDirection() == GameElements::Direction::right)&&
-        (snake.bodyParts[0].pos.x == food.getPosition().x)&&
-        (snake.bodyParts[0].pos.y == food.getPosition().y)){
-            changePos = true;
-    }
-    else if((snake.getDirection() == GameElements::Direction::up)&&
-        (snake.bodyParts[0].pos.x == food.getPosition().x)&&
-        (snake.bodyParts[0].pos.y == food.getPosition().y)){
-            changePos = true;
-    }
-    else if((snake.getDirection() == GameElements::Direction::down)&&
-        (snake.bodyParts[0].pos.x == food.getPosition().x)&&
-        (snake.bodyParts[0].pos.y == food.getPosition().y)){
-            changePos = true;
-    }
+        ///eating meal and meal changes its position
+        bool changePos{false};
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::C))///only for testing
-        changePos = true;
-
-    if(changePos){
-        for(;;){
-            food.setRandomPos();
-            snake.eat();
-
-            bool getOut{true};
-
-            for(auto part : snake.bodyParts){
-                if(food.getPosition() == part.pos){
-                    getOut = false;
-                    break;
-                }
-            }
-
-            if(getOut)
-                break;
+        if((snake.getDirection() == GameElements::Direction::left)&&
+            (snake.bodyParts[0].pos.x == meal.getPosition().x)&&
+            (snake.bodyParts[0].pos.y == meal.getPosition().y)){
+                changePos = true;
         }
+        else if((snake.getDirection() == GameElements::Direction::right)&&
+            (snake.bodyParts[0].pos.x == meal.getPosition().x)&&
+            (snake.bodyParts[0].pos.y == meal.getPosition().y)){
+                changePos = true;
+        }
+        else if((snake.getDirection() == GameElements::Direction::up)&&
+            (snake.bodyParts[0].pos.x == meal.getPosition().x)&&
+            (snake.bodyParts[0].pos.y == meal.getPosition().y)){
+                changePos = true;
+        }
+        else if((snake.getDirection() == GameElements::Direction::down)&&
+            (snake.bodyParts[0].pos.x == meal.getPosition().x)&&
+            (snake.bodyParts[0].pos.y == meal.getPosition().y)){
+                changePos = true;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
+            changePos = true;
+        }
+
+        if(changePos){
+            for(;;){
+                meal.setRandomPos();
+                snake.eat();
+
+                bool getOut{true};
+
+                for(auto part : snake.bodyParts){
+                    if(meal.getPosition() == part.pos){
+                        getOut = false;
+                        break;
+                    }
+                }
+
+                if(getOut)
+                    break;
+            }
+        }
+
+        std::cout<<"x:"<<meal.getPosition().x<<" y:"<<meal.getPosition().y<<"    ";
     }
+    std::cout<<"\n";
+
+
 
     ///snake move
     if(clock.getElapsedTime().asSeconds() > snake.getSpeed()){
@@ -277,6 +283,8 @@ void GameState::draw()
     data->window.display();
 }
 
+//*************************************************************************
+
 void GameState::clearTiles()
 {
     for(int i = 0; i < 32; i++){
@@ -284,6 +292,14 @@ void GameState::clearTiles()
             tiles[i][j] = Textures::nothing;
             spriteRotation[i][j] = GameElements::Direction::up;
         }
+    }
+}
+
+void GameState::settingFood()
+{
+    for(int i = 0; i <= 10; ++i){
+        GameElements::Food meal;
+        food.push_back(meal);
     }
 }
 
