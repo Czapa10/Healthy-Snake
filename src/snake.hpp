@@ -53,7 +53,10 @@ private:
     SnakeHead head;
     int snakeLength = 3;
     float speed{0.11};// 1s / speed = one move on frame
+
     std::queue<Direction> inputQueue;
+    Direction currentDirection;
+    bool isThereNewDirectionForThisMove{false};
 };
 
 

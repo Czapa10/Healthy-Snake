@@ -44,7 +44,14 @@ void Snake::control()
         }
 
         if((direction != Direction::none)&&(inputQueue.back() != direction)){
-            inputQueue.push(direction);
+            if(isThereNewDirectionForThisMove){
+                inputQueue.push(direction);
+            }
+            else{
+                inputQueue.pop();
+                inputQueue.push(direction);
+                isThereNewDirectionForThisMove = true;
+            }
         }
     }
 }
@@ -53,7 +60,9 @@ void Snake::move()
 {
     std::copy_backward(bodyParts.begin(), bodyParts.end() - 1, bodyParts.end());
 
-    Direction currentDirection {inputQueue.front()};
+    isThereNewDirectionForThisMove = false;
+
+    currentDirection = inputQueue.front();
 
     bodyParts[0].direction = currentDirection;
     if(inputQueue.size() > 1){
