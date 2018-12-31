@@ -2,6 +2,8 @@
 
 #include <random>
 
+#include <iostream>
+
 namespace GameElements
 {
 

@@ -38,6 +38,8 @@ private:
     GameElements::Snake snake;
     std::vector<GameElements::Food> food;
 
+    int numberOfMealsOnTheScreen{200};
+
     sf::Clock timeToShowGameOverScreen;
     bool freeze{false};
 };

@@ -17,6 +17,7 @@ void GameState::init()
     background.setTexture(data->textures.get(Textures::gameBackground));
 
     clearTiles();
+    settingFood();
 }
 
 void GameState::input()
@@ -165,9 +166,7 @@ void GameState::update(sf::Time deltaTime)
         ++it;
     }
 
-    //tiles[food.getPosition().x][food.getPosition().y] = Textures::appleRed;
-
-    for(auto meal : food){
+    for(auto &meal : food){
         tiles[meal.getPosition().x][meal.getPosition().y] = Textures::appleRed;
 
         ///eating meal and meal changes its position
@@ -194,14 +193,11 @@ void GameState::update(sf::Time deltaTime)
                 changePos = true;
         }
 
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
-            changePos = true;
-        }
-
         if(changePos){
+            snake.eat();
+
             for(;;){
                 meal.setRandomPos();
-                snake.eat();
 
                 bool getOut{true};
 
@@ -216,11 +212,7 @@ void GameState::update(sf::Time deltaTime)
                     break;
             }
         }
-
-        std::cout<<"x:"<<meal.getPosition().x<<" y:"<<meal.getPosition().y<<"    ";
     }
-    std::cout<<"\n";
-
 
 
     ///snake move
@@ -297,7 +289,7 @@ void GameState::clearTiles()
 
 void GameState::settingFood()
 {
-    for(int i = 0; i <= 10; ++i){
+    for(int i = 0; i < numberOfMealsOnTheScreen; ++i){
         GameElements::Food meal;
         food.push_back(meal);
     }
