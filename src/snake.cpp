@@ -30,16 +30,16 @@ void Snake::control()
     if(inputQueue.size() < 3){
         Direction direction{Direction::none};
 
-        if((sf::Keyboard::isKeyPressed(sf::Keyboard::Up))&&(direction != Direction::down)){
+        if((sf::Keyboard::isKeyPressed(sf::Keyboard::Up))&&(inputQueue.front() != Direction::down)){
             direction = Direction::up;
         }
-        else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Down))&&(direction != Direction::up)){
+        else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Down))&&(inputQueue.front() != Direction::up)){
             direction = Direction::down;
         }
-        else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Left))&&(direction != Direction::right)){
+        else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Left))&&(inputQueue.front() != Direction::right)){
             direction = Direction::left;
         }
-        else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Right))&&(direction != Direction::left)){
+        else if((sf::Keyboard::isKeyPressed(sf::Keyboard::Right))&&(inputQueue.front() != Direction::left)){
             direction = Direction::right;
         }
 
