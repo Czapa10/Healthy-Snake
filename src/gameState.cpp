@@ -252,7 +252,8 @@ void GameState::foodUpdate()
 {
     int i{};
     for(auto & meal : food){
-        tiles[meal.getPosition().x][meal.getPosition().y] = Textures::appleRed;
+
+        tiles[meal.getPosition().x][meal.getPosition().y] = meal.getTextureID();
 
         ///eating meal and meal changes its position
         bool changePos{false};

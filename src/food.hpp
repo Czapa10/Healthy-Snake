@@ -27,13 +27,12 @@ public:
     void setPos(sf::Vector2i _pos);
     int getCaloric();
 
-    Textures::ID getTextureID(){return id;}
+    Textures::ID getTextureID();
     sf::Vector2i getPosition(){return pos;}
 
 private:
     Type type;
     sf::Vector2i pos;
-    Textures::ID id;
 };
 
 

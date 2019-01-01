@@ -78,5 +78,25 @@ int Food::getCaloric()
     }
 }
 
+Textures::ID Food::getTextureID()
+{
+    switch(type){
+        case appleRed:
+            return Textures::appleRed;
+
+        case appleYellow:
+            return Textures::appleYellow;
+
+        case cherry:
+            return Textures::cherry;
+
+        case hamburger:
+            return Textures::hamburger;
+
+        case meat:
+            return Textures::meat;
+    }
+}
+
 
 }
