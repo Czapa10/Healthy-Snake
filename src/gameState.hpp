@@ -37,8 +37,7 @@ private:
     GameElements::Direction spriteRotation[32][24];
     GameElements::Snake snake;
     std::vector<GameElements::Food> food;
-
-    int numberOfMealsOnTheScreen{200};
+    int numberOfMealsOnTheScreen{190};
 
     sf::Clock timeToShowGameOverScreen;
     bool freeze{false};

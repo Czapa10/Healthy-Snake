@@ -166,6 +166,7 @@ void GameState::update(sf::Time deltaTime)
         ++it;
     }
 
+    int i{};
     for(auto &meal : food){
         tiles[meal.getPosition().x][meal.getPosition().y] = Textures::appleRed;
 
@@ -208,12 +209,30 @@ void GameState::update(sf::Time deltaTime)
                     }
                 }
 
+                if(getOut){
+                    for(int j = 0; j < i; ++j){
+                        if(meal.getPosition() == food[j].getPosition()){
+                            getOut = false;
+                            break;
+                        }
+                    }
+                }
+
+                if(getOut){
+                    for(int j = i + 1; j < food.size(); ++j){
+                        if(meal.getPosition() == food[j].getPosition()){
+                            getOut = false;
+                            break;
+                        }
+                    }
+                }
+
                 if(getOut)
                     break;
             }
         }
+        ++i;
     }
-
 
     ///snake move
     if(clock.getElapsedTime().asSeconds() > snake.getSpeed()){
