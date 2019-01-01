@@ -167,7 +167,7 @@ void GameState::update(sf::Time deltaTime)
     }
 
     int i{};
-    for(auto &meal : food){
+    for(auto & meal : food){
         tiles[meal.getPosition().x][meal.getPosition().y] = Textures::appleRed;
 
         ///eating meal and meal changes its position
@@ -197,38 +197,44 @@ void GameState::update(sf::Time deltaTime)
         if(changePos){
             snake.eat();
 
-            for(;;){
-                meal.setRandomPos();
+            if(food.size() * 4 > 768 - snake.getLength()){
+                food.erase(food.begin() + i);
+                std::cout<<food.size()<<std::endl;
+            }
+            else{
+                for(;;){
+                    meal.setRandomPos();
 
-                bool getOut{true};
+                    bool getOut{true};
 
-                for(auto part : snake.bodyParts){
-                    if(meal.getPosition() == part.pos){
-                        getOut = false;
+                    for(auto part : snake.bodyParts){
+                        if(meal.getPosition() == part.pos){
+                            getOut = false;
+                            break;
+                        }
+                    }
+
+                    if(getOut){
+                        for(int j = 0; j < i; ++j){
+                            if(meal.getPosition() == food[j].getPosition()){
+                                getOut = false;
+                                break;
+                            }
+                        }
+                    }
+
+                    if(getOut){
+                        for(int j = i + 1; j < food.size(); ++j){
+                            if(meal.getPosition() == food[j].getPosition()){
+                                getOut = false;
+                                break;
+                            }
+                        }
+                    }
+
+                    if(getOut)
                         break;
-                    }
                 }
-
-                if(getOut){
-                    for(int j = 0; j < i; ++j){
-                        if(meal.getPosition() == food[j].getPosition()){
-                            getOut = false;
-                            break;
-                        }
-                    }
-                }
-
-                if(getOut){
-                    for(int j = i + 1; j < food.size(); ++j){
-                        if(meal.getPosition() == food[j].getPosition()){
-                            getOut = false;
-                            break;
-                        }
-                    }
-                }
-
-                if(getOut)
-                    break;
             }
         }
         ++i;
