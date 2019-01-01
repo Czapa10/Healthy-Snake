@@ -25,6 +25,7 @@ public:
 private:
     void clearTiles();
     void settingFood();
+    void foodUpdate();
     bool checkIsTeleporting(sf::Vector2i previous, int x, int y);
 
 private:

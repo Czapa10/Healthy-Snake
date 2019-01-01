@@ -166,79 +166,7 @@ void GameState::update(sf::Time deltaTime)
         ++it;
     }
 
-    int i{};
-    for(auto & meal : food){
-        tiles[meal.getPosition().x][meal.getPosition().y] = Textures::appleRed;
-
-        ///eating meal and meal changes its position
-        bool changePos{false};
-
-        if((snake.getDirection() == GameElements::Direction::left)&&
-            (snake.bodyParts[0].pos.x == meal.getPosition().x)&&
-            (snake.bodyParts[0].pos.y == meal.getPosition().y)){
-                changePos = true;
-        }
-        else if((snake.getDirection() == GameElements::Direction::right)&&
-            (snake.bodyParts[0].pos.x == meal.getPosition().x)&&
-            (snake.bodyParts[0].pos.y == meal.getPosition().y)){
-                changePos = true;
-        }
-        else if((snake.getDirection() == GameElements::Direction::up)&&
-            (snake.bodyParts[0].pos.x == meal.getPosition().x)&&
-            (snake.bodyParts[0].pos.y == meal.getPosition().y)){
-                changePos = true;
-        }
-        else if((snake.getDirection() == GameElements::Direction::down)&&
-            (snake.bodyParts[0].pos.x == meal.getPosition().x)&&
-            (snake.bodyParts[0].pos.y == meal.getPosition().y)){
-                changePos = true;
-        }
-
-        if(changePos){
-            snake.eat();
-
-            if(food.size() * 4 > 768 - snake.getLength()){
-                food.erase(food.begin() + i);
-                std::cout<<food.size()<<std::endl;
-            }
-            else{
-                for(;;){
-                    meal.setRandomPos();
-
-                    bool getOut{true};
-
-                    for(auto part : snake.bodyParts){
-                        if(meal.getPosition() == part.pos){
-                            getOut = false;
-                            break;
-                        }
-                    }
-
-                    if(getOut){
-                        for(int j = 0; j < i; ++j){
-                            if(meal.getPosition() == food[j].getPosition()){
-                                getOut = false;
-                                break;
-                            }
-                        }
-                    }
-
-                    if(getOut){
-                        for(int j = i + 1; j < food.size(); ++j){
-                            if(meal.getPosition() == food[j].getPosition()){
-                                getOut = false;
-                                break;
-                            }
-                        }
-                    }
-
-                    if(getOut)
-                        break;
-                }
-            }
-        }
-        ++i;
-    }
+    foodUpdate();
 
     ///snake move
     if(clock.getElapsedTime().asSeconds() > snake.getSpeed()){
@@ -317,6 +245,83 @@ void GameState::settingFood()
     for(int i = 0; i < numberOfMealsOnTheScreen; ++i){
         GameElements::Food meal;
         food.push_back(meal);
+    }
+}
+
+void GameState::foodUpdate()
+{
+    int i{};
+    for(auto & meal : food){
+        tiles[meal.getPosition().x][meal.getPosition().y] = Textures::appleRed;
+
+        ///eating meal and meal changes its position
+        bool changePos{false};
+
+        if((snake.getDirection() == GameElements::Direction::left)&&
+            (snake.bodyParts[0].pos.x == meal.getPosition().x)&&
+            (snake.bodyParts[0].pos.y == meal.getPosition().y)){
+                changePos = true;
+        }
+        else if((snake.getDirection() == GameElements::Direction::right)&&
+            (snake.bodyParts[0].pos.x == meal.getPosition().x)&&
+            (snake.bodyParts[0].pos.y == meal.getPosition().y)){
+                changePos = true;
+        }
+        else if((snake.getDirection() == GameElements::Direction::up)&&
+            (snake.bodyParts[0].pos.x == meal.getPosition().x)&&
+            (snake.bodyParts[0].pos.y == meal.getPosition().y)){
+                changePos = true;
+        }
+        else if((snake.getDirection() == GameElements::Direction::down)&&
+            (snake.bodyParts[0].pos.x == meal.getPosition().x)&&
+            (snake.bodyParts[0].pos.y == meal.getPosition().y)){
+                changePos = true;
+        }
+
+        if(changePos){
+            snake.eat();
+
+            if(food.size() * 4 > 768 - snake.getLength()){
+                food.erase(food.begin() + i);
+                std::cout<<food.size()<<std::endl;
+            }
+            else{
+                for(;;){
+                    meal.setRandomPos();
+
+                    bool getOut{true};
+
+                    for(auto part : snake.bodyParts){
+                        if(meal.getPosition() == part.pos){
+                            getOut = false;
+                            break;
+                        }
+                    }
+
+                    if(getOut){
+                        for(int j = 0; j < i; ++j){
+                            if(meal.getPosition() == food[j].getPosition()){
+                                getOut = false;
+                                break;
+                            }
+                        }
+                    }
+
+                    if(getOut){
+                        for(int j = i + 1; j < food.size(); ++j){
+                            if(meal.getPosition() == food[j].getPosition()){
+                                getOut = false;
+                                break;
+                            }
+                        }
+                    }
+
+                    if(getOut)
+                        break;
+                }
+            }
+        }
+        ++i;
     }
 }
 
