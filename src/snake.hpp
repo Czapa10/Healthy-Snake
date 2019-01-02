@@ -42,6 +42,7 @@ public:
     bool isCollideWithItself(Textures::ID tiles[32][24]);
 
     int getLength(){return snakeLength;}
+    int getInStomach(){return foodInStomach;}
     float getSpeed(){return speed;}
     void setSpeed(float newSpeed){speed = newSpeed;}
     Direction getDirection();

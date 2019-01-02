@@ -131,8 +131,7 @@ void Snake::grow()
 
     bodyParts.push_back(tail);
 
-    snakeLength++;
-    std::cout<<"length: "<<snakeLength<<std::endl;
+    ++snakeLength;
 
     clock.restart();
 }

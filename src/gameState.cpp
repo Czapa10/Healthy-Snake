@@ -226,6 +226,9 @@ void GameState::draw()
     }
 
     data->window.display();
+
+    ///temporary console game statistics
+    std::cout<<"points: "<<points<<"  |  snake length: "<<snake.getLength()<<"  |  in stomach: "<<snake.getInStomach()<<std::endl;
 }
 
 //*************************************************************************
