@@ -17,7 +17,7 @@ public:
         appleYellow,
         cherry,
         hamburger,
-        meat
+        chicken
     };
 
     Food();
@@ -25,7 +25,8 @@ public:
 
     void setRandomPos();
     void setPos(sf::Vector2i _pos);
-    int getCaloric();
+    int getWeight();
+    int getPoints();//NutritionalValue
 
     Textures::ID getTextureID();
     sf::Vector2i getPosition(){return pos;}

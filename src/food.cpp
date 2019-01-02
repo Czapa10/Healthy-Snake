@@ -38,7 +38,7 @@ void Food::setType()
             break;
 
         case 4:
-            type = meat;
+            type = chicken;
             break;
     }
 }
@@ -58,7 +58,7 @@ void Food::setPos(sf::Vector2i _pos)
     pos = _pos;
 }
 
-int Food::getCaloric()
+int Food::getWeight()//scope is 1 - 4
 {
     switch(type){
         case appleRed:
@@ -71,10 +71,30 @@ int Food::getCaloric()
             return 1;
 
         case hamburger:
-            return 7;
+            return 3;
 
-        case meat:
-            return 6;
+        case chicken:
+            return 2;
+    }
+}
+
+int Food::getPoints()
+{
+    switch(type){
+        case appleRed:
+            return 2;
+
+        case appleYellow:
+            return 2;
+
+        case cherry:
+            return 4;
+
+        case hamburger:
+            return -5;
+
+        case chicken:
+            return 3;
     }
 }
 
@@ -93,7 +113,7 @@ Textures::ID Food::getTextureID()
         case hamburger:
             return Textures::hamburger;
 
-        case meat:
+        case chicken:
             return Textures::meat;
     }
 }
