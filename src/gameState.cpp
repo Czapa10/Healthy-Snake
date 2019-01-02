@@ -171,6 +171,7 @@ void GameState::update(sf::Time deltaTime)
     ///snake move
     if(clock.getElapsedTime().asSeconds() > snake.getSpeed()){
         snake.move();
+        snake.grow();
         clock.restart();
 
         ///check collision
@@ -283,7 +284,7 @@ void GameState::foodUpdate()
         }
 
         if(changePos){
-            snake.eat();
+            snake.eat(meal.getWeight());
 
             if(food.size() * 4 > 768 - snake.getLength()){
                 food.erase(food.begin() + i);

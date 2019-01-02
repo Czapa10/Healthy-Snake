@@ -99,14 +99,16 @@ void Snake::move()
     }
 }
 
-void Snake::eat()
+void Snake::eat(int foodWeight)
 {
-    grow();
+    foodInStomach += foodWeight;
 }
 
 void Snake::grow()
 {
-    static sf::Clock clock;
+    if(!foodInStomach){
+        return;
+    }
 
     int x{}, y{};
 
@@ -132,8 +134,7 @@ void Snake::grow()
     bodyParts.push_back(tail);
 
     ++snakeLength;
-
-    clock.restart();
+    --foodInStomach;
 }
 
 bool Snake::isCollideWithItself(Textures::ID tiles[32][24])

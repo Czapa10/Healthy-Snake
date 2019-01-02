@@ -37,7 +37,7 @@ public:
     Snake();
     void control();
     void move();
-    void eat();
+    void eat(int foodWeight);
     void grow();
     bool isCollideWithItself(Textures::ID tiles[32][24]);
 
