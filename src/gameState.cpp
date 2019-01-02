@@ -285,6 +285,7 @@ void GameState::foodUpdate()
 
         if(changePos){
             snake.eat(meal.getWeight());
+            points += meal.getPoints();
 
             if(food.size() * 4 > 768 - snake.getLength()){
                 food.erase(food.begin() + i);

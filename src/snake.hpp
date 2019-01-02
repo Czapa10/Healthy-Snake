@@ -54,7 +54,7 @@ private:
     SnakeHead head;
     int snakeLength = 3;
     int foodInStomach{};
-    float speed{0.11};// 1s / speed = one move on frame
+    float speed{0.12};// 1s / speed = one move on frame
 
     std::queue<Direction> inputQueue;
     Direction currentDirection;
