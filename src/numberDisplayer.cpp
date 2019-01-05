@@ -4,15 +4,15 @@ namespace GameElements
 {
 
 
+NumberDisplayer::NumberDisplayer(int _x, int _y)
+:x(_x)
+,y(_y)
+{
+}
+
 void NumberDisplayer::display()
 {
 
-}
-
-void NumberDisplayer::setPos(int _x, int _y)
-{
-    x = _x;
-    y = _y;
 }
 
 

@@ -5,11 +5,10 @@ namespace GameElements
 
 
 StatBar::StatBar(Game::GameDataRef _data) : data(_data)
+,pointsDisplayer(100, 0)
+,snakeLengthDisplayer(200, 0)
+,inStomachDisplayer(300, 0)
 {
-    pointsDisplayer.setPos(100, 0);
-    snakeLengthDisplayer.setPos(200, 0);
-    inStomachDisplayer.setPos(300, 0);
-
     barBackground.setTexture(data->textures.get(Textures::statisticsBar));
 }
 
