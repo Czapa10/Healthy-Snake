@@ -30,6 +30,7 @@ namespace Textures
         meat,
 
         statisticsBar,
+        numbers,
 
         gameover,
 

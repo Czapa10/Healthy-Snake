@@ -14,7 +14,6 @@ NumberDisplayer::NumberDisplayer(Game::GameDataRef _data, int _x, int _y) : data
 
 void NumberDisplayer::display(int toDisplay)
 {
-    std::vector<sf::Sprite> digit;
     std::vector<int> digint;
 
     if(toDisplay > 999){
@@ -36,8 +35,15 @@ void NumberDisplayer::display(int toDisplay)
         digint.push_back(toDisplay);
     }
 
+    int i{};
     for(auto d : digint){
-        std::cout<<d;
+        sf::Sprite dSprite(data->textures.get(Textures::numbers));
+        dSprite.setPosition(x + i * 30, y);
+        dSprite.setTextureRect(sf::IntRect(digint[i] * 30, 0, 30, 42));
+
+        data->window.draw(dSprite);
+
+        ++i;
     }
 }
 
