@@ -6,6 +6,7 @@
 #include "game.hpp"
 #include "snake.hpp"
 #include "food.hpp"
+#include "statBar.hpp"
 
 namespace States
 {
@@ -37,6 +38,7 @@ private:
     Textures::ID tiles[32][24];
     GameElements::Direction spriteRotation[32][24];
     GameElements::Snake snake;
+    GameElements::StatBar statisticsBar;
     std::vector<GameElements::Food> food;
     int numberOfMealsOnTheScreen{190};
     int points{};

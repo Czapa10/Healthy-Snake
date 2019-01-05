@@ -11,8 +11,8 @@ namespace GameElements
 class StatBar
 {
 public:
-    StatBar();
-    void draw(int points, int snakeLength, int inStomach);
+    StatBar(sf::Texture & barBackgroundTexture);
+    void draw(int points, int snakeLength, int inStomach, sf::RenderWindow & window);
 
 private:
     sf::Sprite barBackground;

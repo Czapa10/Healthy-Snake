@@ -85,6 +85,9 @@ void Game::loadTextures()
     data->textures.load(Textures::cherry, "resources/textures/cherry.png");
     data->textures.load(Textures::meat, "resources/textures/meat.png");
 
+    data->textures.load(Textures::statisticsBar, "resources/textures/statBar.png");
+
+    ///game over state
     data->textures.load(Textures::gameover, "resources/textures/gameover.png");
 }
 
