@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "numberDisplayer.hpp"
+#include "game.hpp"
 
 namespace GameElements
 {
@@ -11,10 +12,12 @@ namespace GameElements
 class StatBar
 {
 public:
-    StatBar(sf::Texture & barBackgroundTexture);
-    void draw(int points, int snakeLength, int inStomach, sf::RenderWindow & window);
+    StatBar(Game::GameDataRef _data);
+    void draw(int points, int snakeLength, int inStomach);
 
 private:
+    Game::GameDataRef data;
+
     sf::Sprite barBackground;
 
     NumberDisplayer pointsDisplayer;

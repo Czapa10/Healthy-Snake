@@ -9,7 +9,7 @@ namespace States
 
 
 GameState::GameState(Game::GameDataRef _data) : data(_data)
-,statisticsBar(data->textures.get(Textures::statisticsBar))
+,statisticsBar(data)
 {
 }
 
@@ -227,7 +227,7 @@ void GameState::draw()
         }
     }
 
-    statisticsBar.draw(points, snake.getLength(), snake.getInStomach(), data->window);
+    statisticsBar.draw(points, snake.getLength(), snake.getInStomach());
 
     data->window.display();
 
