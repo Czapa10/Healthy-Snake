@@ -1,5 +1,7 @@
 #include "statBar.hpp"
 
+#include <iostream>
+
 namespace GameElements
 {
 
@@ -16,9 +18,16 @@ void StatBar::draw(int points, int snakeLength, int inStomach)
 {
     data->window.draw(barBackground);
 
-    pointsDisplayer.display();
-    snakeLengthDisplayer.display();
-    inStomachDisplayer.display();
+    std::cout<<"points: ";
+    pointsDisplayer.display(points);
+
+    std::cout<<"  |  snake length: ";
+    snakeLengthDisplayer.display(snakeLength);
+
+    std::cout<<"  |  in stomach: ";
+    inStomachDisplayer.display(inStomach);
+
+    std::cout<<std::endl;
 }
 
 
