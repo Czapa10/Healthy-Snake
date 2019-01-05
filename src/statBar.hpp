@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "numberDisplayer.hpp"
+
 namespace GameElements
 {
 
@@ -14,6 +16,10 @@ public:
 
 private:
     sf::Sprite barBackground;
+
+    NumberDisplayer pointsDisplayer;
+    NumberDisplayer snakeLengthDisplayer;
+    NumberDisplayer inStomachDisplayer;
 };
 
 
