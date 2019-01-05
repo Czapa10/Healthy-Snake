@@ -5,9 +5,9 @@ namespace GameElements
 
 
 StatBar::StatBar(Game::GameDataRef _data) : data(_data)
-,pointsDisplayer(100, 0)
-,snakeLengthDisplayer(200, 0)
-,inStomachDisplayer(300, 0)
+,pointsDisplayer(data, 100, 0)
+,snakeLengthDisplayer(data, 200, 0)
+,inStomachDisplayer(data, 300, 0)
 {
     barBackground.setTexture(data->textures.get(Textures::statisticsBar));
 }
@@ -15,6 +15,10 @@ StatBar::StatBar(Game::GameDataRef _data) : data(_data)
 void StatBar::draw(int points, int snakeLength, int inStomach)
 {
     data->window.draw(barBackground);
+
+    pointsDisplayer.display();
+    snakeLengthDisplayer.display();
+    inStomachDisplayer.display();
 }
 
 

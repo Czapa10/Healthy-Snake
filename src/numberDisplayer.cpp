@@ -4,8 +4,8 @@ namespace GameElements
 {
 
 
-NumberDisplayer::NumberDisplayer(int _x, int _y)
-:x(_x)
+NumberDisplayer::NumberDisplayer(Game::GameDataRef _data, int _x, int _y) : data(_data)
+,x(_x)
 ,y(_y)
 {
 }
