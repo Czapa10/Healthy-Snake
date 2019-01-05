@@ -2,6 +2,8 @@
 #include "snake.hpp"
 #include "gameOverState.hpp"
 
+#include <iostream>
+
 namespace States
 {
 
