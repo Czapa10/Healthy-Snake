@@ -2,8 +2,6 @@
 #include "snake.hpp"
 #include "gameOverState.hpp"
 
-#include <iostream>
-
 namespace States
 {
 
@@ -181,21 +179,6 @@ void GameState::update(sf::Time deltaTime)
             timeToShowGameOverScreen.restart();
         }
     }
-
-
-
-    ///test
-    /*for(int i = 0; i < 32; i++){
-        for(int j = 0; j < 24; j++){
-            if(tiles[i][j] == Textures::nothing)
-                std::cout<<"not  ";
-            else if(tiles[i][j] == Textures::snakeStraightBody)
-                std::cout<<"sss  ";
-        }
-        std::cout<<std::endl;
-    }
-    std::cout<<"\n\n\n";*/
-    ///test
 }
 
 void GameState::draw()

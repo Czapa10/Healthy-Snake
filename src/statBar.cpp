@@ -1,7 +1,5 @@
 #include "statBar.hpp"
 
-#include <iostream>
-
 namespace GameElements
 {
 
