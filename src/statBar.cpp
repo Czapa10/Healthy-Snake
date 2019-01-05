@@ -7,9 +7,9 @@ namespace GameElements
 
 
 StatBar::StatBar(Game::GameDataRef _data) : data(_data)
-,pointsDisplayer(data, 120, 0)
-,snakeLengthDisplayer(data, 460, 0)
-,inStomachDisplayer(data, 760, 0)
+,pointsDisplayer(data, 135, 0)
+,snakeLengthDisplayer(data, 475, 0)
+,inStomachDisplayer(data, 775, 0)
 {
     barBackground.setTexture(data->textures.get(Textures::statisticsBar));
 }

@@ -1,5 +1,7 @@
 #include "numberDisplayer.hpp"
 
+#include <cstdlib>
+
 #include <iostream>
 
 namespace GameElements
@@ -15,6 +17,14 @@ NumberDisplayer::NumberDisplayer(Game::GameDataRef _data, int _x, int _y) : data
 void NumberDisplayer::display(int toDisplay)
 {
     std::vector<int> digint;
+
+    if(toDisplay < 0){
+        toDisplay = -toDisplay;
+
+        sf::Sprite minus(data->textures.get(Textures::minus));
+        minus.setPosition(x - 15, y + 21);
+        data->window.draw(minus);
+    }
 
     if(toDisplay > 999){
         digint.push_back(toDisplay / 1000);
@@ -34,6 +44,7 @@ void NumberDisplayer::display(int toDisplay)
     else{
         digint.push_back(toDisplay);
     }
+
 
     int i{};
     for(auto d : digint){

@@ -31,6 +31,7 @@ namespace Textures
 
         statisticsBar,
         numbers,
+        minus,
 
         gameover,
 
