@@ -36,20 +36,20 @@ void GameState::update(sf::Time deltaTime)
     ///set sprites
     clearTiles();
 
-    int it{};//iterator
+    int i{};//iterator
     for(auto & bodyPart : snake.bodyParts){
         int x = bodyPart.pos.x;
         int y = bodyPart.pos.y;
 
-        sf::Vector2i previous = snake.bodyParts[it - 1].pos; //(to head)
-        sf::Vector2i next = snake.bodyParts[it + 1].pos; //(to tail)
+        sf::Vector2i previous = snake.bodyParts[i - 1].pos; //(to head)
+        sf::Vector2i next = snake.bodyParts[i + 1].pos; //(to tail)
 
         spriteRotation[x][y] = bodyPart.direction;
 
-        if(it == 0){
+        if(i == 0){
             tiles[x][y] = Textures::snakeHead;
         }
-        else if(it == snake.getLength() - 1){
+        else if(i == snake.getLength() - 1){
             tiles[x][y] = Textures::snakeTail;
             spriteRotation[x][y] = snake.bodyParts[snake.getLength() - 2].direction;
         }
@@ -57,9 +57,9 @@ void GameState::update(sf::Time deltaTime)
             tiles[x][y] = Textures::snakeStraightBody;
         }
 
-        makingSnakeTurnBody(it, x, y, previous, next);
+        makingSnakeTurnBody(i, x, y, previous, next);
 
-        ++it;
+        ++i;
     }
 
     foodUpdate();
@@ -224,13 +224,13 @@ void GameState::gameOverAnimation()
     }
 }
 
-void GameState::makingSnakeTurnBody(int it,int x, int y, sf::Vector2i previous, sf::Vector2i next)
+void GameState::makingSnakeTurnBody(int i,int x, int y, sf::Vector2i previous, sf::Vector2i next)
 {
     afterTeleportTurnTransformations(x, y, next);
 
     bool isTeleporting = checkIsTeleporting(previous, x, y);
 
-    if((it != 0)&&(it != snake.getLength() - 1)){//if this body part is not head and tail
+    if((i != 0)&&(i != snake.getLength() - 1)){//if this body part is not head and tail
         if((previous.y > y)&&(next.y == y)){
             tiles[x][y] = Textures::snakeTurnBody;
 
