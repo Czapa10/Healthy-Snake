@@ -27,6 +27,8 @@ private:
     void clearTiles();
     void settingFood();
     void foodUpdate();
+    void snakeMove();
+    void gameOverAnimation();
     bool checkIsTeleporting(sf::Vector2i previous, int x, int y);
 
 private:
