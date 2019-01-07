@@ -20,33 +20,25 @@ void StateStack::popState()
 void StateStack::processStateChanges()
 {
     if(isRemoving && !states.empty()){
-        states.pop();
-
-        if(!states.empty()){
-            states.top()->resume();
-        }
+        states.pop_back();
 
         isRemoving = false;
     }
 
     if(isAdding){
-        if(!states.empty()){
-            if(isReplacing){
-                states.pop();
-            }else{
-                states.top()->pause();
-            }
+        if((!states.empty())&&(isReplacing)){
+            states.pop_back();
         }
 
-        states.push(std::move(newState));
-        states.top()->init();
+        states.push_back(std::move(newState));
+        states.back()->init();
         isAdding = false;
     }
 }
 
 StateRef &StateStack::getActiveState()
 {
-    return states.top();
+    return states.back();
 }
 
 

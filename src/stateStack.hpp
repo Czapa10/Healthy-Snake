@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stack>
+#include <vector>
 #include <memory>
 
 #include "state.hpp"
@@ -24,7 +24,7 @@ public:
     StateRef &getActiveState();
 
 private:
-    std::stack<StateRef> states;
+    std::vector<StateRef> states;
     StateRef newState;
 
     bool isAdding, isReplacing, isRemoving;
