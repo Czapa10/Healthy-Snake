@@ -17,8 +17,19 @@ void StateStack::popState()
     isRemoving = true;
 }
 
+void StateStack::clearStates()
+{
+    isClearing = true;
+}
+
 void StateStack::processStateChanges()
 {
+    if(isClearing && !states.empty()){
+        states.clear();
+
+        isClearing = false;
+    }
+
     if(isRemoving && !states.empty()){
         states.pop_back();
 

@@ -19,6 +19,7 @@ public:
 
     void pushState(StateRef _newState, bool _isReplacing = true);
     void popState();
+    void clearStates();
     void processStateChanges();//run in each frame
 
     StateRef &getActiveState();
@@ -30,7 +31,7 @@ private:
     std::vector<StateRef> states;
     StateRef newState;
 
-    bool isAdding, isReplacing, isRemoving;
+    bool isAdding, isReplacing, isRemoving, isClearing;
 };
 
 

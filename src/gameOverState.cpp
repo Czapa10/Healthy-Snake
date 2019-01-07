@@ -29,10 +29,12 @@ void GameOverState::input()
 void GameOverState::update(sf::Time deltaTime)
 {
     if(enterWasClicked){
+        data->stateStack.clearStates();
         std::unique_ptr<States::GameState> toStack(new States::GameState(data));
         data->stateStack.pushState(std::move(toStack));
     }
     else if(escWasClicked){
+        data->stateStack.clearStates();
         std::unique_ptr<States::MenuState> toStack(new States::MenuState(data));
         data->stateStack.pushState(std::move(toStack));
     }
@@ -40,7 +42,7 @@ void GameOverState::update(sf::Time deltaTime)
 
 void GameOverState::draw()
 {
-    data->window.clear(sf::Color::Red);
+    data->window.clear();
 
     data->window.draw(background);
 

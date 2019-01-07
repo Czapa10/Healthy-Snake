@@ -220,7 +220,7 @@ void GameState::gameOverAnimation()
 {
     if(timeToShowGameOverScreen.getElapsedTime().asSeconds() > 1.1){
         std::unique_ptr<States::GameOverState> toStack(new States::GameOverState(data));
-        data->stateStack.pushState(std::move(toStack));
+        data->stateStack.pushState(std::move(toStack), false);
     }
 }
 
