@@ -41,5 +41,18 @@ StateRef &StateStack::getActiveState()
     return states.back();
 }
 
+StateRef &StateStack::getPreviousState()
+{
+    return states.front();
+}
+
+bool StateStack::areThereTwoStates()
+{
+    if(states.size() == 2){
+        return true;
+    }
+    return false;
+}
+
 
 }

@@ -22,6 +22,9 @@ public:
     void processStateChanges();//run in each frame
 
     StateRef &getActiveState();
+    StateRef &getPreviousState();
+
+    bool areThereTwoStates();
 
 private:
     std::vector<StateRef> states;

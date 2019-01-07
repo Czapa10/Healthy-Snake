@@ -56,6 +56,10 @@ void Game::update(sf::Time deltaTime)
 void Game::render()
 {
     data->stateStack.getActiveState()->draw();
+
+    if(data->stateStack.areThereTwoStates()){
+        data->stateStack.getPreviousState()->draw();
+    }
 }
 
 void Game::loadTextures()
