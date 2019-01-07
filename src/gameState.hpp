@@ -30,7 +30,7 @@ private:
     void snakeMove();
     void gameOverAnimation();
     void makingSnakeTurnBody( int it, int x, int y, sf::Vector2i previous, sf::Vector2i next );
-    void makeSpecificTurnBody( GameElements::Direction _1, GameElements::Direction _2, GameElements::Direction _3, GameElements::Direction _4, bool isTeleporting, int x, int y, sf::Vector2i next );
+    void makeSpecificTurnBody( GameElements::Direction _1, GameElements::Direction _2, GameElements::Direction _3, GameElements::Direction _4, bool isTeleporting, int XorY, int nextXorY, int x, int y);
     void afterTeleportTurnTransformations( int & x, int & y, sf::Vector2i & next );
     bool checkIsTeleporting( sf::Vector2i previous, int x, int y );
 
