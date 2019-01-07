@@ -29,7 +29,8 @@ private:
     void foodUpdate();
     void snakeMove();
     void gameOverAnimation();
-    void makingSnakeTurnBody(int x, int y, sf::Vector2i previous, sf::Vector2i next);
+    void makingSnakeTurnBody(int it, int x, int y, sf::Vector2i previous, sf::Vector2i next);
+    void afterTeleportTurnTransformations(int & x, int & y, sf::Vector2i & next);
     bool checkIsTeleporting(sf::Vector2i previous, int x, int y);
 
 private:

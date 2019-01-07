@@ -57,22 +57,8 @@ void GameState::update(sf::Time deltaTime)
             tiles[x][y] = Textures::snakeStraightBody;
         }
 
-        ///after teleport turn transformations
-        if((next.y + 1 != y)&&(next.y - 1 != y)&&(next.y != y)){
-            next.y = -next.y;
-            if(next.y == 0)
-                next.y = 35;
-        }
-        else if((next.x + 1 != x)&&(next.x - 1 != x)&&(next.x != x)){
-            next.x = -next.x;
-            if(next.x == 0)
-                next.x = 35;
-        }
+        makingSnakeTurnBody(it, x, y, previous, next);
 
-        ///making snake turn body sprite
-        if((it != 0)&&(it != snake.getLength() - 1)){ //if this body part is not head and tail
-            makingSnakeTurnBody(x, y, previous, next);
-        }
         ++it;
     }
 
@@ -238,90 +224,108 @@ void GameState::gameOverAnimation()
     }
 }
 
-void GameState::makingSnakeTurnBody(int x, int y, sf::Vector2i previous, sf::Vector2i next)
+void GameState::makingSnakeTurnBody(int it,int x, int y, sf::Vector2i previous, sf::Vector2i next)
 {
+    afterTeleportTurnTransformations(x, y, next);
+
     bool isTeleporting = checkIsTeleporting(previous, x, y);
 
-    if((previous.y > y)&&(next.y == y)){
-        tiles[x][y] = Textures::snakeTurnBody;
+    if((it != 0)&&(it != snake.getLength() - 1)){//if this body part is not head and tail
+        if((previous.y > y)&&(next.y == y)){
+            tiles[x][y] = Textures::snakeTurnBody;
 
-        if(isTeleporting){
-            if(next.x < x){
-                spriteRotation[x][y] = GameElements::Direction::left;
+            if(isTeleporting){
+                if(next.x < x){
+                    spriteRotation[x][y] = GameElements::Direction::left;
+                }
+                else{
+                    spriteRotation[x][y] = GameElements::Direction::up;
+                }
             }
             else{
+                if(next.x < x){
+                    spriteRotation[x][y] = GameElements::Direction::down;
+                }
+                else{
+                    spriteRotation[x][y] = GameElements::Direction::right;
+                }
+            }
+
+        }
+        else if((previous.y < y)&&(next.y == y)){
+            tiles[x][y] = Textures::snakeTurnBody;
+
+            if(isTeleporting){
+                if(next.x < x){
+                    spriteRotation[x][y] = GameElements::Direction::down;
+                }
+                else{
+                    spriteRotation[x][y] = GameElements::Direction::right;
+                }
+            }
+            else{
+                if(next.x < x){
+                    spriteRotation[x][y] = GameElements::Direction::left;
+                }
+                else{
+                    spriteRotation[x][y] = GameElements::Direction::up;
+                }
+            }
+        }
+        else if((previous.x > x)&&(next.x == x)){
+            tiles[x][y] = Textures::snakeTurnBody;
+
+            if(isTeleporting){
+                if(next.y < y){
+                    spriteRotation[x][y] = GameElements::Direction::left;
+                }
+                else{
+                    spriteRotation[x][y] = GameElements::Direction::down;
+                }
+            }
+            else{
+                if(next.y < y){
                 spriteRotation[x][y] = GameElements::Direction::up;
+                }
+                else{
+                    spriteRotation[x][y] = GameElements::Direction::right;
+                }
             }
         }
-        else{
-            if(next.x < x){
-                spriteRotation[x][y] = GameElements::Direction::down;
-            }
-            else{
-                spriteRotation[x][y] = GameElements::Direction::right;
-            }
-        }
+        else if((previous.x < x)&&(next.x == x)){
+            tiles[x][y] = Textures::snakeTurnBody;
 
-    }
-    else if((previous.y < y)&&(next.y == y)){
-        tiles[x][y] = Textures::snakeTurnBody;
-
-        if(isTeleporting){
-            if(next.x < x){
-                spriteRotation[x][y] = GameElements::Direction::down;
+            if(isTeleporting){
+                if(next.y < y){
+                    spriteRotation[x][y] = GameElements::Direction::up;
+                }
+                else{
+                    spriteRotation[x][y] = GameElements::Direction::right;
+                }
             }
             else{
-                spriteRotation[x][y] = GameElements::Direction::right;
-            }
-        }
-        else{
-            if(next.x < x){
-                spriteRotation[x][y] = GameElements::Direction::left;
-            }
-            else{
-                spriteRotation[x][y] = GameElements::Direction::up;
+                if(next.y < y){
+                    spriteRotation[x][y] = GameElements::Direction::left;
+                }
+                else{
+                    spriteRotation[x][y] = GameElements::Direction::down;
+                }
             }
         }
     }
-    else if((previous.x > x)&&(next.x == x)){
-        tiles[x][y] = Textures::snakeTurnBody;
+}
 
-        if(isTeleporting){
-            if(next.y < y){
-                spriteRotation[x][y] = GameElements::Direction::left;
-            }
-            else{
-                spriteRotation[x][y] = GameElements::Direction::down;
-            }
-        }
-        else{
-            if(next.y < y){
-            spriteRotation[x][y] = GameElements::Direction::up;
-            }
-            else{
-                spriteRotation[x][y] = GameElements::Direction::right;
-            }
-        }
+void GameState::afterTeleportTurnTransformations(int & x, int & y, sf::Vector2i & next)
+{
+    if((next.y + 1 != y)&&(next.y - 1 != y)&&(next.y != y)){
+        next.y = -next.y;
+        if(next.y == 0)
+            next.y = 35;
     }
-    else if((previous.x < x)&&(next.x == x)){
-        tiles[x][y] = Textures::snakeTurnBody;
-
-        if(isTeleporting){
-            if(next.y < y){
-                spriteRotation[x][y] = GameElements::Direction::up;
-            }
-            else{
-                spriteRotation[x][y] = GameElements::Direction::right;
-            }
-        }
-        else{
-            if(next.y < y){
-                spriteRotation[x][y] = GameElements::Direction::left;
-            }
-            else{
-                spriteRotation[x][y] = GameElements::Direction::down;
-            }
-        }
+    else if((next.x + 1 != x)&&(next.x - 1 != x)&&(next.x != x)){
+        next.x = -next.x;
+        if(next.x == 0)
+            next.x = 35;
     }
 }
 
