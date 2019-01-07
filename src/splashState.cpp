@@ -61,8 +61,6 @@ void SplashState::draw()
     data->window.clear(sf::Color::White);
 
     data->window.draw(background);
-
-    data->window.display();
 }
 
 

@@ -98,8 +98,6 @@ void GameState::draw()
     }
 
     statisticsBar.draw(points, snake.getLength(), snake.getInStomach());
-
-    data->window.display();
 }
 
 //*************************************************************************

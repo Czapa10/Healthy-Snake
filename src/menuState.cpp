@@ -175,8 +175,6 @@ void MenuState::draw()
     data->window.draw(credits);
     data->window.draw(bestScore);
     data->window.draw(exit);
-
-    data->window.display();
 }
 
 
