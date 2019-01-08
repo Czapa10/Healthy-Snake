@@ -47,7 +47,7 @@ public:
     float getSpeed(){return speed;}
     void setSpeed(float newSpeed){speed = newSpeed;}
     Direction getDirection();
-    Textures::ID getSnakeHeadTexture(std::vector<Food> food, bool hasJustEaten){return head.getCurrentHead(bodyParts.front().pos, currentDirection, food, hasJustEaten);}
+    Textures::ID getSnakeHeadTexture(std::vector<Food> food){return head.getCurrentHead(bodyParts.front().pos, currentDirection, food);}
 
 public:
     std::vector<BodyPart> bodyParts;

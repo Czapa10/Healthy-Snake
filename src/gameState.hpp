@@ -50,7 +50,6 @@ private:
 
     sf::Clock timeToShowGameOverScreen;
     bool freeze{false};
-    bool hasJustEaten{false};
 };
 
 

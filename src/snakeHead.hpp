@@ -14,12 +14,16 @@ enum class Direction;
 class SnakeHead
 {
 public:
-    Textures::ID getCurrentHead(sf::Vector2i headPos, Direction direction, std::vector<Food> food, bool hasJustEaten);
+    Textures::ID getCurrentHead(sf::Vector2i headPos, Direction direction, std::vector<Food> food);
 
 private:
     bool showTongue();
     bool openMouthBeforeEat(sf::Vector2i & headPos, Direction & direction, std::vector<Food> & food);
+    bool closeEyesAfterMeal(sf::Vector2i & headPos, std::vector<Food> & food);
     bool dieAnimation();
+
+private:
+    bool hasJustEaten{false};
 };
 
 
