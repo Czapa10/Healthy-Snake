@@ -6,6 +6,7 @@
 
 #include "resourceIdentifiers.hpp"
 #include "snakeHead.hpp"
+#include "food.hpp"
 
 namespace GameElements
 {
@@ -44,7 +45,7 @@ public:
     int getLength(){return snakeLength;}
     int getInStomach(){return foodInStomach;}
     float getSpeed(){return speed;}
-    Textures::ID getSnakeHeadTexture(Textures::ID tiles[32][24]){return head.getCurrentHead(tiles);}
+    Textures::ID getSnakeHeadTexture(std::vector<Food> food){return head.getCurrentHead(bodyParts.front().pos, food);}
     void setSpeed(float newSpeed){speed = newSpeed;}
     Direction getDirection();
 

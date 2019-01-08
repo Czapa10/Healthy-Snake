@@ -4,14 +4,14 @@ namespace GameElements
 {
 
 
-Textures::ID SnakeHead::getCurrentHead(Textures::ID tiles[32][24])
+Textures::ID SnakeHead::getCurrentHead(sf::Vector2i headPos, std::vector<Food> food)
 {
     ///here will be dying animation
 
     if(showTongue()){
         return Textures::snakeHeadTounge;
     }
-    else if(openMouthBeforeEat(tiles)){
+    else if(openMouthBeforeEat()){
         return Textures::snakeHeadOpenMouth;
     }
     else if(closeEyesAfterMeal()){
@@ -27,7 +27,7 @@ bool SnakeHead::showTongue()
     return false;
 }
 
-bool SnakeHead::openMouthBeforeEat(Textures::ID tiles[32][24])
+bool SnakeHead::openMouthBeforeEat()
 {
     return false;
 }
