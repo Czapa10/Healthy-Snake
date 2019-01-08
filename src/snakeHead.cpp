@@ -2,11 +2,13 @@
 
 #include "snake.hpp"
 
+#include <iostream>
+
 namespace GameElements
 {
 
 
-Textures::ID SnakeHead::getCurrentHead(sf::Vector2i headPos, Direction direction, std::vector<Food> food)
+Textures::ID SnakeHead::getCurrentHead(sf::Vector2i headPos, Direction direction, std::vector<Food> food, bool hasJustEaten)
 {
     ///here will be dying animation
 
@@ -16,7 +18,7 @@ Textures::ID SnakeHead::getCurrentHead(sf::Vector2i headPos, Direction direction
     else if(openMouthBeforeEat(headPos, direction, food)){
         return Textures::snakeHeadOpenMouth;
     }
-    else if(closeEyesAfterMeal()){
+    else if(hasJustEaten){
         return Textures::snakeHeadClosedEyes;
     }
     else{
@@ -60,12 +62,6 @@ bool SnakeHead::openMouthBeforeEat(sf::Vector2i & headPos, Direction & direction
         if((meal.getPosition() == inFrontOfHead)||(meal.getPosition() == furtherInFrontOfHead))
             return true;
     }
-
-    return false;
-}
-
-bool SnakeHead::closeEyesAfterMeal()
-{
     return false;
 }
 

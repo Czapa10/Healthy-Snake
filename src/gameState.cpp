@@ -47,7 +47,7 @@ void GameState::update(sf::Time deltaTime)
         spriteRotation[x][y] = bodyPart.direction;
 
         if(i == 0){
-            tiles[x][y] = snake.getSnakeHeadTexture(food);
+            tiles[x][y] = snake.getSnakeHeadTexture(food, hasJustEaten);
         }
         else if(i == snake.getLength() - 1){
             tiles[x][y] = Textures::snakeTail;
@@ -122,36 +122,21 @@ void GameState::settingFood()
 
 void GameState::foodUpdate()
 {
+    hasJustEaten = false;
+
+    std::cout<<"1: "<<hasJustEaten<<"     ";
+
     int i{};
     for(auto & meal : food){
+        std::cout<<"2: "<<hasJustEaten<<"     ";
 
         tiles[meal.getPosition().x][meal.getPosition().y] = meal.getTextureID();
 
         ///eating meal and meal changes its position
-        bool changePos{false};
+        if((snake.bodyParts.front().pos.x == meal.getPosition().x)&&(snake.bodyParts.front().pos.y == meal.getPosition().y)){
+            hasJustEaten = true;
+            std::cout<<"3: "<<hasJustEaten<<"     ";
 
-        if((snake.getDirection() == GameElements::Direction::left)&&
-            (snake.bodyParts[0].pos.x == meal.getPosition().x)&&
-            (snake.bodyParts[0].pos.y == meal.getPosition().y)){
-                changePos = true;
-        }
-        else if((snake.getDirection() == GameElements::Direction::right)&&
-            (snake.bodyParts[0].pos.x == meal.getPosition().x)&&
-            (snake.bodyParts[0].pos.y == meal.getPosition().y)){
-                changePos = true;
-        }
-        else if((snake.getDirection() == GameElements::Direction::up)&&
-            (snake.bodyParts[0].pos.x == meal.getPosition().x)&&
-            (snake.bodyParts[0].pos.y == meal.getPosition().y)){
-                changePos = true;
-        }
-        else if((snake.getDirection() == GameElements::Direction::down)&&
-            (snake.bodyParts[0].pos.x == meal.getPosition().x)&&
-            (snake.bodyParts[0].pos.y == meal.getPosition().y)){
-                changePos = true;
-        }
-
-        if(changePos){
             snake.eat(meal.getWeight());
             points += meal.getPoints();
 
@@ -196,6 +181,8 @@ void GameState::foodUpdate()
             }
         }
         ++i;
+
+        std::cout<<"4: "<<hasJustEaten<<"     "<<std::endl;
     }
 }
 
