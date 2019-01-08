@@ -32,27 +32,32 @@ bool SnakeHead::showTongue()
 bool SnakeHead::openMouthBeforeEat(sf::Vector2i & headPos, Direction & direction, std::vector<Food> & food)
 {
     sf::Vector2i inFrontOfHead = headPos;
+    sf::Vector2i furtherInFrontOfHead = headPos;
 
     switch(direction){
         case Direction::right:
             ++inFrontOfHead.x;
+            furtherInFrontOfHead.x += 2;
             break;
 
         case Direction::left:
             --inFrontOfHead.x;
+            furtherInFrontOfHead.x -= 2;
             break;
 
         case Direction::down:
             ++inFrontOfHead.y;
+            furtherInFrontOfHead.y += 2;
             break;
 
         case Direction::up:
             --inFrontOfHead.y;
+            furtherInFrontOfHead.y -= 2;
             break;
     }
 
     for(auto meal : food){
-        if(meal.getPosition() == inFrontOfHead)
+        if((meal.getPosition() == inFrontOfHead)||(meal.getPosition() == furtherInFrontOfHead))
             return true;
     }
 
