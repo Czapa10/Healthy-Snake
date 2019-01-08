@@ -47,7 +47,7 @@ void GameState::update(sf::Time deltaTime)
         spriteRotation[x][y] = bodyPart.direction;
 
         if(i == 0){
-            tiles[x][y] = Textures::snakeHead;
+            tiles[x][y] = snake.getSnakeHeadTexture(tiles);
         }
         else if(i == snake.getLength() - 1){
             tiles[x][y] = Textures::snakeTail;

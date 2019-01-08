@@ -81,9 +81,14 @@ void Game::loadTextures()
     data->textures.load(Textures::gameBackground, "resources/textures/gameBackground.jpg");
 
     data->textures.load(Textures::snakeStraightBody, "resources/textures/snakeStraightBody.png");
-    data->textures.load(Textures::snakeHead, "resources/textures/snakeHead.png");
     data->textures.load(Textures::snakeTail, "resources/textures/snakeTail.png");
     data->textures.load(Textures::snakeTurnBody, "resources/textures/snakeTurnBody.png");
+    data->textures.load(Textures::snakeHead, "resources/textures/snakeHead.png");
+    data->textures.load(Textures::snakeHeadOpenMouth, "resources/textures/snakeHeadOpenMouth.png");
+    data->textures.load(Textures::snakeHeadClosedEyes, "resources/textures/snakeHeadClosedEyes.png");
+    data->textures.load(Textures::snakeHeadBigEyesWhileDying, "resources/textures/snakeHeadBigEyesWhileDying.png");
+    data->textures.load(Textures::snakeHeadTounge, "resources/textures/snakeHeadTounge.png");
+    data->textures.load(Textures::snakeHeadClosedEyesWhileDying, "resources/textures/snakeHeadClosedEyesWhileDying.png");
 
     data->textures.load(Textures::appleRed, "resources/textures/appleRed.png");
     data->textures.load(Textures::appleYellow, "resources/textures/appleYellow.png");

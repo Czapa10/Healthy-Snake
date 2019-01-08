@@ -14,9 +14,6 @@ using StateRef = std::unique_ptr<State>;
 class StateStack
 {
 public:
-    StateStack(){}
-    ~StateStack(){}
-
     void pushState(StateRef _newState, bool _isReplacing = true);
     void popState();
     void clearStates();

@@ -44,6 +44,7 @@ public:
     int getLength(){return snakeLength;}
     int getInStomach(){return foodInStomach;}
     float getSpeed(){return speed;}
+    Textures::ID getSnakeHeadTexture(Textures::ID tiles[32][24]){return head.getCurrentHead(tiles);}
     void setSpeed(float newSpeed){speed = newSpeed;}
     Direction getDirection();
 

@@ -18,10 +18,16 @@ namespace Textures
         ///game sprites
         gameBackground,
 
-        snakeHead,
         snakeStraightBody,
         snakeTurnBody,
         snakeTail,
+        /////////
+        snakeHead,
+        snakeHeadOpenMouth,
+        snakeHeadClosedEyes,
+        snakeHeadTounge,
+        snakeHeadBigEyesWhileDying,
+        snakeHeadClosedEyesWhileDying,
 
         appleRed,
         appleYellow,
