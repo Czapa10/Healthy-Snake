@@ -69,6 +69,7 @@ bool SnakeHead::closeEyesAfterMeal(Direction & direction)
         hadOpenMouth = false;
         return true;
     }
+    hadOpenMouth = false;
 
     previousDirection = direction;
     return false;
