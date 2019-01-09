@@ -17,9 +17,9 @@ public:
     Textures::ID getCurrentHead(sf::Vector2i headPos, Direction direction, std::vector<Food> food);
 
 private:
-    bool showTongue();
-    bool openMouthBeforeEat(sf::Vector2i & headPos, Direction & direction, std::vector<Food> & food);
-    bool closeEyesAfterMeal(Direction & direction);
+    bool shouldOpenMouth(sf::Vector2i & headPos, Direction & direction, std::vector<Food> & food);//before eat
+    bool shouldCloseEyes(Direction & direction);//after meal
+    bool shouldShowTongue() const;
     bool dieAnimation();
 
 private:

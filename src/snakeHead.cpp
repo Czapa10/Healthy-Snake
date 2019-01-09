@@ -12,20 +12,19 @@ Textures::ID SnakeHead::getCurrentHead(sf::Vector2i headPos, Direction direction
 {
     ///here will be dying animation
 
-    if(openMouthBeforeEat(headPos, direction, food)){
+    if(shouldOpenMouth(headPos, direction, food)){
         return Textures::snakeHeadOpenMouth;
     }
-    if(closeEyesAfterMeal(direction)){
+    if(shouldCloseEyes(direction)){
         return Textures::snakeHeadClosedEyes;
     }
-    if(showTongue()){
+    if(shouldShowTongue()){
         return Textures::snakeHeadTounge;
     }
-
     return Textures::snakeHead;
 }
 
-bool SnakeHead::openMouthBeforeEat(sf::Vector2i & headPos, Direction & direction, std::vector<Food> & food)
+bool SnakeHead::shouldOpenMouth(sf::Vector2i & headPos, Direction & direction, std::vector<Food> & food)
 {
     sf::Vector2i inFrontOfHead = headPos;
     sf::Vector2i furtherInFrontOfHead = headPos;
@@ -61,7 +60,7 @@ bool SnakeHead::openMouthBeforeEat(sf::Vector2i & headPos, Direction & direction
     return false;
 }
 
-bool SnakeHead::closeEyesAfterMeal(Direction & direction)
+bool SnakeHead::shouldCloseEyes(Direction & direction)
 {
     static Direction previousDirection;
 
@@ -75,7 +74,7 @@ bool SnakeHead::closeEyesAfterMeal(Direction & direction)
     return false;
 }
 
-bool SnakeHead::showTongue()
+bool SnakeHead::shouldShowTongue() const
 {
     static int counter{-5}; //counter for show or not show tongue
 
@@ -83,10 +82,7 @@ bool SnakeHead::showTongue()
     if(counter == 8)
         counter = -20;
 
-    if(counter > 0)
-        return true;
-    return false;
-
+    return counter > 0;
 }
 
 bool SnakeHead::dieAnimation()
