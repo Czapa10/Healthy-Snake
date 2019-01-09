@@ -15,7 +15,7 @@ Textures::ID SnakeHead::getCurrentHead(sf::Vector2i headPos, Direction direction
     if(openMouthBeforeEat(headPos, direction, food)){
         return Textures::snakeHeadOpenMouth;
     }
-    if(closeEyesAfterMeal()){
+    if(closeEyesAfterMeal(direction)){
         return Textures::snakeHeadClosedEyes;
     }
     if(showTongue()){
@@ -61,12 +61,17 @@ bool SnakeHead::openMouthBeforeEat(sf::Vector2i & headPos, Direction & direction
     return false;
 }
 
-bool SnakeHead::closeEyesAfterMeal()
+bool SnakeHead::closeEyesAfterMeal(Direction & direction)
 {
-    if(hadOpenMouth){
+    static Direction previousDirection;
+
+    if((hadOpenMouth)&&(previousDirection == direction)){
         hadOpenMouth = false;
         return true;
     }
+
+    previousDirection = direction;
+    return false;
 }
 
 bool SnakeHead::showTongue()

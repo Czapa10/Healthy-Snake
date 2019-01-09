@@ -19,7 +19,7 @@ public:
 private:
     bool showTongue();
     bool openMouthBeforeEat(sf::Vector2i & headPos, Direction & direction, std::vector<Food> & food);
-    bool closeEyesAfterMeal();
+    bool closeEyesAfterMeal(Direction & direction);
     bool dieAnimation();
 
 private:
