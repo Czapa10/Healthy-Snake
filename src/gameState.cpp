@@ -47,7 +47,7 @@ void GameState::update(sf::Time deltaTime)
         spriteRotation[x][y] = bodyPart.direction;
 
         if(i == 0){
-            tiles[x][y] = snake.getSnakeHeadTexture(food);
+            tiles[x][y] = headTexture;
         }
         else if(i == snake.getLength() - 1){
             tiles[x][y] = Textures::snakeTail;
@@ -133,7 +133,7 @@ void GameState::foodUpdate()
 
             if(food.size() * 4 > 768 - snake.getLength()){
                 food.erase(food.begin() + i);
-                std::cout<<food.size()<<std::endl;
+                //std::cout<<food.size()<<std::endl;
             }
             else{
                 for(;;){
@@ -180,6 +180,7 @@ void GameState::snakeMove()
     if(clock.getElapsedTime().asSeconds() > snake.getSpeed()){
         snake.move();
         snake.grow();
+        headTexture = snake.getSnakeHeadTexture(food);
         clock.restart();
 
         ///check collision

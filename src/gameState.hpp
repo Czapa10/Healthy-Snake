@@ -44,6 +44,7 @@ private:
     GameElements::Direction spriteRotation[32][24];
     GameElements::Snake snake;
     GameElements::StatBar statisticsBar;
+    Textures::ID headTexture{Textures::snakeHead};
     std::vector<GameElements::Food> food;
     int numberOfMealsOnTheScreen{190};
     int points{};
