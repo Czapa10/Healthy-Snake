@@ -11,18 +11,13 @@ namespace GameElements
 Textures::ID SnakeHead::getCurrentHead(sf::Vector2i headPos, Direction direction, std::vector<Food> food)
 {
     ///here will be dying animation
-    std::cout<<"1: "<<hadOpenMouth<<"     ";
 
     if(openMouthBeforeEat(headPos, direction, food)){
-        hadOpenMouth = true;
         return Textures::snakeHeadOpenMouth;
     }
-    std::cout<<"2: "<<hadOpenMouth<<std::endl; //it's false
-    if(hadOpenMouth){
-        hadOpenMouth = false;
+    if(closeEyesAfterMeal()){
         return Textures::snakeHeadClosedEyes;
     }
-
     if(showTongue()){
         return Textures::snakeHeadTounge;
     }
@@ -59,10 +54,19 @@ bool SnakeHead::openMouthBeforeEat(sf::Vector2i & headPos, Direction & direction
 
     for(auto meal : food){
         if((meal.getPosition() == inFrontOfHead)||(meal.getPosition() == furtherInFrontOfHead)){
+            hadOpenMouth = true;
             return true;
         }
     }
     return false;
+}
+
+bool SnakeHead::closeEyesAfterMeal()
+{
+    if(hadOpenMouth){
+        hadOpenMouth = false;
+        return true;
+    }
 }
 
 bool SnakeHead::showTongue()
