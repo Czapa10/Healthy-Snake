@@ -77,7 +77,16 @@ bool SnakeHead::closeEyesAfterMeal(Direction & direction)
 
 bool SnakeHead::showTongue()
 {
+    static int counter{-5}; //counter for show or not show tongue
+
+    ++counter;
+    if(counter == 8)
+        counter = -20;
+
+    if(counter > 0)
+        return true;
     return false;
+
 }
 
 bool SnakeHead::dieAnimation()
