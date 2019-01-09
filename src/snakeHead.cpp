@@ -12,14 +12,14 @@ Textures::ID SnakeHead::getCurrentHead(sf::Vector2i headPos, Direction direction
 {
     ///here will be dying animation
 
-    if(showTongue()){
-        return Textures::snakeHeadTounge;
-    }
-    else if(openMouthBeforeEat(headPos, direction, food)){
+    if(openMouthBeforeEat(headPos, direction, food)){
         return Textures::snakeHeadOpenMouth;
     }
     else if(hasJustEaten){
         return Textures::snakeHeadClosedEyes;
+    }
+    else if(showTongue()){
+        return Textures::snakeHeadTounge;
     }
     else{
         return Textures::snakeHead;
