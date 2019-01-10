@@ -65,7 +65,6 @@ void GameState::update(sf::Time deltaTime)
     foodUpdate();
 
     snakeMove();
-
 }
 
 void GameState::draw()
@@ -186,14 +185,15 @@ void GameState::snakeMove()
         ///check collision
         if(snake.isCollideWithItself(tiles)){
             freeze = true;
-            timeToShowGameOverScreen.restart();
         }
     }
 }
 
 void GameState::gameOverAnimation()
 {
-    if(timeToShowGameOverScreen.getElapsedTime().asSeconds() > 1.1){
+    snake.head.dieAnimation(snake.bodyParts.front().pos, snake.getDirection(), tiles);
+
+    if(snake.head.showGameOverScreen()){
         std::unique_ptr<States::GameOverState> toStack(new States::GameOverState(data));
         data->stateStack.pushState(std::move(toStack), false);
     }

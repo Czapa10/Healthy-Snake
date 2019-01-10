@@ -49,7 +49,6 @@ private:
     int numberOfMealsOnTheScreen{190};
     int points{};
 
-    sf::Clock timeToShowGameOverScreen;
     bool freeze{false};
 };
 

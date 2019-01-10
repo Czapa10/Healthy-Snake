@@ -8,6 +8,25 @@ namespace GameElements
 {
 
 
+void snakeHead::dieAnimation(sf::Vector2i headPos, Direction direction, Textures::ID tiles[32][24])
+{
+    resetClock();
+
+    Textures::ID newHeadTexture;
+
+    if(dyingTime < 0.7){
+        tiles[headPos.x][headPos.y] = Textures::snakeHeadBigEyesWhileDying;
+    }
+    else if(dyingTime < 1.1){
+        tiles[headPos.x][headPos.y] = Textures::snakeHeadClosedEyesWhileDying;
+    }
+}
+
+bool snakeHead::showGameOverScreen()
+{
+    return dyingTime > 1.1;
+}
+
 Textures::ID SnakeHead::getCurrentHead(sf::Vector2i headPos, Direction direction, std::vector<Food> food)
 {
     ///here will be dying animation
@@ -85,9 +104,14 @@ bool SnakeHead::shouldShowTongue() const
     return counter > 0;
 }
 
-bool SnakeHead::dieAnimation()
+void resetClock()
 {
-    return false;
+    static bool hasBeenReseted{false};
+
+    if(!hasBeenReseted){
+        dyingTime.restart();
+        hasBeenReseted = true;
+    }
 }
 
 

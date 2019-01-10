@@ -8,6 +8,8 @@
 #include "snakeHead.hpp"
 #include "food.hpp"
 
+
+
 namespace GameElements
 {
 
@@ -51,9 +53,9 @@ public:
 
 public:
     std::vector<BodyPart> bodyParts;
+    SnakeHead head;
 
 private:
-    SnakeHead head;
     int snakeLength = 3;
     int foodInStomach{};
     float speed{0.12};// 1s / speed = one move on frame
