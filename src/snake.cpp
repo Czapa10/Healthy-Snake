@@ -175,5 +175,10 @@ Direction Snake::getDirection()
     return (inputQueue.front());
 }
 
+void Snake::snakeHeadInit(std::vector<Food>food, Textures::ID tiles[32][24])
+{
+    head.init(bodyParts.front().pos, inputQueue.front(), food, tiles);
+}
+
 
 }

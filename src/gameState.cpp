@@ -177,9 +177,10 @@ void GameState::foodUpdate()
 void GameState::snakeMove()
 {
     if(clock.getElapsedTime().asSeconds() > snake.getSpeed()){
+        snake.snakeHeadInit(food, tiles);
         snake.move();
         snake.grow();
-        headTexture = snake.getSnakeHeadTexture(food);
+        headTexture = snake.head.getCurrentHead();
         clock.restart();
 
         ///check collision
@@ -191,7 +192,7 @@ void GameState::snakeMove()
 
 void GameState::gameOverAnimation()
 {
-    snake.head.dieAnimation(snake.bodyParts.front().pos, snake.getDirection(), tiles);
+    //snake.head.dieAnimation(snake.bodyParts.front().pos, snake.getDirection(), tiles);
 
     if(snake.head.showGameOverScreen()){
         std::unique_ptr<States::GameOverState> toStack(new States::GameOverState(data));
