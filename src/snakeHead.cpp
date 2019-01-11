@@ -8,6 +8,7 @@ namespace GameElements
 {
 
 
+<<<<<<< HEAD
 void SnakeHead::init(sf::Vector2i _headPos, Direction _direction, std::vector<Food> _food, Textures::ID _tiles[32][24])
 {
     headPos = _headPos;
@@ -36,6 +37,9 @@ bool SnakeHead::showGameOverScreen()
 }
 
 Textures::ID SnakeHead::getCurrentHead()
+=======
+Textures::ID SnakeHead::getCurrentHead(sf::Vector2i headPos, Direction direction, std::vector<Food> food)
+>>>>>>> temp
 {
     ///here will be dying animation
 
@@ -110,16 +114,6 @@ bool SnakeHead::shouldShowTongue() const
         counter = -20;
 
     return counter > 0;
-}
-
-void resetClock()
-{
-    static bool hasBeenReseted{false};
-
-    if(!hasBeenReseted){
-        dyingTime.restart();
-        hasBeenReseted = true;
-    }
 }
 
 

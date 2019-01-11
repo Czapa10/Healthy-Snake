@@ -52,6 +52,8 @@ private:
     int points{};
 
     bool freeze{false};
+    bool hasDyingTimeBeedRestarted{false};
+    sf::Clock dyingTime;
 };
 
 

@@ -192,9 +192,38 @@ void GameState::snakeMove()
 
 void GameState::gameOverAnimation()
 {
-    //snake.head.dieAnimation(snake.bodyParts.front().pos, snake.getDirection(), tiles);
+    if(!hasDyingTimeBeedRestarted){
+        dyingTime.restart();
+        hasDyingTimeBeedRestarted = true;
+    }
 
-    if(snake.head.showGameOverScreen()){
+    sf::Vector2i headPos = snake.bodyParts.front().pos;
+
+    switch(snake.getDirection()){
+        case GameElements::Direction::right:
+            --headPos.x;
+            break;
+
+        case GameElements::Direction::left:
+            ++headPos.x;
+            break;
+
+        case GameElements::Direction::down:
+            --headPos.y;
+            break;
+
+        case GameElements::Direction::up:
+            ++headPos.x;
+            break;
+    }
+
+    if(dyingTime.getElapsedTime().asSeconds() < 0.7){
+        tiles[headPos.x][headPos.y] = Textures::snakeHeadBigEyesWhileDying;
+    }
+    else if(dyingTime.getElapsedTime().asSeconds() < 1.1){
+        tiles[headPos.x][headPos.y] = Textures::snakeHeadClosedEyesWhileDying;
+    }
+    else{
         std::unique_ptr<States::GameOverState> toStack(new States::GameOverState(data));
         data->stateStack.pushState(std::move(toStack), false);
     }
