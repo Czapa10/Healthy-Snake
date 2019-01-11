@@ -49,7 +49,7 @@ public:
     float getSpeed(){return speed;}
     void setSpeed(float newSpeed){speed = newSpeed;}
     Direction getDirection();
-    void snakeHeadInit(std::vector<Food> food, Textures::ID tiles[32][24]);
+    Textures::ID getSnakeHeadTexture(std::vector<Food> food){return head.getCurrentHead(bodyParts.front().pos, currentDirection, food);}
 
 public:
     std::vector<BodyPart> bodyParts;

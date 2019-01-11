@@ -23,7 +23,8 @@ void GameState::init()
 
 void GameState::input()
 {
-    snake.control();
+    if(!freeze)
+        snake.control();
 }
 
 void GameState::update(sf::Time deltaTime)
@@ -36,31 +37,7 @@ void GameState::update(sf::Time deltaTime)
     ///set sprites
     clearTiles();
 
-    int i{};//iterator
-    for(auto & bodyPart : snake.bodyParts){
-        int x = bodyPart.pos.x;
-        int y = bodyPart.pos.y;
-
-        sf::Vector2i previous = snake.bodyParts[i - 1].pos; //(in direction to head)
-        sf::Vector2i next = snake.bodyParts[i + 1].pos; //(in direction to tail)
-
-        spriteRotation[x][y] = bodyPart.direction;
-
-        if(i == 0){
-            (tiles[x][y]) = headTexture;
-        }
-        else if(i == snake.getLength() - 1){
-            tiles[x][y] = Textures::snakeTail;
-            spriteRotation[x][y] = snake.bodyParts[snake.getLength() - 2].direction;
-        }
-        else{
-            tiles[x][y] = Textures::snakeStraightBody;
-        }
-
-        makingSnakeTurnBody(i, x, y, previous, next);
-
-        ++i;
-    }
+    updatingSnake();
 
     foodUpdate();
 
@@ -100,6 +77,35 @@ void GameState::draw()
 }
 
 //*************************************************************************
+
+void GameState::updatingSnake()
+{
+    int i{};//iterator
+    for(auto & bodyPart : snake.bodyParts){
+        int x = bodyPart.pos.x;
+        int y = bodyPart.pos.y;
+
+        sf::Vector2i previous = snake.bodyParts[i - 1].pos; //(in direction to head)
+        sf::Vector2i next = snake.bodyParts[i + 1].pos; //(in direction to tail)
+
+        spriteRotation[x][y] = bodyPart.direction;
+
+        if(i == 0){
+            (tiles[x][y]) = headTexture;
+        }
+        else if(i == snake.getLength() - 1){
+            tiles[x][y] = Textures::snakeTail;
+            spriteRotation[x][y] = snake.bodyParts[snake.getLength() - 2].direction;
+        }
+        else{
+            tiles[x][y] = Textures::snakeStraightBody;
+        }
+
+        makingSnakeTurnBody(i, x, y, previous, next);
+
+        ++i;
+    }
+}
 
 void GameState::clearTiles()
 {
@@ -177,10 +183,9 @@ void GameState::foodUpdate()
 void GameState::snakeMove()
 {
     if(clock.getElapsedTime().asSeconds() > snake.getSpeed()){
-        snake.snakeHeadInit(food, tiles);
         snake.move();
         snake.grow();
-        headTexture = snake.head.getCurrentHead();
+        headTexture = snake.getSnakeHeadTexture(food);
         clock.restart();
 
         ///check collision

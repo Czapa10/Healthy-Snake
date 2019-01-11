@@ -25,6 +25,7 @@ public:
     void draw();
 
 private:
+    void updatingSnake();
     void clearTiles();
     void settingFood();
     void foodUpdate();
@@ -41,8 +42,7 @@ private:
     sf::Clock clock;
 
     sf::Sprite background;
-    //Textures::ID tiles[32][24];
-    std::array<std::array<GameElements::Direction, 24>, 32> tiles;
+    Textures::ID tiles[32][24];
     GameElements::Direction spriteRotation[32][24];
     GameElements::Snake snake;
     GameElements::StatBar statisticsBar;

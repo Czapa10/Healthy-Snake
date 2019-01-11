@@ -8,38 +8,7 @@ namespace GameElements
 {
 
 
-<<<<<<< HEAD
-void SnakeHead::init(sf::Vector2i _headPos, Direction _direction, std::vector<Food> _food, Textures::ID _tiles[32][24])
-{
-    headPos = _headPos;
-    direction = _direction;
-    food = _food;
-    tiles = _tiles;
-}
-
-void SnakeHead::dieAnimation()
-{
-    resetClock();
-
-    Textures::ID newHeadTexture;
-
-    if(dyingTime < 0.7){
-        tiles[headPos.x][headPos.y] = Textures::snakeHeadBigEyesWhileDying;
-    }
-    else if(dyingTime < 1.1){
-        tiles[headPos.x][headPos.y] = Textures::snakeHeadClosedEyesWhileDying;
-    }
-}
-
-bool SnakeHead::showGameOverScreen()
-{
-    return dyingTime > 1.1;
-}
-
-Textures::ID SnakeHead::getCurrentHead()
-=======
 Textures::ID SnakeHead::getCurrentHead(sf::Vector2i headPos, Direction direction, std::vector<Food> food)
->>>>>>> temp
 {
     ///here will be dying animation
 
@@ -55,7 +24,7 @@ Textures::ID SnakeHead::getCurrentHead(sf::Vector2i headPos, Direction direction
     return Textures::snakeHead;
 }
 
-bool SnakeHead::shouldOpenMouth()
+bool SnakeHead::shouldOpenMouth(sf::Vector2i & headPos, Direction & direction, std::vector<Food> & food)
 {
     sf::Vector2i inFrontOfHead = headPos;
     sf::Vector2i furtherInFrontOfHead = headPos;
@@ -91,7 +60,7 @@ bool SnakeHead::shouldOpenMouth()
     return false;
 }
 
-bool SnakeHead::shouldCloseEyes()
+bool SnakeHead::shouldCloseEyes(Direction & direction)
 {
     static Direction previousDirection;
 
