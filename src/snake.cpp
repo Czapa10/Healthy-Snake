@@ -172,7 +172,7 @@ bool Snake::isCollideWithItself(Textures::ID tiles[32][24])
 
 Direction Snake::getDirection()
 {
-    return (inputQueue.front());
+    return inputQueue.front();
 }
 
 

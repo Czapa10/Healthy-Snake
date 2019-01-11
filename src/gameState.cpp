@@ -55,7 +55,7 @@ void GameState::draw()
             if(tiles[i][j] != Textures::nothing){
                 sf::Sprite sprite;
                 sprite.setTexture(data->textures.get(tiles[i][j]));
-                sprite.setPosition(sf::Vector2f(i * 32 + 16, /*48 +*/ j * 32 + 16));
+                sprite.setPosition(sf::Vector2f(i * 32 + 16, j * 32 + 16));
 
                 sprite.setOrigin(16.f, 16.f);
                 if(spriteRotation[i][j] == GameElements::Direction::left){
@@ -91,7 +91,7 @@ void GameState::updatingSnake()
         spriteRotation[x][y] = bodyPart.direction;
 
         if(i == 0){
-            (tiles[x][y]) = headTexture;
+            tiles[x][y] = headTexture;
         }
         else if(i == snake.getLength() - 1){
             tiles[x][y] = Textures::snakeTail;
@@ -218,10 +218,9 @@ void GameState::gameOverAnimation()
             break;
 
         case GameElements::Direction::up:
-            ++headPos.x;
+            ++headPos.y;
             break;
     }
-
     if(dyingTime.getElapsedTime().asSeconds() < 0.7){
         tiles[headPos.x][headPos.y] = Textures::snakeHeadBigEyesWhileDying;
     }

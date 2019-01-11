@@ -22,11 +22,6 @@ private:
     bool shouldShowTongue() const;
 
 private:
-    sf::Vector2i headPos;
-    Direction direction;
-    std::vector<Food> food;
-    Textures::ID tiles[32][24];
-
     bool hadOpenMouth;
 };
 
