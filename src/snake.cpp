@@ -21,7 +21,7 @@ Snake::Snake()
 
     for(int i = 0; i < snakeLength; i++){
         BodyPart part(sf::Vector2i(i + 10, 10), Direction::left);
-        bodyParts.push_back(part);
+        bodyParts.emplace_back(part);
     }
 }
 
@@ -131,7 +131,7 @@ void Snake::grow()
 
     BodyPart tail(sf::Vector2i(x,y), bodyParts.back().direction);
 
-    bodyParts.push_back(tail);
+    bodyParts.emplace_back(tail);
 
     ++snakeLength;
     --foodInStomach;

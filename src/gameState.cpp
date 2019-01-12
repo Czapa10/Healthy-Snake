@@ -121,7 +121,7 @@ void GameState::settingFood()
 {
     for(int i = 0; i < numberOfMealsOnTheScreen; ++i){
         GameElements::Food meal;
-        food.push_back(meal);
+        food.emplace_back(meal);
     }
 }
 

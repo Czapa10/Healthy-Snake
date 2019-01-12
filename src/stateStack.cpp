@@ -41,7 +41,7 @@ void StateStack::processStateChanges()
             states.pop_back();
         }
 
-        states.push_back(std::move(newState));
+        states.emplace_back(std::move(newState));
         states.back()->init();
         isAdding = false;
     }
