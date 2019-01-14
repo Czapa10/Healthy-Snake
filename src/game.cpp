@@ -95,6 +95,9 @@ void Game::loadTextures() const
     data->textures.load(Textures::hamburger, "resources/textures/hamburger.png");
     data->textures.load(Textures::cherry, "resources/textures/cherry.png");
     data->textures.load(Textures::meat, "resources/textures/meat.png");
+    data->textures.load(Textures::iceCream, "resources/textures/iceCream.png");
+    data->textures.load(Textures::donut, "resources/textures/donut.png");
+    data->textures.load(Textures::frites, "resources/textures/frites.png");
 
     data->textures.load(Textures::statisticsBar, "resources/textures/statBar.png");
     data->textures.load(Textures::numbers, "resources/textures/numbers.png");

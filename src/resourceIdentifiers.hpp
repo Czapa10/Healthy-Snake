@@ -34,6 +34,9 @@ namespace Textures
         cherry,
         hamburger,
         meat,
+        iceCream,
+        donut,
+        frites,
 
         statisticsBar,
         numbers,
