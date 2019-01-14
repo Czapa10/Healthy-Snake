@@ -13,7 +13,7 @@ class StatBar
 {
 public:
     StatBar(Game::GameDataRef _data);
-    void draw(int points, int snakeLength, int inStomach);
+    void draw(int points, int snakeLength, int inStomach) const;
 
 private:
     Game::GameDataRef data;

@@ -16,7 +16,7 @@ Game::Game()
     loadFonts();
 }
 
-void Game::run()
+void Game::run() const
 {
     sf::Clock clock;
     const sf::Time timePerFrame = sf::seconds(1.f / 60.f);
@@ -36,7 +36,7 @@ void Game::run()
     }
 }
 
-void Game::input()
+void Game::input() const
 {
     sf::Event event;
 
@@ -48,12 +48,12 @@ void Game::input()
     data->stateStack.getActiveState()->input();
 }
 
-void Game::update(sf::Time deltaTime)
+void Game::update(sf::Time deltaTime) const
 {
     data->stateStack.getActiveState()->update(deltaTime);
 }
 
-void Game::render()
+void Game::render() const
 {
     if(data->stateStack.areThereTwoStates()){
         data->stateStack.getPreviousState()->draw();
@@ -64,7 +64,7 @@ void Game::render()
     data->window.display();
 }
 
-void Game::loadTextures()
+void Game::loadTextures() const
 {
     ///splash state
     data->textures.load(Textures::companyLogo, "resources/textures/maineCoonLogo.jpg");
@@ -104,7 +104,7 @@ void Game::loadTextures()
     data->textures.load(Textures::gameover, "resources/textures/gameover.png");
 }
 
-void Game::loadFonts()
+void Game::loadFonts() const
 {
     data->fonts.load(Fonts::pooh, "resources/fonts/Pooh.ttf");
 }

@@ -12,7 +12,7 @@ StatBar::StatBar(Game::GameDataRef _data) : data(_data)
     barBackground.setTexture(data->textures.get(Textures::statisticsBar));
 }
 
-void StatBar::draw(int points, int snakeLength, int inStomach)
+void StatBar::draw(int points, int snakeLength, int inStomach) const
 {
     data->window.draw(barBackground);
 

@@ -42,13 +42,13 @@ public:
     void move();
     void eat(int foodWeight);
     void grow();
-    bool isCollideWithItself(Textures::ID tiles[32][24]);
+    bool isCollideWithItself(Textures::ID tiles[32][24]) const;
 
     int getLength(){return snakeLength;}
     int getInStomach(){return foodInStomach;}
     float getSpeed(){return speed;}
     void setSpeed(float newSpeed){speed = newSpeed;}
-    Direction getDirection();
+    Direction getDirection() const;
     Textures::ID getSnakeHeadTexture(std::vector<Food> food){return head.getCurrentHead(bodyParts.front().pos, currentDirection, food);}
 
 public:

@@ -25,10 +25,10 @@ public:
 
     void setRandomPos();
     void setPos(sf::Vector2i _pos);
-    int getWeight();
-    int getPoints();//NutritionalValue
+    int getWeight() const;
+    int getPoints() const;//NutritionalValue
 
-    Textures::ID getTextureID();
+    Textures::ID getTextureID() const;
     sf::Vector2i getPosition(){return pos;}
 
 private:

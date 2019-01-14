@@ -12,7 +12,7 @@ NumberDisplayer::NumberDisplayer(Game::GameDataRef _data, int _x, int _y) : data
 {
 }
 
-void NumberDisplayer::display(int toDisplay)
+void NumberDisplayer::display(int toDisplay) const
 {
     std::vector<int> digint;
 

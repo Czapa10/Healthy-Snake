@@ -14,7 +14,7 @@ class NumberDisplayer
 {
 public:
     NumberDisplayer(Game::GameDataRef _data, int _x, int _y);
-    void display(int toDisplay);
+    void display(int toDisplay) const;
 
 private:
     Game::GameDataRef data;

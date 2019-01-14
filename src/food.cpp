@@ -58,7 +58,7 @@ void Food::setPos(sf::Vector2i _pos)
     pos = _pos;
 }
 
-int Food::getWeight()//scope is 1 - 4
+int Food::getWeight() const//scope is 1 - 4
 {
     switch(type){
         case appleRed:
@@ -78,7 +78,7 @@ int Food::getWeight()//scope is 1 - 4
     }
 }
 
-int Food::getPoints()
+int Food::getPoints() const
 {
     switch(type){
         case appleRed:
@@ -98,7 +98,7 @@ int Food::getPoints()
     }
 }
 
-Textures::ID Food::getTextureID()
+Textures::ID Food::getTextureID() const
 {
     switch(type){
         case appleRed:

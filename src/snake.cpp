@@ -137,7 +137,7 @@ void Snake::grow()
     --foodInStomach;
 }
 
-bool Snake::isCollideWithItself(Textures::ID tiles[32][24])
+bool Snake::isCollideWithItself(Textures::ID tiles[32][24]) const
 {
     int headX = bodyParts[0].pos.x;
     int headY = bodyParts[0].pos.y;
@@ -170,7 +170,7 @@ bool Snake::isCollideWithItself(Textures::ID tiles[32][24])
     }
 }
 
-Direction Snake::getDirection()
+Direction Snake::getDirection() const
 {
     return inputQueue.front();
 }

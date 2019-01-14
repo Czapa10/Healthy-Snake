@@ -27,15 +27,15 @@ class Game
 {
 public:
     Game();
-    void run();
+    void run() const;
 
 private:
-    void input();
-    void update(sf::Time deltaTime);
-    void render();
+    void input() const;
+    void update(sf::Time deltaTime) const;
+    void render() const;
 
-    void loadTextures();
-    void loadFonts();
+    void loadTextures() const;
+    void loadFonts() const;
 
 private:
     GameDataRef data = std::make_shared<GameData>();
