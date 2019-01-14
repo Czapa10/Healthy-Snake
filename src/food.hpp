@@ -17,7 +17,10 @@ public:
         appleYellow,
         cherry,
         hamburger,
-        chicken
+        chicken,
+        iceCream,
+        donut,
+        frites
     };
 
     Food();

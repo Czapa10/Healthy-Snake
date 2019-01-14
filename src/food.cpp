@@ -18,7 +18,7 @@ Food::Food()
 
 void Food::setType()
 {
-    std::uniform_int_distribution<int> distr(0, 4);
+    std::uniform_int_distribution<int> distr(0, 7);
 
     switch(distr(randomEngine)){
         case 0:
@@ -39,6 +39,18 @@ void Food::setType()
 
         case 4:
             type = chicken;
+            break;
+
+        case 5:
+            type = iceCream;
+            break;
+
+        case 6:
+            type = donut;
+            break;
+
+        case 7:
+            type = frites;
             break;
     }
 }
@@ -75,6 +87,15 @@ int Food::getWeight() const//scope is 1 - 4
 
         case chicken:
             return 2;
+
+        case iceCream:
+            return 2;
+
+        case donut:
+            return 2;
+
+        case frites:
+            return 2;
     }
 }
 
@@ -95,6 +116,15 @@ int Food::getPoints() const
 
         case chicken:
             return 3;
+
+        case iceCream:
+            return -2;
+
+        case donut:
+            return -5;
+
+        case frites:
+            return -2;
     }
 }
 
@@ -115,6 +145,15 @@ Textures::ID Food::getTextureID() const
 
         case chicken:
             return Textures::meat;
+
+        case iceCream:
+            return Textures::iceCream;
+
+        case donut:
+            return Textures::donut;
+
+        case frites:
+            return Textures::frites;
     }
 }
 
