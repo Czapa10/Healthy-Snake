@@ -47,7 +47,7 @@ void NumberDisplayer::display(int toDisplay) const
     int i{};
     for(auto d : digint){
         sf::Sprite dSprite(data->textures.get(Textures::numbers));
-        dSprite.setPosition(x + i * 30, y);
+        dSprite.setPosition(x + i * 24, y);
         dSprite.setTextureRect(sf::IntRect(digint[i] * 24, 0, 24, 30));
 
         data->window.draw(dSprite);

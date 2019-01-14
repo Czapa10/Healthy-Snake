@@ -2,8 +2,6 @@
 
 #include "snake.hpp"
 
-#include <iostream>
-
 namespace GameElements
 {
 
