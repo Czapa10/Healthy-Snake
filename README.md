@@ -20,7 +20,7 @@ Coding - Grzegorz "Czapa" Bednorz
 Graphics - Jumbocube
 
 # version 0.5 - How the game looks right now 
-![image](https://user-images.githubusercontent.com/39434914/50619666-e0583200-0efa-11e9-904f-10dfd1ac5189.png)
+![image](https://user-images.githubusercontent.com/39434914/51199178-66f71100-18f6-11e9-9c73-674a648b3949.png)
 
 # Gameplay
 If you wanna make good score you have to eat only healthy food and avoid unhealthy food.
@@ -29,7 +29,6 @@ If you wanna make good score you have to eat only healthy food and avoid unhealt
 Arrows - to control snake
 
 # To do:
-- Statistic bar
 - 3 difficulty levels
 - pause screen
 - settings
@@ -41,3 +40,4 @@ Arrows - to control snake
 - sounds
 - music
 - smooth moving
+- more food
