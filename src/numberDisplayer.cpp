@@ -1,7 +1,5 @@
 #include "numberDisplayer.hpp"
 
-#include <cstdlib>
-
 namespace GameElements
 {
 
@@ -20,7 +18,7 @@ void NumberDisplayer::display(int toDisplay) const
         toDisplay = -toDisplay;
 
         sf::Sprite minus(data->textures.get(Textures::minus));
-        minus.setPosition(x - 15, y + 21);
+        minus.setPosition(x - 15, y + 11);
         data->window.draw(minus);
     }
 
