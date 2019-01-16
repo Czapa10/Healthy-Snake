@@ -33,8 +33,7 @@ void PauseState::update(sf::Time deltaTime)
 {
     if(enterWasClicked){
         data->stateStack.popState();
-        std::unique_ptr<States::GameState> toStack(new States::GameState(data));
-        data->stateStack.pushState(std::move(toStack));
+
     }
     else if(escWasClicked){
         data->stateStack.clearStates();
