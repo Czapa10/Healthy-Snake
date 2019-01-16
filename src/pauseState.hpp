@@ -7,10 +7,10 @@ namespace States
 {
 
 
-class GameOverState : public State
+class PauseState : public State
 {
 public:
-    GameOverState(Game::GameDataRef _data);
+    PauseState(Game::GameDataRef _data);
 
     void init();
 
@@ -23,10 +23,11 @@ private:
 
     sf::Sprite background;
 
-    sf::Time timeFromChangeState; //to not click Esc as soon as you enter to pause screen
+    sf::Clock timeFromChangeState; //to not click Esc as soon as you enter to pause screen
 
     bool enterWasClicked{false};
     bool escWasClicked{false};
+
 };
 
 

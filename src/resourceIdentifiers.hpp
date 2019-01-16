@@ -44,6 +44,8 @@ namespace Textures
 
         gameover,
 
+        pause,
+
         nothing
     };
 

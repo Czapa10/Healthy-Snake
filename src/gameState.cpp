@@ -1,6 +1,7 @@
 #include "gameState.hpp"
 #include "snake.hpp"
 #include "gameOverState.hpp"
+#include "pauseState.hpp"
 
 #include <iostream>
 
@@ -25,6 +26,11 @@ void GameState::input()
 {
     if(!freeze)
         snake.control();
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+        std::unique_ptr<States::PauseState> toStack(new States::PauseState(data));
+        data->stateStack.pushState(std::move(toStack), false);
+    }
 }
 
 void GameState::update(sf::Time deltaTime)

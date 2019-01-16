@@ -103,8 +103,9 @@ void Game::loadTextures() const
     data->textures.load(Textures::numbers, "resources/textures/numbers.png");
     data->textures.load(Textures::minus, "resources/textures/minus.png");
 
-    ///game over state
     data->textures.load(Textures::gameover, "resources/textures/gameover.png");
+
+    data->textures.load(Textures::pause, "resources/textures/pause.png");
 }
 
 void Game::loadFonts() const
