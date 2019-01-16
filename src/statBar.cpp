@@ -1,10 +1,9 @@
 #include "statBar.hpp"
 
-#define BAR_X 259
-
 namespace GameElements
 {
 
+#define BAR_X 259
 
 StatBar::StatBar(Game::GameDataRef _data) : data(_data)
 ,pointsDisplayer(data, 92 + BAR_X, 0)

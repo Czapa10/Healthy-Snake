@@ -12,10 +12,6 @@ namespace States
 GameState::GameState(Game::GameDataRef _data) : data(_data)
 ,statisticsBar(data)
 {
-}
-
-void GameState::init()
-{
     background.setTexture(data->textures.get(Textures::gameBackground));
 
     clearTiles();

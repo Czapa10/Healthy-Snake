@@ -9,10 +9,6 @@ namespace States
 
 MenuState::MenuState(Game::GameDataRef _data) : data(_data)
 {
-}
-
-void MenuState::init()
-{
     background.setTexture(data->textures.get(Textures::menuBackground1));
 
     unsigned int characterSize{80};
@@ -54,7 +50,6 @@ void MenuState::init()
         button.width = 700;
         button.height = 96;
     }
-
 }
 
 void MenuState::input()

@@ -9,10 +9,6 @@ namespace States
 GameOverState::GameOverState(Game::GameDataRef _data)
 :data(_data)
 {
-}
-
-void GameOverState::init()
-{
     background.setTexture(data->textures.get(Textures::gameover));
 }
 

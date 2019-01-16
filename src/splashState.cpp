@@ -11,11 +11,6 @@ SplashState::SplashState(Game::GameDataRef _data) : data(_data)
 {
 }
 
-void SplashState::init()
-{
-    background.setTexture(data->textures.get(Textures::companyLogo));
-}
-
 void SplashState::input()
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
@@ -35,6 +30,11 @@ void SplashState::update(sf::Time deltaTime)
 
     switch(whichLogo){
         case 1:
+            if(change){
+                background.setTexture(data->textures.get(Textures::companyLogo));
+                change = false;
+            }
+
             if(clock.getElapsedTime().asSeconds() > 2){
                 change = true;
             }

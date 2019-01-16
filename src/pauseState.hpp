@@ -12,8 +12,6 @@ class PauseState : public State
 public:
     PauseState(Game::GameDataRef _data);
 
-    void init();
-
     void input();
     void update(sf::Time deltaTime);
     void draw();

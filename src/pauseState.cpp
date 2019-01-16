@@ -9,10 +9,6 @@ namespace States
 PauseState::PauseState(Game::GameDataRef _data)
 :data(_data)
 {
-}
-
-void PauseState::init()
-{
     background.setTexture(data->textures.get(Textures::pause));
 }
 
