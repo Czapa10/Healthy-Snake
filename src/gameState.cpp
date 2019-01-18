@@ -3,8 +3,6 @@
 #include "gameOverState.hpp"
 #include "pauseState.hpp"
 
-#include <iostream>
-
 namespace States
 {
 
@@ -20,8 +18,10 @@ GameState::GameState(Game::GameDataRef _data) : data(_data)
 
 void GameState::input()
 {
-    if(!freeze)
-        snake.control();
+    if(freeze)
+        return;
+
+    snake.control();
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
         std::unique_ptr<States::PauseState> toStack(new States::PauseState(data));
@@ -189,6 +189,7 @@ void GameState::snakeMove()
         snake.grow();
         headTexture = snake.getSnakeHeadTexture(food);
         clock.restart();
+        timeFromLastMove.restart();
 
         ///check collision
         if(snake.isCollideWithItself(tiles)){
@@ -196,6 +197,12 @@ void GameState::snakeMove()
         }
     }
 }
+
+void GameState::smoothSnakeAnimation()
+{
+    //int pixelsFromRealMove{ }
+}
+
 
 void GameState::gameOverAnimation()
 {
