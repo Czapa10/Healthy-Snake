@@ -77,6 +77,30 @@ void DifficultyChoiseState::update(sf::Time deltaTime)
             break;
     }
 
+
+    ///menu mouse control
+    mouseCurrentPos = sf::Mouse::getPosition(data->window);
+
+    if(mouseLastPos != mouseCurrentPos){
+        for(int i = 0; i < 4; ++i){
+            if(data->mouseInput.isUnderMouse(buttons[i], data->window)){
+                isOnButtonNr = ++i;
+                break;
+            }
+        }
+    }
+
+    if(clock.getElapsedTime().asSeconds() > 0.34)
+    for(int i = 0; i < 4; ++i){
+        if(data->mouseInput.isClicked(buttons[i], data->window)){
+            wasClicked = true;
+            break;
+        }
+    }
+
+    mouseLastPos = mouseCurrentPos;
+
+
     if(wasClicked){
         if(isOnButtonNr == 4){
             std::unique_ptr<States::MenuState> toStack(new States::MenuState(data));

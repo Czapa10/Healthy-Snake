@@ -27,6 +27,9 @@ private:
     sf::Clock clock;
     int isOnButtonNr{1};
     bool wasClicked{false};
+
+    sf::Vector2i mouseCurrentPos;
+    sf::Vector2i mouseLastPos;
 };
 
 
