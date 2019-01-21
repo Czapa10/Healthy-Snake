@@ -46,6 +46,8 @@ namespace Textures
 
         pause,
 
+        difficultyChoiseButtons,
+
         nothing
     };
 

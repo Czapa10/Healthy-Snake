@@ -106,6 +106,8 @@ void Game::loadTextures() const
     data->textures.load(Textures::gameover, "resources/textures/gameover.png");
 
     data->textures.load(Textures::pause, "resources/textures/pause.png");
+
+    data->textures.load(Textures::difficultyChoiseButtons, "resources/textures/difficultyChoiseButtons.png");
 }
 
 void Game::loadFonts() const

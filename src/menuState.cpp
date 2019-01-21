@@ -1,5 +1,6 @@
 #include "menuState.hpp"
-#include "gameState.hpp"
+
+#include "difficultyChoiseState.hpp"
 
 #include <iostream>
 
@@ -108,13 +109,16 @@ void MenuState::input()
     switch(whichButtonWasClicked){
         case 1:
         {
-            std::unique_ptr<States::GameState> temp(new States::GameState(data));
-            data->stateStack.pushState(std::move(temp));
+            std::unique_ptr<States::DifficultyChoiseState> toStack(new States::DifficultyChoiseState(data));
+            data->stateStack.pushState(std::move(toStack));
             break;
+
+            //std::unique_ptr<States::GameState> toStack(new States::GameState(data));
+            //data->stateStack.pushState(std::move(toStack));
         }
 
         case 2:
-            std::cout<<"to settings state"<<std::endl;
+            std::cout<<"to settings"<<std::endl;
             break;
 
         case 3:
