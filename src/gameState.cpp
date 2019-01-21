@@ -4,6 +4,8 @@
 #include "pauseState.hpp"
 #include "difficultyLevelIdentifiers.hpp"
 
+#include <iostream>
+
 namespace States
 {
 
@@ -15,6 +17,24 @@ GameState::GameState(Game::GameDataRef _data) : data(_data)
     background.setTexture(data->textures.get(Textures::gameBackground));
 
     clearTiles();
+
+    switch(data->levelOfDifficulty){
+        case Difficulty::easy:
+            numberOfMealsOnTheScreen = 128;
+            howManyCellsOnEachFood = 6;
+            break;
+
+        case Difficulty::medium:
+            numberOfMealsOnTheScreen = 192;
+            howManyCellsOnEachFood = 4;
+            break;
+
+        case Difficulty::hard:
+            numberOfMealsOnTheScreen = 384;
+            howManyCellsOnEachFood = 2;
+            break;
+    }
+
     settingFood();
 }
 
@@ -140,9 +160,9 @@ void GameState::foodUpdate()
             snake.eat(meal.getWeight());
             points += meal.getPoints();
 
-            if(food.size() * 4 > 768 - snake.getLength()){
+            if(food.size() * howManyCellsOnEachFood > 768 - snake.getLength()){
                 food.erase(food.begin() + i);
-                //std::cout<<food.size()<<std::endl;
+                std::cout<<food.size()<<std::endl;
             }
             else{
                 for(;;){

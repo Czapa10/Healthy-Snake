@@ -47,7 +47,8 @@ private:
     GameElements::StatBar statisticsBar;
     Textures::ID headTexture{Textures::snakeHead};
     std::vector<GameElements::Food> food;
-    int numberOfMealsOnTheScreen{190};
+    int numberOfMealsOnTheScreen;
+    int howManyCellsOnEachFood;
     int points{};
 
     bool freeze{false};

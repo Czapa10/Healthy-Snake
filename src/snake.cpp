@@ -19,7 +19,7 @@ Snake::Snake(Difficulty::Level level)
 
     bodyParts.reserve(256);
 
-    for(int i = 0; i < snakeLength; i++){
+    for(int i = 0; i < snakeLength; ++i){
         BodyPart part(sf::Vector2i(i + 10, 10), Direction::left);
         bodyParts.emplace_back(part);
     }
