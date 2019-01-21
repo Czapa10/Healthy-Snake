@@ -34,9 +34,6 @@ Arrows - to control snake
 - settings
 - credits
 - best scores
-- settings
-- credits 
-- best scores
 - sounds
 - music
 - smooth moving
