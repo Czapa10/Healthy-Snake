@@ -2,6 +2,7 @@
 #include "snake.hpp"
 #include "gameOverState.hpp"
 #include "pauseState.hpp"
+#include "difficultyLevelIdentifiers.hpp"
 
 namespace States
 {
@@ -9,6 +10,7 @@ namespace States
 
 GameState::GameState(Game::GameDataRef _data) : data(_data)
 ,statisticsBar(data)
+,snake(data->levelOfDifficulty)
 {
     background.setTexture(data->textures.get(Textures::gameBackground));
 

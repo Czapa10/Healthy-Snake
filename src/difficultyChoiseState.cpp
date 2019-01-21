@@ -1,6 +1,7 @@
 #include "difficultyChoiseState.hpp"
 
 #include "resourceIdentifiers.hpp"
+#include "difficultyLevelIdentifiers.hpp"
 #include "gameState.hpp"
 #include "menuState.hpp"
 
@@ -107,10 +108,19 @@ void DifficultyChoiseState::update(sf::Time deltaTime)
             data->stateStack.pushState(std::move(toStack));
         }
         else{
-            //switch(isOnButtonNr){
-            ///speed to snake
+            switch(isOnButtonNr){
+                case 1:
+                    data->levelOfDifficulty = Difficulty::easy;
+                    break;
 
-            //}
+                case 2:
+                    data->levelOfDifficulty = Difficulty::medium;
+                    break;
+
+                case 3:
+                    data->levelOfDifficulty = Difficulty::hard;
+                    break;
+            }
             std::unique_ptr<States::GameState> toStack(new States::GameState(data));
             data->stateStack.pushState(std::move(toStack));
         }

@@ -5,6 +5,7 @@
 #include <queue>
 
 #include "resourceIdentifiers.hpp"
+#include "difficultyLevelIdentifiers.hpp"
 #include "snakeHead.hpp"
 #include "food.hpp"
 
@@ -37,7 +38,7 @@ struct BodyPart
 class Snake
 {
 public:
-    Snake();
+    Snake(Difficulty::Level);
     void control();
     void move();
     void eat(int foodWeight);
@@ -58,7 +59,7 @@ public:
 private:
     int snakeLength = 3;
     int foodInStomach{};
-    float speed{0.12};// 1s / speed = one move on frame
+    float speed;// 1s / speed = one move on frame
 
     std::queue<Direction> inputQueue;
     Direction currentDirection;

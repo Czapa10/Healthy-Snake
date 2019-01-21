@@ -13,7 +13,7 @@ BodyPart::BodyPart(sf::Vector2i _pos, Direction _direction)
 {
 }
 
-Snake::Snake()
+Snake::Snake(Difficulty::Level level)
 {
     inputQueue.push(Direction::left);
 
@@ -22,6 +22,20 @@ Snake::Snake()
     for(int i = 0; i < snakeLength; i++){
         BodyPart part(sf::Vector2i(i + 10, 10), Direction::left);
         bodyParts.emplace_back(part);
+    }
+
+    switch(level){
+        case Difficulty::easy:
+            speed = 0.16;
+            break;
+
+        case Difficulty::medium:
+            speed = 0.12;
+            break;
+
+        case Difficulty::hard:
+            speed = 0.08;
+            break;
     }
 }
 

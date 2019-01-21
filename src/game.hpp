@@ -6,6 +6,7 @@
 #include "resourceManager.hpp"
 #include "stateStack.hpp"
 #include "mouseInput.hpp"
+#include "difficultyLevelIdentifiers.hpp"
 
 namespace Game
 {
@@ -18,6 +19,7 @@ struct GameData
     Resources::TextureStorage textures;
     Resources::FontStorage fonts;
     Input::MouseInput mouseInput;
+    Difficulty::Level levelOfDifficulty;
 };
 
 using GameDataRef = std::shared_ptr<GameData>;
