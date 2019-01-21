@@ -23,6 +23,10 @@ private:
     Game::GameDataRef data;
 
     std::array<sf::Sprite, 4> buttons;
+
+    sf::Clock clock;
+    int isOnButtonNr{1};
+    bool wasClicked{false};
 };
 
 

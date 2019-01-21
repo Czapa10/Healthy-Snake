@@ -107,16 +107,11 @@ void MenuState::input()
 
     ///menu enter
     switch(whichButtonWasClicked){
-        case 1:
-        {
+        case 1:{
             std::unique_ptr<States::DifficultyChoiseState> toStack(new States::DifficultyChoiseState(data));
             data->stateStack.pushState(std::move(toStack));
             break;
-
-            //std::unique_ptr<States::GameState> toStack(new States::GameState(data));
-            //data->stateStack.pushState(std::move(toStack));
         }
-
         case 2:
             std::cout<<"to settings"<<std::endl;
             break;
