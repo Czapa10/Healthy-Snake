@@ -11,6 +11,8 @@ namespace States
 
 DifficultyChoiseState::DifficultyChoiseState(Game::GameDataRef _data) : data(_data)
 {
+    background.setTexture(data->textures.get(Textures::gameBackground));
+
     for(auto &button : buttons){
         button.setTexture(data->textures.get(Textures::difficultyChoiseButtons));
     }
@@ -129,7 +131,9 @@ void DifficultyChoiseState::update(sf::Time deltaTime)
 
 void DifficultyChoiseState::draw()
 {
-    data->window.clear(sf::Color::Green);
+    data->window.clear();
+
+    data->window.draw(background);
 
     for(auto button : buttons){
         data->window.draw(button);

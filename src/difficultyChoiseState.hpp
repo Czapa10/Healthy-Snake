@@ -22,6 +22,7 @@ public:
 private:
     Game::GameDataRef data;
 
+    sf::Sprite background;
     std::array<sf::Sprite, 4> buttons;
 
     sf::Clock clock;
