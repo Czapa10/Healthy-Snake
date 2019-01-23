@@ -1,5 +1,6 @@
 #include "game.hpp"
-#include "splashState.hpp"
+
+#include <States/Splash/splashState.hpp>
 
 namespace Game
 {

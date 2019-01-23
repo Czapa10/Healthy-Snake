@@ -1,7 +1,6 @@
 #include "snake.hpp"
 
 #include <algorithm>
-#include <iostream>
 
 namespace GameElements
 {

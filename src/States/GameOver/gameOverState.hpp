@@ -1,7 +1,7 @@
 #pragma once
 
-#include "State.hpp"
-#include "game.hpp"
+#include <States/State.hpp>
+#include <game.hpp>
 
 namespace States
 {

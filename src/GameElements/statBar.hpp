@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "numberDisplayer.hpp"
-#include "game.hpp"
+#include <game.hpp>
 
 namespace GameElements
 {

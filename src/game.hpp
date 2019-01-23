@@ -3,10 +3,10 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 
-#include "resourceManager.hpp"
-#include "stateStack.hpp"
-#include "mouseInput.hpp"
-#include "difficultyLevelIdentifiers.hpp"
+#include <Resources/resourceManager.hpp>
+#include <States/stateStack.hpp>
+#include <MouseInput/mouseInput.hpp>
+#include <States/DifficultyChoise/difficultyLevelIdentifiers.hpp>
 
 namespace Game
 {

@@ -3,8 +3,8 @@
 #include <SFML/Graphics.hpp>
 #include <array>
 
-#include "game.hpp"
-#include "State.hpp"
+#include <game.hpp>
+#include <States/State.hpp>
 
 namespace States
 {

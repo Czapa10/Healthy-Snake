@@ -1,9 +1,10 @@
 #include "difficultyChoiseState.hpp"
 
-#include "resourceIdentifiers.hpp"
 #include "difficultyLevelIdentifiers.hpp"
-#include "gameState.hpp"
-#include "menuState.hpp"
+
+#include <Resources/resourceIdentifiers.hpp>
+#include <States/Game/gameState.hpp>
+#include <States/Menu/menuState.hpp>
 
 namespace States
 {

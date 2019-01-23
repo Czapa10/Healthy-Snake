@@ -1,6 +1,7 @@
 #include "gameOverState.hpp"
-#include "gameState.hpp"
-#include "menuState.hpp"
+
+#include <States/Game/gameState.hpp>
+#include <States/Menu/menuState.hpp>
 
 namespace States
 {

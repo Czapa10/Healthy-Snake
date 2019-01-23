@@ -1,7 +1,6 @@
-#pragma once
-
 #include "splashState.hpp"
-#include "menuState.hpp"
+
+#include <States/Menu/menuState.hpp>
 
 namespace States
 {

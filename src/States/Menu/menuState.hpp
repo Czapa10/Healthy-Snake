@@ -1,8 +1,9 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "State.hpp"
-#include "game.hpp"
+
+#include <states/state.hpp>
+#include <game.hpp>
 
 namespace States
 {

@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "resourceIdentifiers.hpp"
+#include <Resources/resourceIdentifiers.hpp>
 
 namespace GameElements
 {

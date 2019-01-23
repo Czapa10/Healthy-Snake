@@ -3,11 +3,11 @@
 #include <vector>
 #include <array>
 
-#include "State.hpp"
-#include "game.hpp"
-#include "snake.hpp"
-#include "food.hpp"
-#include "statBar.hpp"
+#include <States/State.hpp>
+#include <game.hpp>
+#include <GameElements/snake.hpp>
+#include <GameElements/food.hpp>
+#include <GameElements/statBar.hpp>
 
 namespace States
 {

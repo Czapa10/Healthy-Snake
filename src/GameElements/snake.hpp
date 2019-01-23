@@ -4,11 +4,11 @@
 #include <vector>
 #include <queue>
 
-#include "resourceIdentifiers.hpp"
-#include "difficultyLevelIdentifiers.hpp"
+#include <Resources/resourceIdentifiers.hpp>
+#include <States/DifficultyChoise/difficultyLevelIdentifiers.hpp>
+
 #include "snakeHead.hpp"
 #include "food.hpp"
-
 
 
 namespace GameElements

@@ -1,6 +1,6 @@
 #include "menuState.hpp"
 
-#include "difficultyChoiseState.hpp"
+#include <States/DifficultyChoise/difficultyChoiseState.hpp>
 
 #include <iostream>
 

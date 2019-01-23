@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "game.hpp"
+#include <game.hpp>
 
 namespace GameElements
 {

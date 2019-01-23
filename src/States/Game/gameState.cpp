@@ -1,8 +1,9 @@
 #include "gameState.hpp"
-#include "snake.hpp"
-#include "gameOverState.hpp"
-#include "pauseState.hpp"
-#include "difficultyLevelIdentifiers.hpp"
+
+#include <GameElements/snake.hpp>
+#include <States/GameOver/gameOverState.hpp>
+#include <States/Pause/pauseState.hpp>
+#include <States/DifficultyChoise/difficultyLevelIdentifiers.hpp>
 
 #include <iostream>
 
