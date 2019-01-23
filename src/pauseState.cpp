@@ -15,14 +15,13 @@ PauseState::PauseState(Game::GameDataRef _data)
 
 void PauseState::input()
 {
-    if(timeFromChangeState.getElapsedTime().asSeconds() < 0.4)
-        return;
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
-        enterWasClicked = true;
-    }
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
-        escWasClicked = true;
+    if(timeFromChangeState.getElapsedTime().asSeconds() > 0.4){
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
+            enterWasClicked = true;
+        }
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+            escWasClicked = true;
+        }
     }
 }
 
@@ -30,7 +29,6 @@ void PauseState::update(sf::Time deltaTime)
 {
     if(enterWasClicked){
         data->stateStack.popState();
-
     }
     else if(escWasClicked){
         data->stateStack.clearStates();

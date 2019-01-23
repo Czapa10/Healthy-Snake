@@ -25,7 +25,6 @@ private:
 
     bool enterWasClicked{false};
     bool escWasClicked{false};
-
 };
 
 
