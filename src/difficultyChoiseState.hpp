@@ -20,6 +20,13 @@ public:
     void draw();
 
 private:
+    void menuKeyboardControl();
+    void menuMouseControl();
+
+    void settingButtonsGraphics();
+    void changingState() const;
+
+private:
     Game::GameDataRef data;
 
     sf::Sprite background;

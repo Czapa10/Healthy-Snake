@@ -26,7 +26,30 @@ DifficultyChoiseState::DifficultyChoiseState(Game::GameDataRef _data) : data(_da
 
 void DifficultyChoiseState::input()
 {
-    ///menu keyboard control
+    menuKeyboardControl();
+    menuMouseControl();
+}
+
+void DifficultyChoiseState::update(sf::Time deltaTime)
+{
+    settingButtonsGraphics();
+    changingState();
+}
+
+void DifficultyChoiseState::draw()
+{
+    data->window.clear();
+
+    data->window.draw(background);
+
+    for(auto button : buttons){
+        data->window.draw(button);
+    }
+}
+
+//private_methods****************************************************************
+void DifficultyChoiseState::menuKeyboardControl()
+{
     sf::Event event;
     int whichButtonWasClicked{}; //0 - means any button was not clicked
 
@@ -55,7 +78,32 @@ void DifficultyChoiseState::input()
     }
 }
 
-void DifficultyChoiseState::update(sf::Time deltaTime)
+void DifficultyChoiseState::menuMouseControl()
+{
+    mouseCurrentPos = sf::Mouse::getPosition(data->window);
+
+    if(mouseLastPos != mouseCurrentPos){
+        for(int i = 0; i < 4; ++i){
+            if(data->mouseInput.isUnderMouse(buttons[i], data->window)){
+                isOnButtonNr = ++i;
+                break;
+            }
+        }
+    }
+
+    if(clock.getElapsedTime().asSeconds() > 0.34)
+    for(auto button : buttons){
+        if(data->mouseInput.isClicked(button, data->window)){
+            wasClicked = true;
+            break;
+        }
+    }
+
+    mouseLastPos = mouseCurrentPos;
+}
+
+
+void DifficultyChoiseState::settingButtonsGraphics()
 {
     buttons[0].setTextureRect(sf::IntRect(0, 0, 29, 12));
     buttons[1].setTextureRect(sf::IntRect(36, 0, 43, 10));
@@ -79,31 +127,10 @@ void DifficultyChoiseState::update(sf::Time deltaTime)
             buttons[3].setTextureRect(sf::IntRect(121, 11, 29, 16));
             break;
     }
+}
 
-
-    ///menu mouse control
-    mouseCurrentPos = sf::Mouse::getPosition(data->window);
-
-    if(mouseLastPos != mouseCurrentPos){
-        for(int i = 0; i < 4; ++i){
-            if(data->mouseInput.isUnderMouse(buttons[i], data->window)){
-                isOnButtonNr = ++i;
-                break;
-            }
-        }
-    }
-
-    if(clock.getElapsedTime().asSeconds() > 0.34)
-    for(int i = 0; i < 4; ++i){
-        if(data->mouseInput.isClicked(buttons[i], data->window)){
-            wasClicked = true;
-            break;
-        }
-    }
-
-    mouseLastPos = mouseCurrentPos;
-
-
+void DifficultyChoiseState::changingState() const
+{
     if(wasClicked){
         if(isOnButtonNr == 4){
             std::unique_ptr<States::MenuState> toStack(new States::MenuState(data));
@@ -126,17 +153,6 @@ void DifficultyChoiseState::update(sf::Time deltaTime)
             std::unique_ptr<States::GameState> toStack(new States::GameState(data));
             data->stateStack.pushState(std::move(toStack));
         }
-    }
-}
-
-void DifficultyChoiseState::draw()
-{
-    data->window.clear();
-
-    data->window.draw(background);
-
-    for(auto button : buttons){
-        data->window.draw(button);
     }
 }
 
