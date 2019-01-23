@@ -32,7 +32,7 @@ void DifficultyChoiseState::input()
 
 void DifficultyChoiseState::update(sf::Time deltaTime)
 {
-    settingButtonsGraphics();
+    updatingButtonsGraphics();
     changingState();
 }
 
@@ -103,7 +103,7 @@ void DifficultyChoiseState::menuMouseControl()
 }
 
 
-void DifficultyChoiseState::settingButtonsGraphics()
+void DifficultyChoiseState::updatingButtonsGraphics()
 {
     buttons[0].setTextureRect(sf::IntRect(0, 0, 29, 12));
     buttons[1].setTextureRect(sf::IntRect(36, 0, 43, 10));

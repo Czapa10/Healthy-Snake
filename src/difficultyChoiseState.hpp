@@ -23,7 +23,7 @@ private:
     void menuKeyboardControl();
     void menuMouseControl();
 
-    void settingButtonsGraphics();
+    void updatingButtonsGraphics();
     void changingState() const;
 
 private:

@@ -18,9 +18,17 @@ public:
     void draw();
 
 private:
+    void menuKeyboardControl();
+    void menuMouseControl();
+
+    void updatingMenuGraphics();
+    void changingState() const;
+
+private:
     Game::GameDataRef data;
 
     int isOnButtonNr{1};
+    bool buttonWasClicked{false};
     sf::Clock clock;
 
     sf::Sprite background;

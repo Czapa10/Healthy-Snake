@@ -55,9 +55,35 @@ MenuState::MenuState(Game::GameDataRef _data) : data(_data)
 
 void MenuState::input()
 {
-    ///menu keyboard control
+    menuKeyboardControl();
+    menuMouseControl();
+}
+
+void MenuState::update(sf::Time deltaTime)
+{
+    updatingMenuGraphics();
+    changingState();
+
+    buttonWasClicked = false; /// <-- it's temporary (Delete it when all menu options in menu will be done)
+}
+
+void MenuState::draw()
+{
+    data->window.clear();
+
+    data->window.draw(background);
+
+    data->window.draw(play);
+    data->window.draw(settings);
+    data->window.draw(credits);
+    data->window.draw(bestScore);
+    data->window.draw(exit);
+}
+
+//private_methods****************************************************************
+void MenuState::menuKeyboardControl()
+{
     sf::Event event;
-    int whichButtonWasClicked{}; //0 - means any button was not clicked
 
     if(sf::Event::KeyPressed){
         if(clock.getElapsedTime().asSeconds() > 0.17f){
@@ -78,12 +104,14 @@ void MenuState::input()
             }
 
             else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
-                whichButtonWasClicked = isOnButtonNr;
+                buttonWasClicked = true;
             }
         }
     }
+}
 
-    ///menu mouse control
+void MenuState::menuMouseControl()
+{
     mouseCurrentPos = sf::Mouse::getPosition(data->window);
 
     if(mouseLastPos != mouseCurrentPos){
@@ -97,43 +125,17 @@ void MenuState::input()
 
     for(int i = 0; i < 5; ++i){
         if(data->mouseInput.isClicked(buttons[i], data->window)){
-            whichButtonWasClicked = ++i;
+            buttonWasClicked = true;
             break;
         }
     }
 
     mouseLastPos = mouseCurrentPos;
-
-
-    ///menu enter
-    switch(whichButtonWasClicked){
-        case 1:{
-            std::unique_ptr<States::DifficultyChoiseState> toStack(new States::DifficultyChoiseState(data));
-            data->stateStack.pushState(std::move(toStack));
-            break;
-        }
-        case 2:
-            std::cout<<"to settings"<<std::endl;
-            break;
-
-        case 3:
-            std::cout<<"to credits state"<<std::endl;
-            break;
-
-        case 4:
-            std::cout<<"to best score state"<<std::endl;
-            break;
-
-        case 5:
-            data->window.close();
-            break;
-    }
-
 }
 
-void MenuState::update(sf::Time deltaTime)
-{
 
+void MenuState::updatingMenuGraphics()
+{
     switch(isOnButtonNr){
         case 1:
             background.setTexture(data->textures.get(Textures::menuBackground1));
@@ -155,20 +157,34 @@ void MenuState::update(sf::Time deltaTime)
             background.setTexture(data->textures.get(Textures::menuBackground5));
             break;
     }
-
 }
 
-void MenuState::draw()
+void MenuState::changingState() const
 {
-    data->window.clear();
+    if(buttonWasClicked){
+        switch(isOnButtonNr){
+            case 1:{
+                std::unique_ptr<States::DifficultyChoiseState> toStack(new States::DifficultyChoiseState(data));
+                data->stateStack.pushState(std::move(toStack));
+                break;
+            }
+            case 2:
+                std::cout<<"to settings"<<std::endl;
+                break;
 
-    data->window.draw(background);
+            case 3:
+                std::cout<<"to credits state"<<std::endl;
+                break;
 
-    data->window.draw(play);
-    data->window.draw(settings);
-    data->window.draw(credits);
-    data->window.draw(bestScore);
-    data->window.draw(exit);
+            case 4:
+                std::cout<<"to best score state"<<std::endl;
+                break;
+
+            case 5:
+                data->window.close();
+                break;
+        }
+    }
 }
 
 
