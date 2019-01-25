@@ -286,7 +286,6 @@ void GameState::snakeMove()
         headTexture = snake.getSnakeHeadTexture(food);
         clock.restart();
 
-        smallMoveClock.restart();
         numberOfPixelsToMoveSprite = 0;
 
         ///check collision
@@ -300,7 +299,7 @@ void GameState::snakeMove()
 
 void GameState::smallMove()
 {
-    if(smallMoveClock.getElapsedTime().asSeconds() > snake.getSpeed() / 9){
+    if(smallMoveClock.getElapsedTime().asSeconds() > snake.getSpeed() / 8){
         ++numberOfPixelsToMoveSprite;
         smallMoveClock.restart();
 

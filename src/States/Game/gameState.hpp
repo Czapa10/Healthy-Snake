@@ -23,6 +23,7 @@ public:
     void draw();
 
 private:
+    void displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, GameElements::Direction rotation);
     void updatingSnake();
     void clearTiles();
     void settingFood();
@@ -34,8 +35,6 @@ private:
     void makeSpecificTurnBody( GameElements::Direction _1, GameElements::Direction _2, GameElements::Direction _3, GameElements::Direction _4, bool isTeleporting, int XorY, int nextXorY, int x, int y);
     void afterTeleportTurnTransformations( int & x, int & y, sf::Vector2i & next );
     bool checkIsTeleporting( sf::Vector2i previous, int x, int y );
-
-    void displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, GameElements::Direction rotation);
 
 private:
     Game::GameDataRef data;
