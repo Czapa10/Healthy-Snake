@@ -213,7 +213,9 @@ void GameState::snakeMove()
         snake.grow();
         headTexture = snake.getSnakeHeadTexture(food);
         clock.restart();
+
         smallMoveClock.restart();
+        numberOfPixelsToMoveSprite = 0;
 
         ///check collision
         if(snake.isCollideWithItself(tiles)){
@@ -228,9 +230,6 @@ void GameState::smallMove()
 {
     if(smallMoveClock.getElapsedTime().asSeconds() > snake.getSpeed() / 9){
         ++numberOfPixelsToMoveSprite;
-        if(numberOfPixelsToMoveSprite == 9)
-            numberOfPixelsToMoveSprite = 1;
-
         smallMoveClock.restart();
 
         std::cout<<"numberOfPixelsToMoveSprite: "<<numberOfPixelsToMoveSprite<<std::endl;
