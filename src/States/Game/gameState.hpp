@@ -35,7 +35,7 @@ private:
     void afterTeleportTurnTransformations( int & x, int & y, sf::Vector2i & next );
     bool checkIsTeleporting( sf::Vector2i previous, int x, int y );
 
-    void displayTailAndHead(Textures::ID toDisplay, sf::Vector2f pos, GameElements::Direction rotation);
+    void displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, GameElements::Direction rotation);
 
 private:
     Game::GameDataRef data;

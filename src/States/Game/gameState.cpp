@@ -76,8 +76,9 @@ void GameState::draw()
 
     data->window.draw(background);
 
-    sf::Vector2f tailPos;
-    GameElements::Direction tailRotation;
+    sf::Vector2f tailPos, headPos;
+    GameElements::Direction tailRotation, headRotation;
+    Textures::ID headTexture;
 
     for(int i = 0; i < 32; i++){
         for(int j = 0; j < 24; j++){
@@ -92,16 +93,29 @@ void GameState::draw()
                     tailRotation = spriteRotation[i][j];
                     continue;
                 }
+                if(tiles[i][j] == Textures::snakeHead || tiles[i][j] == Textures::snakeHeadClosedEyes ||
+                   tiles[i][j] == Textures::snakeHeadOpenMouth || tiles[i][j] == Textures::snakeHeadTounge){
+                    headPos.x = sprite.getPosition().x;
+                    headPos.y = sprite.getPosition().y;
+                    headRotation = spriteRotation[i][j];
+                    headTexture = tiles[i][j];
+                    continue;
+                }
 
                 sprite.setOrigin(16.f, 16.f);
-                if(spriteRotation[i][j] == GameElements::Direction::left){
-                    sprite.rotate(-90.f);
-                }
-                else if(spriteRotation[i][j] == GameElements::Direction::right){
-                    sprite.rotate(90.f);
-                }
-                else if(spriteRotation[i][j] == GameElements::Direction::down){
-                    sprite.rotate(180.f);
+
+                switch(spriteRotation[i][j]){
+                    case GameElements::Direction::left:
+                        sprite.rotate(-90.f);
+                        break;
+
+                    case GameElements::Direction::right:
+                        sprite.rotate(90.f);
+                        break;
+
+                    case GameElements::Direction::down:
+                        sprite.rotate(180.f);
+                        break;
                 }
 
                 data->window.draw(sprite);
@@ -109,47 +123,52 @@ void GameState::draw()
         }
     }
 
-    displayTailAndHead(Textures::snakeTail, tailPos, tailRotation);
+    displayTailOrHead(Textures::snakeTail, tailPos, tailRotation);
+    displayTailOrHead(headTexture, headPos, headRotation);
 
     statisticsBar.draw(points, snake.getLength(), snake.getInStomach());
 }
 
 //*************************************************************************
 
-void GameState::displayTailAndHead(Textures::ID toDisplay, sf::Vector2f pos, GameElements::Direction rotation)
+void GameState::displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, GameElements::Direction rotation)
 {
     sf::Sprite sprite;
     sprite.setTexture(data->textures.get(toDisplay));
     sprite.setPosition(pos);
     sf::Vector2f smallMoveVec;
+
     switch(rotation){
-        case GameElements::Direction::left:
-            smallMoveVec.x -= numberOfPixelsToMoveSprite * 4;
+        case GameElements::Direction::left://- head | + tail
+            smallMoveVec.x -= numberOfPixelsToMoveSprite * 4 - 16;
             break;
 
         case GameElements::Direction::right:
-            smallMoveVec.x += numberOfPixelsToMoveSprite * 4;
+            smallMoveVec.x += numberOfPixelsToMoveSprite * 4 - 16;
             break;
 
         case GameElements::Direction::up:
-            smallMoveVec.y -= numberOfPixelsToMoveSprite * 4;
+            smallMoveVec.y -= numberOfPixelsToMoveSprite * 4 - 16;
             break;
 
         case GameElements::Direction::down:
-            smallMoveVec.y += numberOfPixelsToMoveSprite * 4;
+            smallMoveVec.y += numberOfPixelsToMoveSprite * 4 - 16;
             break;
     }
 
     sprite.setOrigin(16.f, 16.f);
-    ///change this to switch later
-    if(rotation == GameElements::Direction::left){
-        sprite.rotate(-90.f);
-    }
-    else if(rotation == GameElements::Direction::right){
-        sprite.rotate(90.f);
-    }
-    else if(rotation == GameElements::Direction::down){
-        sprite.rotate(180.f);
+    switch(rotation){
+        case GameElements::Direction::left:
+            sprite.rotate(-90.f);
+            break;
+
+        case GameElements::Direction::right:
+            sprite.rotate(90.f);
+            break;
+
+        case GameElements::Direction::down:
+            sprite.rotate(180.f);
+            break;
     }
 
     sprite.move(smallMoveVec);
