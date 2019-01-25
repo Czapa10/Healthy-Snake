@@ -83,6 +83,29 @@ void GameState::draw()
                 sprite.setTexture(data->textures.get(tiles[i][j]));
                 sprite.setPosition(sf::Vector2f(i * 32 + 16, j * 32 + 16));
 
+                if(tiles[i][j] == Textures::snakeTail){
+                    sf::Vector2f smallMoveVec;
+                    switch(spriteRotation[i][j]){
+                        case GameElements::Direction::left:
+                            smallMoveVec.x -= numberOfPixelsToMoveSprite * 4;
+                            break;
+
+                        case GameElements::Direction::right:
+                            smallMoveVec.x += numberOfPixelsToMoveSprite * 4;
+                            break;
+
+                        case GameElements::Direction::up:
+                            smallMoveVec.y -= numberOfPixelsToMoveSprite * 4;
+                            break;
+
+                        case GameElements::Direction::down:
+                            smallMoveVec.y += numberOfPixelsToMoveSprite * 4;
+                            break;
+                    }
+
+                    sprite.move(smallMoveVec);
+                }
+
                 sprite.setOrigin(16.f, 16.f);
                 if(spriteRotation[i][j] == GameElements::Direction::left){
                     sprite.rotate(-90.f);
