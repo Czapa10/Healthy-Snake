@@ -76,6 +76,9 @@ void GameState::draw()
 
     data->window.draw(background);
 
+    sf::Vector2f tailPos;
+    GameElements::Direction tailRotation;
+
     for(int i = 0; i < 32; i++){
         for(int j = 0; j < 24; j++){
             if(tiles[i][j] != Textures::nothing){
@@ -84,26 +87,10 @@ void GameState::draw()
                 sprite.setPosition(sf::Vector2f(i * 32 + 16, j * 32 + 16));
 
                 if(tiles[i][j] == Textures::snakeTail){
-                    sf::Vector2f smallMoveVec;
-                    switch(spriteRotation[i][j]){
-                        case GameElements::Direction::left:
-                            smallMoveVec.x -= numberOfPixelsToMoveSprite * 4;
-                            break;
-
-                        case GameElements::Direction::right:
-                            smallMoveVec.x += numberOfPixelsToMoveSprite * 4;
-                            break;
-
-                        case GameElements::Direction::up:
-                            smallMoveVec.y -= numberOfPixelsToMoveSprite * 4;
-                            break;
-
-                        case GameElements::Direction::down:
-                            smallMoveVec.y += numberOfPixelsToMoveSprite * 4;
-                            break;
-                    }
-
-                    sprite.move(smallMoveVec);
+                    tailPos.x = sprite.getPosition().x;
+                    tailPos.y = sprite.getPosition().y;
+                    tailRotation = spriteRotation[i][j];
+                    continue;
                 }
 
                 sprite.setOrigin(16.f, 16.f);
@@ -122,10 +109,53 @@ void GameState::draw()
         }
     }
 
+    displayTailAndHead(Textures::snakeTail, tailPos, tailRotation);
+
     statisticsBar.draw(points, snake.getLength(), snake.getInStomach());
 }
 
 //*************************************************************************
+
+void GameState::displayTailAndHead(Textures::ID toDisplay, sf::Vector2f pos, GameElements::Direction rotation)
+{
+    sf::Sprite sprite;
+    sprite.setTexture(data->textures.get(toDisplay));
+    sprite.setPosition(pos);
+    sf::Vector2f smallMoveVec;
+    switch(rotation){
+        case GameElements::Direction::left:
+            smallMoveVec.x -= numberOfPixelsToMoveSprite * 4;
+            break;
+
+        case GameElements::Direction::right:
+            smallMoveVec.x += numberOfPixelsToMoveSprite * 4;
+            break;
+
+        case GameElements::Direction::up:
+            smallMoveVec.y -= numberOfPixelsToMoveSprite * 4;
+            break;
+
+        case GameElements::Direction::down:
+            smallMoveVec.y += numberOfPixelsToMoveSprite * 4;
+            break;
+    }
+
+    sprite.setOrigin(16.f, 16.f);
+    ///change this to switch later
+    if(rotation == GameElements::Direction::left){
+        sprite.rotate(-90.f);
+    }
+    else if(rotation == GameElements::Direction::right){
+        sprite.rotate(90.f);
+    }
+    else if(rotation == GameElements::Direction::down){
+        sprite.rotate(180.f);
+    }
+
+    sprite.move(smallMoveVec);
+
+    data->window.draw(sprite);
+}
 
 void GameState::updatingSnake()
 {
