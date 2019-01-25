@@ -67,6 +67,7 @@ void GameState::update(sf::Time deltaTime)
     foodUpdate();
 
     snakeMove();
+    smallMove();
 }
 
 void GameState::draw()
@@ -212,20 +213,29 @@ void GameState::snakeMove()
         snake.grow();
         headTexture = snake.getSnakeHeadTexture(food);
         clock.restart();
-        timeFromLastMove.restart();
+        smallMoveClock.restart();
 
         ///check collision
         if(snake.isCollideWithItself(tiles)){
             freeze = true;
         }
+
+        std::cout<<"SNAKE MOVES"<<std::endl;
     }
 }
 
-void GameState::smoothSnakeAnimation()
+void GameState::smallMove()
 {
-    //int pixelsFromRealMove{ }
-}
+    if(smallMoveClock.getElapsedTime().asSeconds() > snake.getSpeed() / 9){
+        ++numberOfPixelsToMoveSprite;
+        if(numberOfPixelsToMoveSprite == 9)
+            numberOfPixelsToMoveSprite = 1;
 
+        smallMoveClock.restart();
+
+        std::cout<<"numberOfPixelsToMoveSprite: "<<numberOfPixelsToMoveSprite<<std::endl;
+    }
+}
 
 void GameState::gameOverAnimation()
 {
