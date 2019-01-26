@@ -18,10 +18,10 @@ DifficultyChoiseState::DifficultyChoiseState(Game::GameDataRef _data) : data(_da
         button.setTexture(data->textures.get(Textures::difficultyChoiseButtons));
     }
     for(int i = 0; i < 4; ++i){
-        buttons[i].setPosition(365.f, 100 * i + 250);
+        buttons[i].setPosition(365.f, 120 * i + 210);
     }
     for(auto &button : buttons){
-        button.setScale(8.f, 5.f);
+        button.setScale(8.f, 8.f);
     }
 }
 
