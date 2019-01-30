@@ -151,21 +151,27 @@ void GameState::displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, Game
     sprite.setPosition(pos);
     sf::Vector2f smallMoveVec;
 
+    int shift;
+    if(toDisplay == Textures::snakeTail)
+        shift = -16;
+    else
+        shift = -20;
+
     switch(rotation){
         case GameElements::Direction::left://- head | + tail
-            smallMoveVec.x -= numberOfPixelsToMoveSprite * 4 - 16;
+            smallMoveVec.x -= numberOfPixelsToMoveSprite * 4 + shift;
             break;
 
         case GameElements::Direction::right:
-            smallMoveVec.x += numberOfPixelsToMoveSprite * 4 - 16;
+            smallMoveVec.x += numberOfPixelsToMoveSprite * 4 + shift;
             break;
 
         case GameElements::Direction::up:
-            smallMoveVec.y -= numberOfPixelsToMoveSprite * 4 - 16;
+            smallMoveVec.y -= numberOfPixelsToMoveSprite * 4 + shift;
             break;
 
         case GameElements::Direction::down:
-            smallMoveVec.y += numberOfPixelsToMoveSprite * 4 - 16;
+            smallMoveVec.y += numberOfPixelsToMoveSprite * 4 + shift;
             break;
     }
 
