@@ -60,6 +60,8 @@ void GameState::update(sf::Time deltaTime)
     }
 
     ///set sprites
+    std::cout<<"BEFORE CLEAR TILES()"<<std::endl;
+
     clearTiles();
 
     updatingSnake();
@@ -94,7 +96,8 @@ void GameState::draw()
                     continue;
                 }
                 if(tiles[i][j] == Textures::snakeHead || tiles[i][j] == Textures::snakeHeadClosedEyes ||
-                   tiles[i][j] == Textures::snakeHeadOpenMouth || tiles[i][j] == Textures::snakeHeadTounge){
+                   tiles[i][j] == Textures::snakeHeadOpenMouth || tiles[i][j] == Textures::snakeHeadTounge||
+                   tiles[i][j] == Textures::snakeHeadBigEyesWhileDying || tiles[i][j] == Textures::snakeHeadClosedEyesWhileDying){
                     headPos.x = sprite.getPosition().x;
                     headPos.y = sprite.getPosition().y;
                     headRotation = spriteRotation[i][j];
@@ -309,6 +312,8 @@ void GameState::smallMove()
 
 void GameState::gameOverAnimation()
 {
+    std::cout<<"start of method void GameState::gameOverAnimation()"<<std::endl;
+
     if(!hasDyingTimeBeedRestarted){
         dyingTime.restart();
         hasDyingTimeBeedRestarted = true;
@@ -333,6 +338,9 @@ void GameState::gameOverAnimation()
             ++headPos.y;
             break;
     }
+
+    std::cout<<"dying time = "<<dyingTime.getElapsedTime().asSeconds()<<std::endl;
+
     if(dyingTime.getElapsedTime().asSeconds() < 0.7){
         tiles[headPos.x][headPos.y] = Textures::snakeHeadBigEyesWhileDying;
     }
@@ -343,6 +351,7 @@ void GameState::gameOverAnimation()
         std::unique_ptr<States::GameOverState> toStack(new States::GameOverState(data));
         data->stateStack.pushState(std::move(toStack), false);
     }
+    std::cout<<"end of method void GameState::gameOverAnimation()"<<std::endl;
 }
 
 void GameState::makingSnakeTurnBody(int i,int x, int y, sf::Vector2i previous, sf::Vector2i next)
