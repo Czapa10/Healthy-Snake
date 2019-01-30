@@ -44,6 +44,8 @@ void GameState::input()
     if(freeze)
         return;
 
+    std::cout<<"input()"<<std::endl;
+
     snake.control();
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
@@ -54,26 +56,34 @@ void GameState::input()
 
 void GameState::update(sf::Time deltaTime)
 {
+    std::cout<<"update()"<<std::endl;
     if(freeze){
         gameOverAnimation();
         return;
     }
 
     ///set sprites
-    std::cout<<"BEFORE CLEAR TILES()"<<std::endl;
 
+    std::cout<<"clearTiles()"<<std::endl;
     clearTiles();
 
+    std::cout<<"updatingSnake()"<<std::endl;
     updatingSnake();
 
+    std::cout<<"foodUpdate()"<<std::endl;
     foodUpdate();
 
+    std::cout<<"snakeMove()"<<std::endl;
     snakeMove();
+
+    std::cout<<"smallMove()"<<std::endl;
     smallMove();
 }
 
 void GameState::draw()
 {
+    std::cout<<"draw()"<<std::endl;
+
     data->window.clear();
 
     data->window.draw(background);
