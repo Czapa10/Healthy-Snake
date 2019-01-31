@@ -26,14 +26,13 @@ void Game::run() const
     while(data->window.isOpen()){
         data->stateStack.processStateChanges();
         input();
+        update(timePerFrame);
         timeSinceLastUpdate += clock.restart();
 
         while(timeSinceLastUpdate > timePerFrame){
             timeSinceLastUpdate -= timePerFrame;
-            input();
             render();
         }
-        update(timePerFrame);
     }
 }
 

@@ -44,6 +44,8 @@ void GameState::input()
     if(freeze)
         return;
 
+    while(sf::Keyboard::isKeyPressed(sf::Keyboard::Space));
+
     std::cout<<"input()"<<std::endl;
 
     snake.control();
@@ -150,7 +152,6 @@ void GameState::displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, Game
     std::cout<<"displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, GameElements::Direction rotation)"<<std::endl;
 
     sf::Sprite sprite;
-    std::cout<<"1"<<std::endl;
 
     ///-- TEST ------------------------------
     #if 0
@@ -214,7 +215,6 @@ void GameState::displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, Game
     ///--------------------------------------
 
     sprite.setTexture(data->textures.get(toDisplay));
-    std::cout<<"2"<<std::endl;
     sprite.setPosition(pos);
     sf::Vector2f smallMoveVec;
 
@@ -222,23 +222,23 @@ void GameState::displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, Game
     if(toDisplay == Textures::snakeTail)
         shift = 0;
     else
-        shift = -20;
+        shift = 20;
 
     switch(rotation){
-        case GameElements::Direction::left://- head | + tail
-            smallMoveVec.x -= numberOfPixelsToMoveSprite * 4 + shift;
+        case GameElements::Direction::left:
+            smallMoveVec.x -= numberOfPixelsToMoveSprite * 4 - shift;
             break;
 
         case GameElements::Direction::right:
-            smallMoveVec.x += numberOfPixelsToMoveSprite * 4 + shift;
+            smallMoveVec.x += numberOfPixelsToMoveSprite * 4 - shift;
             break;
 
         case GameElements::Direction::up:
-            smallMoveVec.y -= numberOfPixelsToMoveSprite * 4 + shift;
+            smallMoveVec.y -= numberOfPixelsToMoveSprite * 4 - shift;
             break;
 
         case GameElements::Direction::down:
-            smallMoveVec.y += numberOfPixelsToMoveSprite * 4 + shift;
+            smallMoveVec.y += numberOfPixelsToMoveSprite * 4 - shift;
             break;
     }
 
