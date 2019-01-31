@@ -90,7 +90,7 @@ void GameState::draw()
 
     sf::Vector2f tailPos, headPos;
     GameElements::Direction tailRotation, headRotation;
-    Textures::ID headTexture;
+    Textures::ID headTexture {Textures::snakeHead};
 
     for(int i = 0; i < 32; i++){
         for(int j = 0; j < 24; j++){
@@ -153,6 +153,7 @@ void GameState::displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, Game
     std::cout<<"1"<<std::endl;
 
     ///-- TEST ------------------------------
+    #if 0
     switch(toDisplay){
         case Textures::snakeHead:
             std::cout<<"snakeHead"<<std::endl;
@@ -182,10 +183,34 @@ void GameState::displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, Game
             std::cout<<"snakeTail"<<std::endl;
             break;
 
+        case Textures::snakeStraightBody:
+            std::cout<<"snakeStraightBody"<<std::endl;
+            break;
+
+        case Textures::snakeTurnBody:
+            std::cout<<"snakeTurnBody"<<std::endl;
+            break;
+
+        case Textures::nothing:
+            std::cout<<"nothing"<<std::endl;
+            break;
+
+        case Textures::appleRed:
+        case Textures::appleYellow:
+        case Textures::cherry:
+        case Textures::donut:
+        case Textures::frites:
+        case Textures::hamburger:
+        case Textures::iceCream:
+        case Textures::meat:
+            std::cout<<"food"<<std::endl;
+            break;
+
         default:
             std::cout<<"ERROR !!!!! - something unexpected is there"<<std::endl;
             break;
     }
+    #endif // 0
     ///--------------------------------------
 
     sprite.setTexture(data->textures.get(toDisplay));
@@ -195,7 +220,7 @@ void GameState::displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, Game
 
     int shift;
     if(toDisplay == Textures::snakeTail)
-        shift = -4;
+        shift = 0;
     else
         shift = -20;
 
