@@ -139,6 +139,7 @@ void GameState::draw()
     displayTailOrHead(Textures::snakeTail, tailPos, tailRotation);
     displayTailOrHead(headTexture, headPos, headRotation);
 
+    std::cout<<"statisticsBar.draw(points, snake.getLength(), snake.getInStomach())"<<std::endl;
     statisticsBar.draw(points, snake.getLength(), snake.getInStomach());
 }
 
@@ -146,14 +147,55 @@ void GameState::draw()
 
 void GameState::displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, GameElements::Direction rotation)
 {
+    std::cout<<"displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, GameElements::Direction rotation)"<<std::endl;
+
     sf::Sprite sprite;
+    std::cout<<"1"<<std::endl;
+
+    ///-- TEST ------------------------------
+    switch(toDisplay){
+        case Textures::snakeHead:
+            std::cout<<"snakeHead"<<std::endl;
+            break;
+
+        case Textures::snakeHeadClosedEyes:
+            std::cout<<"snakeHeadClosedEyes"<<std::endl;
+            break;
+
+        case Textures::snakeHeadOpenMouth:
+            std::cout<<"snakeHeadOpenMouth"<<std::endl;
+            break;
+
+        case Textures::snakeHeadTounge:
+            std::cout<<"snakeHeadTounge"<<std::endl;
+            break;
+
+        case Textures::snakeHeadBigEyesWhileDying:
+            std::cout<<"snakeHeadBigEyesWhileDying"<<std::endl;
+            break;
+
+        case Textures::snakeHeadClosedEyesWhileDying:
+            std::cout<<"snakeHeadClosedEyesWhileDying"<<std::endl;
+            break;
+
+        case Textures::snakeTail:
+            std::cout<<"snakeTail"<<std::endl;
+            break;
+
+        default:
+            std::cout<<"ERROR !!!!! - something unexpected is there"<<std::endl;
+            break;
+    }
+    ///--------------------------------------
+
     sprite.setTexture(data->textures.get(toDisplay));
+    std::cout<<"2"<<std::endl;
     sprite.setPosition(pos);
     sf::Vector2f smallMoveVec;
 
     int shift;
     if(toDisplay == Textures::snakeTail)
-        shift = -16;
+        shift = -4;
     else
         shift = -20;
 
@@ -191,7 +233,6 @@ void GameState::displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, Game
     }
 
     sprite.move(smallMoveVec);
-
     data->window.draw(sprite);
 }
 
