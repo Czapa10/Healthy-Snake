@@ -257,7 +257,9 @@ void GameState::displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, Game
             break;
     }
 
-    sprite.move(smallMoveVec);
+    if(snake.getInStomach() == 0 || toDisplay != Textures::snakeTail)
+        sprite.move(smallMoveVec);
+
     data->window.draw(sprite);
 }
 
