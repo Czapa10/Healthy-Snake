@@ -58,6 +58,8 @@ private:
 
     sf::Clock smallMoveClock;
     int numberOfPixelsToMoveSprite{};
+
+    bool isShowingConsoleLogs{false};
 };
 
 

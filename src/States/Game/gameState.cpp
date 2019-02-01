@@ -44,9 +44,17 @@ void GameState::input()
     if(freeze)
         return;
 
-    while(sf::Keyboard::isKeyPressed(sf::Keyboard::Space));
+    if(isShowingConsoleLogs)
+        std::cout<<"input()"<<std::endl;
 
-    std::cout<<"input()"<<std::endl;
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Insert)){
+            isShowingConsoleLogs = true;
+        }
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete)){
+            isShowingConsoleLogs = false;
+        }
+    }
 
     snake.control();
 
@@ -58,7 +66,9 @@ void GameState::input()
 
 void GameState::update(sf::Time deltaTime)
 {
-    std::cout<<"update()"<<std::endl;
+    if(isShowingConsoleLogs)
+        std::cout<<"update()"<<std::endl;
+
     if(freeze){
         gameOverAnimation();
         return;
@@ -66,25 +76,31 @@ void GameState::update(sf::Time deltaTime)
 
     ///set sprites
 
-    std::cout<<"clearTiles()"<<std::endl;
+    if(isShowingConsoleLogs)
+        std::cout<<"clearTiles()"<<std::endl;
     clearTiles();
 
-    std::cout<<"updatingSnake()"<<std::endl;
+    if(isShowingConsoleLogs)
+        std::cout<<"updatingSnake()"<<std::endl;
     updatingSnake();
 
-    std::cout<<"foodUpdate()"<<std::endl;
+    if(isShowingConsoleLogs)
+        std::cout<<"foodUpdate()"<<std::endl;
     foodUpdate();
 
-    std::cout<<"snakeMove()"<<std::endl;
+    if(isShowingConsoleLogs)
+        std::cout<<"snakeMove()"<<std::endl;
     snakeMove();
 
-    std::cout<<"smallMove()"<<std::endl;
+    if(isShowingConsoleLogs)
+        std::cout<<"smallMove()"<<std::endl;
     smallMove();
 }
 
 void GameState::draw()
 {
-    std::cout<<"draw()"<<std::endl;
+    if(isShowingConsoleLogs)
+        std::cout<<"draw()"<<std::endl;
 
     data->window.clear();
 
@@ -141,7 +157,8 @@ void GameState::draw()
     displayTailOrHead(Textures::snakeTail, tailPos, tailRotation);
     displayTailOrHead(headTexture, headPos, headRotation);
 
-    std::cout<<"statisticsBar.draw(points, snake.getLength(), snake.getInStomach())"<<std::endl;
+    if(isShowingConsoleLogs)
+        std::cout<<"statisticsBar.draw(points, snake.getLength(), snake.getInStomach())"<<std::endl;
     statisticsBar.draw(points, snake.getLength(), snake.getInStomach());
 }
 
@@ -149,7 +166,8 @@ void GameState::draw()
 
 void GameState::displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, GameElements::Direction rotation)
 {
-    std::cout<<"displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, GameElements::Direction rotation)"<<std::endl;
+    if(isShowingConsoleLogs)
+        std::cout<<"displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, GameElements::Direction rotation)"<<std::endl;
 
     sf::Sprite sprite;
 
@@ -380,7 +398,8 @@ void GameState::snakeMove()
             freeze = true;
         }
 
-        std::cout<<"SNAKE MOVES"<<std::endl;
+        if(isShowingConsoleLogs)
+            std::cout<<"SNAKE MOVES"<<std::endl;
     }
 }
 
@@ -390,13 +409,15 @@ void GameState::smallMove()
         ++numberOfPixelsToMoveSprite;
         smallMoveClock.restart();
 
-        std::cout<<"numberOfPixelsToMoveSprite: "<<numberOfPixelsToMoveSprite<<std::endl;
+        if(isShowingConsoleLogs)
+            std::cout<<"numberOfPixelsToMoveSprite: "<<numberOfPixelsToMoveSprite<<std::endl;
     }
 }
 
 void GameState::gameOverAnimation()
 {
-    std::cout<<"start of method void GameState::gameOverAnimation()"<<std::endl;
+    if(isShowingConsoleLogs)
+        std::cout<<"start of method void GameState::gameOverAnimation()"<<std::endl;
 
     if(!hasDyingTimeBeedRestarted){
         dyingTime.restart();
@@ -423,7 +444,8 @@ void GameState::gameOverAnimation()
             break;
     }
 
-    std::cout<<"dying time = "<<dyingTime.getElapsedTime().asSeconds()<<std::endl;
+    if(isShowingConsoleLogs)
+        std::cout<<"dying time = "<<dyingTime.getElapsedTime().asSeconds()<<std::endl;
 
     if(dyingTime.getElapsedTime().asSeconds() < 0.7){
         tiles[headPos.x][headPos.y] = Textures::snakeHeadBigEyesWhileDying;
@@ -435,7 +457,9 @@ void GameState::gameOverAnimation()
         std::unique_ptr<States::GameOverState> toStack(new States::GameOverState(data));
         data->stateStack.pushState(std::move(toStack), false);
     }
-    std::cout<<"end of method void GameState::gameOverAnimation()"<<std::endl;
+
+    if(isShowingConsoleLogs)
+        std::cout<<"end of method void GameState::gameOverAnimation()"<<std::endl;
 }
 
 void GameState::makingSnakeTurnBody(int i,int x, int y, sf::Vector2i previous, sf::Vector2i next)
