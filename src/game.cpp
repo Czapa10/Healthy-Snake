@@ -66,30 +66,29 @@ void Game::render() const
 
 void Game::loadTextures() const
 {
-    ///splash state
-    data->textures.load(Textures::companyLogo, "resources/textures/maineCoonLogo.jpg");
-    data->textures.load(Textures::madeBy, "resources/textures/madeBy.png");
+    loadSnakeBodyTextures();
+    loadFoodTextures();
+    loadGuiTextures();
+    loadBackgroundsTextures();
+    loadStatBarTextures();
+}
 
-    ///menu state
-    data->textures.load(Textures::menuBackground1, "resources/textures/menuBackground1.png");
-    data->textures.load(Textures::menuBackground2, "resources/textures/menuBackground2.png");
-    data->textures.load(Textures::menuBackground3, "resources/textures/menuBackground3.png");
-    data->textures.load(Textures::menuBackground4, "resources/textures/menuBackground4.png");
-    data->textures.load(Textures::menuBackground5, "resources/textures/menuBackground5.png");
-
-    ///game state
-    data->textures.load(Textures::gameBackground, "resources/textures/gameBackground.jpg");
-
+void Game::loadSnakeBodyTextures() const
+{
     data->textures.load(Textures::snakeStraightBody, "resources/textures/snakeStraightBody.png");
-    data->textures.load(Textures::snakeTail, "resources/textures/snakeTail.png");
     data->textures.load(Textures::snakeTurnBody, "resources/textures/snakeTurnBody.png");
-    data->textures.load(Textures::snakeHead, "resources/textures/snakeHead.png");
-    data->textures.load(Textures::snakeHeadOpenMouth, "resources/textures/snakeHeadOpenMouth.png");
-    data->textures.load(Textures::snakeHeadClosedEyes, "resources/textures/snakeHeadClosedEyes.png");
-    data->textures.load(Textures::snakeHeadBigEyesWhileDying, "resources/textures/snakeHeadBigEyesWhileDying.png");
-    data->textures.load(Textures::snakeHeadTounge, "resources/textures/snakeHeadTounge.png");
-    data->textures.load(Textures::snakeHeadClosedEyesWhileDying, "resources/textures/snakeHeadClosedEyesWhileDying.png");
 
+    data->textures.load(Textures::snakeTail, "resources/textures/head&Tail8x11/snakeTail.png");
+    data->textures.load(Textures::snakeHead, "resources/textures/head&Tail8x11/snakeHead.png");
+    data->textures.load(Textures::snakeHeadOpenMouth, "resources/textures/head&Tail8x11/snakeHeadOpenMouth.png");
+    data->textures.load(Textures::snakeHeadClosedEyes, "resources/textures/head&Tail8x11/snakeHeadClosedEyes.png");
+    data->textures.load(Textures::snakeHeadBigEyesWhileDying, "resources/textures/head&Tail8x11/snakeHeadBigEyesWhileDying.png");
+    data->textures.load(Textures::snakeHeadTounge, "resources/textures/head&Tail8x11/snakeHeadTounge.png");
+    data->textures.load(Textures::snakeHeadClosedEyesWhileDying, "resources/textures/head&Tail8x11/snakeHeadClosedEyesWhileDying.png");
+}
+
+void Game::loadFoodTextures() const
+{
     data->textures.load(Textures::appleRed, "resources/textures/appleRed.png");
     data->textures.load(Textures::appleYellow, "resources/textures/appleYellow.png");
     data->textures.load(Textures::hamburger, "resources/textures/hamburger.png");
@@ -98,16 +97,36 @@ void Game::loadTextures() const
     data->textures.load(Textures::iceCream, "resources/textures/iceCream.png");
     data->textures.load(Textures::donut, "resources/textures/donut.png");
     data->textures.load(Textures::frites, "resources/textures/frites.png");
+}
 
-    data->textures.load(Textures::statisticsBar, "resources/textures/statBar.png");
-    data->textures.load(Textures::numbers, "resources/textures/numbers.png");
-    data->textures.load(Textures::minus, "resources/textures/minus.png");
+void Game::loadGuiTextures() const
+{
+    data->textures.load(Textures::difficultyChoiseButtons, "resources/textures/difficultyChoiseButtons.png");
+}
+
+void Game::loadBackgroundsTextures() const
+{
+    data->textures.load(Textures::companyLogo, "resources/textures/maineCoonLogo.jpg");
+    data->textures.load(Textures::madeBy, "resources/textures/madeBy.png");
+
+    data->textures.load(Textures::menuBackground1, "resources/textures/menuBackground1.png");
+    data->textures.load(Textures::menuBackground2, "resources/textures/menuBackground2.png");
+    data->textures.load(Textures::menuBackground3, "resources/textures/menuBackground3.png");
+    data->textures.load(Textures::menuBackground4, "resources/textures/menuBackground4.png");
+    data->textures.load(Textures::menuBackground5, "resources/textures/menuBackground5.png");
+
+    data->textures.load(Textures::gameBackground, "resources/textures/gameBackground.jpg");
 
     data->textures.load(Textures::gameover, "resources/textures/gameover.png");
 
     data->textures.load(Textures::pause, "resources/textures/pause.png");
+}
 
-    data->textures.load(Textures::difficultyChoiseButtons, "resources/textures/difficultyChoiseButtons.png");
+void Game::loadStatBarTextures() const
+{
+    data->textures.load(Textures::statisticsBar, "resources/textures/statBar.png");
+    data->textures.load(Textures::numbers, "resources/textures/numbers.png");
+    data->textures.load(Textures::minus, "resources/textures/minus.png");
 }
 
 void Game::loadFonts() const

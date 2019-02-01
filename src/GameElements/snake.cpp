@@ -28,7 +28,7 @@ Snake::Snake(Difficulty::Level level)
     switch(level){
         case Difficulty::easy:
             //speed = 0.16;
-            speed = 3;
+            speed = 2;
             break;
 
         case Difficulty::medium:

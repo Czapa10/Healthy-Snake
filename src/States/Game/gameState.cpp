@@ -47,6 +47,8 @@ void GameState::input()
     if(isShowingConsoleLogs)
         std::cout<<"input()"<<std::endl;
 
+    while(sf::Keyboard::isKeyPressed(sf::Keyboard::Space));
+
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Insert)){
             isShowingConsoleLogs = true;
@@ -409,7 +411,7 @@ void GameState::smallMove()
         ++numberOfPixelsToMoveSprite;
         smallMoveClock.restart();
 
-        if(isShowingConsoleLogs)
+        //if(isShowingConsoleLogs)
             std::cout<<"numberOfPixelsToMoveSprite: "<<numberOfPixelsToMoveSprite<<std::endl;
     }
 }
