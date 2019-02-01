@@ -78,6 +78,12 @@ void Game::loadSnakeBodyTextures() const
     data->textures.load(Textures::snakeStraightBody, "resources/textures/snakeStraightBody.png");
     data->textures.load(Textures::snakeTurnBody, "resources/textures/snakeTurnBody.png");
 
+    loadHeadAndTail8x11();
+    loadHeadAndTail8x8();
+}
+
+void Game::loadHeadAndTail8x11() const
+{
     data->textures.load(Textures::snakeTail, "resources/textures/head&Tail8x11/snakeTail.png");
     data->textures.load(Textures::snakeHead, "resources/textures/head&Tail8x11/snakeHead.png");
     data->textures.load(Textures::snakeHeadOpenMouth, "resources/textures/head&Tail8x11/snakeHeadOpenMouth.png");
@@ -85,6 +91,17 @@ void Game::loadSnakeBodyTextures() const
     data->textures.load(Textures::snakeHeadBigEyesWhileDying, "resources/textures/head&Tail8x11/snakeHeadBigEyesWhileDying.png");
     data->textures.load(Textures::snakeHeadTounge, "resources/textures/head&Tail8x11/snakeHeadTounge.png");
     data->textures.load(Textures::snakeHeadClosedEyesWhileDying, "resources/textures/head&Tail8x11/snakeHeadClosedEyesWhileDying.png");
+}
+
+void Game::loadHeadAndTail8x8() const
+{
+    data->textures.load(Textures::snakeTail8x8, "resources/textures/head&Tail8x8/snakeTail.png");
+    data->textures.load(Textures::snakeHead8x8, "resources/textures/head&Tail8x8/snakeHead.png");
+    data->textures.load(Textures::snakeHeadOpenMouth8x8, "resources/textures/head&Tail8x8/snakeHeadOpenMouth.png");
+    data->textures.load(Textures::snakeHeadClosedEyes8x8, "resources/textures/head&Tail8x8/snakeHeadClosedEyes.png");
+    data->textures.load(Textures::snakeHeadBigEyesWhileDying8x8, "resources/textures/head&Tail8x8/snakeHeadBigEyesWhileDying.png");
+    data->textures.load(Textures::snakeHeadTounge8x8, "resources/textures/head&Tail8x8/snakeHeadTounge.png");
+    data->textures.load(Textures::snakeHeadClosedEyesWhileDying8x8, "resources/textures/head&Tail8x8/snakeHeadClosedEyesWhileDying.png");
 }
 
 void Game::loadFoodTextures() const

@@ -20,14 +20,22 @@ namespace Textures
 
         snakeStraightBody,
         snakeTurnBody,
+        /////////8x11
         snakeTail,
-        /////////
         snakeHead,
         snakeHeadOpenMouth,
         snakeHeadClosedEyes,
         snakeHeadTounge,
         snakeHeadBigEyesWhileDying,
         snakeHeadClosedEyesWhileDying,
+        /////////8x8
+        snakeTail8x8,
+        snakeHead8x8,
+        snakeHeadOpenMouth8x8,
+        snakeHeadClosedEyes8x8,
+        snakeHeadTounge8x8,
+        snakeHeadBigEyesWhileDying8x8,
+        snakeHeadClosedEyesWhileDying8x8,
 
         appleRed,
         appleYellow,
