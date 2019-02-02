@@ -36,7 +36,17 @@ private:
     void update(sf::Time deltaTime) const;
     void render() const;
 
+    ///loading textures
     void loadTextures() const;
+
+    void loadSnakeBodyTextures() const;
+    void loadHeadAndTail8x12() const;
+    void loadHeadAndTail8x8() const;
+    void loadFoodTextures() const;
+    void loadGuiTextures() const;
+    void loadBackgroundsTextures() const;
+    void loadStatBarTextures() const;
+
     void loadFonts() const;
 
 private:

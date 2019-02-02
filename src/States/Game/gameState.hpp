@@ -23,12 +23,13 @@ public:
     void draw();
 
 private:
+    void displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, GameElements::Direction rotation);
     void updatingSnake();
     void clearTiles();
     void settingFood();
     void foodUpdate();
     void snakeMove();
-    void smoothSnakeAnimation();
+    void smallMove();
     void gameOverAnimation();
     void makingSnakeTurnBody( int it, int x, int y, sf::Vector2i previous, sf::Vector2i next );
     void makeSpecificTurnBody( GameElements::Direction _1, GameElements::Direction _2, GameElements::Direction _3, GameElements::Direction _4, bool isTeleporting, int XorY, int nextXorY, int x, int y);
@@ -55,7 +56,10 @@ private:
     bool hasDyingTimeBeedRestarted{false};
     sf::Clock dyingTime;
 
-    sf::Clock timeFromLastMove;
+    sf::Clock smallMoveClock;
+    int numberOfPixelsToMoveSprite{};
+
+    bool isShowingConsoleLogs{false};
 };
 
 

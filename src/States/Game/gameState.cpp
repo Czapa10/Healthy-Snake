@@ -44,6 +44,20 @@ void GameState::input()
     if(freeze)
         return;
 
+    if(isShowingConsoleLogs)
+        std::cout<<"input()"<<std::endl;
+
+    while(sf::Keyboard::isKeyPressed(sf::Keyboard::Space));
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Insert)){
+            isShowingConsoleLogs = true;
+        }
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete)){
+            isShowingConsoleLogs = false;
+        }
+    }
+
     snake.control();
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
@@ -54,26 +68,49 @@ void GameState::input()
 
 void GameState::update(sf::Time deltaTime)
 {
+    if(isShowingConsoleLogs)
+        std::cout<<"update()"<<std::endl;
+
     if(freeze){
         gameOverAnimation();
         return;
     }
 
     ///set sprites
+
+    if(isShowingConsoleLogs)
+        std::cout<<"clearTiles()"<<std::endl;
     clearTiles();
 
+    if(isShowingConsoleLogs)
+        std::cout<<"updatingSnake()"<<std::endl;
     updatingSnake();
 
+    if(isShowingConsoleLogs)
+        std::cout<<"foodUpdate()"<<std::endl;
     foodUpdate();
 
+    if(isShowingConsoleLogs)
+        std::cout<<"snakeMove()"<<std::endl;
     snakeMove();
+
+    if(isShowingConsoleLogs)
+        std::cout<<"smallMove()"<<std::endl;
+    smallMove();
 }
 
 void GameState::draw()
 {
+    if(isShowingConsoleLogs)
+        std::cout<<"draw()"<<std::endl;
+
     data->window.clear();
 
     data->window.draw(background);
+
+    sf::Vector2f tailPos, headPos;
+    GameElements::Direction tailRotation, headRotation;
+    Textures::ID headTexture {Textures::snakeHead};
 
     for(int i = 0; i < 32; i++){
         for(int j = 0; j < 24; j++){
@@ -82,15 +119,36 @@ void GameState::draw()
                 sprite.setTexture(data->textures.get(tiles[i][j]));
                 sprite.setPosition(sf::Vector2f(i * 32 + 16, j * 32 + 16));
 
+                if(tiles[i][j] == Textures::snakeTail){
+                    tailPos.x = sprite.getPosition().x;
+                    tailPos.y = sprite.getPosition().y;
+                    tailRotation = spriteRotation[i][j];
+                    continue;
+                }
+                if(tiles[i][j] == Textures::snakeHead || tiles[i][j] == Textures::snakeHeadClosedEyes ||
+                   tiles[i][j] == Textures::snakeHeadOpenMouth || tiles[i][j] == Textures::snakeHeadTounge||
+                   tiles[i][j] == Textures::snakeHeadBigEyesWhileDying || tiles[i][j] == Textures::snakeHeadClosedEyesWhileDying){
+                    headPos.x = sprite.getPosition().x;
+                    headPos.y = sprite.getPosition().y;
+                    headRotation = spriteRotation[i][j];
+                    headTexture = tiles[i][j];
+                    continue;
+                }
+
                 sprite.setOrigin(16.f, 16.f);
-                if(spriteRotation[i][j] == GameElements::Direction::left){
-                    sprite.rotate(-90.f);
-                }
-                else if(spriteRotation[i][j] == GameElements::Direction::right){
-                    sprite.rotate(90.f);
-                }
-                else if(spriteRotation[i][j] == GameElements::Direction::down){
-                    sprite.rotate(180.f);
+
+                switch(spriteRotation[i][j]){
+                    case GameElements::Direction::left:
+                        sprite.rotate(-90.f);
+                        break;
+
+                    case GameElements::Direction::right:
+                        sprite.rotate(90.f);
+                        break;
+
+                    case GameElements::Direction::down:
+                        sprite.rotate(180.f);
+                        break;
                 }
 
                 data->window.draw(sprite);
@@ -98,10 +156,132 @@ void GameState::draw()
         }
     }
 
+    displayTailOrHead(Textures::snakeTail, tailPos, tailRotation);
+    displayTailOrHead(headTexture, headPos, headRotation);
+
+    if(isShowingConsoleLogs)
+        std::cout<<"statisticsBar.draw(points, snake.getLength(), snake.getInStomach())"<<std::endl;
     statisticsBar.draw(points, snake.getLength(), snake.getInStomach());
 }
 
 //*************************************************************************
+
+void GameState::displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, GameElements::Direction rotation)
+{
+    if(isShowingConsoleLogs)
+        std::cout<<"displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, GameElements::Direction rotation)"<<std::endl;
+
+    sf::Sprite sprite;
+
+    ///-- TEST ------------------------------
+    #if 0
+    switch(toDisplay){
+        case Textures::snakeHead:
+            std::cout<<"snakeHead"<<std::endl;
+            break;
+
+        case Textures::snakeHeadClosedEyes:
+            std::cout<<"snakeHeadClosedEyes"<<std::endl;
+            break;
+
+        case Textures::snakeHeadOpenMouth:
+            std::cout<<"snakeHeadOpenMouth"<<std::endl;
+            break;
+
+        case Textures::snakeHeadTounge:
+            std::cout<<"snakeHeadTounge"<<std::endl;
+            break;
+
+        case Textures::snakeHeadBigEyesWhileDying:
+            std::cout<<"snakeHeadBigEyesWhileDying"<<std::endl;
+            break;
+
+        case Textures::snakeHeadClosedEyesWhileDying:
+            std::cout<<"snakeHeadClosedEyesWhileDying"<<std::endl;
+            break;
+
+        case Textures::snakeTail:
+            std::cout<<"snakeTail"<<std::endl;
+            break;
+
+        case Textures::snakeStraightBody:
+            std::cout<<"snakeStraightBody"<<std::endl;
+            break;
+
+        case Textures::snakeTurnBody:
+            std::cout<<"snakeTurnBody"<<std::endl;
+            break;
+
+        case Textures::nothing:
+            std::cout<<"nothing"<<std::endl;
+            break;
+
+        case Textures::appleRed:
+        case Textures::appleYellow:
+        case Textures::cherry:
+        case Textures::donut:
+        case Textures::frites:
+        case Textures::hamburger:
+        case Textures::iceCream:
+        case Textures::meat:
+            std::cout<<"food"<<std::endl;
+            break;
+
+        default:
+            std::cout<<"ERROR !!!!! - something unexpected is there"<<std::endl;
+            break;
+    }
+    #endif // 0
+    ///--------------------------------------
+
+    sprite.setTexture(data->textures.get(toDisplay));
+    sprite.setPosition(pos);
+    sf::Vector2f smallMoveVec;
+
+    int shift;
+    if(toDisplay == Textures::snakeTail)
+        shift = 0;
+    else
+        shift = 16;
+
+    switch(rotation){
+        case GameElements::Direction::left:
+            smallMoveVec.x -= numberOfPixelsToMoveSprite * 4 - shift;
+            break;
+
+        case GameElements::Direction::right:
+            smallMoveVec.x += numberOfPixelsToMoveSprite * 4 - shift;
+            break;
+
+        case GameElements::Direction::up:
+            smallMoveVec.y -= numberOfPixelsToMoveSprite * 4 - shift;
+            break;
+
+        case GameElements::Direction::down:
+            smallMoveVec.y += numberOfPixelsToMoveSprite * 4 - shift;
+            break;
+    }
+
+    sprite.setOrigin(16.f, 16.f);
+    switch(rotation){
+        case GameElements::Direction::left:
+            sprite.rotate(-90.f);
+            break;
+
+        case GameElements::Direction::right:
+            sprite.rotate(90.f);
+            break;
+
+        case GameElements::Direction::down:
+            sprite.rotate(180.f);
+            break;
+    }
+
+    if(snake.getInStomach() == 0 || toDisplay != Textures::snakeTail)
+        sprite.move(smallMoveVec);
+
+    data->window.draw(sprite);
+}
 
 void GameState::updatingSnake()
 {
@@ -212,23 +392,35 @@ void GameState::snakeMove()
         snake.grow();
         headTexture = snake.getSnakeHeadTexture(food);
         clock.restart();
-        timeFromLastMove.restart();
+
+        numberOfPixelsToMoveSprite = 0;
 
         ///check collision
         if(snake.isCollideWithItself(tiles)){
             freeze = true;
         }
+
+        if(isShowingConsoleLogs)
+            std::cout<<"SNAKE MOVES"<<std::endl;
     }
 }
 
-void GameState::smoothSnakeAnimation()
+void GameState::smallMove()
 {
-    //int pixelsFromRealMove{ }
-}
+    if(smallMoveClock.getElapsedTime().asSeconds() > snake.getSpeed() / 8){
+        ++numberOfPixelsToMoveSprite;
+        smallMoveClock.restart();
 
+        //if(isShowingConsoleLogs)
+            std::cout<<"numberOfPixelsToMoveSprite: "<<numberOfPixelsToMoveSprite<<std::endl;
+    }
+}
 
 void GameState::gameOverAnimation()
 {
+    if(isShowingConsoleLogs)
+        std::cout<<"start of method void GameState::gameOverAnimation()"<<std::endl;
+
     if(!hasDyingTimeBeedRestarted){
         dyingTime.restart();
         hasDyingTimeBeedRestarted = true;
@@ -253,6 +445,10 @@ void GameState::gameOverAnimation()
             ++headPos.y;
             break;
     }
+
+    if(isShowingConsoleLogs)
+        std::cout<<"dying time = "<<dyingTime.getElapsedTime().asSeconds()<<std::endl;
+
     if(dyingTime.getElapsedTime().asSeconds() < 0.7){
         tiles[headPos.x][headPos.y] = Textures::snakeHeadBigEyesWhileDying;
     }
@@ -263,6 +459,9 @@ void GameState::gameOverAnimation()
         std::unique_ptr<States::GameOverState> toStack(new States::GameOverState(data));
         data->stateStack.pushState(std::move(toStack), false);
     }
+
+    if(isShowingConsoleLogs)
+        std::cout<<"end of method void GameState::gameOverAnimation()"<<std::endl;
 }
 
 void GameState::makingSnakeTurnBody(int i,int x, int y, sf::Vector2i previous, sf::Vector2i next)
