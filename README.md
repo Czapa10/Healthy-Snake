@@ -29,8 +29,6 @@ If you wanna make good score you have to eat only healthy food and avoid unhealt
 Arrows - to control snake
 
 # To do:
-- 3 difficulty levels
-- pause screen
 - settings
 - credits
 - best scores
