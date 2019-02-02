@@ -173,67 +173,6 @@ void GameState::displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, Game
 
     sf::Sprite sprite;
 
-    ///-- TEST ------------------------------
-    #if 0
-    switch(toDisplay){
-        case Textures::snakeHead:
-            std::cout<<"snakeHead"<<std::endl;
-            break;
-
-        case Textures::snakeHeadClosedEyes:
-            std::cout<<"snakeHeadClosedEyes"<<std::endl;
-            break;
-
-        case Textures::snakeHeadOpenMouth:
-            std::cout<<"snakeHeadOpenMouth"<<std::endl;
-            break;
-
-        case Textures::snakeHeadTounge:
-            std::cout<<"snakeHeadTounge"<<std::endl;
-            break;
-
-        case Textures::snakeHeadBigEyesWhileDying:
-            std::cout<<"snakeHeadBigEyesWhileDying"<<std::endl;
-            break;
-
-        case Textures::snakeHeadClosedEyesWhileDying:
-            std::cout<<"snakeHeadClosedEyesWhileDying"<<std::endl;
-            break;
-
-        case Textures::snakeTail:
-            std::cout<<"snakeTail"<<std::endl;
-            break;
-
-        case Textures::snakeStraightBody:
-            std::cout<<"snakeStraightBody"<<std::endl;
-            break;
-
-        case Textures::snakeTurnBody:
-            std::cout<<"snakeTurnBody"<<std::endl;
-            break;
-
-        case Textures::nothing:
-            std::cout<<"nothing"<<std::endl;
-            break;
-
-        case Textures::appleRed:
-        case Textures::appleYellow:
-        case Textures::cherry:
-        case Textures::donut:
-        case Textures::frites:
-        case Textures::hamburger:
-        case Textures::iceCream:
-        case Textures::meat:
-            std::cout<<"food"<<std::endl;
-            break;
-
-        default:
-            std::cout<<"ERROR !!!!! - something unexpected is there"<<std::endl;
-            break;
-    }
-    #endif // 0
-    ///--------------------------------------
-
     sprite.setTexture(data->textures.get(toDisplay));
     sprite.setPosition(pos);
     sf::Vector2f smallMoveVec;
@@ -411,7 +350,7 @@ void GameState::smallMove()
         ++numberOfPixelsToMoveSprite;
         smallMoveClock.restart();
 
-        //if(isShowingConsoleLogs)
+        if(isShowingConsoleLogs)
             std::cout<<"numberOfPixelsToMoveSprite: "<<numberOfPixelsToMoveSprite<<std::endl;
     }
 }
