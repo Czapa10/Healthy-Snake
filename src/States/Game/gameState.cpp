@@ -242,7 +242,7 @@ void GameState::displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, Game
     if(toDisplay == Textures::snakeTail)
         shift = 0;
     else
-        shift = 20;
+        shift = 16;
 
     switch(rotation){
         case GameElements::Direction::left:

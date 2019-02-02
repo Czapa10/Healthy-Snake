@@ -78,19 +78,19 @@ void Game::loadSnakeBodyTextures() const
     data->textures.load(Textures::snakeStraightBody, "resources/textures/snakeStraightBody.png");
     data->textures.load(Textures::snakeTurnBody, "resources/textures/snakeTurnBody.png");
 
-    loadHeadAndTail8x11();
-    loadHeadAndTail8x8();
+    loadHeadAndTail8x12();
+    //loadHeadAndTail8x8();
 }
 
-void Game::loadHeadAndTail8x11() const
+void Game::loadHeadAndTail8x12() const
 {
-    data->textures.load(Textures::snakeTail, "resources/textures/head&Tail8x11/snakeTail.png");
-    data->textures.load(Textures::snakeHead, "resources/textures/head&Tail8x11/snakeHead.png");
-    data->textures.load(Textures::snakeHeadOpenMouth, "resources/textures/head&Tail8x11/snakeHeadOpenMouth.png");
-    data->textures.load(Textures::snakeHeadClosedEyes, "resources/textures/head&Tail8x11/snakeHeadClosedEyes.png");
-    data->textures.load(Textures::snakeHeadBigEyesWhileDying, "resources/textures/head&Tail8x11/snakeHeadBigEyesWhileDying.png");
-    data->textures.load(Textures::snakeHeadTounge, "resources/textures/head&Tail8x11/snakeHeadTounge.png");
-    data->textures.load(Textures::snakeHeadClosedEyesWhileDying, "resources/textures/head&Tail8x11/snakeHeadClosedEyesWhileDying.png");
+    data->textures.load(Textures::snakeTail, "resources/textures/head&Tail8x12/snakeTail.png");
+    data->textures.load(Textures::snakeHead, "resources/textures/head&Tail8x12/snakeHead.png");
+    data->textures.load(Textures::snakeHeadOpenMouth, "resources/textures/head&Tail8x12/snakeHeadOpenMouth.png");
+    data->textures.load(Textures::snakeHeadClosedEyes, "resources/textures/head&Tail8x12/snakeHeadClosedEyes.png");
+    data->textures.load(Textures::snakeHeadBigEyesWhileDying, "resources/textures/head&Tail8x12/snakeHeadBigEyesWhileDying.png");
+    data->textures.load(Textures::snakeHeadTounge, "resources/textures/head&Tail8x12/snakeHeadTounge.png");
+    data->textures.load(Textures::snakeHeadClosedEyesWhileDying, "resources/textures/head&Tail8x12/snakeHeadClosedEyesWhileDying.png");
 }
 
 void Game::loadHeadAndTail8x8() const

@@ -40,7 +40,7 @@ private:
     void loadTextures() const;
 
     void loadSnakeBodyTextures() const;
-    void loadHeadAndTail8x11() const;
+    void loadHeadAndTail8x12() const;
     void loadHeadAndTail8x8() const;
     void loadFoodTextures() const;
     void loadGuiTextures() const;
