@@ -18,9 +18,9 @@ class GameState : public State
 public:
     GameState(Game::GameDataRef _data);
 
-    void input();
-    void update(sf::Time deltaTime);
-    void draw();
+    void input() override;
+    void update(sf::Time deltaTime) override;
+    void draw() override;
 
 private:
     void displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, GameElements::Direction rotation);

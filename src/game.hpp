@@ -32,9 +32,9 @@ public:
     void run() const;
 
 private:
-    void input() const;
-    void update(sf::Time deltaTime) const;
-    void render() const;
+    void input() override;
+    void update(sf::Time deltaTime) override;
+    void render() override;
 
     ///loading textures
     void loadTextures() const;
