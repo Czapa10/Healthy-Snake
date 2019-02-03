@@ -17,7 +17,7 @@ Game::Game()
     loadFonts();
 }
 
-void Game::run() const
+void Game::run()
 {
     sf::Clock clock;
     const sf::Time timePerFrame = sf::seconds(1.f / 60.f);
@@ -36,7 +36,7 @@ void Game::run() const
     }
 }
 
-void Game::input() const
+void Game::input()
 {
     sf::Event event;
 
@@ -48,12 +48,12 @@ void Game::input() const
     data->stateStack.getActiveState()->input();
 }
 
-void Game::update(sf::Time deltaTime) const
+void Game::update(sf::Time deltaTime)
 {
     data->stateStack.getActiveState()->update(deltaTime);
 }
 
-void Game::render() const
+void Game::render()
 {
     if(data->stateStack.areThereTwoStates()){
         data->stateStack.getPreviousState()->draw();

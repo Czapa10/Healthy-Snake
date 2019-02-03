@@ -29,12 +29,12 @@ class Game
 {
 public:
     Game();
-    void run() const;
+    void run();
 
 private:
-    void input() override;
-    void update(sf::Time deltaTime) override;
-    void render() override;
+    void input();
+    void update(sf::Time deltaTime);
+    void render();
 
     ///loading textures
     void loadTextures() const;
