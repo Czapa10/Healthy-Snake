@@ -6,3 +6,10 @@ obj
 *.txt
 *.layout
 *.exe
+/.vs
+/Healthy-Snake/.vs/Healthy-Snake/v15
+*.vcxproj
+*.filters
+*.user
+*.sln
+/dependences/SFML-2.5.0
