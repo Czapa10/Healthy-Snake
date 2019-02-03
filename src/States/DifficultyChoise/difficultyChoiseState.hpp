@@ -15,9 +15,9 @@ class DifficultyChoiseState : public State
 public:
     DifficultyChoiseState(Game::GameDataRef _data);
 
-    void input();
-    void update(sf::Time deltaTime);
-    void draw();
+    void input() override;
+    void update(sf::Time deltaTime) override;
+    void draw() override;
 
 private:
     void menuKeyboardControl();

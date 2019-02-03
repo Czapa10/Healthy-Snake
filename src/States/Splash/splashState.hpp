@@ -14,9 +14,9 @@ class SplashState : public State
 public:
     SplashState(Game::GameDataRef _data);
 
-    void input();
-    void update(sf::Time deltaTime);
-    void draw();
+    void input() override;
+    void update(sf::Time deltaTime) override;
+    void draw() override;
 
 private:
     Game::GameDataRef data;
