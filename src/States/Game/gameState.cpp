@@ -229,8 +229,15 @@ void GameState::updatingSnake()
         int x = bodyPart.pos.x;
         int y = bodyPart.pos.y;
 
-        sf::Vector2i previous = snake.bodyParts[i - 1].pos; //(in direction to head)
+        sf::Vector2i previous;
+        if(i == 0)
+            previous = snake.bodyParts[0].pos;
+        else
+            previous = snake.bodyParts[i - 1].pos; //(in direction to head)
+
+
         sf::Vector2i next = snake.bodyParts[i + 1].pos; //(in direction to tail)
+
 
         spriteRotation[x][y] = bodyPart.direction;
 
