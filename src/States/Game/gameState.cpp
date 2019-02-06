@@ -173,6 +173,9 @@ void GameState::displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, Game
 
     sf::Sprite sprite;
 
+    if(numberOfPixelsToMoveSprite < 5)
+        toDisplay = !toDisplay;
+
     sprite.setTexture(data->textures.get(toDisplay));
     sprite.setPosition(pos);
     sf::Vector2f smallMoveVec;

@@ -59,6 +59,7 @@ namespace Textures
         nothing
     };
 
+    ID operator!(ID);
 }
 
 namespace Fonts

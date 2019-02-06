@@ -112,7 +112,7 @@ void Game::loadGameStateTextures() const
     data->textures.load(Textures::snakeTurnBody, "resources/textures/gameState/snakeTurnBody.png");
 
     loadHeadAndTail8x12();
-    //loadHeadAndTail8x8();
+    loadHeadAndTail8x8();
 
     loadFoodTextures();
     loadStatBarTextures();
