@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <memory>
+#include <string>
 
 #include <Resources/resourceManager.hpp>
 #include <States/stateStack.hpp>
@@ -33,10 +34,9 @@ public:
 
 private:
     void input();
-    void update(sf::Time deltaTime);
+    void update(const sf::Time& deltaTime);
     void render();
 
-    ///loading textures
     void loadTextures() const;
 
     void loadSplashStateTextures() const;
@@ -54,6 +54,9 @@ private:
     void loadFonts() const;
 
 private:
+	static const std::string GAME_NAME;
+	static const unsigned WINDOW_WIDTH = 1024, WINDOW_HEIGHT = 768;
+
     GameDataRef data = std::make_shared<GameData>();
 };
 

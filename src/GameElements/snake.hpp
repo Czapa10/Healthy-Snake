@@ -45,7 +45,7 @@ public:
     void grow();
     bool isCollideWithItself(Textures::ID tiles[32][24]) const;
 
-    int getLength(){return snakeLength;}
+	int getLength() const { return bodyParts.size(); }
     int getInStomach(){return foodInStomach;}
     float getSpeed(){return speed;}
     void setSpeed(float newSpeed){speed = newSpeed;}
@@ -57,7 +57,8 @@ public:
     SnakeHead head;
 
 private:
-    int snakeLength = 3;
+	static const int BODY_PARTS_COUNT = 3;
+
     int foodInStomach{};
     float speed;// 1s / speed = one move on frame
 

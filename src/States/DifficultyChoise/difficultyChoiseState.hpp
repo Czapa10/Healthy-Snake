@@ -16,7 +16,7 @@ public:
     DifficultyChoiseState(Game::GameDataRef _data);
 
     void input() override;
-    void update(sf::Time deltaTime) override;
+    void update(const sf::Time& deltaTime) override;
     void draw() override;
 
 private:

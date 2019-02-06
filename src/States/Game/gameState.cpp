@@ -66,7 +66,7 @@ void GameState::input()
     }
 }
 
-void GameState::update(sf::Time deltaTime)
+void GameState::update(const sf::Time& deltaTime)
 {
     if(isShowingConsoleLogs)
         std::cout<<"update()"<<std::endl;

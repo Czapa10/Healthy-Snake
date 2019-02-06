@@ -5,10 +5,11 @@
 namespace Game
 {
 
+const std::string Game::GAME_NAME = "Healthy Snake";
 
 Game::Game()
 {
-    data->window.create(sf::VideoMode(1024, 768), "Healthy Snake");
+    data->window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), GAME_NAME);
 
     std::unique_ptr<States::SplashState> toStack(new States::SplashState(data));
     data->stateStack.pushState(std::move(toStack));
@@ -48,7 +49,7 @@ void Game::input()
     data->stateStack.getActiveState()->input();
 }
 
-void Game::update(sf::Time deltaTime)
+void Game::update(const sf::Time& deltaTime)
 {
     data->stateStack.getActiveState()->update(deltaTime);
 }

@@ -15,31 +15,31 @@ MenuState::MenuState(Game::GameDataRef _data) : data(_data)
     unsigned int characterSize{80};
 
     play.setFont(data->fonts.get(Fonts::pooh));
-    play.setColor(sf::Color(9,102,20));
+    play.setFillColor(sf::Color(9,102,20));
     play.setCharacterSize(characterSize);
     play.setPosition(100.f, 295.f);
     play.setString("PLAY");
 
     settings.setFont(data->fonts.get(Fonts::pooh));
-    settings.setColor(sf::Color(17, 194, 225));
+    settings.setFillColor(sf::Color(17, 194, 225));
     settings.setCharacterSize(characterSize);
     settings.setPosition(100.f, 391.f);
     settings.setString("SETTINGS");
 
     credits.setFont(data->fonts.get(Fonts::pooh));
-    credits.setColor(sf::Color::Yellow);
+    credits.setFillColor(sf::Color::Yellow);
     credits.setCharacterSize(characterSize);
     credits.setPosition(100.f, 487.f);
     credits.setString("CREDITS");
 
     bestScore.setFont(data->fonts.get(Fonts::pooh));
-    bestScore.setColor(sf::Color(239,104,14));
+    bestScore.setFillColor(sf::Color(239,104,14));
     bestScore.setCharacterSize(characterSize);
     bestScore.setPosition(100.f, 583.f);
     bestScore.setString("BEST SCORES");
 
     exit.setFont(data->fonts.get(Fonts::pooh));
-    exit.setColor(sf::Color::Red);
+    exit.setFillColor(sf::Color::Red);
     exit.setCharacterSize(characterSize);
     exit.setPosition(100.f, 679.f);
     exit.setString("EXIT");
@@ -59,7 +59,7 @@ void MenuState::input()
     menuMouseControl();
 }
 
-void MenuState::update(sf::Time deltaTime)
+void MenuState::update(const sf::Time& deltaTime)
 {
     updatingMenuGraphics();
     changingState();
