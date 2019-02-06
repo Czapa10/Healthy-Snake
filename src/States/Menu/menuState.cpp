@@ -59,7 +59,7 @@ void MenuState::input()
     menuMouseControl();
 }
 
-void MenuState::update(sf::Time deltaTime)
+void MenuState::update(const sf::Time& deltaTime)
 {
     updatingMenuGraphics();
     changingState();

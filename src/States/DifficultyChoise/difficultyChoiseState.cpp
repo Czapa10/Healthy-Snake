@@ -31,7 +31,7 @@ void DifficultyChoiseState::input()
     menuMouseControl();
 }
 
-void DifficultyChoiseState::update(sf::Time deltaTime)
+void DifficultyChoiseState::update(const sf::Time& deltaTime)
 {
     updatingButtonsGraphics();
     changingState();

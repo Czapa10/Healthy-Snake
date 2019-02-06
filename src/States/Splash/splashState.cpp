@@ -20,7 +20,7 @@ void SplashState::input()
     }
 }
 
-void SplashState::update(sf::Time deltaTime)
+void SplashState::update(const sf::Time& deltaTime)
 {
     if(change){
         clock.restart();

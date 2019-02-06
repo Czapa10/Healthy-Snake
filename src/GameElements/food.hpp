@@ -27,7 +27,7 @@ public:
     void setType();
 
     void setRandomPos();
-    void setPos(sf::Vector2i _pos);
+    void setPos(const sf::Vector2i& _pos);
     int getWeight() const;
     int getPoints() const;//NutritionalValue
 

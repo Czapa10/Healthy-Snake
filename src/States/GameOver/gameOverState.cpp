@@ -23,7 +23,7 @@ void GameOverState::input()
     }
 }
 
-void GameOverState::update(sf::Time deltaTime)
+void GameOverState::update(const sf::Time& deltaTime)
 {
     if(enterWasClicked){
         data->stateStack.clearStates();

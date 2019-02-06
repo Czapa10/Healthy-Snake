@@ -26,7 +26,7 @@ void PauseState::input()
     }
 }
 
-void PauseState::update(sf::Time deltaTime)
+void PauseState::update(const sf::Time& deltaTime)
 {
     if(enterWasClicked){
         data->stateStack.popState();

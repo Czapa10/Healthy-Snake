@@ -64,7 +64,7 @@ void Food::setRandomPos()
 }
 
 
-void Food::setPos(sf::Vector2i _pos)
+void Food::setPos(const sf::Vector2i& _pos)
 {
     pos = _pos;
 }
