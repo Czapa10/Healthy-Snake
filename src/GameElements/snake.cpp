@@ -16,29 +16,28 @@ BodyPart::BodyPart(sf::Vector2i _pos, Direction _direction)
 
 Snake::Snake(Difficulty::Level level)
 {
-    inputQueue.push(Direction::left);
+	inputQueue.push(Direction::left);
 
-    bodyParts.reserve(256);
+	for (int i = 0; i < BODY_PARTS_COUNT; i++) {
+		const sf::Vector2i position(i + 10, 10);
+		const BodyPart part(position, Direction::left);
+		bodyParts.push_back(part);
+	}
 
-    for(int i = 0; i < snakeLength; ++i){
-        BodyPart part(sf::Vector2i(i + 10, 10), Direction::left);
-        bodyParts.emplace_back(part);
-    }
+	switch (level) {
+	case Difficulty::easy:
+		speed = 0.16;
+		break;
 
-    switch(level){
-        case Difficulty::easy:
-            speed = 0.16;
-            break;
+	case Difficulty::medium:
+		speed = 0.12;
+		break;
 
-        case Difficulty::medium:
-            speed = 0.12;
-            break;
-
-        case Difficulty::hard:
-            //speed = 0.08;
-            speed = 1.5;
-            break;
-    }
+	case Difficulty::hard:
+		//speed = 0.08;
+		speed = 1.5;
+		break;
+	}
 }
 
 void Snake::control()
@@ -145,11 +144,8 @@ void Snake::grow()
         y = bodyParts.back().pos.y;
     }
 
-    BodyPart tail(sf::Vector2i(x,y), bodyParts.back().direction);
-
-    bodyParts.emplace_back(tail);
-
-    ++snakeLength;
+    const BodyPart tail(sf::Vector2i(x,y), bodyParts.back().direction);
+	bodyParts.push_back(tail);
     --foodInStomach;
 }
 
