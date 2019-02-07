@@ -5,7 +5,7 @@
 
 #include <Resources/resourceManager.hpp>
 #include <States/stateStack.hpp>
-#include <MouseInput/mouseInput.hpp>
+#include <GUI/mouseInput.hpp>
 #include <States/DifficultyChoise/difficultyLevelIdentifiers.hpp>
 
 namespace Game

@@ -2,14 +2,17 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "mouseInput.hpp"
+
 namespace GUI
 {
 
 
-class Button : private MouseInput
+class Button// : private MouseInput
 {
 public:
     Button(const sf::Texture&, sf::IntRect notPointedRect, sf::IntRect pointedRect, bool isActive = true);
+    Button(const sf::Texture&, sf::IntRect notPointedRect, sf::IntRect pointedRect, sf::Vector2i clickBoxExpand, bool isActive = true);
 
     ///sf::Sprite getCurrentSprite();
 
@@ -23,6 +26,7 @@ private:
     sf::IntRect notPointedRect;
     sf::IntRect pointedRect;
     sf::Sprite sprite;
+    sf::Vector2i clickBoxExpand;
 };
 
 
