@@ -1,5 +1,7 @@
 #include "button.hpp"
 
+#include "mouseInput.hpp"
+
 namespace GUI
 {
 
@@ -16,6 +18,11 @@ Button::Button(const sf::Texture& texture, sf::IntRect notPointedRect, sf::IntRe
 ,clickBoxExpand(clickBoxExpand)
 ,isActive(isActive)
 {
+}
+
+void Button::update()
+{
+
 }
 
 
