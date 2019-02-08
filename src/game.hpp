@@ -8,6 +8,11 @@
 #include <GUI/mouseInput.hpp>
 #include <States/DifficultyChoise/difficultyLevelIdentifiers.hpp>
 
+
+#define SCREEN_WIDTH 1024
+#define SCREEN_HEIGHT 768
+
+
 namespace Game
 {
 

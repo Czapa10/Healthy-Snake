@@ -8,7 +8,7 @@ namespace Game
 
 Game::Game()
 {
-    data->window.create(sf::VideoMode(1024, 768), "Healthy Snake");
+    data->window.create(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Healthy Snake");
 
     std::unique_ptr<States::SplashState> toStack(new States::SplashState(data));
     data->stateStack.pushState(std::move(toStack));
