@@ -26,9 +26,9 @@ void Button::update()
 
 }
 
-void display(const sf::RenderWindow &window)
+void Button::display(sf::RenderWindow &window)
 {
-
+    window.draw(sprite);
 }
 
 

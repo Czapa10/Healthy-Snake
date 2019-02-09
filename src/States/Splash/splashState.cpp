@@ -1,6 +1,7 @@
 #include "splashState.hpp"
 
 #include <States/Menu/menuState.hpp>
+#include <States/GUItest/guiTestState.hpp>
 
 namespace States
 {
@@ -17,6 +18,13 @@ void SplashState::input()
             std::unique_ptr<States::MenuState> temp(new States::MenuState(data));
             data->stateStack.pushState(std::move(temp));
         }
+    }
+
+    if((sf::Keyboard::isKeyPressed(sf::Keyboard::G))
+    && (sf::Keyboard::isKeyPressed(sf::Keyboard::U))
+    && (sf::Keyboard::isKeyPressed(sf::Keyboard::I))){
+        std::unique_ptr<States::GuiTestState> temp(new States::GuiTestState(data));
+        data->stateStack.pushState(std::move(temp));
     }
 }
 
