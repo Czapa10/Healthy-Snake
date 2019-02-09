@@ -5,6 +5,7 @@ namespace States
 
 
 GuiTestState::GuiTestState(Game::GameDataRef data) : data(data)
+,buttons( data, Textures::menuButtons, 5, 50, sf::Vector2i(60, 15) )
 {
 }
 
@@ -21,6 +22,8 @@ void GuiTestState::update(sf::Time deltaTime)
 void GuiTestState::draw()
 {
     data->window.clear();
+
+    buttons.display();
 }
 
 

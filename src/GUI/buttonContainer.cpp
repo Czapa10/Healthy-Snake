@@ -28,5 +28,12 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID texture, i
     }
 }
 
+void ButtonContainer::display()
+{
+    for(auto &button : buttons){
+        button.display(data->window);
+    }
+}
+
 
 }

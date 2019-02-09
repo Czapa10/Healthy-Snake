@@ -16,6 +16,7 @@ class ButtonContainer
 public:
     ButtonContainer(Game::GameDataRef data, Textures::ID texture, int numberOfButtons, int spaceBetweenButtons, sf::Vector2i buttonSize, sf::Vector2i offset = sf::Vector2i(0,0), bool symmetricSpaceBetweenButtons = true);
 
+    void display();
     //operator[]; - access to certain button
 
 private:

@@ -14,6 +14,7 @@ namespace Textures
         menuBackground3,
         menuBackground4,
         menuBackground5,
+        menuButtons,
 
         ///game sprites
         gameBackground,

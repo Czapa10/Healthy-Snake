@@ -87,6 +87,7 @@ void Game::loadMenuStateTextures() const
     data->textures.load(Textures::menuBackground3, "resources/textures/menuState/menuBackground3.png");
     data->textures.load(Textures::menuBackground4, "resources/textures/menuState/menuBackground4.png");
     data->textures.load(Textures::menuBackground5, "resources/textures/menuState/menuBackground5.png");
+    data->textures.load(Textures::menuButtons,     "resources/textures/menuState/buttons.png");
 }
 
 void Game::loadDifficultyChoiceStateTextures() const

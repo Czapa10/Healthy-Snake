@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <States/State.hpp>
 #include <game.hpp>
+#include <GUI/buttonContainer.hpp>
 
 namespace States
 {
@@ -19,6 +20,8 @@ public:
 
 private:
     Game::GameDataRef data;
+
+    GUI::ButtonContainer buttons;
 };
 
 
