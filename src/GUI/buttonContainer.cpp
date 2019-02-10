@@ -16,14 +16,12 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID texture, i
 
     if(symmetricSpaceBetweenButtons){
         for(int i = 0; i < numberOfButtons; ++i){
-            Button aux(
-                data->textures.get(texture),
-                sf::Vector2f( (SCREEN_WIDTH - buttonSize.x + offset.x) / 2, i * (buttonSize.y + spaceBetweenButtons) ),
-                sf::IntRect(0,0 + buttonSize.y * i, buttonSize.x, buttonSize.y),
-                sf::IntRect(buttonSize.x, 0 + buttonSize.y * i, buttonSize.x, buttonSize.y)
+            buttons.emplace_back(
+                Button(data->textures.get(texture),
+                sf::Vector2f( (SCREEN_WIDTH - buttonSize.x) / 2 + offset.x, i * (buttonSize.y + spaceBetweenButtons) + offset.y ),
+                sf::IntRect(0, buttonSize.y * i, buttonSize.x, buttonSize.y),
+                sf::IntRect(buttonSize.x, buttonSize.y * i, buttonSize.x, buttonSize.y))
             );
-
-            buttons.emplace_back(aux);
         }
     }
 }
