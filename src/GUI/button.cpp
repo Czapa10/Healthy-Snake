@@ -6,19 +6,21 @@ namespace GUI
 {
 
 
-Button::Button(const sf::Texture& texture, sf::Vector2f pos, sf::IntRect notPointedRect, sf::IntRect pointedRect, bool isActive)
-:Button{texture, pos, notPointedRect, pointedRect, sf::Vector2i(0.f,0.f), isActive}
+Button::Button(Game::GameDataRef data, const sf::Texture& texture, sf::Vector2f pos, sf::IntRect notPointedRect, sf::IntRect pointedRect, sf::Vector2f scaleFactor, bool isActive)
+:Button{data, texture, pos, notPointedRect, pointedRect, sf::Vector2i(0.f,0.f), scaleFactor, isActive}
 {
 }
 
-Button::Button(const sf::Texture& texture, sf::Vector2f pos, sf::IntRect notPointedRect, sf::IntRect pointedRect, sf::Vector2i clickBoxExpand, bool isActive)
-:sprite(texture, notPointedRect)
+Button::Button(Game::GameDataRef data, const sf::Texture& texture, sf::Vector2f pos, sf::IntRect notPointedRect, sf::IntRect pointedRect, sf::Vector2i clickBoxExpand, sf::Vector2f scaleFactor, bool isActive)
+:data(data)
+,sprite(texture, notPointedRect)
 ,notPointedRect(notPointedRect)
 ,pointedRect(pointedRect)
 ,clickBoxExpand(clickBoxExpand)
 ,isActive(isActive)
 {
     sprite.setPosition(pos);
+    sprite.scale(scaleFactor);
 }
 
 void Button::update()
@@ -26,9 +28,9 @@ void Button::update()
 
 }
 
-void Button::display(sf::RenderWindow &window)
+void Button::display()
 {
-    window.draw(sprite);
+    data->window.draw(sprite);
 }
 
 
