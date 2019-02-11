@@ -14,10 +14,10 @@ namespace GUI
 class ButtonContainer
 {
 public:
-    ButtonContainer(Game::GameDataRef data, Textures::ID, int numberOfButtons, int spaceBetweenButtons, sf::Vector2i buttonSize, sf::Vector2i offset = sf::Vector2i(0,0), bool symmetricSpaceBetweenButtons = true);
+    ButtonContainer(Game::GameDataRef data, Textures::ID, int numberOfButtons, int spaceBetweenButtons, sf::Vector2i buttonSize, sf::Vector2i offset = sf::Vector2i(0,0));
 
     void display();
-    //operator[]; - access to certain button
+    Button& operator[](unsigned int numberOfButton); //access to certain button
 
 private:
     Game::GameDataRef data;
@@ -26,7 +26,6 @@ private:
     const int spaceBetweenButtons;
     sf::Vector2i buttonSize;
     sf::Vector2i offset;
-    bool symmetricSpaceBetweenButtons;
 
     std::vector<Button> buttons;
 };
