@@ -14,7 +14,7 @@ namespace GUI
 class ButtonContainer
 {
 public:
-    ButtonContainer(Game::GameDataRef data, Textures::ID, int numberOfButtons, int spaceBetweenButtons, sf::Vector2i buttonSize, sf::Vector2i offset = sf::Vector2i(0,0));
+    ButtonContainer(Game::GameDataRef data, Textures::ID, int numberOfButtons, int spaceBetweenButtons, sf::Vector2i buttonSize, sf::Vector2f scaleFactor = sf::Vector2f(4.f, 4.f),sf::Vector2i offset = sf::Vector2i(0,0));
 
     void display();
     Button& operator[](unsigned int numberOfButton); //access to certain button
