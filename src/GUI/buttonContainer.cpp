@@ -14,12 +14,18 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID textureID,
 {
     buttons.reserve(numberOfButtons);
 
+    int Hmargin = (SCREEN_HEIGHT - (scaleFactor.y * numberOfButtons * buttonSize.y + (numberOfButtons - 1) * spaceBetweenButtons) ) / 2;
+    std::cout<<"Hmargin: "<<Hmargin<<std::endl;
+
     for(int i = 0; i < numberOfButtons; ++i){
         buttons.emplace_back(
             Button(
                 data,
                 textureID,
-                sf::Vector2f( SCREEN_WIDTH / 2 - (scaleFactor.x * buttonSize.x) / 2 + offset.x, i * (scaleFactor.y * buttonSize.y + spaceBetweenButtons) + offset.y),
+                sf::Vector2f(
+                    SCREEN_WIDTH / 2 - (scaleFactor.x * buttonSize.x) / 2 + offset.x,
+                    i * (scaleFactor.y * buttonSize.y + spaceBetweenButtons) + offset.y + Hmargin
+                            ),
                 sf::IntRect(0, buttonSize.y * i, buttonSize.x, buttonSize.y),
                 sf::IntRect(buttonSize.x, buttonSize.y * i, buttonSize.x, buttonSize.y),
                 scaleFactor
