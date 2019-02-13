@@ -15,7 +15,6 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID textureID,
     buttons.reserve(numberOfButtons);
 
     int Hmargin = (SCREEN_HEIGHT - (scaleFactor.y * numberOfButtons * buttonSize.y + (numberOfButtons - 1) * spaceBetweenButtons) ) / 2;
-    std::cout<<"Hmargin: "<<Hmargin<<std::endl;
 
     for(int i = 0; i < numberOfButtons; ++i){
         buttons.emplace_back(
@@ -51,5 +50,28 @@ Button& ButtonContainer::operator[](unsigned int numberOfButton)
     return buttons[numberOfButton];
 }
 
+void ButtonContainer::input()
+{
+    if(timeSinceLastClick.getElapsedTime().asSeconds() > 0.17){
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
+            ++isOnButtonNr;
+            if(isOnButtonNr == numberOfButtons)
+                isOnButtonNr = 0;
+            timeSinceLastClick.restart();
+        }
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
+            --isOnButtonNr;
+            if(isOnButtonNr < 0)
+                isOnButtonNr = numberOfButtons - 1;
+            timeSinceLastClick.restart();
+        }
+    }
+}
 
+void ButtonContainer::update()
+{
+    for(auto &button : buttons)
+        button.makeButtonPointed(false);
+
+    buttons[isOnButtonNr].makeButtonPointed(true);
 }

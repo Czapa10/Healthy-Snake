@@ -16,11 +16,16 @@ class ButtonContainer
 public:
     ButtonContainer(Game::GameDataRef data, Textures::ID, int numberOfButtons, int spaceBetweenButtons, sf::Vector2i buttonSize, sf::Vector2f scaleFactor = sf::Vector2f(4.f, 4.f),sf::Vector2i offset = sf::Vector2i(0,0));
 
+    void input();
+    void update();
     void display();
     Button& operator[](unsigned int numberOfButton); //access to certain button
 
 private:
     Game::GameDataRef data;
+
+    int isOnButtonNr{};
+    sf::Clock timeSinceLastClick;
 
     const int numberOfButtons;
     const int spaceBetweenButtons;

@@ -33,5 +33,17 @@ void Button::display()
     data->window.draw(sprite);
 }
 
+void Button::makeButtonPointed(bool buttonIsPointed)
+{
+    isPointed = buttonIsPointed;
+
+    if(isPointed == true){
+        sprite.setTextureRect(pointedRect);
+    }
+    else{
+        sprite.setTextureRect(notPointedRect);
+    }
+}
+
 
 }

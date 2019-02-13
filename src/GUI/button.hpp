@@ -16,14 +16,14 @@ public:
     void update();
     void display();
 
-private:
-    enum class ButtonState{ notPointed, pointed};
+    void makeButtonPointed(bool buttonIsPointed);
+
+    bool isPointed = false;
 
 private:
     Game::GameDataRef data;
 
     const bool isActive;
-    ButtonState buttonState {ButtonState::notPointed};
 
     sf::IntRect notPointedRect;
     sf::IntRect pointedRect;
