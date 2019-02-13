@@ -45,5 +45,10 @@ void Button::makeButtonPointed(bool buttonIsPointed)
     }
 }
 
+bool Button::isMouseOnButton(sf::Vector2i &currentPos)
+{
+    return MouseInput::isUnderMouse(sprite, data->window);
+}
+
 
 }

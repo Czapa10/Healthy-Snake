@@ -23,7 +23,6 @@ struct GameData
     sf::RenderWindow window;
     Resources::TextureStorage textures;
     Resources::FontStorage fonts;
-    Input::MouseInput mouseInput;
     Difficulty::Level levelOfDifficulty;
 };
 

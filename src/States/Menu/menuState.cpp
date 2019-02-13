@@ -114,7 +114,7 @@ void MenuState::menuMouseControl()
 {
     mouseCurrentPos = sf::Mouse::getPosition(data->window);
 
-    if(mouseLastPos != mouseCurrentPos){
+   /* if(mouseLastPos != mouseCurrentPos){
         for(int i = 0; i < 5; ++i){
             if(data->mouseInput.isUnderMouse(buttons[i], data->window)){
                 isOnButtonNr = ++i;
@@ -128,7 +128,7 @@ void MenuState::menuMouseControl()
             buttonWasClicked = true;
             break;
         }
-    }
+    }*/
 
     mouseLastPos = mouseCurrentPos;
 }

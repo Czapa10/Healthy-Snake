@@ -83,7 +83,7 @@ void DifficultyChoiseState::menuMouseControl()
 {
     mouseCurrentPos = sf::Mouse::getPosition(data->window);
 
-    if(mouseLastPos != mouseCurrentPos){
+    /*if(mouseLastPos != mouseCurrentPos){
         for(int i = 0; i < 4; ++i){
             if(data->mouseInput.isUnderMouse(buttons[i], data->window)){
                 isOnButtonNr = ++i;
@@ -98,7 +98,7 @@ void DifficultyChoiseState::menuMouseControl()
             wasClicked = true;
             break;
         }
-    }
+    }*/
 
     mouseLastPos = mouseCurrentPos;
 }

@@ -26,6 +26,8 @@ private:
 
     int isOnButtonNr{};
     sf::Clock timeSinceLastClick;
+    sf::Vector2i currentMousePos;
+    sf::Vector2i lastMousePos;
 
     const int numberOfButtons;
     const int spaceBetweenButtons;
