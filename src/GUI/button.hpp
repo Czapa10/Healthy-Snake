@@ -18,6 +18,7 @@ public:
 
     void makeButtonPointed(bool buttonIsPointed);
     bool isMouseOnButton(sf::Vector2i &currentPos);
+    bool isClicked(sf::Vector2i &currentPos);
 
     bool isPointed = false;
 

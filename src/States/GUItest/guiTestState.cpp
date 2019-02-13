@@ -1,4 +1,6 @@
 #include "guiTestState.hpp"
+#include <States/Menu/menuState.hpp>
+#include <iostream>
 
 namespace States
 {
@@ -17,6 +19,13 @@ void GuiTestState::input()
 void GuiTestState::update(sf::Time deltaTime)
 {
     buttons.update();
+
+    switch(buttons.getSignal()){
+        case 0:
+            std::unique_ptr<States::MenuState> toStack(new States::MenuState(data));
+            data->stateStack.pushState(std::move(toStack));
+            break;
+    }
 }
 
 void GuiTestState::draw()

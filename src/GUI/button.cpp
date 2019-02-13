@@ -50,5 +50,10 @@ bool Button::isMouseOnButton(sf::Vector2i &currentPos)
     return MouseInput::isUnderMouse(sprite, data->window);
 }
 
+bool Button::isClicked(sf::Vector2i &currentPos)
+{
+    return MouseInput::isClicked(sprite, data->window);
+}
+
 
 }

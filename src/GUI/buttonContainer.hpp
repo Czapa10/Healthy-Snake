@@ -20,6 +20,7 @@ public:
     void update();
     void display();
     Button& operator[](unsigned int numberOfButton); //access to certain button
+    int& getSignal(){return signal;}
 
 private:
     void keyboardControls();
@@ -32,6 +33,7 @@ private:
     sf::Clock timeSinceLastClick;
     sf::Vector2i currentMousePos;
     sf::Vector2i lastMousePos;
+    int signal{-1};
 
     const int numberOfButtons;
     const int spaceBetweenButtons;

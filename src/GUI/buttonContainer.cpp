@@ -80,6 +80,9 @@ void ButtonContainer::keyboardControls()
             timeSinceLastClick.restart();
         }
     }
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+        signal = isOnButtonNr;
 }
 
 void ButtonContainer::mouseControls()
@@ -91,6 +94,11 @@ void ButtonContainer::mouseControls()
             if(buttons[i].isMouseOnButton(currentMousePos))
                 isOnButtonNr = i;
         }
+    }
+
+    for(auto button : buttons){
+        if(button.isClicked(currentMousePos))
+            signal = isOnButtonNr;
     }
 
     lastMousePos = currentMousePos;
