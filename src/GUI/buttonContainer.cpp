@@ -7,6 +7,7 @@ namespace GUI
 
 ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID textureID, int numberOfButtons, int spaceBetweenButtons, sf::Vector2i buttonSize, sf::Vector2f scaleFactor, sf::Vector2i offset)
 :data(data)
+,snake(data)
 ,numberOfButtons(numberOfButtons)
 ,spaceBetweenButtons(spaceBetweenButtons)
 ,buttonSize(buttonSize)

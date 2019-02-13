@@ -6,6 +6,7 @@
 #include <game.hpp>
 #include <Resources/resourceIdentifiers.hpp>
 #include "button.hpp"
+#include "guiSnake.hpp"
 
 namespace GUI
 {
@@ -29,6 +30,9 @@ private:
 private:
     Game::GameDataRef data;
 
+    std::vector<Button> buttons;
+    GuiSnake snake;
+
     int isOnButtonNr{};
     sf::Clock timeSinceLastClick;
     sf::Vector2i currentMousePos;
@@ -39,8 +43,6 @@ private:
     const int spaceBetweenButtons;
     sf::Vector2i buttonSize;
     sf::Vector2i offset;
-
-    std::vector<Button> buttons;
 };
 
 
