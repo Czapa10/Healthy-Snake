@@ -22,6 +22,10 @@ public:
     Button& operator[](unsigned int numberOfButton); //access to certain button
 
 private:
+    void keyboardControls();
+    void mouseControls();
+
+private:
     Game::GameDataRef data;
 
     int isOnButtonNr{};

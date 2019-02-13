@@ -35,31 +35,8 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID textureID,
 
 void ButtonContainer::input()
 {
-    if(timeSinceLastClick.getElapsedTime().asSeconds() > 0.17){
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
-            ++isOnButtonNr;
-            if(isOnButtonNr == numberOfButtons)
-                isOnButtonNr = 0;
-            timeSinceLastClick.restart();
-        }
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
-            --isOnButtonNr;
-            if(isOnButtonNr < 0)
-                isOnButtonNr = numberOfButtons - 1;
-            timeSinceLastClick.restart();
-        }
-    }
-
-    currentMousePos = sf::Mouse::getPosition(data->window);
-
-    if(currentMousePos != lastMousePos){
-        for(int i = 0; i < numberOfButtons; ++i){
-            if(buttons[i].isMouseOnButton(currentMousePos))
-                isOnButtonNr = i;
-        }
-    }
-
-    lastMousePos = currentMousePos;
+    keyboardControls();
+    mouseControls();
 }
 
 void ButtonContainer::update()
@@ -85,6 +62,38 @@ Button& ButtonContainer::operator[](unsigned int numberOfButton)
     }
 
     return buttons[numberOfButton];
+}
+
+void ButtonContainer::keyboardControls()
+{
+    if(timeSinceLastClick.getElapsedTime().asSeconds() > 0.17){
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
+            ++isOnButtonNr;
+            if(isOnButtonNr == numberOfButtons)
+                isOnButtonNr = 0;
+            timeSinceLastClick.restart();
+        }
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
+            --isOnButtonNr;
+            if(isOnButtonNr < 0)
+                isOnButtonNr = numberOfButtons - 1;
+            timeSinceLastClick.restart();
+        }
+    }
+}
+
+void ButtonContainer::mouseControls()
+{
+    currentMousePos = sf::Mouse::getPosition(data->window);
+
+    if(currentMousePos != lastMousePos){
+        for(int i = 0; i < numberOfButtons; ++i){
+            if(buttons[i].isMouseOnButton(currentMousePos))
+                isOnButtonNr = i;
+        }
+    }
+
+    lastMousePos = currentMousePos;
 }
 
 
