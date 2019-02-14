@@ -6,12 +6,12 @@ namespace GUI
 {
 
 
-Button::Button(Game::GameDataRef data, const Textures::ID& textureID, sf::Vector2f pos, sf::IntRect notPointedRect, sf::IntRect pointedRect, sf::Vector2f scaleFactor, bool isActive)
+Button::Button(Game::GameDataRef data, const Textures::ID& textureID, sf::Vector2f pos, sf::IntRect notPointedRect, sf::IntRect pointedRect, float scaleFactor, bool isActive)
 :Button{data, textureID, pos, notPointedRect, pointedRect, sf::Vector2i(0.f,0.f), scaleFactor, isActive}
 {
 }
 
-Button::Button(Game::GameDataRef data, const Textures::ID& textureID, sf::Vector2f pos, sf::IntRect notPointedRect, sf::IntRect pointedRect, sf::Vector2i clickBoxExpand, sf::Vector2f scaleFactor, bool isActive)
+Button::Button(Game::GameDataRef data, const Textures::ID& textureID, sf::Vector2f pos, sf::IntRect notPointedRect, sf::IntRect pointedRect, sf::Vector2i clickBoxExpand, float scaleFactor, bool isActive)
 :data(data)
 ,sprite(data->textures.get(textureID), notPointedRect)
 ,notPointedRect(notPointedRect)
@@ -20,7 +20,7 @@ Button::Button(Game::GameDataRef data, const Textures::ID& textureID, sf::Vector
 ,isActive(isActive)
 {
     sprite.setPosition(pos);
-    sprite.scale(scaleFactor);
+    sprite.scale(scaleFactor, scaleFactor);
 }
 
 void Button::update()

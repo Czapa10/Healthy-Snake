@@ -11,7 +11,7 @@ GuiSnake::GuiSnake(Game::GameDataRef data, float scale, int pillarDistanceFromBu
 ,turnBody(data->textures.get(Textures::snakeTurnBody))
 ,horizontalStraightBody(data->textures.get(Textures::snakeStraightBody))
 {
-    head.scale(scale, scale);
+    head.scale(scale / 2, scale / 2);
     verticalStraightBody.scale(scale, scale);
     turnBody.scale(scale, scale);
 

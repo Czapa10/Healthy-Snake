@@ -5,9 +5,9 @@ namespace GUI
 {
 
 
-ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID textureID, int numberOfButtons, int spaceBetweenButtons, sf::Vector2i buttonSize, sf::Vector2f scaleFactor, sf::Vector2i offset)
+ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID textureID, int numberOfButtons, int spaceBetweenButtons, sf::Vector2i buttonSize, float scaleFactor, sf::Vector2i offset)
 :data(data)
-,snake(data, scaleFactor.x)
+,snake(data, scaleFactor)
 ,numberOfButtons(numberOfButtons)
 ,spaceBetweenButtons(spaceBetweenButtons)
 ,buttonSize(buttonSize)
@@ -15,7 +15,7 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID textureID,
 {
     buttons.reserve(numberOfButtons);
 
-    int Hmargin = (SCREEN_HEIGHT - (scaleFactor.y * numberOfButtons * buttonSize.y + (numberOfButtons - 1) * spaceBetweenButtons) ) / 2;
+    int Hmargin = (SCREEN_HEIGHT - (scaleFactor * numberOfButtons * buttonSize.y + (numberOfButtons - 1) * spaceBetweenButtons) ) / 2;
 
     for(int i = 0; i < numberOfButtons; ++i){
         buttons.emplace_back(
@@ -23,8 +23,8 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID textureID,
                 data,
                 textureID,
                 sf::Vector2f(
-                    SCREEN_WIDTH / 2 - (scaleFactor.x * buttonSize.x) / 2 + offset.x,
-                    i * (scaleFactor.y * buttonSize.y + spaceBetweenButtons) + offset.y + Hmargin
+                    SCREEN_WIDTH / 2 - (scaleFactor * buttonSize.x) / 2 + offset.x,
+                    i * (scaleFactor * buttonSize.y + spaceBetweenButtons) + offset.y + Hmargin
                             ),
                 sf::IntRect(0, buttonSize.y * i, buttonSize.x, buttonSize.y),
                 sf::IntRect(buttonSize.x, buttonSize.y * i, buttonSize.x, buttonSize.y),
