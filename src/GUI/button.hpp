@@ -20,6 +20,9 @@ public:
     bool isMouseOnButton(sf::Vector2i &currentPos);
     bool isClicked(sf::Vector2i &currentPos);
 
+    sf::Sprite& getSprite(){ return sprite; }
+
+public:
     bool isPointed = false;
 
 private:

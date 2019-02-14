@@ -32,6 +32,8 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID textureID,
             )
         );
     }
+
+    snake.init(buttons[0].getSprite().getPosition(), buttonSize);
 }
 
 void ButtonContainer::input()
