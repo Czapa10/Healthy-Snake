@@ -7,7 +7,7 @@ namespace GUI
 
 ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID textureID, int numberOfButtons, int spaceBetweenButtons, sf::Vector2i buttonSize, sf::Vector2f scaleFactor, sf::Vector2i offset)
 :data(data)
-,snake(data)
+,snake(data, scaleFactor.x)
 ,numberOfButtons(numberOfButtons)
 ,spaceBetweenButtons(spaceBetweenButtons)
 ,buttonSize(buttonSize)
@@ -50,6 +50,8 @@ void ButtonContainer::update()
 
 void ButtonContainer::display()
 {
+    snake.display();
+
     for(auto &button : buttons){
         button.display();
     }
