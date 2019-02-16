@@ -27,7 +27,6 @@ private:
 
     sf::Sprite background;
     GUI::ButtonContainer buttons;
-
 };
 
 
