@@ -292,7 +292,6 @@ void GameState::foodUpdate()
 
             if(food.size() * howManyCellsOnEachFood > 768 - snake.getLength()){
                 food.erase(food.begin() + i);
-                std::cout<<food.size()<<std::endl;
             }
             else{
                 for(;;){

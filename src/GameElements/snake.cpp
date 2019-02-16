@@ -35,8 +35,7 @@ Snake::Snake(Difficulty::Level level)
             break;
 
         case Difficulty::hard:
-            //speed = 0.08;
-            speed = 1.5;
+            speed = 0.08;
             break;
     }
 }
