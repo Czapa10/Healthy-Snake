@@ -33,8 +33,8 @@ void GuiSnake::setSnakePos(const sf::Vector2f& posOfFirstButton, sf::Vector2i& b
 {
     head.setPosition(posOfFirstButton.x + buttonSize.x + pillarDistanceFromButtons, posOfFirstButton.y - headOverFirstButton);
     turnBody.setPosition(head.getPosition().x, currentButtonY + buttonSize.y * scaleFactor);
-
-
+    verticalStraightBody.setPosition(head.getPosition().x, head.getPosition().y + head.getTexture()->getSize().y * head.getScale().y);
+    verticalStraightBody.setScale(verticalStraightBody.getScale().x, 100.f/*(head.getPosition().y + head.getTexture()->getSize().y * head.getScale().y - turnBody.getPosition().y) / verticalStraightBody.getTexture()->getSize().y * verticalStraightBody.getScale().y*/ );
 }
 
 void GuiSnake::update(sf::Vector2f posOfPointedButton)
@@ -44,6 +44,7 @@ void GuiSnake::update(sf::Vector2f posOfPointedButton)
 
 void GuiSnake::display()
 {
+    data->window.draw(verticalStraightBody);
     data->window.draw(turnBody);
     data->window.draw(head);
 }
