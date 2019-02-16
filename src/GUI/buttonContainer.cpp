@@ -12,6 +12,7 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID textureID,
 ,spaceBetweenButtons(spaceBetweenButtons)
 ,buttonSize(buttonSize)
 ,offset(offset)
+,scaleFactor(scaleFactor)
 {
     buttons.reserve(numberOfButtons);
 
@@ -32,8 +33,6 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID textureID,
             )
         );
     }
-
-    snake.init(buttons[0].getSprite().getPosition(), buttonSize);
 }
 
 void ButtonContainer::input()
@@ -48,6 +47,8 @@ void ButtonContainer::update()
         button.makeButtonPointed(false);
 
     buttons[isOnButtonNr].makeButtonPointed(true);
+
+    snake.setSnakePos(buttons[0].getSprite().getPosition(), buttonSize, buttons[isOnButtonNr].getSprite().getPosition().y, scaleFactor);
 }
 
 void ButtonContainer::display()

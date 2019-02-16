@@ -9,8 +9,8 @@ namespace GUI
 class GuiSnake
 {
 public:
-    GuiSnake(Game::GameDataRef data, float scale, int pillarDistanceFromButtons = 300, unsigned int headOverFirstButton = 100);
-    void init(const sf::Vector2f& posOfFirstButton, sf::Vector2i& buttonSize);
+    GuiSnake(Game::GameDataRef data, float scale, int pillarDistanceFromButtons = 300, unsigned int headOverFirstButton = 130);
+    void setSnakePos(const sf::Vector2f& posOfFirstButton, sf::Vector2i& buttonSize, float currentButtonY, float scaleFactor);
 
     void update(sf::Vector2f posOfPointedButton);
     void display();

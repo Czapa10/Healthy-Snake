@@ -1,5 +1,7 @@
 #include "guiSnake.hpp"
 
+#include <iostream>
+
 namespace GUI
 {
 
@@ -15,16 +17,24 @@ GuiSnake::GuiSnake(Game::GameDataRef data, float scale, int pillarDistanceFromBu
 {
     head.scale(scale / 2, scale / 2);
     verticalStraightBody.scale(scale / 2, scale / 2);
+
+    turnBody.setOrigin(16.f, 16.f);
+    turnBody.rotate(-90.f);
+    turnBody.setOrigin(0.f, 0.f);
     turnBody.scale(scale / 2, scale / 2);
+
 
     horizontalStraightBody.setOrigin(16.f, 16.f);
     horizontalStraightBody.rotate(90.f);
     horizontalStraightBody.scale(scale / 2, scale / 2);
 }
 
-void GuiSnake::init(const sf::Vector2f& posOfFirstButton, sf::Vector2i& buttonSize)
+void GuiSnake::setSnakePos(const sf::Vector2f& posOfFirstButton, sf::Vector2i& buttonSize, float currentButtonY, float scaleFactor)
 {
-    head.setPosition(posOfFirstButton.x + pillarDistanceFromButtons + buttonSize.x, posOfFirstButton.y - headOverFirstButton);
+    head.setPosition(posOfFirstButton.x + buttonSize.x + pillarDistanceFromButtons, posOfFirstButton.y - headOverFirstButton);
+    turnBody.setPosition(head.getPosition().x, currentButtonY + buttonSize.y * scaleFactor);
+
+
 }
 
 void GuiSnake::update(sf::Vector2f posOfPointedButton)
@@ -34,6 +44,7 @@ void GuiSnake::update(sf::Vector2f posOfPointedButton)
 
 void GuiSnake::display()
 {
+    data->window.draw(turnBody);
     data->window.draw(head);
 }
 

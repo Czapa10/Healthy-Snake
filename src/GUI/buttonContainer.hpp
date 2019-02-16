@@ -41,6 +41,7 @@ private:
 
     const int numberOfButtons;
     const int spaceBetweenButtons;
+    const float scaleFactor;
     sf::Vector2i buttonSize;
     sf::Vector2i offset;
 };
