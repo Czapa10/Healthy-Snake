@@ -36,8 +36,8 @@ void GuiSnake::setSnakePos(const sf::Vector2f& posOfFirstButton, sf::Vector2i& b
 
     turnBody.setPosition(head.getPosition().x, currentButtonY + buttonSize.y * scaleFactor);
 
-    verticalStraightBody.setPosition(head.getPosition().x, head.getPosition().y + head.getTexture()->getSize().y * head.getScale().y);
-    verticalStraightBody.setScale(verticalStraightBody.getScale().x, 100.f/*(head.getPosition().y + head.getTexture()->getSize().y * head.getScale().y - turnBody.getPosition().y) / verticalStraightBody.getTexture()->getSize().y * verticalStraightBody.getScale().y*/ );
+    verticalStraightBody.setPosition(head.getPosition().x, head.getPosition().y + (head.getTexture()->getSize().y * head.getScale().y / 2) );
+    verticalStraightBody.setScale(verticalStraightBody.getScale().x, ((turnBody.getPosition().y) - (head.getPosition().y + head.getTexture()->getSize().y * head.getScale().y)) / 32 );
 
     horizontalStraightBody.setPosition(turnBody.getPosition().x, turnBody.getPosition().y - turnBody.getTexture()->getSize().y * turnBody.getScale().y);
     horizontalStraightBody.setScale(horizontalStraightBody.getScale().x, 50.f);
