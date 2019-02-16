@@ -12,7 +12,7 @@ namespace States
 
 DifficultyChoiseState::DifficultyChoiseState(Game::GameDataRef _data)
 :data(_data)
-,buttons(data, Textures::difficultyChoiseButtons, 4, 30, sf::Vector2i(47, 12), 5 )
+,buttons(data, Textures::difficultyChoiseButtons, 4, 40, sf::Vector2i(47, 12), 6, sf::Vector2i(0, 50) )
 {
     background.setTexture(data->textures.get(Textures::gameBackground));
 }
@@ -25,6 +25,7 @@ void DifficultyChoiseState::input()
 void DifficultyChoiseState::update(sf::Time deltaTime)
 {
     buttons.update();
+    changingState();
 }
 
 void DifficultyChoiseState::draw()
@@ -37,29 +38,30 @@ void DifficultyChoiseState::draw()
 
 void DifficultyChoiseState::changingState()
 {
-    #if 0
-    if(isOnButtonNr == 4){
+    if(buttons.getSignal() == 3){
         std::unique_ptr<States::MenuState> toStack(new States::MenuState(data));
         data->stateStack.pushState(std::move(toStack));
     }
     else{
-        switch(isOnButtonNr){
-            case 1:
+        switch(buttons.getSignal()){
+            case 0:
                 data->levelOfDifficulty = Difficulty::easy;
                 break;
 
-            case 2:
+            case 1:
                 data->levelOfDifficulty = Difficulty::medium;
                 break;
 
-            case 3:
+            case 2:
                 data->levelOfDifficulty = Difficulty::hard;
                 break;
+
+            default:
+                return;
         }
         std::unique_ptr<States::GameState> toStack(new States::GameState(data));
         data->stateStack.pushState(std::move(toStack));
     }
-    #endif // 0
 }
 
 
