@@ -1,6 +1,7 @@
 #include "menuState.hpp"
 
 #include <States/DifficultyChoise/difficultyChoiseState.hpp>
+#include <Resources/resourceIdentifiers.hpp>
 
 #include <iostream>
 
@@ -8,20 +9,22 @@ namespace States
 {
 
 
-MenuState::MenuState(Game::GameDataRef _data) : data(_data)
+MenuState::MenuState(Game::GameDataRef _data)
+: data(_data)
+,buttons(data, Textures::menuButtons, 5, 30, sf::Vector2i(60, 15), 5, sf::Vector2i(0, 80) )
 {
     background.setTexture(data->textures.get(Textures::gameBackground));
-
-
 }
 
 void MenuState::input()
 {
+    buttons.input();
 }
 
 void MenuState::update(sf::Time deltaTime)
 {
-
+    buttons.update();
+    changingState();
 }
 
 void MenuState::draw()
@@ -29,23 +32,23 @@ void MenuState::draw()
     data->window.clear();
 
     data->window.draw(background);
-
-
+    buttons.display();
 }
 
-//private_methods****************************************************************
-
-void MenuState::changingState() const
+void MenuState::changingState()
 {
-    #if 0
-    switch(isOnButtonNr){
-        case 1:{
-            std::unique_ptr<States::DifficultyChoiseState> toStack(new States::DifficultyChoiseState(data));
-            data->stateStack.pushState(std::move(toStack));
-            break;
-        }
-        case 2:
+    switch(buttons.getSignal()){
+        case 0:{
+                std::unique_ptr<States::DifficultyChoiseState> toStack(new States::DifficultyChoiseState(data));
+                data->stateStack.pushState(std::move(toStack));
+                break;
+            }
+        case 1:
             std::cout<<"to settings"<<std::endl;
+            break;
+
+        case 2:
+            std::cout<<"to food stats state"<<std::endl;
             break;
 
         case 3:
@@ -53,14 +56,9 @@ void MenuState::changingState() const
             break;
 
         case 4:
-            std::cout<<"to best score state"<<std::endl;
-            break;
-
-        case 5:
             data->window.close();
             break;
     }
-    #endif // 0
 }
 
 

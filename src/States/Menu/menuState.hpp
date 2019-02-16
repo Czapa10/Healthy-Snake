@@ -4,6 +4,7 @@
 
 #include <states/state.hpp>
 #include <game.hpp>
+#include <GUI/buttonContainer.hpp>
 
 namespace States
 {
@@ -19,12 +20,13 @@ public:
     void draw() override;
 
 private:
-    void changingState() const;
+    void changingState();
 
 private:
     Game::GameDataRef data;
 
     sf::Sprite background;
+    GUI::ButtonContainer buttons;
 
 };
 
