@@ -7,7 +7,7 @@ namespace States
 
 
 GuiTestState::GuiTestState(Game::GameDataRef data) : data(data)
-,buttons( data, Textures::menuButtons, 5, 30, sf::Vector2i(60, 15), 5 )
+,buttons( data, Textures::menuButtons, 5, 30, sf::Vector2i(60, 15), 5, sf::Vector2i(0, 100) )
 {
 }
 
