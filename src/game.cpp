@@ -82,12 +82,8 @@ void Game::loadSplashStateTextures() const
 
 void Game::loadMenuStateTextures() const
 {
-    data->textures.load(Textures::menuBackground1, "resources/textures/menuState/menuBackground1.png");
-    data->textures.load(Textures::menuBackground2, "resources/textures/menuState/menuBackground2.png");
-    data->textures.load(Textures::menuBackground3, "resources/textures/menuState/menuBackground3.png");
-    data->textures.load(Textures::menuBackground4, "resources/textures/menuState/menuBackground4.png");
-    data->textures.load(Textures::menuBackground5, "resources/textures/menuState/menuBackground5.png");
-    data->textures.load(Textures::menuButtons,     "resources/textures/menuState/buttons.png");
+    data->textures.load(Textures::menuButtons, "resources/textures/menuState/buttons.png");
+    data->textures.load(Textures::menuLogoLabel, "resources/textures/menuState/logoLabel.png");
 }
 
 void Game::loadDifficultyChoiceStateTextures() const

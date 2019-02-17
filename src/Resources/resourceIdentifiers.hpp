@@ -9,12 +9,8 @@ namespace Textures
         madeBy,
 
         ///menu state
-        menuBackground1,
-        menuBackground2,
-        menuBackground3,
-        menuBackground4,
-        menuBackground5,
         menuButtons,
+        menuLogoLabel,
 
         ///game sprites
         gameBackground,
