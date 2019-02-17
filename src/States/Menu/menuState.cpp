@@ -10,10 +10,14 @@ namespace States
 
 
 MenuState::MenuState(Game::GameDataRef _data)
-: data(_data)
+:data(_data)
 ,buttons(data, Textures::menuButtons, 5, 30, sf::Vector2i(60, 15), 5, sf::Vector2i(0, 80) )
 {
     background.setTexture(data->textures.get(Textures::gameBackground));
+
+    logoLabel.setTexture(data->textures.get(Textures::menuLogoLabel));
+    logoLabel.setPosition(40.f, 50.f);
+    logoLabel.scale(3.f, 3.f);
 }
 
 void MenuState::input()
@@ -32,6 +36,7 @@ void MenuState::draw()
     data->window.clear();
 
     data->window.draw(background);
+    data->window.draw(logoLabel);
     buttons.display();
 }
 

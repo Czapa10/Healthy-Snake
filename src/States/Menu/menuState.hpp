@@ -26,6 +26,7 @@ private:
     Game::GameDataRef data;
 
     sf::Sprite background;
+    sf::Sprite logoLabel;
     GUI::ButtonContainer buttons;
 };
 
