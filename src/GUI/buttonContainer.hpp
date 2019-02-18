@@ -22,6 +22,7 @@ public:
     void display();
     Button& operator[](unsigned int numberOfButton); //access to certain button
     int& getSignal(){return signal;}
+    GuiSnake& getSnake(){return snake;}
 
 private:
     void keyboardControls();

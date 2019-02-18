@@ -11,13 +11,15 @@ namespace States
 
 MenuState::MenuState(Game::GameDataRef _data)
 :data(_data)
-,buttons(data, Textures::menuButtons, 5, 30, sf::Vector2i(60, 15), 5, sf::Vector2i(0, 80) )
+,buttons(data, Textures::menuButtons, 5, 30, sf::Vector2i(60, 15), 5, sf::Vector2i(0, 100) )
 {
+    buttons.getSnake().setSnakePos(350, 80);
+
     background.setTexture(data->textures.get(Textures::gameBackground));
 
     logoLabel.setTexture(data->textures.get(Textures::menuLogoLabel));
-    logoLabel.setPosition(40.f, 50.f);
-    logoLabel.scale(3.f, 3.f);
+    logoLabel.setPosition(30.f, 40.f);
+    logoLabel.scale(4.f, 4.f);
 }
 
 void MenuState::input()

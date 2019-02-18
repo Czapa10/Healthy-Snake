@@ -48,7 +48,7 @@ void ButtonContainer::update()
 
     buttons[isOnButtonNr].makeButtonPointed(true);
 
-    snake.setSnakePos(buttons[0].getSprite().getPosition(), buttonSize, buttons[isOnButtonNr].getSprite().getPosition().y, scaleFactor);
+    snake.update(buttons[0].getSprite().getPosition(), buttonSize, buttons[isOnButtonNr].getSprite().getPosition().y, scaleFactor);
 }
 
 void ButtonContainer::display()

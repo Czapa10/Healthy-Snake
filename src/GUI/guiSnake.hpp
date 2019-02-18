@@ -9,11 +9,13 @@ namespace GUI
 class GuiSnake
 {
 public:
-    GuiSnake(Game::GameDataRef data, float scale, int pillarDistanceFromButtons = 400, unsigned int headOverFirstButton = 130);
-    void setSnakePos(const sf::Vector2f& posOfFirstButton, sf::Vector2i& buttonSize, float currentButtonY, float scaleFactor);
+    GuiSnake(Game::GameDataRef data, float scale, int pillarDistanceFromButtons = 300, unsigned int headOverFirstButton = 120);
 
-    void update(sf::Vector2f posOfPointedButton);
+    void update(const sf::Vector2f& posOfFirstButton, sf::Vector2i& buttonSize, float currentButtonY, float scaleFactor);
     void display();
+
+    void setIsShowing(bool isShowing){this->isShowing = isShowing;}
+    void setSnakePos(int pillarDistanceFromButtons, unsigned int headOverFirstButton){this->pillarDistanceFromButtons = pillarDistanceFromButtons; this->headOverFirstButton = headOverFirstButton;}
 
 private:
     Game::GameDataRef data;
@@ -23,8 +25,9 @@ private:
     sf::Sprite turnBody;
     sf::Sprite horizontalStraightBody;
 
+    bool isShowing = true;
     int pillarDistanceFromButtons;
-    int headOverFirstButton;
+    unsigned int headOverFirstButton;
 };
 
 
