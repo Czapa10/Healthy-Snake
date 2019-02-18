@@ -18,8 +18,8 @@ MenuState::MenuState(Game::GameDataRef _data)
     background.setTexture(data->textures.get(Textures::gameBackground));
 
     logoLabel.setTexture(data->textures.get(Textures::menuLogoLabel));
-    logoLabel.setPosition(30.f, 40.f);
-    logoLabel.scale(4.f, 4.f);
+    logoLabel.scale(3.f, 3.f);
+    logoLabel.setPosition( (SCREEN_WIDTH - logoLabel.getTexture()->getSize().x * logoLabel.getScale().x) / 2, 40.f);
 }
 
 void MenuState::input()
