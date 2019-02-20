@@ -159,6 +159,7 @@ void Game::loadStatBarTextures() const
 void Game::loadFonts() const
 {
     data->fonts.load(Fonts::pooh, "resources/fonts/Pooh.ttf");
+    data->fonts.load(Fonts::healthySnakeFont, "resources/fonts/HealthySnakeFont.ttf");
 }
 
 
