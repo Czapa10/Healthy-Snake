@@ -46,8 +46,27 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID, std::initial
 ,fontSize(fontSize)
 ,scaleFactor(0)
 {
+    buttons.reserve(numberOfButtons);
 
+    int Hmargin = (SCREEN_HEIGHT - (scaleFactor * numberOfButtons * buttonSize.y + (numberOfButtons - 1) * spaceBetweenButtons) ) / 2;
 
+    #if 0
+    for(int i = 0; i < numberOfButtons; ++i){
+        buttons.emplace_back(
+            Button(
+                data,
+                textureID,
+                sf::Vector2f(
+                    SCREEN_WIDTH / 2 - (scaleFactor * buttonSize.x) / 2 + offset.x,
+                    i * (scaleFactor * buttonSize.y + spaceBetweenButtons) + offset.y + Hmargin
+                            ),
+                sf::IntRect(0, buttonSize.y * i, buttonSize.x, buttonSize.y),
+                sf::IntRect(buttonSize.x, buttonSize.y * i, buttonSize.x, buttonSize.y),
+                scaleFactor
+            )
+        );
+    }
+    #endif // 0
 }
 
 void ButtonContainer::input()
