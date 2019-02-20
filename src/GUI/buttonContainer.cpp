@@ -13,6 +13,7 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID textureID,
 ,buttonSize(buttonSize)
 ,offset(offset)
 ,scaleFactor(scaleFactor)
+,fontSize(0)
 {
     buttons.reserve(numberOfButtons);
 
@@ -37,11 +38,12 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID textureID,
 
 ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID, std::initializer_list<std::string> texts, int numberOfButtons, int spaceBetweenButtons, unsigned int fontSize, sf::Vector2i offset)
 :data(data)
-,snake(data, 0)
+,snake(data, fontSize)
 ,numberOfButtons(numberOfButtons)
 ,spaceBetweenButtons(spaceBetweenButtons)
 ,buttonSize(buttonSize)
 ,offset(offset)
+,fontSize(fontSize)
 ,scaleFactor(0)
 {
 

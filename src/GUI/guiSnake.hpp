@@ -10,6 +10,7 @@ class GuiSnake
 {
 public:
     GuiSnake(Game::GameDataRef data, float scale, int pillarDistanceFromButtons = 300, unsigned int headOverFirstButton = 120);
+    GuiSnake(Game::GameDataRef data, unsigned int fontSize, int pillarDistanceFromButtons = 300, unsigned int headOverFirstButton = 120);
 
     void update(const sf::Vector2f& posOfFirstButton, sf::Vector2i& buttonSize, float currentButtonY, float scaleFactor);
     void display();
