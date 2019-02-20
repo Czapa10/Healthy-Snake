@@ -1,6 +1,8 @@
 #pragma once
 
 #include <vector>
+#include <initializer_list>
+#include <string>
 #include <SFML/Graphics.hpp>
 
 #include <game.hpp>
@@ -16,6 +18,7 @@ class ButtonContainer
 {
 public:
     ButtonContainer(Game::GameDataRef data, Textures::ID, int numberOfButtons, int spaceBetweenButtons, sf::Vector2i buttonSize, float scaleFactor = 4,sf::Vector2i offset = sf::Vector2i(0,0));
+    ButtonContainer(Game::GameDataRef data, Fonts::ID, std::initializer_list<std::string> texts, int numberOfButtons, int spaceBetweenButtons, unsigned int fontSize, sf::Vector2i offset = sf::Vector2i(0,0));
 
     void input();
     void update();

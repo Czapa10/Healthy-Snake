@@ -35,6 +35,19 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID textureID,
     }
 }
 
+ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID, std::initializer_list<std::string> texts, int numberOfButtons, int spaceBetweenButtons, unsigned int fontSize, sf::Vector2i offset)
+:data(data)
+,snake(data, 0)
+,numberOfButtons(numberOfButtons)
+,spaceBetweenButtons(spaceBetweenButtons)
+,buttonSize(buttonSize)
+,offset(offset)
+,scaleFactor(0)
+{
+
+
+}
+
 void ButtonContainer::input()
 {
     keyboardControls();
