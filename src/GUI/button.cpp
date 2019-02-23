@@ -39,7 +39,7 @@ Button::Button(Game::GameDataRef data, const Fonts::ID& fontID, const std::strin
 ,isActive(isActive)
 ,type(ButtonType::textButton)
 {
-
+    text.setPosition(pos);
 }
 
 void Button::update()

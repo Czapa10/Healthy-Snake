@@ -36,9 +36,9 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID textureID,
     }
 }
 
-ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID fontID, std::initializer_list<std::string> texts, int numberOfButtons, int spaceBetweenButtons, unsigned int fontSize, sf::Vector2i offset)
+ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID fontID, std::vector<std::string> texts, int numberOfButtons, int spaceBetweenButtons, unsigned int fontSize, sf::Vector2i offset)
 :data(data)
-,snake(data, fontSize)
+,snake(data, 4u)
 ,numberOfButtons(numberOfButtons)
 ,spaceBetweenButtons(spaceBetweenButtons)
 ,buttonSize(buttonSize)
@@ -50,7 +50,6 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID fontID, std::
 
     int Hmargin = (SCREEN_HEIGHT - (scaleFactor * numberOfButtons * buttonSize.y + (numberOfButtons - 1) * spaceBetweenButtons) ) / 2;
 
-    #if 0
     for(int i = 0; i < numberOfButtons; ++i){
         buttons.emplace_back(
             Button(
@@ -67,7 +66,6 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID fontID, std::
             )
         );
     }
-    #endif // 0
 }
 
 void ButtonContainer::input()

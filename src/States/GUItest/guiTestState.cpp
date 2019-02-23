@@ -1,13 +1,15 @@
 #include "guiTestState.hpp"
 #include <States/Menu/menuState.hpp>
 #include <iostream>
+#include <string>
 
 namespace States
 {
 
 
 GuiTestState::GuiTestState(Game::GameDataRef data) : data(data)
-,buttons( data, Textures::menuButtons, 5, 30, sf::Vector2i(60, 15), 5, sf::Vector2i(0, 80) )
+,buttons( data, Fonts::pooh, {"Play", "settings", "food stats", "credits", "exit"}, 5, 30, 30, sf::Vector2i(0, 80) )
+,button( data, Fonts::pooh, "example", sf::Vector2f(30.f, 100.f), sf::IntRect(), sf::IntRect() )
 {
 }
 
@@ -32,7 +34,8 @@ void GuiTestState::draw()
 {
     data->window.clear(sf::Color::White);
 
-    buttons.display();
+    button.display();
+    //buttons.display();
 }
 
 
