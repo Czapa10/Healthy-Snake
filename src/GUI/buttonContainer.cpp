@@ -36,7 +36,7 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID textureID,
     }
 }
 
-ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID, std::initializer_list<std::string> texts, int numberOfButtons, int spaceBetweenButtons, unsigned int fontSize, sf::Vector2i offset)
+ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID fontID, std::initializer_list<std::string> texts, int numberOfButtons, int spaceBetweenButtons, unsigned int fontSize, sf::Vector2i offset)
 :data(data)
 ,snake(data, fontSize)
 ,numberOfButtons(numberOfButtons)
@@ -55,14 +55,15 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID, std::initial
         buttons.emplace_back(
             Button(
                 data,
-                textureID,
+                fontID,
+                texts[i],
                 sf::Vector2f(
-                    SCREEN_WIDTH / 2 - (scaleFactor * buttonSize.x) / 2 + offset.x,
-                    i * (scaleFactor * buttonSize.y + spaceBetweenButtons) + offset.y + Hmargin
+                    SCREEN_WIDTH / 2 - (1.3 * (fontSize / 1.7) * buttonSize.x) / 2 + offset.x,
+                    i * (1.3 * fontSize * buttonSize.y + spaceBetweenButtons) + offset.y + Hmargin
                             ),
                 sf::IntRect(0, buttonSize.y * i, buttonSize.x, buttonSize.y),
                 sf::IntRect(buttonSize.x, buttonSize.y * i, buttonSize.x, buttonSize.y),
-                scaleFactor
+                fontSize
             )
         );
     }

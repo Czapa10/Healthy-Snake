@@ -1,6 +1,7 @@
 #include "button.hpp"
 
 #include "mouseInput.hpp"
+#include <Resources/resourceIdentifiers.hpp>
 
 namespace GUI
 {
@@ -18,23 +19,25 @@ Button::Button(Game::GameDataRef data, const Textures::ID& textureID, sf::Vector
 ,pointedRect(pointedRect)
 ,clickBoxExpand(clickBoxExpand)
 ,isActive(isActive)
+,type(ButtonType::spriteButton)
 {
     sprite.setPosition(pos);
     sprite.scale(scaleFactor, scaleFactor);
 }
 
-Button::Button(Game::GameDataRef data, const Fonts::ID& fontID, sf::Vector2f pos, sf::IntRect notPointedRect, sf::IntRect pointedRect, unsigned int fontSize, bool isActive)
-:Button{data, fontID, pos, notPointedRect, pointedRect, sf::Vector2i(0.f,0.f), fontSize, isActive}
+Button::Button(Game::GameDataRef data, const Fonts::ID& fontID, const std::string& content, sf::Vector2f pos, sf::IntRect notPointedRect, sf::IntRect pointedRect, unsigned int fontSize, bool isActive)
+:Button{data, fontID, content, pos, notPointedRect, pointedRect, sf::Vector2i(0.f,0.f), fontSize, isActive}
 {
 }
 
-Button::Button(Game::GameDataRef data, const Fonts::ID&, sf::Vector2f pos, sf::IntRect notPointedRect, sf::IntRect pointedRect, sf::Vector2i clickBoxExpand, unsigned int fontSize, bool isActive)
+Button::Button(Game::GameDataRef data, const Fonts::ID& fontID, const std::string& content, sf::Vector2f pos, sf::IntRect notPointedRect, sf::IntRect pointedRect, sf::Vector2i clickBoxExpand, unsigned int fontSize, bool isActive)
 :data(data)
-//,sprite(data->textures.get(textureID), notPointedRect)
+,text( content, data->fonts.get(fontID), fontSize )
 ,notPointedRect(notPointedRect)
 ,pointedRect(pointedRect)
 ,clickBoxExpand(clickBoxExpand)
 ,isActive(isActive)
+,type(ButtonType::textButton)
 {
 
 }
@@ -46,7 +49,10 @@ void Button::update()
 
 void Button::display()
 {
-    data->window.draw(sprite);
+    if(type == ButtonType::spriteButton)
+        data->window.draw(sprite);
+    else
+        data->window.draw(text);
 }
 
 void Button::makeButtonPointed(bool buttonIsPointed)
