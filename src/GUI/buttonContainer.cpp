@@ -57,7 +57,7 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID fontID, std::
                 fontID,
                 texts[i],
                 sf::Vector2f(
-                    SCREEN_WIDTH / 2 - (1.3 * (fontSize / 1.7) * buttonSize.x) / 2 + offset.x,
+                    SCREEN_WIDTH / 2 - ( /*1.3 */(fontSize /*/ 1.7*/) * buttonSize.x) / 2 + offset.x, // <- This algorithm makes problem
                     i * (1.3 * fontSize * buttonSize.y + spaceBetweenButtons) + offset.y + Hmargin
                             ),
                 fontSize
