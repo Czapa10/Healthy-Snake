@@ -60,8 +60,6 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID fontID, std::
                     SCREEN_WIDTH / 2 - (1.3 * (fontSize / 1.7) * buttonSize.x) / 2 + offset.x,
                     i * (1.3 * fontSize * buttonSize.y + spaceBetweenButtons) + offset.y + Hmargin
                             ),
-                sf::IntRect(0, buttonSize.y * i, buttonSize.x, buttonSize.y),
-                sf::IntRect(buttonSize.x, buttonSize.y * i, buttonSize.x, buttonSize.y),
                 fontSize
             )
         );

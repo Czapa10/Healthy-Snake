@@ -9,7 +9,7 @@ namespace States
 
 GuiTestState::GuiTestState(Game::GameDataRef data) : data(data)
 ,buttons( data, Fonts::pooh, {"Play", "settings", "food stats", "credits", "exit"}, 5, 30, 30, sf::Vector2i(0, 80) )
-,button( data, Fonts::pooh, "example", sf::Vector2f(30.f, 100.f), sf::IntRect(), sf::IntRect() )
+,button( data, Fonts::pooh, "example", sf::Vector2f(30.f, 100.f) )
 {
 }
 
