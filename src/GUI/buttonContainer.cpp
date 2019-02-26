@@ -41,7 +41,6 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID fontID, std::
 ,snake(data, 4u)
 ,numberOfButtons(numberOfButtons)
 ,spaceBetweenButtons(spaceBetweenButtons)
-,buttonSize(buttonSize)
 ,offset(offset)
 ,fontSize(fontSize)
 ,scaleFactor(0)
@@ -57,13 +56,17 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID fontID, std::
                 fontID,
                 texts[i],
                 sf::Vector2f(
-                    SCREEN_WIDTH / 2 - ( /*1.3 */(fontSize /*/ 1.7*/) * buttonSize.x) / 2 + offset.x, // <- This algorithm makes problem
-                    i * (1.3 * fontSize * buttonSize.y + spaceBetweenButtons) + offset.y + Hmargin
+                    SCREEN_WIDTH / 2 - fontSize * texts[i].size() / 4 + offset.x, // <- This algorithm makes problem
+                    i * (1.3 * fontSize + spaceBetweenButtons) + offset.y + Hmargin
                             ),
                 fontSize
             )
         );
+
+        std::cout<<i<<"x: "<<SCREEN_WIDTH / 2 - ( fontSize * texts[i].size()) / 2 + offset.x<<std::endl;
     }
+
+
 }
 
 void ButtonContainer::input()
