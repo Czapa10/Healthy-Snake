@@ -47,7 +47,7 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID fontID, std::
 {
     buttons.reserve(numberOfButtons);
 
-    int Hmargin = (SCREEN_HEIGHT - (scaleFactor * numberOfButtons * buttonSize.y + (numberOfButtons - 1) * spaceBetweenButtons) ) / 2;
+    int Hmargin = (SCREEN_HEIGHT - (1.3 * fontSize * numberOfButtons + (numberOfButtons - 1) * spaceBetweenButtons) ) / 2;
 
     for(int i = 0; i < numberOfButtons; ++i){
         buttons.emplace_back(
