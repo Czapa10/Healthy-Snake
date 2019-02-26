@@ -26,13 +26,11 @@ public:
     sf::Sprite& getSprite(){ return sprite; }
     sf::Text& getText(){ return text; }
 
-public:
-    bool isPointed = false;
-
 private:
     Game::GameDataRef data;
 
     const bool isActive;
+    bool isPointed = false;
 
     sf::IntRect notPointedRect;
     sf::IntRect pointedRect;
