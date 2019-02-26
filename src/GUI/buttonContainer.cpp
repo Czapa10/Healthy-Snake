@@ -36,7 +36,7 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Textures::ID textureID,
     }
 }
 
-ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID fontID, std::vector<std::string> texts, int numberOfButtons, int spaceBetweenButtons, unsigned int fontSize, sf::Vector2i offset)
+ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID fontID, std::vector<std::string> texts, int numberOfButtons, int spaceBetweenButtons, unsigned int fontSize, sf::Vector2i offset, bool areButtonsCentered)
 :data(data)
 ,snake(data, 4u)
 ,numberOfButtons(numberOfButtons)
@@ -49,6 +49,8 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID fontID, std::
 
     int Hmargin = (SCREEN_HEIGHT - (1.3 * fontSize * numberOfButtons + (numberOfButtons - 1) * spaceBetweenButtons) ) / 2;
 
+    int centerValue = areButtonsCentered ? 4 : 2;
+
     for(int i = 0; i < numberOfButtons; ++i){
         buttons.emplace_back(
             Button(
@@ -56,7 +58,7 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID fontID, std::
                 fontID,
                 texts[i],
                 sf::Vector2f(
-                    SCREEN_WIDTH / 2 - fontSize * texts[i].size() / 4 + offset.x, // <- This algorithm makes problem
+                    SCREEN_WIDTH / 2 - fontSize * texts[i].size() / centerValue + offset.x, // <- This algorithm makes problem
                     i * (1.3 * fontSize + spaceBetweenButtons) + offset.y + Hmargin
                             ),
                 fontSize
