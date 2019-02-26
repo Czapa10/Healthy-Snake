@@ -18,7 +18,7 @@ class ButtonContainer
 {
 public:
     ButtonContainer(Game::GameDataRef data, Textures::ID, int numberOfButtons, int spaceBetweenButtons, sf::Vector2i buttonSize, float scaleFactor = 4,sf::Vector2i offset = sf::Vector2i(0,0));
-    ButtonContainer(Game::GameDataRef data, Fonts::ID, std::initializer_list<std::string> texts, int numberOfButtons, int spaceBetweenButtons, unsigned int fontSize, sf::Vector2i offset = sf::Vector2i(0,0));
+    ButtonContainer(Game::GameDataRef data, Fonts::ID, std::vector<std::string> texts, int numberOfButtons, int spaceBetweenButtons, unsigned int fontSize, sf::Vector2i offset = sf::Vector2i(0,0), bool areButtonsCentered = true);
 
     void input();
     void update();
@@ -45,6 +45,7 @@ private:
 
     const int numberOfButtons;
     const int spaceBetweenButtons;
+    const unsigned int fontSize;
     const float scaleFactor;
     sf::Vector2i buttonSize;
     sf::Vector2i offset;

@@ -22,6 +22,7 @@ private:
     Game::GameDataRef data;
 
     GUI::ButtonContainer buttons;
+    GUI::Button button;
 };
 
 
