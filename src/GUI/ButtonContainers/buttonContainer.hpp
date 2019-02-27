@@ -7,8 +7,8 @@
 
 #include <game.hpp>
 #include <Resources/resourceIdentifiers.hpp>
-#include "button.hpp"
-#include "guiSnake.hpp"
+#include <GUI/Buttons/button.hpp>
+#include <GUI/GuiSnake/guiSnake.hpp>
 
 namespace GUI
 {

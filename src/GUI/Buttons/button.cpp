@@ -1,6 +1,6 @@
 #include "button.hpp"
 
-#include "mouseInput.hpp"
+#include <GUI/MouseInput/mouseInput.hpp>
 #include <Resources/resourceIdentifiers.hpp>
 
 namespace GUI

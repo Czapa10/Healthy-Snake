@@ -5,7 +5,7 @@
 
 #include <Resources/resourceManager.hpp>
 #include <States/stateStack.hpp>
-#include <GUI/mouseInput.hpp>
+#include <GUI/MouseInput/mouseInput.hpp>
 #include <States/DifficultyChoise/difficultyLevelIdentifiers.hpp>
 
 
