@@ -1,5 +1,7 @@
 #include "textButton.h"
 
+#include <cctype>
+
 namespace GUI
 {
 
@@ -23,7 +25,7 @@ TextButton::TextButton(Game::GameDataRef data, const Fonts::ID& fontID, const st
 
 void TextButton::display()
 {
-    data->window.draw(sprite);
+    data->window.draw(text);
 }
 
 void TextButton::makeButtonPointed(bool buttonIsPointed)
@@ -31,21 +33,21 @@ void TextButton::makeButtonPointed(bool buttonIsPointed)
     isPointed = buttonIsPointed;
 
     if(isPointed == true){
-        sprite.setTextureRect(pointedRect);
+        //toupper will be here
     }
     else{
-        sprite.setTextureRect(notPointedRect);
+        //tolower will be here
     }
 }
 
 bool TextButton::isMouseOnButton(sf::Vector2i &currentPos)
 {
-    return MouseInput::isUnderMouse(sprite, data->window);
+    return MouseInput::isUnderMouse(/*text*/, data->window);
 }
 
 bool TextButton::isClicked(sf::Vector2i &currentPos)
 {
-    return MouseInput::isClicked(sprite, data->window);
+    return MouseInput::isClicked(/*text*/, data->window);
 }
 
 
