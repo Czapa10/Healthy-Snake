@@ -12,13 +12,8 @@ TextButton::TextButton(Game::GameDataRef data, const Fonts::ID& fontID, const st
 }
 
 TextButton::TextButton(Game::GameDataRef data, const Fonts::ID& fontID, const std::string& content, sf::Vector2f pos, sf::Vector2i clickBoxExpand, unsigned int fontSize, bool isActive)
-:data(data)
+:Button(data, clickBoxExpand, isActive)
 ,text( content, data->fonts.get(fontID), fontSize )
-,notPointedRect(sf::IntRect())
-,pointedRect(sf::IntRect())
-,clickBoxExpand(clickBoxExpand)
-,isActive(isActive)
-,type(ButtonType::textButton)
 {
     text.setPosition(pos);
 }

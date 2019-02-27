@@ -10,13 +10,10 @@ SpriteButton::SpriteButton(Game::GameDataRef data, const Textures::ID& textureID
 }
 
 SpriteButton::SpriteButton(Game::GameDataRef data, const Textures::ID& textureID, sf::Vector2f pos, sf::IntRect notPointedRect, sf::IntRect pointedRect, sf::Vector2i clickBoxExpand, float scaleFactor, bool isActive)
-:data(data)
+:Button(data, clickBoxExpand, isActive)
 ,sprite(data->textures.get(textureID), notPointedRect)
 ,notPointedRect(notPointedRect)
 ,pointedRect(pointedRect)
-,clickBoxExpand(clickBoxExpand)
-,isActive(isActive)
-,type(ButtonType::spriteButton)
 {
     sprite.setPosition(pos);
     sprite.scale(scaleFactor, scaleFactor);
