@@ -5,13 +5,9 @@ namespace GUI
 
 
 TextButtonContainer::TextButtonContainer(Game::GameDataRef data, Fonts::ID fontID, std::vector<std::string> texts, int numberOfButtons, int spaceBetweenButtons, unsigned int fontSize, sf::Vector2i offset, bool areButtonsCentered)
-:data(data)
+:ButtonContainer(data, numberOfButtons, spaceBetweenButtons, offset)
 ,snake(data, 4u)
-,numberOfButtons(numberOfButtons)
-,spaceBetweenButtons(spaceBetweenButtons)
-,offset(offset)
 ,fontSize(fontSize)
-,scaleFactor(0)
 {
     buttons.reserve(numberOfButtons);
 

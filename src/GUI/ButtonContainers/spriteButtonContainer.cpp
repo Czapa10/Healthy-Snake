@@ -5,14 +5,10 @@ namespace GUI
 
 
 SpriteButtonContainer::SpriteButtonContainer(Game::GameDataRef data, Textures::ID textureID, int numberOfButtons, int spaceBetweenButtons, sf::Vector2i buttonSize, float scaleFactor, sf::Vector2i offset)
-:data(data)
+:ButtonContainer(data, numberOfButtons, spaceBetweenButtons, offset)
 ,snake(data, scaleFactor)
-,numberOfButtons(numberOfButtons)
-,spaceBetweenButtons(spaceBetweenButtons)
 ,buttonSize(buttonSize)
-,offset(offset)
 ,scaleFactor(scaleFactor)
-,fontSize(0)
 {
     buttons.reserve(numberOfButtons);
 
