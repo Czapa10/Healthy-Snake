@@ -16,12 +16,15 @@ public:
     void update();
     void display();
     Button& operator[](unsigned int numberOfButton); //access to certain button
+    GuiSnake& getSnake(){return snake;}
 
 private:
     void mouseControls();
 
 private:
     std::vector<TextButton> buttons;
+
+    GUI::GuiSnake snake;
 
     const unsigned int fontSize;
 };

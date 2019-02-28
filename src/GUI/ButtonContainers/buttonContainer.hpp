@@ -19,15 +19,12 @@ protected:
 
     void update();
     int& getSignal(){return signal;}
-    GuiSnake& getSnake(){return snake;}
 
 private:
     void keyboardControls();
 
 private:
     Game::GameDataRef data;
-
-    GuiSnake snake;
 
     int isOnButtonNr{};
     sf::Clock timeSinceLastClick;

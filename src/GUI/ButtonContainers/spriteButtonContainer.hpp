@@ -16,12 +16,15 @@ public:
     void update();
     void display();
     Button& operator[](unsigned int numberOfButton); //access to certain button
+    GuiSnake& getSnake(){return snake;}
 
 private:
     void mouseControls();
 
 private:
     std::vector<SpriteButton> buttons;
+
+    GUI::GuiSnake snake;
 
     const float scaleFactor;
     sf::Vector2i buttonSize;
