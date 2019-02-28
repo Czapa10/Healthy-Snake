@@ -23,7 +23,6 @@ public:
     void input();
     void update();
     void display();
-    Button& operator[](unsigned int numberOfButton); //access to certain button
     int& getSignal(){return signal;}
     GuiSnake& getSnake(){return snake;}
 
@@ -34,7 +33,6 @@ private:
 private:
     Game::GameDataRef data;
 
-    std::vector<Button> buttons;
     GuiSnake snake;
 
     int isOnButtonNr{};
@@ -46,8 +44,6 @@ private:
     const int numberOfButtons;
     const int spaceBetweenButtons;
     const unsigned int fontSize;
-    const float scaleFactor;
-    sf::Vector2i buttonSize;
     sf::Vector2i offset;
 };
 
