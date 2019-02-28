@@ -15,6 +15,8 @@ namespace GUI
 class ButtonContainer
 {
 protected:
+    ButtonContainer(Game::GameDataRef, const int& numberOfButtons, const int& spaceBetweenButtons, const sf::Vector2i& offset);
+
     void update();
     int& getSignal(){return signal;}
     GuiSnake& getSnake(){return snake;}
@@ -35,7 +37,7 @@ private:
 
     const int numberOfButtons;
     const int spaceBetweenButtons;
-    sf::Vector2i offset;
+    const sf::Vector2i offset;
 };
 
 

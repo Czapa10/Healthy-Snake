@@ -5,6 +5,14 @@ namespace GUI
 {
 
 
+ButtonContainer::ButtonContainer(Game::GameDataRef data, const int& numberOfButtons, const int& spaceBetweenButtons, const sf::Vector2i& offset)
+:data(data)
+,numberOfButtons(numberOfButtons)
+,spaceBetweenButtons(spaceBetweenButtons)
+,offset(offset)
+{
+}
+
 void ButtonContainer::update()
 {
     for(auto &button : buttons)
