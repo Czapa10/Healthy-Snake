@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 #include <game.hpp>
 #include <Resources/resourceIdentifiers.hpp>
@@ -18,11 +19,9 @@ protected:
     ButtonContainer(Game::GameDataRef, const int& numberOfButtons, const int& spaceBetweenButtons, const sf::Vector2i& offset);
 
     int& getSignal(){return signal;}
-
-private:
     void keyboardControls();
 
-private:
+protected:
     Game::GameDataRef data;
 
     int isOnButtonNr{};

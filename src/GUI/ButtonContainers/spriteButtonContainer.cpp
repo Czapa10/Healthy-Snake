@@ -4,7 +4,7 @@ namespace GUI
 {
 
 
-SpriteButtonContainer::SpriteButtonContainer(Game::GameDataRef data, Textures::ID textureID, int numberOfButtons, int spaceBetweenButtons, sf::Vector2i buttonSize, float scaleFactor, sf::Vector2i offset)
+SpriteButtonContainer::SpriteButtonContainer(Game::GameDataRef data, Textures::ID& textureID, int& numberOfButtons, int& spaceBetweenButtons, sf::Vector2i& buttonSize, const float& scaleFactor, const sf::Vector2i& offset)
 :ButtonContainer(data, numberOfButtons, spaceBetweenButtons, offset)
 ,snake(data, scaleFactor)
 ,buttonSize(buttonSize)
@@ -16,7 +16,7 @@ SpriteButtonContainer::SpriteButtonContainer(Game::GameDataRef data, Textures::I
 
     for(int i = 0; i < numberOfButtons; ++i){
         buttons.emplace_back(
-            Button(
+            SpriteButton(
                 data,
                 textureID,
                 sf::Vector2f(
@@ -62,7 +62,6 @@ SpriteButton& SpriteButtonContainer::operator[](unsigned int numberOfButton)
         std::cout<<"This button container has "<<buttons.size()<<" buttons ( 0 - "<<buttons.size() - 1<<
         ") So you can't get reference to "<<numberOfButton<<std::endl;
     }
-    return;
 
     return buttons[numberOfButton];
 }

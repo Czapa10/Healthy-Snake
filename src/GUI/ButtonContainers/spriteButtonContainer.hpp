@@ -10,12 +10,12 @@ namespace GUI
 class SpriteButtonContainer : public ButtonContainer
 {
 public:
-    SpriteButtonContainer(Game::GameDataRef data, Textures::ID&, int& numberOfButtons, int& spaceBetweenButtons, sf::Vector2i& buttonSize, float& scaleFactor = 4, sf::Vector2i& offset = sf::Vector2i(0,0));
+    SpriteButtonContainer(Game::GameDataRef data, Textures::ID&, int& numberOfButtons, int& spaceBetweenButtons, sf::Vector2i& buttonSize, const float& scaleFactor = 4, const sf::Vector2i& offset = sf::Vector2i(0,0));
 
     void input();
     void update();
     void display();
-    Button& operator[](unsigned int numberOfButton); //access to certain button
+    SpriteButton& operator[](unsigned int numberOfButton); //access to certain button
     GuiSnake& getSnake(){return snake;}
 
 private:
