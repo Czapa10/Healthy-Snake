@@ -1,6 +1,7 @@
 #pragma once
 
 #include "buttonContainer.hpp"
+#include <GUI/Buttons/spriteButton.hpp>
 
 namespace GUI
 {
@@ -9,7 +10,7 @@ namespace GUI
 class SpriteButtonContainer : public ButtonContainer
 {
 public:
-    SpriteButtonContainer();
+    ButtonContainer(Game::GameDataRef data, Textures::ID, int numberOfButtons, int spaceBetweenButtons, sf::Vector2i buttonSize, float scaleFactor = 4,sf::Vector2i offset = sf::Vector2i(0,0));
 
     void input();
     void update();
