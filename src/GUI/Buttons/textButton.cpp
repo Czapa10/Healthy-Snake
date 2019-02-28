@@ -1,4 +1,4 @@
-#include "textButton.h"
+#include "textButton.hpp"
 
 #include <cctype>
 
@@ -7,7 +7,7 @@ namespace GUI
 
 
 TextButton::TextButton(Game::GameDataRef data, const Fonts::ID& fontID, const std::string& content, sf::Vector2f pos, unsigned int fontSize, bool isActive)
-:Button{data, fontID, content, pos, sf::Vector2i(0.f,0.f), fontSize, isActive}
+:TextButton{data, fontID, content, pos, sf::Vector2i(0.f,0.f), fontSize, isActive}
 {
 }
 

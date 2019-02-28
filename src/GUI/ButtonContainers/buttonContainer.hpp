@@ -17,9 +17,10 @@ class ButtonContainer
 {
 protected:
     ButtonContainer(Game::GameDataRef, const int& numberOfButtons, const int& spaceBetweenButtons, const sf::Vector2i& offset);
-
-    int& getSignal(){return signal;}
     void keyboardControls();
+
+public:
+    int& getSignal(){return signal;}
 
 protected:
     Game::GameDataRef data;

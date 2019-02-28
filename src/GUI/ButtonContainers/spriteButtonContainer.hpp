@@ -10,7 +10,7 @@ namespace GUI
 class SpriteButtonContainer : public ButtonContainer
 {
 public:
-    SpriteButtonContainer(Game::GameDataRef data, Textures::ID&, int& numberOfButtons, int& spaceBetweenButtons, sf::Vector2i& buttonSize, const float& scaleFactor = 4, const sf::Vector2i& offset = sf::Vector2i(0,0));
+    SpriteButtonContainer(Game::GameDataRef data, Textures::ID, int numberOfButtons, int spaceBetweenButtons, sf::Vector2i buttonSize, const float scaleFactor = 4, const sf::Vector2i offset = sf::Vector2i(0,0));
 
     void input();
     void update();

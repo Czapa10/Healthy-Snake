@@ -17,7 +17,7 @@ TextButtonContainer::TextButtonContainer(Game::GameDataRef data, Fonts::ID fontI
 
     for(int i = 0; i < numberOfButtons; ++i){
         buttons.emplace_back(
-            Button(
+            TextButton(
                 data,
                 fontID,
                 texts[i],
@@ -66,13 +66,15 @@ TextButton& TextButtonContainer::operator[](unsigned int numberOfButton)
     if(numberOfButton >= buttons.size()){
         std::cout<<"This button container has "<<buttons.size()<<" buttons ( 0 - "<<buttons.size() - 1<<
         ") So you can't get reference to "<<numberOfButton<<std::endl;
+
+        int exc;
+        throw exc;
     }
-    return;
 
     return buttons[numberOfButton];
 }
 
-void SpriteButtonContainer::mouseControls()
+void TextButtonContainer::mouseControls()
 {
     currentMousePos = sf::Mouse::getPosition(data->window);
 

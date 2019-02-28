@@ -15,7 +15,7 @@ public:
     void input();
     void update();
     void display();
-    Button& operator[](unsigned int numberOfButton); //access to certain button
+    TextButton& operator[](unsigned int numberOfButton); //access to certain button
     GuiSnake& getSnake(){return snake;}
 
 private:
