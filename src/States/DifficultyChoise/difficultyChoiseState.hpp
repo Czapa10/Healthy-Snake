@@ -5,7 +5,7 @@
 
 #include <game.hpp>
 #include <States/State.hpp>
-#include <GUI/ButtonContainers/buttonContainer.hpp>
+#include <GUI/ButtonContainers/spriteButtonContainer.hpp>
 
 namespace States
 {
@@ -27,7 +27,7 @@ private:
     Game::GameDataRef data;
 
     sf::Sprite background;
-    GUI::ButtonContainer buttons;
+    GUI::SpriteButtonContainer buttons;
 };
 
 

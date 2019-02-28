@@ -4,7 +4,7 @@
 
 #include <states/state.hpp>
 #include <game.hpp>
-#include <GUI/ButtonContainers/buttonContainer.hpp>
+#include <GUI/ButtonContainers/spriteButtonContainer.hpp>
 
 namespace States
 {
@@ -27,7 +27,7 @@ private:
 
     sf::Sprite background;
     sf::Sprite logoLabel;
-    GUI::ButtonContainer buttons;
+    GUI::SpriteButtonContainer buttons;
 };
 
 

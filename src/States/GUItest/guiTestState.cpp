@@ -9,7 +9,6 @@ namespace States
 
 GuiTestState::GuiTestState(Game::GameDataRef data) : data(data)
 ,buttons( data, Fonts::pooh, {"Play", "settings", "food stats", "credits", "exit"}, 5, 60, 50 )
-,button( data, Fonts::pooh, "example", sf::Vector2f(100.f, 200.f) )
 {
 }
 
@@ -34,7 +33,6 @@ void GuiTestState::draw()
 {
     data->window.clear();
 
-    //button.display();
     buttons.display();
 }
 
