@@ -1,13 +1,11 @@
 #pragma once
 
 #include <vector>
-#include <initializer_list>
 #include <string>
 #include <SFML/Graphics.hpp>
 
 #include <game.hpp>
 #include <Resources/resourceIdentifiers.hpp>
-#include <GUI/Buttons/button.hpp>
 #include <GUI/GuiSnake/guiSnake.hpp>
 
 namespace GUI
@@ -17,9 +15,7 @@ namespace GUI
 class ButtonContainer
 {
 public:
-    void input();
     void update();
-    void display();
     int& getSignal(){return signal;}
     GuiSnake& getSnake(){return snake;}
 
