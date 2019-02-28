@@ -17,7 +17,6 @@ class ButtonContainer
 protected:
     ButtonContainer(Game::GameDataRef, const int& numberOfButtons, const int& spaceBetweenButtons, const sf::Vector2i& offset);
 
-    void update();
     int& getSignal(){return signal;}
 
 private:

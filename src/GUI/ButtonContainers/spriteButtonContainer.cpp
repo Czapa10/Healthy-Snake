@@ -39,7 +39,11 @@ void SpriteButtonContainer::input()
 
 void SpriteButtonContainer::update()
 {
-    ButtonContainer::update();
+    for(auto &button : buttons)
+        button.makeButtonPointed(false);
+
+    buttons[isOnButtonNr].makeButtonPointed(true);
+
     snake.update(buttons[0].getSprite().getPosition(), buttonSize, buttons[isOnButtonNr].getSprite().getPosition().y, scaleFactor);
 }
 

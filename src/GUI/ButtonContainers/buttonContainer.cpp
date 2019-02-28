@@ -13,14 +13,6 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, const int& numberOfButt
 {
 }
 
-void ButtonContainer::update()
-{
-    for(auto &button : buttons)
-        button.makeButtonPointed(false);
-
-    buttons[isOnButtonNr].makeButtonPointed(true);
-}
-
 void ButtonContainer::keyboardControls()
 {
     if(timeSinceLastClick.getElapsedTime().asSeconds() > 0.17){
