@@ -14,7 +14,7 @@ namespace GUI
 
 class ButtonContainer
 {
-public:
+protected:
     void update();
     int& getSignal(){return signal;}
     GuiSnake& getSnake(){return snake;}

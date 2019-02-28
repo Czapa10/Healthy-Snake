@@ -37,12 +37,14 @@ void TextButton::makeButtonPointed(bool buttonIsPointed)
 
 bool TextButton::isMouseOnButton(sf::Vector2i &currentPos)
 {
-    return MouseInput::isUnderMouse(/*text*/, data->window);
+    //return MouseInput::isUnderMouse(text, data->window);
+    return false;
 }
 
 bool TextButton::isClicked(sf::Vector2i &currentPos)
 {
-    return MouseInput::isClicked(/*text*/, data->window);
+    //return MouseInput::isClicked(text, data->window);
+    return false;
 }
 
 
