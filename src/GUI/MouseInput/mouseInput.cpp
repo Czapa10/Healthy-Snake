@@ -1,5 +1,7 @@
 #include "mouseInput.hpp"
 
+#include <iostream>
+
 namespace GUI
 {
 
@@ -27,8 +29,9 @@ bool isClicked(sf::IntRect button, sf::RenderWindow &window)
 bool isUnderMouse(sf::Sprite sprite, sf::RenderWindow &window)
 {
     sf::IntRect button(sprite.getPosition().x, sprite.getPosition().y, sprite.getGlobalBounds().width, sprite.getGlobalBounds().height);
-
+    std::cout<<"isUnderMouse 1"<<std::endl;
     return (button.contains(sf::Mouse::getPosition(window)));
+    std::cout<<"isUnderMouse 2"<<std::endl;
 }
 
 bool isUnderMouse(sf::IntRect button, sf::RenderWindow &window)

@@ -1,5 +1,7 @@
 #include "spriteButton.hpp"
 
+#include <iostream>
+
 namespace GUI
 {
 
@@ -38,7 +40,9 @@ void SpriteButton::makeButtonPointed(bool buttonIsPointed)
 
 bool SpriteButton::isMouseOnButton(sf::Vector2i &currentPos)
 {
+    std::cout<<"SpriteButton::isMouseOnButton 1"<<std::endl;
     return MouseInput::isUnderMouse(sprite, data->window);
+    std::cout<<"SpriteButton::isMouseOnButton 2"<<std::endl;
 }
 
 bool SpriteButton::isClicked(sf::Vector2i &currentPos)

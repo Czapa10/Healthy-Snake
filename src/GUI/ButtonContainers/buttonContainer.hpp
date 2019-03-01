@@ -28,7 +28,7 @@ protected:
     int isOnButtonNr{};
     sf::Clock timeSinceLastClick;
     sf::Vector2i currentMousePos;
-    sf::Vector2i lastMousePos;
+    sf::Vector2i lastMousePos = sf::Vector2i();
     int signal{-1};
 
     const int numberOfButtons;

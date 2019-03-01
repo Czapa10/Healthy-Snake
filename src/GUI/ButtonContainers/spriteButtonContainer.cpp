@@ -29,16 +29,23 @@ SpriteButtonContainer::SpriteButtonContainer(Game::GameDataRef data, Textures::I
             )
         );
     }
+
+    std::cout<<"SpriteButtonContainer constructor"<<std::endl;
 }
 
 void SpriteButtonContainer::input()
 {
+    std::cout<<"SpriteButtonContainer input 1"<<std::endl;
     keyboardControls();
+    std::cout<<"SpriteButtonContainer input 2"<<std::endl;
     mouseControls();
+    std::cout<<"SpriteButtonContainer input 3"<<std::endl;
 }
 
 void SpriteButtonContainer::update()
 {
+    std::cout<<"SpriteButtonContainer update"<<std::endl;
+
     for(auto &button : buttons)
         button.makeButtonPointed(false);
 
@@ -49,6 +56,8 @@ void SpriteButtonContainer::update()
 
 void SpriteButtonContainer::display()
 {
+    std::cout<<"SpriteButtonContainer display"<<std::endl;
+
     snake.display();
 
     for(auto &button : buttons){
@@ -75,10 +84,15 @@ void SpriteButtonContainer::mouseControls()
 
     if(currentMousePos != lastMousePos){
         for(int i = 0; i < numberOfButtons; ++i){
-            if(buttons[i].isMouseOnButton(currentMousePos))
+            std::cout<<"SpriteButtonContainer mouse controls 1"<<std::endl;
+            if(buttons[i].isMouseOnButton(currentMousePos)){
+                std::cout<<"SpriteButtonContainer mouse controls 2"<<std::endl;
                 isOnButtonNr = i;
+            }
         }
     }
+
+
 
     for(auto button : buttons){
         if((button.isClicked(currentMousePos))&&(timeSinceLastClick.getElapsedTime().asSeconds() > 0.23))
