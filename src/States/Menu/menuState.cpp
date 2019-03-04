@@ -13,7 +13,7 @@ MenuState::MenuState(Game::GameDataRef _data)
 :data(_data)
 ,buttons(data, Textures::menuButtons, 5, 30, sf::Vector2i(60, 15), 5, sf::Vector2i(0, 100) )
 {
-    std::cout<<"MenuState constructor 1"<<std::endl;
+    //std::cout<<"MenuState constructor 1"<<std::endl;
 
     buttons.getSnake().setSnakePos(350, 80);
 
@@ -23,20 +23,20 @@ MenuState::MenuState(Game::GameDataRef _data)
     logoLabel.scale(3.f, 3.f);
     logoLabel.setPosition( (SCREEN_WIDTH - logoLabel.getTexture()->getSize().x * logoLabel.getScale().x) / 2, 40.f);
 
-    std::cout<<"MenuState constructor 2"<<std::endl;
+    //std::cout<<"MenuState constructor 2"<<std::endl;
 }
 
 void MenuState::input()
 {
     buttons.input();
-    std::cout<<"MenuState input()"<<std::endl;
+    //std::cout<<"MenuState input()"<<std::endl;
 }
 
 void MenuState::update(sf::Time deltaTime)
 {
     buttons.update();
     changingState();
-    std::cout<<"MenuState update()"<<std::endl;
+    //std::cout<<"MenuState update()"<<std::endl;
 }
 
 void MenuState::draw()
@@ -46,7 +46,7 @@ void MenuState::draw()
     data->window.draw(background);
     data->window.draw(logoLabel);
     buttons.display();
-    std::cout<<"MenuState draw()"<<std::endl;
+    //std::cout<<"MenuState draw()"<<std::endl;
 }
 
 void MenuState::changingState()

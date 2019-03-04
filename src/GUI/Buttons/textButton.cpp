@@ -27,7 +27,7 @@ void TextButton::makeButtonPointed(bool buttonIsPointed)
 {
     isPointed = buttonIsPointed;
 
-    if(isPointed == true){
+    if(isPointed){
         //toupper will be here
     }
     else{

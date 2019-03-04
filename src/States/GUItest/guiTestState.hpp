@@ -3,7 +3,8 @@
 #include <SFML/Graphics.hpp>
 #include <States/State.hpp>
 #include <game.hpp>
-#include <GUI/ButtonContainers/textButtonContainer.hpp>
+#include <GUI/Buttons/spriteButton.hpp>
+#include <GUI/Buttons/textButton.hpp>
 
 namespace States
 {
@@ -21,7 +22,8 @@ public:
 private:
     Game::GameDataRef data;
 
-    GUI::TextButtonContainer buttons;
+    //GUI::SpriteButton button;
+    GUI::TextButton button;
 };
 
 

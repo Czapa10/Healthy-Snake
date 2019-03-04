@@ -30,21 +30,21 @@ SpriteButtonContainer::SpriteButtonContainer(Game::GameDataRef data, Textures::I
         );
     }
 
-    std::cout<<"SpriteButtonContainer constructor"<<std::endl;
+    //std::cout<<"SpriteButtonContainer constructor"<<std::endl;
 }
 
 void SpriteButtonContainer::input()
 {
-    std::cout<<"SpriteButtonContainer input 1"<<std::endl;
+    //std::cout<<"SpriteButtonContainer input 1"<<std::endl;
     keyboardControls();
-    std::cout<<"SpriteButtonContainer input 2"<<std::endl;
+    //std::cout<<"SpriteButtonContainer input 2"<<std::endl;
     mouseControls();
-    std::cout<<"SpriteButtonContainer input 3"<<std::endl;
+    //std::cout<<"SpriteButtonContainer input 3"<<std::endl;
 }
 
 void SpriteButtonContainer::update()
 {
-    std::cout<<"SpriteButtonContainer update"<<std::endl;
+    //std::cout<<"SpriteButtonContainer update"<<std::endl;
 
     for(auto &button : buttons)
         button.makeButtonPointed(false);
@@ -56,7 +56,7 @@ void SpriteButtonContainer::update()
 
 void SpriteButtonContainer::display()
 {
-    std::cout<<"SpriteButtonContainer display"<<std::endl;
+    //std::cout<<"SpriteButtonContainer display"<<std::endl;
 
     snake.display();
 
