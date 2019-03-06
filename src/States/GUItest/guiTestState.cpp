@@ -38,7 +38,7 @@ void GuiTestState::draw()
 
     //buttons.display();
 
-    button.display();
+    //button.display();
 }
 
 

@@ -3,6 +3,8 @@
 #include <GUI/MouseInput/mouseInput.hpp>
 #include <Resources/resourceIdentifiers.hpp>
 
+#include <iostream>
+
 namespace GUI
 {
 

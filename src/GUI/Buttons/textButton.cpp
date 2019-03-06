@@ -6,12 +6,12 @@ namespace GUI
 {
 
 
-TextButton::TextButton(Game::GameDataRef data, const Fonts::ID& fontID, const std::string& content, sf::Vector2f pos, unsigned int fontSize, bool isActive)
+TextButton::TextButton(Game::GameDataRef data, Fonts::ID fontID, std::string content, sf::Vector2f pos, unsigned int fontSize, bool isActive)
 :TextButton{data, fontID, content, pos, sf::Vector2i(0.f,0.f), fontSize, isActive}
 {
 }
 
-TextButton::TextButton(Game::GameDataRef data, const Fonts::ID& fontID, const std::string& content, sf::Vector2f pos, sf::Vector2i clickBoxExpand, unsigned int fontSize, bool isActive)
+TextButton::TextButton(Game::GameDataRef data, Fonts::ID fontID, std::string content, sf::Vector2f pos, sf::Vector2i clickBoxExpand, unsigned int fontSize, bool isActive)
 :Button(data, clickBoxExpand, isActive)
 ,text( content, data->fonts.get(fontID), fontSize )
 {
