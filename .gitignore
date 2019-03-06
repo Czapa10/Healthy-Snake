@@ -13,3 +13,4 @@ obj
 *.user
 /dependences/SFML-2.5.0
 Healthy-Snake.exe
+*.workspace 
