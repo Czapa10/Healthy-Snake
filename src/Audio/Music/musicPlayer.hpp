@@ -2,6 +2,9 @@
 
 #include <SFML/Audio.hpp>
 #include <string>
+#include <map>
+
+#include "musicIndentifiers.hpp"
 
 namespace Audio
 {

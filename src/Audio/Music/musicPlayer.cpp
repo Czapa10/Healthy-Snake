@@ -1,6 +1,6 @@
 #include "musicPlayer.hpp"
 
-#include <istream>
+#include <iostream>
 
 namespace Audio
 {
@@ -18,7 +18,7 @@ MusicPlayer::MusicPlayer()
 
 void MusicPlayer::play(Music::ID themeID)
 {
-    std::string filename = filename[themeID];
+    std::string filename = filenames[themeID];
 
     if(! music.openFromFile(filename))
         std::cout<<filename<<" couldn't be loaded. Probably because it does not exist."<<std::endl;
@@ -33,12 +33,15 @@ void MusicPlayer::stop()
 
 void MusicPlayer::setPaused(bool paused)
 {
-    music.pause();
+    if(paused)
+        music.pause();
+    else
+        music.play();
 }
 
 void MusicPlayer::setVolume(float volume)
 {
-    music.setVolume();
+    music.setVolume(volume);
 }
 
 
