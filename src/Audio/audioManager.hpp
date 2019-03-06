@@ -3,6 +3,10 @@
 #include <SFML/Audio.hpp>
 #include <vector>
 
+#include <Resources/resourceManager.hpp>
+
+#include "soundIndentifiers.hpp"
+
 namespace Audio
 {
 
@@ -10,6 +14,8 @@ namespace Audio
 class AudioManager
 {
 public:
+    AudioManager();
+
     setMusic();
     stopMusic();
 
@@ -17,7 +23,7 @@ public:
 
 private:
     sf::Music currentMusic;
-    std::vector<sf::SoundBuffer> soundBuffers;
+    Resources::ResourceManager<sf::SoundBuffer, Sounds::ID> soundBufferStorage;
     std::vector<sf::Sound> sounds;
 };
 
