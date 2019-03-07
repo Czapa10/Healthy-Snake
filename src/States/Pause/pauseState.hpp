@@ -11,6 +11,7 @@ class PauseState : public State
 {
 public:
     PauseState(Game::GameDataRef _data);
+    ~PauseState();
 
     void input() override;
     void update(sf::Time deltaTime) override;

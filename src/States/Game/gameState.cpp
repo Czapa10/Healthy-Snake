@@ -4,6 +4,7 @@
 #include <States/GameOver/gameOverState.hpp>
 #include <States/Pause/pauseState.hpp>
 #include <States/DifficultyChoise/difficultyLevelIdentifiers.hpp>
+#include <Audio/Music/musicIndentifiers.hpp>
 
 #include <iostream>
 
@@ -37,6 +38,8 @@ GameState::GameState(Game::GameDataRef _data) : data(_data)
     }
 
     settingFood();
+
+    data->music.play(Audio::Music::gameplayTheme);
 }
 
 void GameState::input()

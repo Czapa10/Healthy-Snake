@@ -12,6 +12,13 @@ PauseState::PauseState(Game::GameDataRef _data)
 {
     background.setTexture(data->textures.get(Textures::pause));
     background.setScale(4.f, 4.f);
+
+    data->music.setPaused(true);
+}
+
+PauseState::~PauseState()
+{
+    data->music.setPaused(false);
 }
 
 void PauseState::input()

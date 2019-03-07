@@ -9,19 +9,19 @@ namespace Audio
 MusicPlayer::MusicPlayer()
 :music()
 ,filenames()
-,volume(50.f)
+,volume(13.f)
 {
-    filenames[Music::menuTheme]     = "../../../resources/music/menu.wav";
-    filenames[Music::gameplayTheme] = "../../../resources/music/game.wav";
-}
+    filenames[Music::menuTheme]     = "resources/music/menu.wav";
+    filenames[Music::gameplayTheme] = "resources/music/game.wav";
 
+    setVolume(volume);
+}
 
 void MusicPlayer::play(Music::ID themeID)
 {
     std::string filename = filenames[themeID];
 
-    if(! music.openFromFile(filename))
-        std::cout<<filename<<" couldn't be loaded. Probably because it does not exist."<<std::endl;
+    music.openFromFile(filename);
 
     music.play();
 }
