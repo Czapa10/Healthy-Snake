@@ -4,8 +4,9 @@
 #include <memory>
 
 #include <Resources/resourceManager.hpp>
+#include <Audio/Music/musicPlayer.hpp>
+#include <Audio/Sound/soundPlayer.hpp>
 #include <States/stateStack.hpp>
-#include <GUI/MouseInput/mouseInput.hpp>
 #include <States/DifficultyChoise/difficultyLevelIdentifiers.hpp>
 
 
@@ -19,10 +20,12 @@ namespace Game
 
 struct GameData
 {
-    States::StateStack stateStack;
     sf::RenderWindow window;
+    States::StateStack stateStack;
     Resources::TextureStorage textures;
     Resources::FontStorage fonts;
+    Audio::MusicPlayer music;
+    Audio::SoundPlayer sound;
     Difficulty::Level levelOfDifficulty;
 };
 

@@ -3,6 +3,8 @@
 #include <map>
 #include <memory>
 
+#include <SFML/Graphics.hpp>
+
 #include "resourceIdentifiers.hpp"
 
 namespace Resources

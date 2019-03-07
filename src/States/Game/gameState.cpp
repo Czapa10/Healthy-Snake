@@ -4,6 +4,8 @@
 #include <States/GameOver/gameOverState.hpp>
 #include <States/Pause/pauseState.hpp>
 #include <States/DifficultyChoise/difficultyLevelIdentifiers.hpp>
+#include <Audio/Music/musicIdentifiers.hpp>
+#include <Audio/Sound/soundIdentifiers.hpp>
 
 #include <iostream>
 
@@ -37,6 +39,8 @@ GameState::GameState(Game::GameDataRef _data) : data(_data)
     }
 
     settingFood();
+
+    data->music.play(Audio::Music::gameplayTheme);
 }
 
 void GameState::input()
@@ -238,8 +242,11 @@ void GameState::updatingSnake()
         else
             previous = snake.bodyParts[i - 1].pos; //(in direction to head)
 
-
-        sf::Vector2i next = snake.bodyParts[i + 1].pos; //(in direction to tail)
+		sf::Vector2i next;
+		if (i + 1 < snake.bodyParts.size())
+			next = snake.bodyParts[i + 1].pos; //(in direction to tail)
+		else
+			next = snake.bodyParts.back().pos;
 
 
         spriteRotation[x][y] = bodyPart.direction;
@@ -289,6 +296,7 @@ void GameState::foodUpdate()
         if((snake.bodyParts.front().pos.x == meal.getPosition().x)&&(snake.bodyParts.front().pos.y == meal.getPosition().y)){
             snake.eat(meal.getWeight());
             points += meal.getPoints();
+            data->sound.play(Audio::Sounds::eat);
 
             if(food.size() * howManyCellsOnEachFood > 768 - snake.getLength()){
                 food.erase(food.begin() + i);
@@ -370,6 +378,8 @@ void GameState::gameOverAnimation()
         std::cout<<"start of method void GameState::gameOverAnimation()"<<std::endl;
 
     if(!hasDyingTimeBeedRestarted){
+        data->sound.play(Audio::Sounds::die);
+        data->music.stop();
         dyingTime.restart();
         hasDyingTimeBeedRestarted = true;
     }

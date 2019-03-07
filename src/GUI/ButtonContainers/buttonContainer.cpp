@@ -5,8 +5,13 @@ namespace GUI
 {
 
 
-ButtonContainer::ButtonContainer(Game::GameDataRef data, const int& numberOfButtons, const int& spaceBetweenButtons, const sf::Vector2i& offset)
+ButtonContainer::ButtonContainer(Game::GameDataRef data, int numberOfButtons, int spaceBetweenButtons, const sf::Vector2i& offset)
 :data(data)
+,isOnButtonNr(0)
+,timeSinceLastClick()
+,currentMousePos(sf::Vector2i())
+,lastMousePos(sf::Vector2i())
+,signal(-1)
 ,numberOfButtons(numberOfButtons)
 ,spaceBetweenButtons(spaceBetweenButtons)
 ,offset(offset)

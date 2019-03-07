@@ -4,11 +4,13 @@ obj
 *.cbp
 *.depend
 *.txt
+!premake/LICENSE.txt
 *.layout
-*.exe
 /.vs
 *.sln
 *.vcxproj
 *.filters
 *.user
-/dependences/SFML-2.5.0
+Healthy-Snake.exe
+*.workspace 
+*.bat

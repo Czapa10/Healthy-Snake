@@ -9,9 +9,10 @@ namespace GUI
 {
 
 
-Button::Button(Game::GameDataRef, const sf::Vector2i& clickBoxExpand, const bool& isActive)
+Button::Button(Game::GameDataRef, const sf::Vector2i& clickBoxExpand, bool isActive)
 :data(data)
 ,clickBoxExpand(clickBoxExpand)
+,isPointed(false)
 ,isActive(isActive)
 {
 }

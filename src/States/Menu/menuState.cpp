@@ -2,6 +2,7 @@
 
 #include <States/DifficultyChoise/difficultyChoiseState.hpp>
 #include <Resources/resourceIdentifiers.hpp>
+#include <Audio/Music/musicIdentifiers.hpp>
 
 #include <iostream>
 
@@ -24,6 +25,7 @@ MenuState::MenuState(Game::GameDataRef _data)
     logoLabel.setPosition( (SCREEN_WIDTH - logoLabel.getTexture()->getSize().x * logoLabel.getScale().x) / 2, 40.f);
 
     //std::cout<<"MenuState constructor 2"<<std::endl;
+    data->music.play(Audio::Music::menuTheme);
 }
 
 void MenuState::input()

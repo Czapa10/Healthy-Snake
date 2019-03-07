@@ -19,7 +19,7 @@ Coding - Grzegorz "Czapa" Bednorz
 
 Graphics - Jumbocube
 
-# How the game looks right now - version 0.7
+# How the game looks right now - version 0.8.5
 ![image](https://user-images.githubusercontent.com/39434914/51199178-66f71100-18f6-11e9-9c73-674a648b3949.png)
 
 # Gameplay

@@ -2,16 +2,18 @@
 
 #include <iostream>
 
+#include <GUI/MouseInput/mouseInput.hpp>
+
 namespace GUI
 {
 
 
-SpriteButton::SpriteButton(Game::GameDataRef data, const Textures::ID& textureID, sf::Vector2f pos, sf::IntRect notPointedRect, sf::IntRect pointedRect, float scaleFactor, bool isActive)
+SpriteButton::SpriteButton(Game::GameDataRef data, Textures::ID textureID, sf::Vector2f pos, sf::IntRect notPointedRect, sf::IntRect pointedRect, float scaleFactor, bool isActive)
 :SpriteButton{data, textureID, pos, notPointedRect, pointedRect, sf::Vector2i(0.f,0.f), scaleFactor, isActive}
 {
 }
 
-SpriteButton::SpriteButton(Game::GameDataRef data, const Textures::ID& textureID, sf::Vector2f pos, sf::IntRect notPointedRect, sf::IntRect pointedRect, sf::Vector2i clickBoxExpand, float scaleFactor, bool isActive)
+SpriteButton::SpriteButton(Game::GameDataRef data, Textures::ID textureID, sf::Vector2f pos, sf::IntRect notPointedRect, sf::IntRect pointedRect, sf::Vector2i clickBoxExpand, float scaleFactor, bool isActive)
 :Button(data, clickBoxExpand, isActive)
 ,sprite(data->textures.get(textureID), notPointedRect)
 ,notPointedRect(notPointedRect)
@@ -40,9 +42,7 @@ void SpriteButton::makeButtonPointed(bool buttonIsPointed)
 
 bool SpriteButton::isMouseOnButton(sf::Vector2i &currentPos)
 {
-    //std::cout<<"SpriteButton::isMouseOnButton 1"<<std::endl;
     return MouseInput::isUnderMouse(sprite, data->window);
-    //std::cout<<"SpriteButton::isMouseOnButton 2"<<std::endl;
 }
 
 bool SpriteButton::isClicked(sf::Vector2i &currentPos)

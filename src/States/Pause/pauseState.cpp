@@ -12,6 +12,8 @@ PauseState::PauseState(Game::GameDataRef _data)
 {
     background.setTexture(data->textures.get(Textures::pause));
     background.setScale(4.f, 4.f);
+
+    data->music.setPaused(true);
 }
 
 void PauseState::input()
@@ -30,6 +32,7 @@ void PauseState::update(sf::Time deltaTime)
 {
     if(enterWasClicked){
         data->stateStack.popState();
+        data->music.setPaused(false);
     }
     else if(escWasClicked){
         data->stateStack.clearStates();

@@ -2,6 +2,7 @@
 
 #include <States/Menu/menuState.hpp>
 #include <States/GUItest/guiTestState.hpp>
+#include <Audio/Sound/soundIdentifiers.hpp>
 
 namespace States
 {
@@ -9,6 +10,7 @@ namespace States
 
 SplashState::SplashState(Game::GameDataRef _data) : data(_data)
 {
+    data->sound.play(Audio::Sounds::cat);
 }
 
 void SplashState::input()
@@ -44,6 +46,7 @@ void SplashState::update(sf::Time deltaTime)
 
             if(clock.getElapsedTime().asSeconds() > 2){
                 change = true;
+                data->sound.removeEverySound();
             }
             break;
 
