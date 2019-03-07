@@ -2,17 +2,13 @@
 
 namespace Audio
 {
-
-namespace Sounds
-{
-
-
-    enum ID
+    namespace Sounds
     {
-        catSound //to splash screen
-    };
-
-
-}
-
+        enum ID
+        {
+            cat, //to splash screen
+            eat,
+            die
+        };
+    }
 }

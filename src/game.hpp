@@ -5,6 +5,7 @@
 
 #include <Resources/resourceManager.hpp>
 #include <Audio/Music/musicPlayer.hpp>
+#include <Audio/Sound/soundPlayer.hpp>
 #include <States/stateStack.hpp>
 #include <States/DifficultyChoise/difficultyLevelIdentifiers.hpp>
 
@@ -24,6 +25,7 @@ struct GameData
     Resources::TextureStorage textures;
     Resources::FontStorage fonts;
     Audio::MusicPlayer music;
+    Audio::SoundPlayer sound;
     Difficulty::Level levelOfDifficulty;
 };
 

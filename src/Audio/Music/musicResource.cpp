@@ -17,7 +17,9 @@ namespace Audio
                 case gameplayTheme:
                     return Resource {"resources/music/game.wav", 1.30, true};
             }
+
         }
 
     }
+
 }
