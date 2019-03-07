@@ -8,7 +8,8 @@ namespace Audio
         {
             cat, //to splash screen
             eat,
-            die
+            die,
+            explosion //only for tests
         };
     }
 }
