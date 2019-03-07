@@ -379,6 +379,7 @@ void GameState::gameOverAnimation()
 
     if(!hasDyingTimeBeedRestarted){
         data->sound.play(Audio::Sounds::die);
+        data->music.stop();
         dyingTime.restart();
         hasDyingTimeBeedRestarted = true;
     }
