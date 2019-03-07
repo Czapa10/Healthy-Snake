@@ -4,11 +4,10 @@ namespace Audio
 {
 
 
-Resource::Resource(std::string filepath, float volumeMultiplier, bool loop, float secondsToRemove)
+Resource::Resource(std::string filepath, float volumeMultiplier, bool loop)
 :filepath(filepath)
 ,volumeMultiplier(volumeMultiplier)
 ,loop(loop)
-,secondsToRemove(secondsToRemove)
 {
 }
 
