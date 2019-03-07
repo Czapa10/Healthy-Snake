@@ -17,6 +17,7 @@ public:
 
     void play(Sounds::ID);
     void removeStoppedSounds();
+    void removeEverySound();
 
 private:
     Resources::ResourceManager<sf::SoundBuffer, Sounds::ID> soundBufferStorage;

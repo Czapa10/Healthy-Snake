@@ -36,5 +36,10 @@ void SoundPlayer::removeStoppedSounds()
     } );
 }
 
+void SoundPlayer::removeEverySound()
+{
+    sounds.clear();
+}
+
 
 }
