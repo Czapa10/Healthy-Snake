@@ -9,7 +9,6 @@ namespace Audio
             cat, //to splash screen
             eat,
             die,
-            explosion //only for tests
         };
     }
 }

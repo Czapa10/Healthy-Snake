@@ -2,6 +2,7 @@
 
 #include <States/Menu/menuState.hpp>
 #include <States/GUItest/guiTestState.hpp>
+#include <Audio/Sound/soundIndentifiers.hpp>
 
 namespace States
 {
@@ -9,6 +10,7 @@ namespace States
 
 SplashState::SplashState(Game::GameDataRef _data) : data(_data)
 {
+    //data->sound.play(Audio::Sounds::cat);
 }
 
 void SplashState::input()

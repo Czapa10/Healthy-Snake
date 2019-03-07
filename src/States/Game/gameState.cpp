@@ -5,6 +5,7 @@
 #include <States/Pause/pauseState.hpp>
 #include <States/DifficultyChoise/difficultyLevelIdentifiers.hpp>
 #include <Audio/Music/musicIndentifiers.hpp>
+#include <Audio/Sound/soundIndentifiers.hpp>
 
 #include <iostream>
 
@@ -295,6 +296,7 @@ void GameState::foodUpdate()
         if((snake.bodyParts.front().pos.x == meal.getPosition().x)&&(snake.bodyParts.front().pos.y == meal.getPosition().y)){
             snake.eat(meal.getWeight());
             points += meal.getPoints();
+            data->sound.play(Audio::Sounds::eat);
 
             if(food.size() * howManyCellsOnEachFood > 768 - snake.getLength()){
                 food.erase(food.begin() + i);
@@ -376,6 +378,7 @@ void GameState::gameOverAnimation()
         std::cout<<"start of method void GameState::gameOverAnimation()"<<std::endl;
 
     if(!hasDyingTimeBeedRestarted){
+        data->sound.play(Audio::Sounds::die);
         dyingTime.restart();
         hasDyingTimeBeedRestarted = true;
     }

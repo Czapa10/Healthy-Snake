@@ -9,7 +9,6 @@ SoundPlayer::SoundPlayer()
     soundBufferStorage.load(Sounds::cat, "resources/sounds/cat.wav");
     soundBufferStorage.load(Sounds::eat, "resources/sounds/eat.wav");
     soundBufferStorage.load(Sounds::die, "resources/sounds/die.wav");
-    soundBufferStorage.load(Sounds::explosion, "resources/sounds/explosion.wav");
 }
 
 void SoundPlayer::play(Sounds::ID soundID)
