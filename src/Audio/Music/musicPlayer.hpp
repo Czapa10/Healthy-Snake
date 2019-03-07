@@ -2,7 +2,6 @@
 
 #include <SFML/Audio.hpp>
 #include <string>
-#include <map>
 
 #include "musicIndentifiers.hpp"
 
@@ -23,7 +22,7 @@ public:
 
 private:
     sf::Music music;
-    std::map<Music::ID, std::string> filenames;
+    Music::ID id;
     float volume;
 };
 

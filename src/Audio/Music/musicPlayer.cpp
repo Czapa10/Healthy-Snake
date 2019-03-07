@@ -1,4 +1,5 @@
 #include "musicPlayer.hpp"
+#include "musicResource.hpp"
 
 #include <iostream>
 
@@ -7,21 +8,16 @@ namespace Audio
 
 
 MusicPlayer::MusicPlayer()
-:music()
-,filenames()
-,volume(13.f)
+:volume(13.f)
 {
-    filenames[Music::menuTheme]     = "resources/music/menu.wav";
-    filenames[Music::gameplayTheme] = "resources/music/game.wav";
-
-    setVolume(volume);
 }
 
 void MusicPlayer::play(Music::ID themeID)
 {
-    std::string filename = filenames[themeID];
-
-    music.openFromFile(filename);
+    Music::Resource res = Music::takeInitialData(themeID);
+    music.openFromFile(res.filepath);
+    music.setVolume(volume * res.volumeMultiplier);
+    music.setLoop(res.loop);
 
     music.play();
 }

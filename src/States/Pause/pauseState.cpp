@@ -18,6 +18,7 @@ PauseState::PauseState(Game::GameDataRef _data)
 
 PauseState::~PauseState()
 {
+    ///this destructor cannot be called - and I don't know why
     data->music.setPaused(false);
 }
 
