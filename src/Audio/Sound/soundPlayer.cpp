@@ -1,21 +1,30 @@
 #include "soundPlayer.hpp"
+#include "soundResource.hpp"
+#include <Audio/audioResource.hpp>
 
 namespace Audio
 {
 
 
 SoundPlayer::SoundPlayer()
+:volume(13.f)
 {
-    soundBufferStorage.load(Sounds::cat, "resources/sounds/cat.wav");
-    soundBufferStorage.load(Sounds::eat, "resources/sounds/eat.wav");
-    soundBufferStorage.load(Sounds::die, "resources/sounds/die.wav");
+    soundBufferStorage.load(Sounds::cat, Sounds::takeInitialData(Sounds::cat).filepath);
+    soundBufferStorage.load(Sounds::eat, Sounds::takeInitialData(Sounds::eat).filepath);
+    soundBufferStorage.load(Sounds::die, Sounds::takeInitialData(Sounds::die).filepath);
 }
 
 void SoundPlayer::play(Sounds::ID soundID)
 {
     removeStoppedSounds();
 
-    sounds.push_back(sf::Sound(soundBufferStorage.get(soundID)));
+    Resource sett = Sounds::takeInitialData(soundID);
+
+    sf::Sound sound(soundBufferStorage.get(soundID));
+    sound.setVolume(volume * sett.volumeMultiplier);
+    sound.setLoop(sett.loop);
+
+    sounds.push_back(std::move(sound));
     sounds.back().play();
 }
 

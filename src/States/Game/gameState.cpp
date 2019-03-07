@@ -4,8 +4,8 @@
 #include <States/GameOver/gameOverState.hpp>
 #include <States/Pause/pauseState.hpp>
 #include <States/DifficultyChoise/difficultyLevelIdentifiers.hpp>
-#include <Audio/Music/musicIndentifiers.hpp>
-#include <Audio/Sound/soundIndentifiers.hpp>
+#include <Audio/Music/musicIdentifiers.hpp>
+#include <Audio/Sound/soundIdentifiers.hpp>
 
 #include <iostream>
 

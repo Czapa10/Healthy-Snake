@@ -4,7 +4,7 @@
 #include <SFML/Audio.hpp>
 
 #include <Resources/resourceManager.hpp>
-#include "soundIndentifiers.hpp"
+#include "soundIdentifiers.hpp"
 
 namespace Audio
 {
@@ -21,6 +21,7 @@ public:
 private:
     Resources::ResourceManager<sf::SoundBuffer, Sounds::ID> soundBufferStorage;
     std::list<sf::Sound> sounds;
+    float volume;
 };
 
 

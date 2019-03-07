@@ -2,7 +2,7 @@
 
 #include <States/DifficultyChoise/difficultyChoiseState.hpp>
 #include <Resources/resourceIdentifiers.hpp>
-#include <Audio/Music/musicIndentifiers.hpp>
+#include <Audio/Music/musicIdentifiers.hpp>
 
 #include <iostream>
 

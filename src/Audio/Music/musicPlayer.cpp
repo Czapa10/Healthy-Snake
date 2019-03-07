@@ -14,7 +14,7 @@ MusicPlayer::MusicPlayer()
 
 void MusicPlayer::play(Music::ID themeID)
 {
-    Music::Resource res = Music::takeInitialData(themeID);
+    Resource res = Music::takeInitialData(themeID);
     music.openFromFile(res.filepath);
     music.setVolume(volume * res.volumeMultiplier);
     music.setLoop(res.loop);
