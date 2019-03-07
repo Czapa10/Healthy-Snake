@@ -16,12 +16,6 @@ PauseState::PauseState(Game::GameDataRef _data)
     data->music.setPaused(true);
 }
 
-PauseState::~PauseState()
-{
-    ///this destructor cannot be called - and I don't know why
-    data->music.setPaused(false);
-}
-
 void PauseState::input()
 {
     if(timeFromChangeState.getElapsedTime().asSeconds() > 0.4){
@@ -38,6 +32,7 @@ void PauseState::update(sf::Time deltaTime)
 {
     if(enterWasClicked){
         data->stateStack.popState();
+        data->music.setPaused(false);
     }
     else if(escWasClicked){
         data->stateStack.clearStates();
