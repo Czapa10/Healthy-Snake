@@ -3,6 +3,11 @@
 #include "mouseInput.hpp"
 #include <Resources/resourceIdentifiers.hpp>
 
+#include <cctype>
+#include <string>
+
+#include <iostream>
+
 namespace GUI
 {
 
@@ -59,11 +64,29 @@ void Button::makeButtonPointed(bool buttonIsPointed)
 {
     isPointed = buttonIsPointed;
 
-    if(isPointed == true){
-        sprite.setTextureRect(pointedRect);
+    if(type == ButtonType::spriteButton){
+        if(isPointed){
+            sprite.setTextureRect(pointedRect);
+        }
+        else{
+            sprite.setTextureRect(notPointedRect);
+        }
     }
     else{
-        sprite.setTextureRect(notPointedRect);
+        if(isPointed){
+            std::string aux = text.getString();
+            for(auto &c : aux){
+                c = std::toupper(c);
+            }
+            text.setString(aux);
+        }
+        else{
+            std::string aux = text.getString();
+            for(auto &c : aux){
+                c = std::tolower(c);
+            }
+            text.setString(aux);
+        }
     }
 }
 
