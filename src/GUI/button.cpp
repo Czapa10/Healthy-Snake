@@ -94,15 +94,16 @@ bool Button::isMouseOnButton(sf::Vector2i &currentPos)
 {
     if(type == ButtonType::spriteButton)
         return MouseInput::isUnderMouse(sprite, data->window);
-    //else
-
+    else
+        return MouseInput::isUnderMouse(text, data->window);
 }
 
 bool Button::isClicked(sf::Vector2i &currentPos)
 {
     if(type == ButtonType::spriteButton)
         return MouseInput::isClicked(sprite, data->window);
-    //else
+    else
+        return MouseInput::isClicked(text, data->window);
 }
 
 
