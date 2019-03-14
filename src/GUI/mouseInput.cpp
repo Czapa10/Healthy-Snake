@@ -6,7 +6,7 @@ namespace GUI
 namespace MouseInput
 {
 
-bool isClicked(sf::Sprite sprite, sf::RenderWindow &window)
+bool isClicked(const sf::Sprite& sprite, const sf::RenderWindow &window)
 {
     if(sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)){
         sf::IntRect rect(sprite.getPosition().x, sprite.getPosition().y, sprite.getGlobalBounds().width, sprite.getGlobalBounds().height);
@@ -16,7 +16,7 @@ bool isClicked(sf::Sprite sprite, sf::RenderWindow &window)
     return false;
 }
 
-bool isClicked(sf::Text text, sf::RenderWindow &window)
+bool isClicked(const sf::Text& text, const sf::RenderWindow &window)
 {
     if(sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)){
         sf::IntRect rect(text.getPosition().x, text.getPosition().y, text.getCharacterSize() * text.getString().getSize(), text.getCharacterSize() * text.getString().getSize() * 1.3);
@@ -26,7 +26,7 @@ bool isClicked(sf::Text text, sf::RenderWindow &window)
     return false;
 }
 
-bool isClicked(sf::IntRect button, sf::RenderWindow &window)
+bool isClicked(const sf::IntRect& button, const sf::RenderWindow &window)
 {
     if(sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)){
         return (button.contains(sf::Mouse::getPosition(window)));
@@ -34,21 +34,21 @@ bool isClicked(sf::IntRect button, sf::RenderWindow &window)
     return false;
 }
 
-bool isUnderMouse(sf::Sprite sprite, sf::RenderWindow &window)
+bool isUnderMouse(const sf::Sprite& sprite, const sf::RenderWindow &window)
 {
     sf::IntRect rect(sprite.getPosition().x, sprite.getPosition().y, sprite.getGlobalBounds().width, sprite.getGlobalBounds().height);
 
     return (rect.contains(sf::Mouse::getPosition(window)));
 }
 
-bool isUnderMouse(sf::Text text, sf::RenderWindow &window)
+bool isUnderMouse(const sf::Text& text, const sf::RenderWindow &window)
 {
     sf::IntRect rect(text.getPosition().x, text.getPosition().y, text.getCharacterSize() * text.getString().getSize(), text.getCharacterSize() * text.getString().getSize() * 1.3);
 
     return (rect.contains(sf::Mouse::getPosition(window)));
 }
 
-bool isUnderMouse(sf::IntRect button, sf::RenderWindow &window)
+bool isUnderMouse(const sf::IntRect& button, const sf::RenderWindow &window)
 {
     return (button.contains(sf::Mouse::getPosition(window)));
 }

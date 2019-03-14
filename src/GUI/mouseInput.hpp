@@ -8,12 +8,12 @@ namespace GUI
 
 namespace MouseInput
 {
-    bool isClicked(sf::Sprite, sf::RenderWindow&);
-    bool isClicked(sf::Text, sf::RenderWindow&);
-    bool isClicked(sf::IntRect, sf::RenderWindow&);
-    bool isUnderMouse(sf::Sprite, sf::RenderWindow&);
-    bool isUnderMouse(sf::Text, sf::RenderWindow&);
-    bool isUnderMouse(sf::IntRect, sf::RenderWindow&);
+    bool isClicked(const sf::Sprite&, const sf::RenderWindow&);
+    bool isClicked(const sf::Text&, const sf::RenderWindow&);
+    bool isClicked(const sf::IntRect&, const sf::RenderWindow&);
+    bool isUnderMouse(const sf::Sprite&, const sf::RenderWindow&);
+    bool isUnderMouse(const sf::Text&, const sf::RenderWindow&);
+    bool isUnderMouse(const sf::IntRect&, const sf::RenderWindow&);
 }
 
 
