@@ -35,7 +35,7 @@ GuiSnake::GuiSnake(Game::GameDataRef data, unsigned int fontSize, int pillarDist
 {
 }
 
-void GuiSnake::update(const sf::Vector2f& posOfFirstButton, sf::Vector2i& buttonSize, float currentButtonY, float scaleFactor)
+void GuiSnake::update(const sf::Vector2f& posOfFirstButton, const sf::Vector2i& buttonSize, float currentButtonY, float scaleFactor)
 {
     head.setPosition(posOfFirstButton.x + buttonSize.x + pillarDistanceFromButtons, posOfFirstButton.y - headOverFirstButton);
 

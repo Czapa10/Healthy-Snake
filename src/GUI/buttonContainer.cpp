@@ -84,7 +84,15 @@ void ButtonContainer::update()
 
     buttons[isOnButtonNr].makeButtonPointed(true);
 
-    snake.update(buttons[0].getSprite().getPosition(), buttonSize, buttons[isOnButtonNr].getSprite().getPosition().y, scaleFactor);
+    if(scaleFactor != 0){// if it is container for sprite buttons
+        snake.update(buttons[0].getSprite().getPosition(), buttonSize, buttons[isOnButtonNr].getSprite().getPosition().y, scaleFactor);
+    }
+    else{// if it is container for text buttons
+        snake.update(buttons[0].getText().getPosition(),
+                    sf::Vector2i(buttons[isOnButtonNr].getText().getCharacterSize() * buttons[isOnButtonNr].getText().getString().getSize(),
+                    buttons[isOnButtonNr].getText().getCharacterSize() * buttons[isOnButtonNr].getText().getString().getSize() * 1.3),
+                    buttons[isOnButtonNr].getText().getPosition().y, 1);
+    }
 }
 
 void ButtonContainer::display()
