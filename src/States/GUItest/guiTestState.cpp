@@ -8,7 +8,7 @@ namespace States
 
 
 GuiTestState::GuiTestState(Game::GameDataRef data) : data(data)
-,buttons( data, Fonts::pooh, {"Play", "settings", "food stats", "credits", "exit"}, 5, 60, 50 )
+,buttons( data, Fonts::fipps, {"Play", "settings", "food stats", "credits", "exit"}, 5, 60, 50 )
 //,buttons( data, Fonts::pooh, {"Play", "settings", "food stats"}, 3, 60, 50 )
 {
     buttons.getSnake().setSnakePos(200, 100);

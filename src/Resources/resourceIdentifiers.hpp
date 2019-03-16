@@ -64,6 +64,6 @@ namespace Fonts
     enum ID
     {
         healthySnakeFont,
-        pooh
+        fipps
     };
 }
