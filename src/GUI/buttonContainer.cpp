@@ -89,8 +89,8 @@ void ButtonContainer::update()
     }
     else{// if it is container for text buttons
         snake.update(buttons[0].getText().getPosition(),
-                    sf::Vector2i(buttons[isOnButtonNr].getText().getCharacterSize() * buttons[isOnButtonNr].getText().getString().getSize(),
-                    buttons[isOnButtonNr].getText().getCharacterSize() * buttons[isOnButtonNr].getText().getString().getSize() * 1.3),
+                    sf::Vector2i(buttons[0].getText().getCharacterSize() * buttons[0].getText().getString().getSize(),
+                    buttons[0].getText().getCharacterSize() * 1.3),
                     buttons[isOnButtonNr].getText().getPosition().y, 1);
     }
 }
