@@ -15,9 +15,10 @@ CreditsState::CreditsState(Game::GameDataRef data) : data(data)
         "\"JumboCube\" - graphics",
         "Mateusz Stepka - music",
         "",
+        "",
         "BACK TO MENU - ESC"
     },
-    7, 30, 30, sf::Vector2i(0, 0), false, sf::Color(30, 54, 35)
+    8, 30, 30, sf::Vector2i(-150, 0), false, sf::Color(30, 54, 35)
     )
 {
     labels.getSnake().setIsShowing(false);
