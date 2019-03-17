@@ -21,6 +21,7 @@ private:
     Game::GameDataRef data;
 
     GUI::ButtonContainer labels;
+    sf::Sprite background;
 
     bool shouldComeBackToMenu;
 };

@@ -71,6 +71,8 @@ void MenuState::changingState()
             data->window.close();
             break;
     }
+
+    buttons.resetSignal();
 }
 
 

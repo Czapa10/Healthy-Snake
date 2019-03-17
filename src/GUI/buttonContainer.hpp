@@ -18,13 +18,14 @@ class ButtonContainer
 {
 public:
     ButtonContainer(Game::GameDataRef data, Textures::ID, int numberOfButtons, int spaceBetweenButtons, sf::Vector2i buttonSize, float scaleFactor = 4,sf::Vector2i offset = sf::Vector2i(0,0));
-    ButtonContainer(Game::GameDataRef data, Fonts::ID, std::vector<std::string> texts, int numberOfButtons, int spaceBetweenButtons, unsigned int fontSize, sf::Vector2i offset = sf::Vector2i(0,0), bool areButtonsCentered = true);
+    ButtonContainer(Game::GameDataRef data, Fonts::ID, std::vector<std::string> texts, int numberOfButtons, int spaceBetweenButtons, unsigned int fontSize, sf::Vector2i offset = sf::Vector2i(0,0), bool areButtonsCentered = true, sf::Color fontColor = sf::Color::White);
 
     void input();
     void update();
     void display();
     Button& operator[](unsigned int numberOfButton); //access to certain button
     int& getSignal(){return signal;}
+    void resetSignal(){signal = -1;}
     GuiSnake& getSnake(){return snake;}
 
 private:
