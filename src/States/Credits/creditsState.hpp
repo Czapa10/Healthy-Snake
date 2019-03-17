@@ -2,6 +2,7 @@
 
 #include <States/State.hpp>
 #include <GUI/buttonContainer.hpp>
+#include <game.hpp>
 
 namespace States
 {
@@ -10,14 +11,18 @@ namespace States
 class CreditsState : public State
 {
 public:
-    CreditsState();
+    CreditsState(Game::GameDataRef);
 
     void input() override;
     void update(sf::Time deltaTime) override;
     void draw() override;
 
 private:
+    Game::GameDataRef data;
+
     GUI::ButtonContainer labels;
+
+    bool shouldComeBackToMenu;
 };
 
 
