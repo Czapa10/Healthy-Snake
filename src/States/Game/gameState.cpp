@@ -378,8 +378,7 @@ void GameState::gameOverAnimation()
         std::cout<<"start of method void GameState::gameOverAnimation()"<<std::endl;
 
     if(!hasDyingTimeBeedRestarted){
-        data->sound.play(Audio::Sounds::die);
-        data->music.stop();
+        data->music.play(Audio::Music::gameOverTheme);
         dyingTime.restart();
         hasDyingTimeBeedRestarted = true;
     }

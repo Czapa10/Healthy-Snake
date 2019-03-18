@@ -7,7 +7,8 @@ namespace Audio
         enum ID
         {
             menuTheme,
-            gameplayTheme
+            gameplayTheme,
+            gameOverTheme
         };
     }
 }

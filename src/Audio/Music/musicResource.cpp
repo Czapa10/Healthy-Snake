@@ -16,6 +16,9 @@ namespace Audio
 
                 case gameplayTheme:
                     return Resource {"resources/music/game.wav", 0.88, true};
+
+                case gameOverTheme:
+                    return Resource {"resources/music/gameOver.wav", 1.4, false};
             }
 
         }
