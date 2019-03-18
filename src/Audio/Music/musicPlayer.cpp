@@ -8,7 +8,7 @@ namespace Audio
 
 
 MusicPlayer::MusicPlayer()
-:volume(13.f)
+:volume(50.f)
 {
 }
 

@@ -12,10 +12,10 @@ namespace Audio
 
             switch(id){
                 case menuTheme:
-                    return Resource {"resources/music/menu.wav", 0.85, true};
+                    return Resource {"resources/music/menu.wav", 0.98, true};
 
                 case gameplayTheme:
-                    return Resource {"resources/music/game.wav", 1.30, true};
+                    return Resource {"resources/music/game.wav", 0.88, true};
             }
 
         }
