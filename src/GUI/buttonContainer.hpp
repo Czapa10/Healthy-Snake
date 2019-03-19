@@ -39,6 +39,7 @@ private:
     GuiSnake snake;
 
     int isOnButtonNr{};
+    int previousIsOnButtonNr{};
     sf::Clock timeSinceLastClick;
     sf::Vector2i currentMousePos;
     sf::Vector2i lastMousePos;

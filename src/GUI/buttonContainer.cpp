@@ -126,12 +126,14 @@ void ButtonContainer::keyboardControls()
             if(isOnButtonNr == numberOfButtons)
                 isOnButtonNr = 0;
             timeSinceLastClick.restart();
+            data->sound.play(Audio::Sounds::menuMove);
         }
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
             --isOnButtonNr;
             if(isOnButtonNr < 0)
                 isOnButtonNr = numberOfButtons - 1;
             timeSinceLastClick.restart();
+            data->sound.play(Audio::Sounds::menuMove);
         }
     }
 

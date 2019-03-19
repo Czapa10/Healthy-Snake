@@ -2,6 +2,7 @@
 
 #include "mouseInput.hpp"
 #include <Resources/resourceIdentifiers.hpp>
+#include <Audio/Sound/soundIdentifiers.hpp>
 
 #include <cctype>
 #include <string>
