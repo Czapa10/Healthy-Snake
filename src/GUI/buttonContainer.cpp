@@ -150,6 +150,10 @@ void ButtonContainer::mouseControls()
             if(buttons[i].isMouseOnButton(currentMousePos))
                 isOnButtonNr = i;
         }
+
+        if(isOnButtonNr != previousIsOnButtonNr)
+            data->sound.play(Audio::Sounds::menuMove);
+
     }
 
     for(auto button : buttons){
@@ -158,6 +162,7 @@ void ButtonContainer::mouseControls()
     }
 
     lastMousePos = currentMousePos;
+    previousIsOnButtonNr = isOnButtonNr;
 }
 
 
