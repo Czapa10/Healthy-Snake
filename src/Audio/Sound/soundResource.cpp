@@ -12,7 +12,7 @@ namespace Audio
 
             switch(id){
                 case cat:
-                    return Resource {"resources/sounds/cat.wav", 5.2};
+                    return Resource {"resources/sounds/cat.wav", 3.2};
 
                 case eat:
                     return Resource {"resources/sounds/eat.wav", 0.6};
