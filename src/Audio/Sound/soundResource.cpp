@@ -16,6 +16,12 @@ namespace Audio
 
                 case eat:
                     return Resource {"resources/sounds/eat.wav", 0.6};
+
+                case buttonClick:
+                    return Resource {"resources/sounds/buttonClick.wav"};
+
+                case menuMove:
+                    return Resource {"resources/sounds/menuMove.wav"};
             }
 
         }

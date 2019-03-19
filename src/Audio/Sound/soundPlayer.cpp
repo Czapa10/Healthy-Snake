@@ -11,6 +11,8 @@ SoundPlayer::SoundPlayer()
 {
     soundBufferStorage.load(Sounds::cat, Sounds::takeInitialData(Sounds::cat).filepath);
     soundBufferStorage.load(Sounds::eat, Sounds::takeInitialData(Sounds::eat).filepath);
+    soundBufferStorage.load(Sounds::buttonClick, Sounds::takeInitialData(Sounds::buttonClick).filepath);
+    soundBufferStorage.load(Sounds::menuMove, Sounds::takeInitialData(Sounds::menuMove).filepath);
 }
 
 void SoundPlayer::play(Sounds::ID soundID)

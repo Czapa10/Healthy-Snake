@@ -8,6 +8,8 @@ namespace Audio
         {
             cat, //to splash screen
             eat,
+            buttonClick,
+            menuMove
         };
     }
 }
