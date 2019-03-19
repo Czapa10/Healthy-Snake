@@ -13,7 +13,7 @@ CreditsState::CreditsState(Game::GameDataRef data) : data(data)
         "",
         " Grzegorz \"Czapa\" Bednorz - coding",
         "\"JumboCube\" - graphics",
-        "Mateusz Stepka - music",
+        "Mateusz Stepka - music & sounds",
         "",
         "",
         "BACK TO MENU - ESC"
@@ -32,8 +32,10 @@ void CreditsState::input()
 
 void CreditsState::update(sf::Time deltaTime)
 {
-    if(shouldComeBackToMenu)
+    if(shouldComeBackToMenu){
+        data->sound.play(Audio::Sounds::buttonClick);
         data->stateStack.popState();
+    }
 }
 
 void CreditsState::draw()

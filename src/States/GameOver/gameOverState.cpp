@@ -26,11 +26,15 @@ void GameOverState::input()
 void GameOverState::update(sf::Time deltaTime)
 {
     if(enterWasClicked){
+        data->sound.play(Audio::Sounds::buttonClick);
+
         data->stateStack.clearStates();
         std::unique_ptr<States::GameState> toStack(new States::GameState(data));
         data->stateStack.pushState(std::move(toStack));
     }
     else if(escWasClicked){
+        data->sound.play(Audio::Sounds::buttonClick);
+
         data->stateStack.clearStates();
         std::unique_ptr<States::MenuState> toStack(new States::MenuState(data));
         data->stateStack.pushState(std::move(toStack));

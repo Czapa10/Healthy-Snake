@@ -65,6 +65,8 @@ void GameState::input()
     snake.control();
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+        data->sound.play(Audio::Sounds::buttonClick);
+
         std::unique_ptr<States::PauseState> toStack(new States::PauseState(data));
         data->stateStack.pushState(std::move(toStack), false);
     }
