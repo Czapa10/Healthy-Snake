@@ -137,8 +137,10 @@ void ButtonContainer::keyboardControls()
         }
     }
 
-    if((sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))&&(timeSinceLastClick.getElapsedTime().asSeconds() > 0.23))
+    if((sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))&&(timeSinceLastClick.getElapsedTime().asSeconds() > 0.23)){
         signal = isOnButtonNr;
+        data->sound.play(Audio::Sounds::buttonClick);
+    }
 }
 
 void ButtonContainer::mouseControls()
@@ -157,8 +159,10 @@ void ButtonContainer::mouseControls()
     }
 
     for(auto button : buttons){
-        if((button.isClicked(currentMousePos))&&(timeSinceLastClick.getElapsedTime().asSeconds() > 0.23))
+        if((button.isClicked(currentMousePos))&&(timeSinceLastClick.getElapsedTime().asSeconds() > 0.23)){
             signal = isOnButtonNr;
+            data->sound.play(Audio::Sounds::buttonClick);
+        }
     }
 
     lastMousePos = currentMousePos;
