@@ -2,6 +2,7 @@
 
 #include <States/DifficultyChoise/difficultyChoiseState.hpp>
 #include <States/Credits/creditsState.hpp>
+#include <States/Settings/settingsState.hpp>
 #include <Resources/resourceIdentifiers.hpp>
 #include <Audio/Music/musicIdentifiers.hpp>
 
@@ -54,10 +55,11 @@ void MenuState::changingState()
                 data->stateStack.pushState(std::move(toStack));
                 break;
             }
-        case 1:
-            std::cout<<"to settings"<<std::endl;
-            break;
-
+        case 1:{
+                std::unique_ptr<States::SettingsState> toStack(new States::SettingsState(data));
+                data->stateStack.pushState(std::move(toStack), false);
+                break;
+            }
         case 2:
             std::cout<<"to food stats state"<<std::endl;
             break;
