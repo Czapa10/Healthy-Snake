@@ -24,6 +24,11 @@ private:
     sf::Text settingsLabel;
 
     GUI::ButtonContainer buttons;
+
+    bool settingsHaveJustChanged;
+
+    int musicVolume = 521;
+    int soundVolume = 521;
 };
 
 
