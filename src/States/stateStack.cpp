@@ -58,10 +58,7 @@ StateRef &StateStack::getPreviousState()
 
 bool StateStack::areThereTwoStates()
 {
-    if(states.size() == 2){
-        return true;
-    }
-    return false;
+    return states.size() == 2;
 }
 
 
