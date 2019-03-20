@@ -2,6 +2,7 @@
 
 #include <States/State.hpp>
 #include <game.hpp>
+#include <GUI/buttonContainer.hpp>
 
 namespace States
 {
@@ -20,6 +21,7 @@ private:
     Game::GameDataRef data;
 
     sf::Sprite background;
+    sf::Text settingsLabel;
 };
 
 
