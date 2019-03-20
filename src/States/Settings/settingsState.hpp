@@ -22,6 +22,8 @@ private:
 
     sf::Sprite background;
     sf::Text settingsLabel;
+
+    GUI::ButtonContainer buttons;
 };
 
 
