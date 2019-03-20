@@ -21,7 +21,7 @@ namespace Audio
                     return Resource {"resources/sounds/buttonClick.wav"};
 
                 case menuMove:
-                    return Resource {"resources/sounds/menuMove.wav", 0.6};
+                    return Resource {"resources/sounds/menuMove.wav", 0.35};
             }
 
         }

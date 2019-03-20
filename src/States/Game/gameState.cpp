@@ -492,13 +492,11 @@ void GameState::afterTeleportTurnTransformations( int & x, int & y, sf::Vector2i
 
 bool GameState::checkIsTeleporting( sf::Vector2i previous, int x, int y )
 {
-    if((x + 1 != previous.x)&&(x - 1 != previous.x)
+    return
+    ((x + 1 != previous.x)&&(x - 1 != previous.x)
     &&(x != previous.x)&&(x != previous.x)
     ||(y + 1 != previous.y)&&(y - 1 != previous.y)
-    &&(y != previous.y)&&(y != previous.y)){
-        return true;
-    }
-    return false;
+    &&(y != previous.y)&&(y != previous.y));
 }
 
 
