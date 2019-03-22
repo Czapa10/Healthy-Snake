@@ -10,11 +10,16 @@ namespace Audio
 MusicPlayer::MusicPlayer()
 ///:volume(20.f)
 :volume(5.f)
+,id(Music::none)
 {
 }
 
 void MusicPlayer::play(Music::ID themeID)
 {
+    if(themeID == id)
+        return;
+
+    id = themeID;
     Resource res = Music::takeInitialData(themeID);
     music.openFromFile(res.filepath);
     music.setVolume(volume * res.volumeMultiplier);

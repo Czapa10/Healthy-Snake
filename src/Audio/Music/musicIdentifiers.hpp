@@ -8,7 +8,8 @@ namespace Audio
         {
             menuTheme,
             gameplayTheme,
-            gameOverTheme
+            gameOverTheme,
+            none
         };
     }
 }
