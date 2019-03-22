@@ -138,6 +138,7 @@ void ButtonContainer::keyboardControls()
     }
 
     if((sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))&&(timeSinceLastClick.getElapsedTime().asSeconds() > 0.23)){
+        timeSinceLastClick.restart();
         signal = isOnButtonNr;
         data->sound.play(Audio::Sounds::buttonClick);
     }
@@ -159,6 +160,7 @@ void ButtonContainer::mouseControls()
 
     for(auto button : buttons){
         if((button.isClicked(currentMousePos))&&(timeSinceLastClick.getElapsedTime().asSeconds() > 0.23)){
+            timeSinceLastClick.restart();
             signal = isOnButtonNr;
             data->sound.play(Audio::Sounds::buttonClick);
         }
