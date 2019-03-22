@@ -27,8 +27,8 @@ private:
 
     bool settingsHaveJustChanged;
 
-    int musicVolume = 521;
-    int soundVolume = 521;
+    int musicVolume = 50;
+    int soundVolume = 50;
 };
 
 

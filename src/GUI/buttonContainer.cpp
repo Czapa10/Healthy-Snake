@@ -155,7 +155,6 @@ void ButtonContainer::mouseControls()
 
         if(isOnButtonNr != previousIsOnButtonNr)
             data->sound.play(Audio::Sounds::menuMove);
-
     }
 
     for(auto button : buttons){
