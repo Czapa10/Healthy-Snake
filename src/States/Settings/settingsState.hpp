@@ -24,9 +24,6 @@ private:
     sf::Text settingsLabel;
 
     GUI::ButtonContainer buttons;
-
-    int musicVolume;
-    int soundVolume;
 };
 
 

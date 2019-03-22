@@ -10,13 +10,11 @@ namespace States
 SettingsState::SettingsState(Game::GameDataRef _data)
 :data(_data)
 ,background(data->textures.get(Textures::gameBackground))
-,musicVolume(50)
-,soundVolume(50)
 ,settingsLabel("SETTINGS", data->fonts.get(Fonts::fipps), 50)
 ,buttons(data, Fonts::fipps,
 {
-    "Music volume: " + std::to_string(musicVolume),
-    "Sound volume: " + std::to_string(soundVolume),
+    "Music volume: " + std::to_string(data->music.getVolume() / 2.6),
+    "Sound volume: " + std::to_string(5),
     "save & exit"
 }
 , 3, 40, 35, sf::Vector2i(), false, sf::Color(30, 54, 35))
@@ -36,15 +34,25 @@ void SettingsState::update(sf::Time deltaTime)
 
     switch(buttons.getSignal()){
         case 0:{
-            musicVolume += 1;
+            int musicVolume = data->music.getVolume();
+            musicVolume /= 2.6;
+
+            if(musicVolume = 10)
+                musicVolume = 0;
+            else
+                ++musicVolume;
+
             std::string strMusicVol = "Music volume: " + std::to_string(musicVolume);
             buttons[0].getText().setString(strMusicVol);
+
+            data->music.setVolume(musicVolume * 2.6);
+
             break;
         }
         case 1:{
-            soundVolume += 1;
+            /*soundVolume += 1;
             std::string strSoundVol = "Sound volume: " + std::to_string(soundVolume);
-            buttons[1].getText().setString(strSoundVol);
+            buttons[1].getText().setString(strSoundVol);*/
             break;
         }
         case 2:{
