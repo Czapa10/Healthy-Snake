@@ -18,6 +18,11 @@ public:
     void draw() override;
 
 private:
+    void setMusicVolume();
+    void setSoundVolume();
+    void goToMenu();
+
+private:
     Game::GameDataRef data;
 
     sf::Sprite background;

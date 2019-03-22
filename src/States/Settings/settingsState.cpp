@@ -35,49 +35,9 @@ void SettingsState::update(sf::Time deltaTime)
     buttons.update();
 
     switch(buttons.getSignal()){
-        case 0:{
-            int musicVolume = data->music.getVolume();
-            musicVolume /= 4;
-
-            if(musicVolume == 10)
-                musicVolume = 0;
-            else
-                ++musicVolume;
-
-            std::string strMusicVol = "Music volume: " + std::to_string(static_cast<int>(musicVolume));
-            buttons[0].getText().setString(strMusicVol);
-
-            data->music.setVolume(musicVolume * 4);
-
-            break;
-        }
-        case 1:{
-            float soundVolume = data->sound.getVolume();
-            std::cout<<"vol 1: "<<soundVolume<<std::endl;
-            soundVolume /= 2.6;
-            std::cout<<"vol 2: "<<soundVolume<<std::endl;
-
-            if(soundVolume == 10)
-                soundVolume = 0;
-            else
-                ++soundVolume;
-
-            std::cout<<"vol 3: "<<soundVolume<<std::endl;
-
-            std::string strSoundVol = "Sound volume: " + std::to_string(static_cast<int>(soundVolume));
-            buttons[1].getText().setString(strSoundVol);
-
-            data->sound.setVolume(soundVolume * 2.6);
-
-            std::cout<<"vol 4: "<<soundVolume * 2.6<<std::endl;
-
-            break;
-        }
-        case 2:{
-            std::unique_ptr<States::MenuState> toStack(new States::MenuState(data));
-            data->stateStack.pushState(std::move(toStack));
-            break;
-        }
+        case 0: setMusicVolume(); break;
+        case 1: setSoundVolume(); break;
+        case 2: goToMenu();       break;
     }
 
     buttons.resetSignal();
@@ -90,6 +50,44 @@ void SettingsState::draw()
     data->window.draw(background);
     data->window.draw(settingsLabel);
     buttons.display();
+}
+
+void SettingsState::setMusicVolume()
+{
+    int musicVolume = data->music.getVolume();
+    musicVolume /= 4;
+
+    if(musicVolume == 10)
+        musicVolume = 0;
+    else
+        ++musicVolume;
+
+    std::string strMusicVol = "Music volume: " + std::to_string(static_cast<int>(musicVolume));
+    buttons[0].getText().setString(strMusicVol);
+
+    data->music.setVolume(musicVolume * 4);
+}
+
+void SettingsState::setSoundVolume()
+{
+    float soundVolume = data->sound.getVolume();
+    soundVolume /= 2.6;
+
+    if(soundVolume == 10)
+        soundVolume = 0;
+    else
+        ++soundVolume;
+
+    std::string strSoundVol = "Sound volume: " + std::to_string(static_cast<int>(soundVolume));
+    buttons[1].getText().setString(strSoundVol);
+
+    data->sound.setVolume(soundVolume * 2.6);
+}
+
+void SettingsState::goToMenu()
+{
+    std::unique_ptr<States::MenuState> toStack(new States::MenuState(data));
+    data->stateStack.pushState(std::move(toStack));
 }
 
 
