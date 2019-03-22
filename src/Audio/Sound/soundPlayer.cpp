@@ -46,6 +46,7 @@ void SoundPlayer::removeEverySound()
 void SoundPlayer::setVolume(float volume)
 {
     this->volume = volume;
+    sounds.back().setVolume(volume); //this is only for button click sound when we change sound volume it in settings
 }
 
 float SoundPlayer::getVolume()
