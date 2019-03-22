@@ -57,7 +57,7 @@ void MenuState::changingState()
             }
         case 1:{
                 std::unique_ptr<States::SettingsState> toStack(new States::SettingsState(data));
-                data->stateStack.pushState(std::move(toStack), false);
+                data->stateStack.pushState(std::move(toStack));
                 break;
             }
         case 2:

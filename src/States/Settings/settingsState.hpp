@@ -25,10 +25,8 @@ private:
 
     GUI::ButtonContainer buttons;
 
-    bool settingsHaveJustChanged;
-
-    int musicVolume = 50;
-    int soundVolume = 50;
+    int musicVolume;
+    int soundVolume;
 };
 
 
