@@ -43,8 +43,17 @@ void MusicPlayer::setPaused(bool paused)
 
 void MusicPlayer::setVolume(float volume)
 {
-    music.setVolume(volume);
+    this->volume = volume;
+
+    Resource res = Music::takeInitialData(id);
+    music.setVolume(volume * res.volumeMultiplier);
 }
+
+float MusicPlayer::getVolume()
+{
+    return volume;
+}
+
 
 
 }

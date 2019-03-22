@@ -43,5 +43,15 @@ void SoundPlayer::removeEverySound()
     sounds.clear();
 }
 
+void SoundPlayer::setVolume(float volume)
+{
+    this->volume = volume;
+}
+
+float SoundPlayer::getVolume()
+{
+    return volume;
+}
+
 
 }

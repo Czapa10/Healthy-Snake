@@ -19,6 +19,7 @@ public:
 
     void setPaused(bool paused);
     void setVolume(float volume);
+    float getVolume();
 
 private:
     sf::Music music;

@@ -19,6 +19,9 @@ public:
     void removeStoppedSounds();
     void removeEverySound();
 
+    void setVolume(float volume);
+    float getVolume();
+
 private:
     Resources::ResourceManager<sf::SoundBuffer, Sounds::ID> soundBufferStorage;
     std::list<sf::Sound> sounds;
