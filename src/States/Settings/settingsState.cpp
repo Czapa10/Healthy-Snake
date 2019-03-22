@@ -3,6 +3,8 @@
 #include <States/Menu/menuState.hpp>
 #include <Resources/resourceIdentifiers.hpp>
 
+#include <iostream>
+
 namespace States
 {
 
@@ -13,7 +15,7 @@ SettingsState::SettingsState(Game::GameDataRef _data)
 ,settingsLabel("SETTINGS", data->fonts.get(Fonts::fipps), 50)
 ,buttons(data, Fonts::fipps,
 {
-    "Music volume: " + std::to_string(data->music.getVolume() / 2.6),
+    "Music volume: " + std::to_string(static_cast<int>(data->music.getVolume() / 4)),
     "Sound volume: " + std::to_string(5),
     "save & exit"
 }
@@ -35,17 +37,17 @@ void SettingsState::update(sf::Time deltaTime)
     switch(buttons.getSignal()){
         case 0:{
             int musicVolume = data->music.getVolume();
-            musicVolume /= 2.6;
+            musicVolume /= 4;
 
-            if(musicVolume = 10)
+            if(musicVolume == 10)
                 musicVolume = 0;
             else
                 ++musicVolume;
 
-            std::string strMusicVol = "Music volume: " + std::to_string(musicVolume);
+            std::string strMusicVol = "Music volume: " + std::to_string(static_cast<int>(musicVolume));
             buttons[0].getText().setString(strMusicVol);
 
-            data->music.setVolume(musicVolume * 2.6);
+            data->music.setVolume(musicVolume * 4);
 
             break;
         }
