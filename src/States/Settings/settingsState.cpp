@@ -13,16 +13,20 @@ SettingsState::SettingsState(Game::GameDataRef _data)
 :data(_data)
 ,background(data->textures.get(Textures::gameBackground))
 ,settingsLabel("SETTINGS", data->fonts.get(Fonts::fipps), 50)
-,buttons(data, Fonts::fipps,
-{
-    "Music volume: " + std::to_string( static_cast<int>(data->music.getVolume() / 4) ),
-    "Sound volume: " + std::to_string( static_cast<int>( static_cast<float>(data->sound.getVolume() / 2.6) ) ),
-    "save & exit"
-}
-, 3, 40, 35, sf::Vector2i(), false, sf::Color(30, 54, 35))
+,buttons(
+    data, Fonts::fipps,
+    {
+        "Music volume: " + std::to_string( static_cast<int>(data->music.getVolume() / 4) ),
+        "Sound volume: " + std::to_string( static_cast<int>( static_cast<float>(data->sound.getVolume() / 2.6) ) ),
+        "save & exit"
+    }
+    , 3, 40, 35, sf::Vector2i(), false, sf::Color(30, 54, 35)
+)
 {
     settingsLabel.setColor(sf::Color(30, 54, 35));
     settingsLabel.setPosition(324, 30);
+
+    buttons.getSnake().setSnakePos(100, 100);
 }
 
 void SettingsState::input()
