@@ -15,8 +15,8 @@ SettingsState::SettingsState(Game::GameDataRef _data)
 ,settingsLabel("SETTINGS", data->fonts.get(Fonts::fipps), 50)
 ,buttons(data, Fonts::fipps,
 {
-    "Music volume: " + std::to_string(static_cast<int>(data->music.getVolume() / 4)),
-    "Sound volume: " + std::to_string(5),
+    "Music volume: " + std::to_string( static_cast<int>(data->music.getVolume() / 4) ),
+    "Sound volume: " + std::to_string( static_cast<int>( static_cast<float>(data->sound.getVolume() / 2.6) ) ),
     "save & exit"
 }
 , 3, 40, 35, sf::Vector2i(), false, sf::Color(30, 54, 35))
@@ -52,9 +52,25 @@ void SettingsState::update(sf::Time deltaTime)
             break;
         }
         case 1:{
-            /*soundVolume += 1;
-            std::string strSoundVol = "Sound volume: " + std::to_string(soundVolume);
-            buttons[1].getText().setString(strSoundVol);*/
+            float soundVolume = data->sound.getVolume();
+            std::cout<<"vol 1: "<<soundVolume<<std::endl;
+            soundVolume /= 2.6;
+            std::cout<<"vol 2: "<<soundVolume<<std::endl;
+
+            if(soundVolume == 10)
+                soundVolume = 0;
+            else
+                ++soundVolume;
+
+            std::cout<<"vol 3: "<<soundVolume<<std::endl;
+
+            std::string strSoundVol = "Sound volume: " + std::to_string(static_cast<int>(soundVolume));
+            buttons[1].getText().setString(strSoundVol);
+
+            data->sound.setVolume(soundVolume * 2.6);
+
+            std::cout<<"vol 4: "<<soundVolume * 2.6<<std::endl;
+
             break;
         }
         case 2:{

@@ -51,7 +51,7 @@ void MusicPlayer::setVolume(float volume)
 
 float MusicPlayer::getVolume()
 {
-    return volume;
+    return this->volume;
 }
 
 

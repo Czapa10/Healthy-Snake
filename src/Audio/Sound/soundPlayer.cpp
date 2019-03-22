@@ -50,7 +50,7 @@ void SoundPlayer::setVolume(float volume)
 
 float SoundPlayer::getVolume()
 {
-    return volume;
+    return this->volume;
 }
 
 
