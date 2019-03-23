@@ -63,7 +63,7 @@ void MenuState::changingState()
             }
         case 2:{
                 std::unique_ptr<States::FoodStatsState> toStack(new States::FoodStatsState(data));
-                data->stateStack.pushState(std::move(toStack));
+                data->stateStack.pushState(std::move(toStack), false);
                 break;
             }
         case 3:{

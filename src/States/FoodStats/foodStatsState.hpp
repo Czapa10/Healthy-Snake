@@ -22,6 +22,9 @@ private:
 
     sf::Sprite background;
     sf::Sprite foodList;
+    sf::Text toMenu;
+
+    bool shouldComeBackToMenu;
 };
 
 
