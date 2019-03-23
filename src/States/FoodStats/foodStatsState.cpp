@@ -1,4 +1,5 @@
 #include "foodStatsState.hpp"
+#include <Audio/Sound/soundIdentifiers.hpp>
 
 namespace States
 {
@@ -24,8 +25,10 @@ void FoodStatsState::input()
 
 void FoodStatsState::update(sf::Time deltaTime)
 {
-    if(shouldComeBackToMenu)
+    if(shouldComeBackToMenu){
+        data->sound.play(Audio::Sounds::buttonClick);
         data->stateStack.popState();
+    }
 }
 
 void FoodStatsState::draw()
