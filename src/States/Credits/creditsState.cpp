@@ -14,11 +14,10 @@ CreditsState::CreditsState(Game::GameDataRef data) : data(data)
         " Grzegorz \"Czapa\" Bednorz - coding",
         "\"JumboCube\" - graphics",
         "Mateusz Stepka - music & sound",
-        "",
-        "",
+        "", "", "", "",
         "BACK TO MENU - ESC"
     },
-    8, 30, 30, sf::Vector2i(-150, 0), false, sf::Color(30, 54, 35)
+    10, 30, 30, sf::Vector2i(-150, 0), false, sf::Color(30, 54, 35)
     )
 {
     labels.getSnake().setIsShowing(false);
