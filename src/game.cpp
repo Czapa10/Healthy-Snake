@@ -101,6 +101,11 @@ void Game::loadGameOverStateTextures() const
     data->textures.load(Textures::gameover, "resources/textures/gameOverState/gameover.png");
 }
 
+void Game::loadFoodStatsStateTexture() const
+{
+    data->textures.load(Textures::foodList, "resources/textures/foodStatsState/foodList.png");
+}
+
 void Game::loadGameStateTextures() const
 {
     data->textures.load(Textures::gameBackground, "resources/textures/gameState/gameBackground.jpg");

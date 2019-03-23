@@ -53,6 +53,8 @@ namespace Textures
 
         difficultyChoiseButtons,
 
+        foodList,
+
         nothing
     };
 

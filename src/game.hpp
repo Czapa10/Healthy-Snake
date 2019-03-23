@@ -51,6 +51,7 @@ private:
     void loadDifficultyChoiceStateTextures() const;
     void loadPauseStateTextures() const;
     void loadGameOverStateTextures() const;
+    void loadFoodStatsStateTexture() const;
     void loadGameStateTextures() const;
 
     void loadHeadAndTail8x12() const;
