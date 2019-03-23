@@ -1,6 +1,7 @@
 #pragma once
 
 #include <States/State.hpp>
+#include <GUI/buttonContainer.hpp>
 #include <game.hpp>
 
 namespace States
@@ -18,6 +19,9 @@ public:
 
 private:
     Game::GameDataRef data;
+
+    sf::Sprite background;
+    sf::Sprite foodList;
 };
 
 

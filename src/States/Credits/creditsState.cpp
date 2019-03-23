@@ -13,7 +13,7 @@ CreditsState::CreditsState(Game::GameDataRef data) : data(data)
         "",
         " Grzegorz \"Czapa\" Bednorz - coding",
         "\"JumboCube\" - graphics",
-        "Mateusz Stepka - music & sounds",
+        "Mateusz Stepka - music & sound",
         "",
         "",
         "BACK TO MENU - ESC"

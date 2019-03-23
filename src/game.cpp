@@ -71,6 +71,7 @@ void Game::loadTextures() const
     loadDifficultyChoiceStateTextures();
     loadPauseStateTextures();
     loadGameOverStateTextures();
+    loadFoodStatsStateTexture();
     loadGameStateTextures();
 }
 
