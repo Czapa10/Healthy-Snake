@@ -20,7 +20,7 @@ void FoodStatsState::update(sf::Time deltaTime)
 
 void FoodStatsState::draw()
 {
-
+    data->window.clear();
 }
 
 

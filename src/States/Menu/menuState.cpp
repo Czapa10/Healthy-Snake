@@ -3,6 +3,7 @@
 #include <States/DifficultyChoise/difficultyChoiseState.hpp>
 #include <States/Credits/creditsState.hpp>
 #include <States/Settings/settingsState.hpp>
+#include <States/FoodStats/foodStatsState.hpp>
 #include <Resources/resourceIdentifiers.hpp>
 #include <Audio/Music/musicIdentifiers.hpp>
 
@@ -60,10 +61,11 @@ void MenuState::changingState()
                 data->stateStack.pushState(std::move(toStack));
                 break;
             }
-        case 2:
-            std::cout<<"to food stats state"<<std::endl;
-            break;
-
+        case 2:{
+                std::unique_ptr<States::FoodStatsState> toStack(new States::FoodStatsState(data));
+                data->stateStack.pushState(std::move(toStack), false);
+                break;
+            }
         case 3:{
                 std::unique_ptr<States::CreditsState> toStack(new States::CreditsState(data));
                 data->stateStack.pushState(std::move(toStack), false);
