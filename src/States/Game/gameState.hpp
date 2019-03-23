@@ -53,13 +53,11 @@ private:
     int points{};
 
     bool freeze{false};
-    bool hasDyingTimeBeedRestarted{false};
+    bool hasDyingTimeBeenRestarted{false};
     sf::Clock dyingTime;
 
     sf::Clock smallMoveClock;
     int numberOfPixelsToMoveSprite{};
-
-    bool isShowingConsoleLogs{false};
 };
 
 

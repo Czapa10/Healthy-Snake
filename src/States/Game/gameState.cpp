@@ -48,20 +48,6 @@ void GameState::input()
     if(freeze)
         return;
 
-    if(isShowingConsoleLogs)
-        std::cout<<"input()"<<std::endl;
-
-    while(sf::Keyboard::isKeyPressed(sf::Keyboard::Space));
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Insert)){
-            isShowingConsoleLogs = true;
-        }
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Delete)){
-            isShowingConsoleLogs = false;
-        }
-    }
-
     snake.control();
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
@@ -74,42 +60,24 @@ void GameState::input()
 
 void GameState::update(sf::Time deltaTime)
 {
-    if(isShowingConsoleLogs)
-        std::cout<<"update()"<<std::endl;
-
     if(freeze){
         gameOverAnimation();
         return;
     }
 
-    ///set sprites
-
-    if(isShowingConsoleLogs)
-        std::cout<<"clearTiles()"<<std::endl;
     clearTiles();
 
-    if(isShowingConsoleLogs)
-        std::cout<<"updatingSnake()"<<std::endl;
     updatingSnake();
 
-    if(isShowingConsoleLogs)
-        std::cout<<"foodUpdate()"<<std::endl;
     foodUpdate();
 
-    if(isShowingConsoleLogs)
-        std::cout<<"snakeMove()"<<std::endl;
     snakeMove();
 
-    if(isShowingConsoleLogs)
-        std::cout<<"smallMove()"<<std::endl;
     smallMove();
 }
 
 void GameState::draw()
 {
-    if(isShowingConsoleLogs)
-        std::cout<<"draw()"<<std::endl;
-
     data->window.clear();
 
     data->window.draw(background);
@@ -165,8 +133,6 @@ void GameState::draw()
     displayTailOrHead(Textures::snakeTail, tailPos, tailRotation);
     displayTailOrHead(headTexture, headPos, headRotation);
 
-    if(isShowingConsoleLogs)
-        std::cout<<"statisticsBar.draw(points, snake.getLength(), snake.getInStomach())"<<std::endl;
     statisticsBar.draw(points, snake.getLength(), snake.getInStomach());
 }
 
@@ -174,9 +140,6 @@ void GameState::draw()
 
 void GameState::displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, GameElements::Direction rotation)
 {
-    if(isShowingConsoleLogs)
-        std::cout<<"displayTailOrHead(Textures::ID toDisplay, sf::Vector2f pos, GameElements::Direction rotation)"<<std::endl;
-
     sf::Sprite sprite;
 
     if(numberOfPixelsToMoveSprite < 5)
@@ -357,9 +320,6 @@ void GameState::snakeMove()
         if(snake.isCollideWithItself(tiles)){
             freeze = true;
         }
-
-        if(isShowingConsoleLogs)
-            std::cout<<"SNAKE MOVES"<<std::endl;
     }
 }
 
@@ -368,21 +328,15 @@ void GameState::smallMove()
     if(smallMoveClock.getElapsedTime().asSeconds() > snake.getSpeed() / 8){
         ++numberOfPixelsToMoveSprite;
         smallMoveClock.restart();
-
-        if(isShowingConsoleLogs)
-            std::cout<<"numberOfPixelsToMoveSprite: "<<numberOfPixelsToMoveSprite<<std::endl;
     }
 }
 
 void GameState::gameOverAnimation()
 {
-    if(isShowingConsoleLogs)
-        std::cout<<"start of method void GameState::gameOverAnimation()"<<std::endl;
-
-    if(!hasDyingTimeBeedRestarted){
+    if(!hasDyingTimeBeenRestarted){
         data->music.play(Audio::Music::gameOverTheme);
         dyingTime.restart();
-        hasDyingTimeBeedRestarted = true;
+        hasDyingTimeBeenRestarted = true;
     }
 
     sf::Vector2i headPos = snake.bodyParts.front().pos;
@@ -405,9 +359,6 @@ void GameState::gameOverAnimation()
             break;
     }
 
-    if(isShowingConsoleLogs)
-        std::cout<<"dying time = "<<dyingTime.getElapsedTime().asSeconds()<<std::endl;
-
     if(dyingTime.getElapsedTime().asSeconds() < 0.7){
         tiles[headPos.x][headPos.y] = Textures::snakeHeadBigEyesWhileDying;
     }
@@ -418,9 +369,6 @@ void GameState::gameOverAnimation()
         std::unique_ptr<States::GameOverState> toStack(new States::GameOverState(data));
         data->stateStack.pushState(std::move(toStack), false);
     }
-
-    if(isShowingConsoleLogs)
-        std::cout<<"end of method void GameState::gameOverAnimation()"<<std::endl;
 }
 
 void GameState::makingSnakeTurnBody(int i,int x, int y, sf::Vector2i previous, sf::Vector2i next)
