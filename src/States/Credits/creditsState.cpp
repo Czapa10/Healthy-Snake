@@ -8,7 +8,8 @@ namespace States
 CreditsState::CreditsState(Game::GameDataRef data) : data(data)
 ,shouldComeBackToMenu(false)
 ,background(data->textures.get(Textures::gameBackground))
-,labels(data, Fonts::fipps,
+
+,mainLabels(data, Fonts::fipps,
     {   "Game was made by: ",
         "",
         " Grzegorz \"Czapa\" Bednorz - coding",
@@ -19,8 +20,16 @@ CreditsState::CreditsState(Game::GameDataRef data) : data(data)
     },
     10, 30, 30, sf::Vector2i(-150, 0), false, sf::Color(30, 54, 35)
     )
+
+,specialThanks(data, Fonts::fipps,
+    {
+        "Special thanks to: "
+    },
+    1, 15, 15, sf::Vector2i(-150, 200), false, sf::Color(30, 54, 35)
+    )
+
 {
-    labels.getSnake().setIsShowing(false);
+    mainLabels.getSnake().setIsShowing(false);
 }
 
 void CreditsState::input()
@@ -42,7 +51,8 @@ void CreditsState::draw()
     data->window.clear();
 
     data->window.draw(background);
-    labels.display();
+    mainLabels.display();
+    specialThanks.display();
 }
 
 

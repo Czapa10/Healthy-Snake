@@ -20,7 +20,8 @@ public:
 private:
     Game::GameDataRef data;
 
-    GUI::ButtonContainer labels;
+    GUI::ButtonContainer mainLabels;
+    GUI::ButtonContainer specialThanks;
     sf::Sprite background;
 
     bool shouldComeBackToMenu;
