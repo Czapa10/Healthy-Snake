@@ -15,21 +15,27 @@ CreditsState::CreditsState(Game::GameDataRef data) : data(data)
         " Grzegorz \"Czapa\" Bednorz - coding",
         "\"JumboCube\" - graphics",
         "Mateusz Stepka - music & sound",
-        "", "", "", "",
+        "", "", "", "", "",
         "BACK TO MENU - ESC"
     },
-    10, 30, 30, sf::Vector2i(-150, 0), false, sf::Color(30, 54, 35)
+    11, 30, 30, sf::Vector2i(-200, 0), false, sf::Color(30, 54, 35)
     )
 
 ,specialThanks(data, Fonts::fipps,
     {
-        "Special thanks to: "
+        "Special thanks to: ",
+        "Hubert Misiewicz - for making pull requests (5 commits)",
+        "Filip Kwiatkowski - for code review and help with code issues",
+        "Piotr Gardocki - for code review and help with code issues",
+        "\"Thrall\" - for beta testing",
+        "\"Rudy\" - for beta testing"
     },
-    1, 15, 15, sf::Vector2i(-150, 200), false, sf::Color(30, 54, 35)
+    6, 20, 19, sf::Vector2i(-290, 120), false, sf::Color(30, 54, 35)
     )
 
 {
     mainLabels.getSnake().setIsShowing(false);
+    specialThanks.getSnake().setIsShowing(false);
 }
 
 void CreditsState::input()
