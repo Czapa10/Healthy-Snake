@@ -8,6 +8,7 @@
 #include <Audio/Sound/soundPlayer.hpp>
 #include <States/stateStack.hpp>
 #include <States/DifficultyChoise/difficultyLevelIdentifiers.hpp>
+#include <Save/save.hpp>
 
 
 #define SCREEN_WIDTH 1024
@@ -26,6 +27,7 @@ struct GameData
     Resources::FontStorage fonts;
     Audio::MusicPlayer music;
     Audio::SoundPlayer sound;
+    Save::Save save;
     Difficulty::Level levelOfDifficulty;
 };
 
