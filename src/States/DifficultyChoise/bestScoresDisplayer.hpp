@@ -13,9 +13,6 @@ public:
     BestScoresDisplayer(Game::GameDataRef);
 
     update();
-
-private:
-    Game::GameDataRef data;
 };
 
 

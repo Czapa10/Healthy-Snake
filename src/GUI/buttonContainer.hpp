@@ -32,9 +32,10 @@ private:
     void keyboardControls();
     void mouseControls();
 
-private:
+protected:
     Game::GameDataRef data;
 
+private:
     std::vector<Button> buttons;
     GuiSnake snake;
 
