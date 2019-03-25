@@ -12,6 +12,8 @@ class BestScoresDisplayer : public GUI::ButtonContainer
 public:
     BestScoresDisplayer(Game::GameDataRef);
 
+    update();
+
 private:
     Game::GameDataRef data;
 };
