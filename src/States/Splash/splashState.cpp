@@ -1,7 +1,6 @@
 #include "splashState.hpp"
 
 #include <States/Menu/menuState.hpp>
-#include <States/GUItest/guiTestState.hpp>
 #include <Audio/Sound/soundIdentifiers.hpp>
 
 namespace States
@@ -17,16 +16,9 @@ void SplashState::input()
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::F1)){
-            std::unique_ptr<States::MenuState> temp(new States::MenuState(data));
-            data->stateStack.pushState(std::move(temp));
+            std::unique_ptr<States::MenuState> toStack(new States::MenuState(data));
+            data->stateStack.pushState(std::move(toStack));
         }
-    }
-
-    if((sf::Keyboard::isKeyPressed(sf::Keyboard::G))
-    && (sf::Keyboard::isKeyPressed(sf::Keyboard::U))
-    && (sf::Keyboard::isKeyPressed(sf::Keyboard::I))){
-        std::unique_ptr<States::GuiTestState> temp(new States::GuiTestState(data));
-        data->stateStack.pushState(std::move(temp));
     }
 }
 
@@ -58,8 +50,8 @@ void SplashState::update(sf::Time deltaTime)
             }
 
             if(clock.getElapsedTime().asSeconds() > 2){
-                std::unique_ptr<States::MenuState> temp(new States::MenuState(data));
-                data->stateStack.pushState(std::move(temp));
+                std::unique_ptr<States::MenuState> toStack(new States::MenuState(data));
+                data->stateStack.pushState(std::move(toStack));
             }
     }
 
