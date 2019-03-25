@@ -2,8 +2,11 @@
 
 #include <States/Menu/menuState.hpp>
 #include <Resources/resourceIdentifiers.hpp>
+#include <Save/SettingsSave/settings.hpp>
 
 #include <iostream>
+
+namespace Save{ struct Settings; }
 
 namespace States
 {
@@ -90,6 +93,8 @@ void SettingsState::setSoundVolume()
 
 void SettingsState::goToMenu()
 {
+    data->save.settingsSave.save( Save::Settings{ data->music.getVolume(), data->sound.getVolume() } );
+
     std::unique_ptr<States::MenuState> toStack(new States::MenuState(data));
     data->stateStack.pushState(std::move(toStack));
 }
