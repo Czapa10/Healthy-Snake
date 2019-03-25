@@ -52,6 +52,7 @@ void GameState::input()
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
         data->sound.play(Audio::Sounds::buttonClick);
+        saveScore();
 
         std::unique_ptr<States::PauseState> toStack(new States::PauseState(data));
         data->stateStack.pushState(std::move(toStack), false);
@@ -366,8 +367,7 @@ void GameState::gameOverAnimation()
         tiles[headPos.x][headPos.y] = Textures::snakeHeadClosedEyesWhileDying;
     }
     else{
-        data->save.bestScoresManager.transferScore(points, data->levelOfDifficulty);
-
+        saveScore();
         std::unique_ptr<States::GameOverState> toStack(new States::GameOverState(data));
         data->stateStack.pushState(std::move(toStack), false);
     }
@@ -438,6 +438,11 @@ void GameState::afterTeleportTurnTransformations( int & x, int & y, sf::Vector2i
         if(next.x == 0)
             next.x = 35;
     }
+}
+
+void GameState::saveScore()
+{
+    data->save.bestScoresManager.transferScore(points, data->levelOfDifficulty);
 }
 
 bool GameState::checkIsTeleporting( sf::Vector2i previous, int x, int y )
