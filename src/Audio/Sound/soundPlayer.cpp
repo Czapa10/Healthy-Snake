@@ -7,7 +7,7 @@ namespace Audio
 
 
 SoundPlayer::SoundPlayer()
-:volume(13.f)
+:volume()
 {
     soundBufferStorage.load(Sounds::cat, Sounds::takeInitialData(Sounds::cat).filepath);
     soundBufferStorage.load(Sounds::eat, Sounds::takeInitialData(Sounds::eat).filepath);

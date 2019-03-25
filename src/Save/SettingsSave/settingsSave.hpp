@@ -8,7 +8,7 @@ namespace Save
 
 struct SettingsSave
 {
-    auto getSavedSettings() -> const Settings&;
+    auto getSavedSettings() -> Settings;
     void save(Settings);
 };
 

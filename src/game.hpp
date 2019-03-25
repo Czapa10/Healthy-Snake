@@ -25,9 +25,9 @@ struct GameData
     States::StateStack stateStack;
     Resources::TextureStorage textures;
     Resources::FontStorage fonts;
+    Save::Save save;
     Audio::MusicPlayer music;
     Audio::SoundPlayer sound;
-    Save::Save save;
     Difficulty::Level levelOfDifficulty;
 };
 

@@ -6,7 +6,7 @@ namespace Save
 {
 
 
-auto SettingsSave::getSavedSettings() -> const Settings&
+auto SettingsSave::getSavedSettings() -> Settings
 {
     std::ifstream file("settings.hssave", std::ios::in | std::ios::binary);
 
@@ -18,9 +18,10 @@ auto SettingsSave::getSavedSettings() -> const Settings&
 
         file.read((char*)&settings.musicVolume, sizeof(float) );
         file.read((char*)&settings.soundVolume, sizeof(float) );
-    }
 
-    file.close();
+        file.close();
+        return settings;
+    }
 }
 
 void SettingsSave::save(Settings settings)

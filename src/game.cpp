@@ -1,6 +1,7 @@
 #include "game.hpp"
 
 #include <States/Splash/splashState.hpp>
+#include <Save/SettingsSave/settings.hpp>
 
 namespace Game
 {
@@ -15,6 +16,10 @@ Game::Game()
 
     loadTextures();
     loadFonts();
+
+    Save::Settings settings = data->save.settingsSave.getSavedSettings();
+    data->music.setVolume(settings.musicVolume);
+    data->sound.setVolume(settings.soundVolume);
 }
 
 void Game::run()
