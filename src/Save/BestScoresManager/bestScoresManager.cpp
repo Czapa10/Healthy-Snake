@@ -17,6 +17,7 @@ void BestScoresManager::transferScore(int score, Difficulty::Level level)
                 easyBestScore = score;
                 saveScore(level);
             }
+            break;
         }
 
         case Difficulty::medium:{
@@ -24,6 +25,7 @@ void BestScoresManager::transferScore(int score, Difficulty::Level level)
                 mediumBestScore = score;
                 saveScore(level);
             }
+            break;
         }
 
         case Difficulty::hard:{
@@ -31,6 +33,7 @@ void BestScoresManager::transferScore(int score, Difficulty::Level level)
                 hardBestScore = score;
                 saveScore(level);
             }
+            break;
         }
     }
 }

@@ -366,6 +366,8 @@ void GameState::gameOverAnimation()
         tiles[headPos.x][headPos.y] = Textures::snakeHeadClosedEyesWhileDying;
     }
     else{
+        data->save.bestScoresManager.transferScore(points, data->levelOfDifficulty);
+
         std::unique_ptr<States::GameOverState> toStack(new States::GameOverState(data));
         data->stateStack.pushState(std::move(toStack), false);
     }

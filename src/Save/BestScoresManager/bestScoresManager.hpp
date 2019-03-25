@@ -19,9 +19,9 @@ private:
     void loadScore();
 
 private:
-    int easyBestScore = 5;
-    int mediumBestScore = -12;
-    int hardBestScore = 100;
+    int easyBestScore{};
+    int mediumBestScore{};
+    int hardBestScore{};
 };
 
 
