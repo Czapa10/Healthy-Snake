@@ -6,6 +6,7 @@
 #include <game.hpp>
 #include <States/State.hpp>
 #include <GUI/buttonContainer.hpp>
+#include "bestScoresDisplayer.hpp"
 
 namespace States
 {
@@ -28,6 +29,7 @@ private:
 
     sf::Sprite background;
     GUI::ButtonContainer buttons;
+    BestScoresDisplayer bestScoresDisplayer;
 };
 
 

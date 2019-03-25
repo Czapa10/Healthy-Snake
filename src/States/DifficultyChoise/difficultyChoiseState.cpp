@@ -13,6 +13,7 @@ namespace States
 DifficultyChoiseState::DifficultyChoiseState(Game::GameDataRef _data)
 :data(_data)
 ,buttons(data, Textures::difficultyChoiseButtons, 4, 40, sf::Vector2i(47, 12), 6, sf::Vector2i(0, 50) )
+,bestScoresDisplayer(data)
 {
     background.setTexture(data->textures.get(Textures::gameBackground));
 }
@@ -34,6 +35,7 @@ void DifficultyChoiseState::draw()
 
     data->window.draw(background);
     buttons.display();
+    bestScoresDisplayer.display();
 }
 
 void DifficultyChoiseState::changingState()
