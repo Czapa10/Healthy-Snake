@@ -1,5 +1,8 @@
 #include "bestScoresManager.hpp"
 
+#include <fstream>
+#include <string>
+
 namespace Save
 {
 
@@ -15,7 +18,7 @@ void BestScoresManager::transferScore(int score, Difficulty::Level level)
         case Difficulty::easy:{
             if(score > easyBestScore){
                 easyBestScore = score;
-                saveScore(level);
+                saveScore(score, level);
             }
             break;
         }
@@ -23,7 +26,7 @@ void BestScoresManager::transferScore(int score, Difficulty::Level level)
         case Difficulty::medium:{
             if(score > mediumBestScore){
                 mediumBestScore = score;
-                saveScore(level);
+                saveScore(score, level);
             }
             break;
         }
@@ -31,7 +34,7 @@ void BestScoresManager::transferScore(int score, Difficulty::Level level)
         case Difficulty::hard:{
             if(score > hardBestScore){
                 hardBestScore = score;
-                saveScore(level);
+                saveScore(score, level);
             }
             break;
         }
@@ -48,9 +51,15 @@ int BestScoresManager::getScore(Difficulty::Level level) const
     }
 }
 
-void BestScoresManager::saveScore(Difficulty::Level level)
+void BestScoresManager::saveScore(int score, Difficulty::Level level)
 {
+    std::ofstream file("best.hssave", std::ios::out | std::ios::binary);
 
+    file.write( (char*)&easyBestScore,   sizeof(int) );
+    file.write( (char*)&mediumBestScore, sizeof(int) );
+    file.write( (char*)&hardBestScore,   sizeof(int) );
+
+    file.close();
 }
 
 void BestScoresManager::loadScore()

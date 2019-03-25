@@ -15,7 +15,7 @@ public:
     int getScore(Difficulty::Level) const;
 
 private:
-    void saveScore(Difficulty::Level);
+    void saveScore(int score, Difficulty::Level);
     void loadScore();
 
 private:
