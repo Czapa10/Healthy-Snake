@@ -12,17 +12,9 @@ namespace Save
 
 struct Save
 {
-    Save();
-
-    std::unique_ptr<BestScoresManager> bestScoresManager;
-    std::unique_ptr<SettingsSave> settingsSave;
+    BestScoresManager bestScoresManager;
+    SettingsSave settingsSave;
 };
-
-Save::Save()
-:bestScoresManager( new BestScoresManager() )
-,settingsSave( new SettingsSave() )
-{
-}
 
 
 }

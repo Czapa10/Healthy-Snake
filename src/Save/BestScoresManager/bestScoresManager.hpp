@@ -11,11 +11,11 @@ class BestScoresManager
 public:
     BestScoresManager();
 
-    void transferScore(int score);
+    void transferScore(int score, Difficulty::Level);
     int getScore(Difficulty::Level) const;
 
 private:
-    void saveScore();
+    void saveScore(Difficulty::Level);
     void loadScore();
 
 private:
