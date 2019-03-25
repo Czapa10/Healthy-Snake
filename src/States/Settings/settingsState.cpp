@@ -9,8 +9,8 @@ namespace States
 {
 
 
-SettingsState::SettingsState(Game::GameDataRef _data)
-:data(_data)
+SettingsState::SettingsState(Game::GameDataRef data)
+:data(data)
 ,background(data->textures.get(Textures::gameBackground))
 ,settingsLabel("SETTINGS", data->fonts.get(Fonts::fipps), 50)
 ,buttons(

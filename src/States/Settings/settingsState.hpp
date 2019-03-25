@@ -11,7 +11,7 @@ namespace States
 class SettingsState : public State
 {
 public:
-    SettingsState(Game::GameDataRef _data);
+    SettingsState(Game::GameDataRef);
 
     void input() override;
     void update(sf::Time deltaTime) override;

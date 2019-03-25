@@ -9,7 +9,6 @@ namespace Audio
 
 MusicPlayer::MusicPlayer()
 :volume(20.f)
-//:volume(5.f)
 ,id(Music::none)
 {
 }

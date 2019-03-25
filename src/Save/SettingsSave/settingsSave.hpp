@@ -1,12 +1,15 @@
 #pragma once
 
+#include "settings.hpp"
+
 namespace Save
 {
 
 
-class SettingsSave
+struct SettingsSave
 {
-
+    auto getSavedSettings() -> const Settings&;
+    void save(Settings);
 };
 
 

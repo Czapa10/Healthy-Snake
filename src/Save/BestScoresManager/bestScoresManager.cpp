@@ -9,6 +9,7 @@ namespace Save
 
 BestScoresManager::BestScoresManager()
 {
+    loadScore();
 }
 
 void BestScoresManager::transferScore(int score, Difficulty::Level level)
@@ -64,7 +65,20 @@ void BestScoresManager::saveScore(int score, Difficulty::Level level)
 
 void BestScoresManager::loadScore()
 {
+    std::ifstream file("best.hssave", std::ios::in | std::ios::binary);
 
+    if(!file){
+        easyBestScore = 0;
+        mediumBestScore = 0;
+        hardBestScore = 0;
+    }
+    else{
+        file.read((char*)&easyBestScore,   sizeof(int) );
+        file.read((char*)&mediumBestScore, sizeof(int) );
+        file.read((char*)&hardBestScore,   sizeof(int) );
+    }
+
+    file.close();
 }
 
 
