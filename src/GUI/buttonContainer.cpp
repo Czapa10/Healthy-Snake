@@ -64,8 +64,6 @@ ButtonContainer::ButtonContainer(Game::GameDataRef data, Fonts::ID fontID, std::
                 fontSize
             )
         );
-
-        std::cout<<i<<"x: "<<SCREEN_WIDTH / 2 - ( fontSize * texts[i].size()) / 2 + offset.x<<std::endl;
     }
 
     if(fontColor != sf::Color::Black){
