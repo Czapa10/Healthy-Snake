@@ -8,8 +8,6 @@ namespace GameElements
 
 Textures::ID SnakeHead::getCurrentHead(sf::Vector2i headPos, Direction direction, std::vector<Food> food)
 {
-    ///here will be dying animation
-
     if(shouldOpenMouth(headPos, direction, food)){
         return Textures::snakeHeadOpenMouth;
     }

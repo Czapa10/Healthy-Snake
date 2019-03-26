@@ -22,19 +22,19 @@ GameState::GameState(Game::GameDataRef _data) : data(_data)
     clearTiles();
 
     switch(data->levelOfDifficulty){
-        case Difficulty::easy:
-            numberOfMealsOnTheScreen = 128;
-            howManyCellsOnEachFood = 6;
+        case Difficulty::easy:///768
+            numberOfMealsOnTheScreen = 109;
+            howManyCellsOnEachFood = 7;
             break;
 
         case Difficulty::medium:
-            numberOfMealsOnTheScreen = 192;
-            howManyCellsOnEachFood = 4;
+            numberOfMealsOnTheScreen = 154;
+            howManyCellsOnEachFood = 5;
             break;
 
         case Difficulty::hard:
-            numberOfMealsOnTheScreen = 384;
-            howManyCellsOnEachFood = 2;
+            numberOfMealsOnTheScreen = 256;
+            howManyCellsOnEachFood = 3;
             break;
     }
 
