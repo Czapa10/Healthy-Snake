@@ -19,12 +19,15 @@ GameState::GameState(Game::GameDataRef _data) : data(_data)
 {
     background.setTexture(data->textures.get(Textures::gameBackground));
 
+    data->music.play(Audio::Music::gameplayTheme);
+
     clearTiles();
 
     switch(data->levelOfDifficulty){
-        case Difficulty::easy:///768
+        case Difficulty::easy:
             numberOfMealsOnTheScreen = 109;
             howManyCellsOnEachFood = 7;
+            data->music.setPitch(0.93);
             break;
 
         case Difficulty::medium:
@@ -35,12 +38,11 @@ GameState::GameState(Game::GameDataRef _data) : data(_data)
         case Difficulty::hard:
             numberOfMealsOnTheScreen = 256;
             howManyCellsOnEachFood = 3;
+            data->music.setPitch(1.07);
             break;
     }
 
     settingFood();
-
-    data->music.play(Audio::Music::gameplayTheme);
 }
 
 void GameState::input()

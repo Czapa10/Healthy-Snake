@@ -19,6 +19,7 @@ public:
 
     void setPaused(bool paused);
     void setVolume(float volume);
+    void setPitch(float pitch);
     float getVolume();
 
 private:

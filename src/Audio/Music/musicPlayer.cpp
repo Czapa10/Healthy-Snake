@@ -23,6 +23,7 @@ void MusicPlayer::play(Music::ID themeID)
     music.openFromFile(res.filepath);
     music.setVolume(volume * res.volumeMultiplier);
     music.setLoop(res.loop);
+    music.setPitch(1);
 
     music.play();
 }
@@ -46,6 +47,11 @@ void MusicPlayer::setVolume(float volume)
 
     Resource res = Music::takeInitialData(id);
     music.setVolume(volume * res.volumeMultiplier);
+}
+
+void MusicPlayer::setPitch(float pitch)
+{
+    music.setPitch(pitch);
 }
 
 float MusicPlayer::getVolume()
