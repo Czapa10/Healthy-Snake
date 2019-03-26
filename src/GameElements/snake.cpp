@@ -26,23 +26,16 @@ Snake::Snake(Difficulty::Level level)
     }
 
     switch(level){
-        case Difficulty::easy:
-            speed = 0.16;
-            break;
-
-        case Difficulty::medium:
-            speed = 0.11;
-            break;
-
-        case Difficulty::hard:
-            speed = 0.09;
-            break;
+        case Difficulty::easy:    speed = 0.16;   break;
+        case Difficulty::medium:  speed = 0.11;   break;
+        case Difficulty::hard:    speed = 0.09;   break;
     }
 }
 
 void Snake::control()
 {
-    if(inputQueue.size() < 3){
+    if(inputQueue.size() < 3)
+    {
         Direction direction{Direction::none};
 
         if((sf::Keyboard::isKeyPressed(sf::Keyboard::Up))&&(inputQueue.front() != Direction::down)){
