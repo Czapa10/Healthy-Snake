@@ -42,7 +42,7 @@ public:
 
 private:
     void input();
-    void update(sf::Time deltaTime);
+    void update();
     void render();
 
     ///loading textures

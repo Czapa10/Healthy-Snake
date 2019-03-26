@@ -23,7 +23,7 @@ void FoodStatsState::input()
         shouldComeBackToMenu = true;
 }
 
-void FoodStatsState::update(sf::Time deltaTime)
+void FoodStatsState::update()
 {
     if(shouldComeBackToMenu){
         data->sound.play(Audio::Sounds::buttonClick);

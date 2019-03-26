@@ -26,16 +26,16 @@ void Game::run()
 {
     sf::Clock clock;
     const sf::Time timePerFrame = sf::seconds(1.f / 60.f);
-    sf::Time timeSinceLastUpdate = sf::Time::Zero;
+    sf::Time timeSinceLastRender = sf::Time::Zero;
 
     while(data->window.isOpen()){
         data->stateStack.processStateChanges();
         input();
-        update(timePerFrame);
-        timeSinceLastUpdate += clock.restart();
+        update();
+        timeSinceLastRender += clock.restart();
 
-        while(timeSinceLastUpdate > timePerFrame){
-            timeSinceLastUpdate -= timePerFrame;
+        while(timeSinceLastRender > timePerFrame){
+            timeSinceLastRender -= timePerFrame;
             render();
         }
     }
@@ -53,9 +53,9 @@ void Game::input()
     data->stateStack.getActiveState()->input();
 }
 
-void Game::update(sf::Time deltaTime)
+void Game::update()
 {
-    data->stateStack.getActiveState()->update(deltaTime);
+    data->stateStack.getActiveState()->update();
 }
 
 void Game::render()

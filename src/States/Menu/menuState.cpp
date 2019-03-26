@@ -33,7 +33,7 @@ void MenuState::input()
     buttons.input();
 }
 
-void MenuState::update(sf::Time deltaTime)
+void MenuState::update()
 {
     buttons.update();
     changingState();

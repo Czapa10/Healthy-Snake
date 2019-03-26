@@ -14,7 +14,7 @@ public:
     FoodStatsState(Game::GameDataRef);
 
     void input() override;
-    void update(sf::Time deltaTime) override;
+    void update() override;
     void draw() override;
 
 private:

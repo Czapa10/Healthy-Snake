@@ -13,7 +13,7 @@ public:
     PauseState(Game::GameDataRef _data);
 
     void input() override;
-    void update(sf::Time deltaTime) override;
+    void update() override;
     void draw() override;
 
 private:

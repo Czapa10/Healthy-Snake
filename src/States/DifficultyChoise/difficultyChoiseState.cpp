@@ -23,7 +23,7 @@ void DifficultyChoiseState::input()
     buttons.input();
 }
 
-void DifficultyChoiseState::update(sf::Time deltaTime)
+void DifficultyChoiseState::update()
 {
     buttons.update();
     changingState();

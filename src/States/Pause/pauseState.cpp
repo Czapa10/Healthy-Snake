@@ -28,7 +28,7 @@ void PauseState::input()
     }
 }
 
-void PauseState::update(sf::Time deltaTime)
+void PauseState::update()
 {
     if(enterWasClicked){
         data->sound.play(Audio::Sounds::buttonClick);

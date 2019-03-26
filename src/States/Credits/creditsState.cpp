@@ -44,7 +44,7 @@ void CreditsState::input()
         shouldComeBackToMenu = true;
 }
 
-void CreditsState::update(sf::Time deltaTime)
+void CreditsState::update()
 {
     if(shouldComeBackToMenu){
         data->sound.play(Audio::Sounds::buttonClick);

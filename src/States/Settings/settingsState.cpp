@@ -37,7 +37,7 @@ void SettingsState::input()
     buttons.input();
 }
 
-void SettingsState::update(sf::Time deltaTime)
+void SettingsState::update()
 {
     buttons.update();
 

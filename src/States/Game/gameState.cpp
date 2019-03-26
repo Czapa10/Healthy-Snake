@@ -59,7 +59,7 @@ void GameState::input()
     }
 }
 
-void GameState::update(sf::Time deltaTime)
+void GameState::update()
 {
     if(freeze){
         gameOverAnimation();

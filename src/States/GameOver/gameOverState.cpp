@@ -23,7 +23,7 @@ void GameOverState::input()
     }
 }
 
-void GameOverState::update(sf::Time deltaTime)
+void GameOverState::update()
 {
     if(enterWasClicked){
         data->sound.play(Audio::Sounds::buttonClick);
