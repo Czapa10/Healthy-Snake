@@ -46,20 +46,10 @@ void DifficultyChoiseState::changingState()
     }
     else{
         switch(buttons.getSignal()){
-            case 0:
-                data->levelOfDifficulty = Difficulty::easy;
-                break;
-
-            case 1:
-                data->levelOfDifficulty = Difficulty::medium;
-                break;
-
-            case 2:
-                data->levelOfDifficulty = Difficulty::hard;
-                break;
-
-            default:
-                return;
+            case 0:   data->levelOfDifficulty = Difficulty::easy;     break;
+            case 1:   data->levelOfDifficulty = Difficulty::medium;   break;
+            case 2:   data->levelOfDifficulty = Difficulty::hard;     break;
+            default:  return;
         }
         std::unique_ptr<States::GameState> toStack(new States::GameState(data));
         data->stateStack.pushState(std::move(toStack));

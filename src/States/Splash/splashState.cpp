@@ -29,7 +29,8 @@ void SplashState::update()
         ++whichLogo;
     }
 
-    switch(whichLogo){
+    switch(whichLogo)
+    {
         case 1:
             if(change){
                 background.setTexture(data->textures.get(Textures::companyLogo));
@@ -54,8 +55,6 @@ void SplashState::update()
                 data->stateStack.pushState(std::move(toStack));
             }
     }
-
-
 }
 
 void SplashState::draw()

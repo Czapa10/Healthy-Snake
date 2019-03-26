@@ -13,8 +13,8 @@ CreditsState::CreditsState(Game::GameDataRef data) : data(data)
     {   "Game was made by: ",
         "",
         " Grzegorz \"Czapa\" Bednorz - coding",
-        "\"JumboCube\" - graphics",
         "Mateusz Stepka - music & sound",
+        "\"JumboCube\" - graphics",
         "", "", "", "", "",
         "BACK TO MENU - ESC"
     },
