@@ -2,7 +2,7 @@
 C++ and SFML game. It's interestingly modified snake.
 
 # Download
-You can download current version here: https://github.com/Czapa10/Healthy-Snake/releases
+Link to download v1.0: https://gamejolt.com/games/Healthy-Snake/404844
 
 # Introduction
 When I finished my previous game "Super Pong" which was very unclean and bad writen; I started to learn about clean code and how to compose object oriented code. I was reading code of other games on Github. I was learning c++ syntax a little. And I also read half of SFML Game Development book which is very good actually.
@@ -16,7 +16,9 @@ Aim of this game is:
 
 # Game Creators
 Coding - Grzegorz "Czapa" Bednorz
+
 Music & Sound - Mateusz Stępka
+
 Graphics - Jumbocube
 
 # Screenshot - v1.0
