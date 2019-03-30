@@ -66,28 +66,14 @@ void Button::makeButtonPointed(bool buttonIsPointed)
     isPointed = buttonIsPointed;
 
     if(type == ButtonType::spriteButton){
-        if(isPointed){
-            sprite.setTextureRect(pointedRect);
-        }
-        else{
-            sprite.setTextureRect(notPointedRect);
-        }
+        sprite.setTextureRect(isPointed ? pointedRect : notPointedRect);
     }
     else{
-        if(isPointed){
-            std::string aux = text.getString();
-            for(auto &c : aux){
-                c = std::toupper(c);
-            }
-            text.setString(aux);
+        std::string aux = text.getString();
+        for(auto &c : aux){
+            c = isPointed ? std::toupper(c) : std::tolower(c);
         }
-        else{
-            std::string aux = text.getString();
-            for(auto &c : aux){
-                c = std::tolower(c);
-            }
-            text.setString(aux);
-        }
+        text.setString(aux);
     }
 }
 
