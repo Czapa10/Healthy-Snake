@@ -4,10 +4,7 @@
 #include <Resources/resourceIdentifiers.hpp>
 #include <Audio/Sound/soundIdentifiers.hpp>
 
-#include <cctype>
 #include <string>
-
-#include <iostream>
 
 namespace GUI
 {
@@ -46,11 +43,6 @@ Button::Button(Game::GameDataRef data, const Fonts::ID& fontID, const std::strin
 ,type(ButtonType::textButton)
 {
     text.setPosition(pos);
-}
-
-void Button::update()
-{
-
 }
 
 void Button::display()
