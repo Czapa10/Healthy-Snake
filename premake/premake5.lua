@@ -12,9 +12,10 @@ project "Healthy-Snake"
    libdirs{ "../vendor/SFML/lib" }
 
    files {
-      "../src/**.h",
       "../src/**.hpp",
-      "../src/**.cpp" 
+      "../src/**.cpp",
+      "../src/**.inl", 
+      "../src/**.rc" 
    }
 
    filter "configurations:Debug"
